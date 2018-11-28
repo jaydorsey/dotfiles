@@ -1,0 +1,37 @@
+#!/usr/bin/ruby
+# https://davidverhasselt.com/auto-open-rails-generator-files/
+
+require 'pty'
+
+def extract_created_files(lines)
+  lines.map do |line|
+    command, file = colorless(line).split
+    file if command == "create"
+  end.compact.reverse
+end
+
+def colorless(str)
+  str.gsub /\033\[\d+m/, ""
+end
+
+command = "rails generate #{$*.join(" ")}"
+lines = []
+
+# Use PTY to force Thor to output coloured text
+PTY.spawn(command) do |r, w, pid|
+  begin
+    while line = r.readline
+      puts line
+      lines << line
+    end
+  rescue EOFError
+    # noop
+  end
+end
+
+files = extract_created_files(lines)
+
+if files.any?
+  puts "\nOpening files #{files.join(", ")}..."
+  exec("#{ENV.fetch('EDITOR')} -p #{files.join(" ")}")
+end
