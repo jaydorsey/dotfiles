@@ -1,0 +1,63 @@
+[user]
+  name = Jay Dorsey
+  email = jaydorsey@fastmail.com
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore_global
+  ignorecase = false
+  pager = "tig"
+[alias]
+  a = add -A
+  b = branch
+  co = checkout
+  d = diff -w --word-diff
+  fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && git rebase -i --autosquash $REV^' -
+  git = !exec git
+  graph = log --graph --all --decorate --stat --date=iso
+  last = log -1 HEAD
+  lg = log --oneline --graph
+  lgg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\n--abbrev-commit --date=relative
+  ls = ls-files
+  s = status
+  standup = log --since yesterday --oneline --author jaydorsey
+  state = !git fetch origin && git remote show origin && :
+  stats = shortlog -sn --since='30 days'
+  sync = !git fetch origin && git remote prune origin && :
+  visual = !gitk
+[branch]
+  autosetuprebase = always
+  autosetupmerge = always
+[color]
+  branch = auto
+  diff = true
+  interactive = true
+  status = auto
+  ui = true
+  pager = false
+[commit]
+  verbose = false
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+[push]
+  default = simple
+[rebase]
+  autosquash = true
+[remote "origin"]
+  fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = yellow
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[diff]
+  compactionHeuristic = true
