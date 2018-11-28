@@ -1,0 +1,10 @@
+tmp/*
+*.dump
+*.jpg
+*.log
+*.png
+*.so
+*.swp
+spec/req_cache/
+frontend/dist/assets/**/*
+node_modules/**/*
