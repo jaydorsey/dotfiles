@@ -60,7 +60,9 @@ let g:diminactive_use_syntax = 1
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red
 
 Plug 'editorconfig/editorconfig-Vim'
-Plug 'elixir-editors/vim-elixir'
+
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' } " Elixir configuration files
+
 Plug 'elzr/vim-json'
 
 Plug 'francoiscabrol/ranger.vim'
@@ -161,7 +163,7 @@ Plug 'sjl/gundo.vim' " Visualize your vim undo tree
 nnoremap <leader>u :GundoToggle<cr>
 let g:gundo_prefer_python3 = 1
 
-Plug 'slashmili/alchemist.vim'
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' } " Elixir project integration
 
 " Press `v` multiple times to expand the selected region in visual mode
 Plug 'terryma/vim-expand-region'
