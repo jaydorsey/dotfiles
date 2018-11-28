@@ -1,0 +1,17 @@
+# My dotfiles
+
+Application setup for MacOS. Pieces togethers the tools I use including:
+
+- homebrew
+- zsh & oh-my-zsh
+- neovim
+
+## Usage
+
+    git clone https://github.com/jaydorsey/dotfiles.git
+    cd dotfiles
+    ./setup
+
+To update the `Brewfile` and dump your brew packages:
+
+    brew bundle dump -f
