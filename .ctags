@@ -1,0 +1,8 @@
+--recurse=yes
+--tag-relative=yes
+--exclude=.git
+--exclude=.config
+--languages=Ruby
+--regex-ruby=/^[ \t]*describe ['"](.*)['"] do/\1/d,rspec describe/
+--regex-ruby=/^[ \t]*context ['"](.*)['"] do/\1/C,rspec context/
+--regex-ruby=/^[ \t]*it ['"](.*)['"] do/\1/i,rspec tests/
