@@ -6,12 +6,15 @@ Application setup for MacOS. Pieces togethers the tools I use including:
 - zsh & oh-my-zsh
 - neovim
 
+Key bindings for vim are customized for use with my Ergodox keyboard. My
+layout is available [online](https://configure.ergodox-ez.com/layouts/6JON/latest/0).
+
 ## Usage
 
     git clone https://github.com/jaydorsey/dotfiles.git
     cd dotfiles
     ./setup
 
-To update the `Brewfile` and dump your brew packages:
+To update the `Brewfile` after installing new packages, run:
 
     brew bundle dump -f
