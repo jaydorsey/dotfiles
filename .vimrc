@@ -200,6 +200,10 @@ Plug 'w0ng/vim-hybrid'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
+" Disable tags file as a source
+let g:deoplete#ignore_sources.ruby = ['tag']
+
 " Use <tab> key to step into the selections
 inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
 call plug#end()
