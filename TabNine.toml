@@ -2,3 +2,5 @@
 command = "solargraph"
 args = ["stdio"]
 install = [["gem", "install", "solargraph"]]
+num_server_instances = 2
+always_prefer = true
