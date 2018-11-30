@@ -83,6 +83,8 @@ Plug 'guns/xterm-color-table.vim' " View xterm colors with :XtermColorTable
 
 Plug 'itchyny/lightline.vim'
 
+Plug 'jeffkreeftmeijer/vim-dim' " Theme
+
 Plug 'juanibiapina/vim-lighttree' " LightTree is an in-window file explorer
 map <leader>e :LightTree<cr>
 
@@ -195,7 +197,7 @@ Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation lev
 " Plug 'baskerville/bubblegum'
 " Plug 'nanotech/jellybeans.vim'
 " Plug 'squarefrog/tomorrow-night.vim'
-Plug 'w0ng/vim-hybrid'
+" Plug 'w0ng/vim-hybrid'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
@@ -238,7 +240,7 @@ set matchtime=5                                    " Show matching bracket for 0
 set mouse=                                         " Disable mouse
 set noerrorbells                                   " No sounds
 set nocursorcolumn                                 " Enable cursor column highlighting
-set cursorline                                     " Disable line highlighting, for performance
+set nocursorline                                     " Disable line highlighting, for performance
 set nofoldenable                                   " Don't fold files by default
 set norelativenumber                               " Disable relative line numbers for performance
 set noruler                                        " No ruler needed, because lightline
@@ -288,7 +290,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme hybrid             " https://github.com/w0ng/vim-hybrid
+colorscheme dim
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
@@ -561,18 +563,11 @@ vnoremap _[ <Esc>`>a]<Esc>`<i[<Esc>
 vnoremap _< <Esc>`>a><Esc>`<i<<Esc>
 vnoremap _{ <Esc>`>a}<Esc>`<i{<Esc>
 
-" Custom highlighting
-highlight link MatchOpen Error
-
-" Change highlight color
-highlight Search cterm=NONE guibg=#00ffdf guifg=#df00af
-" Change highlight color in incremental searches
-highlight IncSearch cterm=NONE guibg=#00ffdf guifg=#df00af
 " Cursor color
 highlight Cursor guifg=Black guibg=#df00af gui=reverse
 " Change line numbers so they're readable https://stackoverflow.com/a/32128209/2892779
 highlight LineNr term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey80 guibg=NONE
-" Make comment colors stand out more
+" Grey comments
 highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
 
 " Edit/save and automatically reload vimrc file
