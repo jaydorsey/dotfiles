@@ -7,7 +7,7 @@ Application setup for MacOS. Pieces togethers the tools I use including:
 - neovim
 
 Key bindings for vim are customized for use with my Ergodox keyboard. My
-layout is available [online](https://configure.ergodox-ez.com/layouts/6JON/latest/0).
+layout is available link:https://configure.ergodox-ez.com/layouts/6JON/latest/0[online].
 
 ## Usage
 
