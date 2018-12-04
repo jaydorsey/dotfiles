@@ -564,7 +564,7 @@ vnoremap _< <Esc>`>a><Esc>`<i<<Esc>
 vnoremap _{ <Esc>`>a}<Esc>`<i{<Esc>
 
 " Cursor color
-highlight Cursor guifg=Black guibg=#df00af gui=reverse
+highlight Cursor guifg=Black guibg=#ffffff gui=reverse
 " Change line numbers so they're readable https://stackoverflow.com/a/32128209/2892779
 highlight LineNr term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey80 guibg=NONE
 " Grey comments
@@ -599,6 +599,8 @@ vnoremap > >gv
 " https://stackoverflow.com/a/4313335/2892779
 nnoremap <c-p> p`[v`]
 
+" Convert non-let syntax to let syntax in rspec files
+let @l = '^ilet(:f i)llxi{$a }'
 " Stuff
 "
 " Capture keys pressed while editing a vim file (for debugging)
