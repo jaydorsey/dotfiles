@@ -1,0 +1,83 @@
+# Use this file to configure the Overcommit hooks you wish to use. This will
+# extend the default configuration defined in:
+# https://github.com/brigade/overcommit/blob/master/config/default.yml
+#
+# At the topmost level of this YAML file is a key representing type of hook
+# being run (e.g. pre-commit, commit-msg, etc.). Within each type you can
+# customize each hook, such as whether to only run it on certain files (via
+# `include`), whether to only display output if it fails (via `quiet`), etc.
+#
+# For a complete list of hooks, see:
+# https://github.com/brigade/overcommit/tree/master/lib/overcommit/hook
+#
+# For a complete list of options that you can use to customize hooks, see:
+# https://github.com/brigade/overcommit#configuration
+#
+# Uncomment the following lines to make the configuration take effect.
+
+CommitMsg:
+  HardTabs:
+    enabled: true
+    on_warn: fail
+  RussianNovel:
+    enabled: true
+    on_warn: fail
+
+PostCheckout:
+  BundleInstall:
+    enabled: true
+  YarnInstall:
+    enabled: true
+  IndexTags:
+    enabled: true
+
+PostCommit:
+  GitGuilt:
+    enabled: true
+
+PostMerge:
+  BundleInstall:
+    enabled: true
+  YarnInstall:
+    enabled: true
+
+PostRewrite:
+  BundleInstall:
+    enabled: true
+  YarnInstall:
+    enabled: true
+
+PreCommit:
+  BundleAudit:
+    enabled: true
+  BundleCheck:
+    enabled: true
+  Fasterer:
+    enabled: true
+  LineEndings:
+    enabled: true
+    exclude:
+      - 'db/data/development.txt'
+  LocalPathsInGemfile:
+    enabled: true
+  RailsSchemaUpToDate:
+    enabled: true
+    on_warn: fail
+  RuboCop:
+    enabled: true
+    on_warn: fail
+  TrailingWhitespace:
+    enabled: true
+    exclude:
+      - '**/db/schema.rb'
+      - '**/db/structure.sql'
+      - '**/db/data/development.txt'
+    on_warn: fail
+
+PrePush:
+  Brakeman:
+    enabled: false
+
+#PostCheckout:
+#  ALL: # Special hook name that customizes all hooks of this type
+#    quiet: true # Change all post-checkout hooks to only display output on failure
