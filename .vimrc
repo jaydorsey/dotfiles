@@ -168,9 +168,9 @@ let g:gundo_prefer_python3 = 1
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' } " Elixir project integration
 
 " Press `v` multiple times to expand the selected region in visual mode
-Plug 'terryma/vim-expand-region'
-vmap v <Plug>(expand_region_expand)
-vmap <leader>v <Plug>(expand_region_shrink)
+" Plug 'terryma/vim-expand-region'
+" vmap v <Plug>(expand_region_expand)
+" vmap <leader>v <Plug>(expand_region_shrink)
 
 Plug 'tomtom/tcomment_vim'
 
