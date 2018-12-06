@@ -16,3 +16,4 @@ rails
 rake
 rouge
 rubocop
+solargraph
