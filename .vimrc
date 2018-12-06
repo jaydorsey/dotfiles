@@ -74,10 +74,12 @@ nmap <Leader>t" :Tabularize /"<cr>
 vmap <Leader>t" :Tabularize /"<cr>
 nmap <Leader>t: :Tabularize /:\zs<cr>
 vmap <Leader>t: :Tabularize /:\zs<cr>
-nmap <Leader>t> :Tabularize /=>\zs<cr>
-vmap <Leader>t> :Tabularize /=>\zs<cr>
+nmap <Leader>t> :Tabularize /=><cr>
+vmap <Leader>t> :Tabularize /=><cr>
 nmap <Leader>t, :Tabularize /,\zs<cr>
 vmap <Leader>t, :Tabularize /,\zs<cr>
+nmap <Leader>t- :Tabularize / -><cr>
+vmap <Leader>t- :Tabularize / -><cr>
 
 Plug 'guns/xterm-color-table.vim' " View xterm colors with :XtermColorTable
 
