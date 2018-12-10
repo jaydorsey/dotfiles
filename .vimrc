@@ -296,6 +296,8 @@ colorscheme dim
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
+" Highlight whitespace errors
+let g:ruby_space_errors = 1
 
 " htt://vim.wikia.com/wiki/Fix_indentation
 " Format file with indention settings
