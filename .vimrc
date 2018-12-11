@@ -101,6 +101,9 @@ let g:gutentags_gtags_options_file="~/.ctags"
 let g:gutentags_trace=0
 let g:gutentags_enabled=0
 
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
+
 Plug 'majutsushi/tagbar' " Tag browsing & grouping
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
