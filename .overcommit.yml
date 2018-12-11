@@ -31,10 +31,6 @@ PostCheckout:
   IndexTags:
     enabled: true
 
-PostCommit:
-  GitGuilt:
-    enabled: true
-
 PostMerge:
   BundleInstall:
     enabled: true
