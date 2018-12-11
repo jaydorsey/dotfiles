@@ -16,4 +16,5 @@ rails
 rake
 rouge
 rubocop
+ruby-beautify2
 solargraph

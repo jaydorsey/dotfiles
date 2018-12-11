@@ -59,6 +59,9 @@ let g:diminactive_use_syntax = 1
 
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red
 
+Plug 'Chiel92/vim-autoformat'
+let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify2']
+
 Plug 'editorconfig/editorconfig-Vim'
 
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' } " Elixir configuration files
