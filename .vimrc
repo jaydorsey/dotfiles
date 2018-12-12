@@ -31,6 +31,8 @@ call plug#begin()
 " let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabContextDefaultCompletionType = "<C-N>"
 " Plug 'haya14busa/is.vim' " I don't use this at all
+" Plug 'juanibiapina/vim-lighttree' " LightTree is an in-window file explorer
+" map <leader>e :LightTree<cr>
 " Plug 'junegunn/vim-easy-align' " I don't use this. I use tabularize instead
 " Plug 'maxbrunsfeld/vim-yankstack' " I don't use this
 " Plug 'mustache/vim-mustache-handlebars' " I don't use this
@@ -87,9 +89,6 @@ vmap <Leader>t- :Tabularize / -><cr>
 Plug 'guns/xterm-color-table.vim' " View xterm colors with :XtermColorTable
 
 Plug 'itchyny/lightline.vim'
-
-Plug 'juanibiapina/vim-lighttree' " LightTree is an in-window file explorer
-map <leader>e :LightTree<cr>
 
 Plug 'junegunn/fzf.vim'
 
@@ -164,6 +163,14 @@ Plug 'rhysd/committia.vim' " See git diff in commit window as another pane
 
 Plug 'rizzatti/dash.vim' " Dash integration
 nnoremap <leader>d :Dash<cr>
+
+Plug 'scrooloose/nerdtree'
+nnoremap <leader>e :NERDTreeToggle<cr>
+augroup nerdtree_autocmd
+  autocmd!
+  " Close vim if the only window left open is NERDtree
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
 
 Plug 'sheerun/vim-polyglot'
 
