@@ -88,8 +88,6 @@ Plug 'guns/xterm-color-table.vim' " View xterm colors with :XtermColorTable
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'jeffkreeftmeijer/vim-dim' " Theme
-
 Plug 'juanibiapina/vim-lighttree' " LightTree is an in-window file explorer
 map <leader>e :LightTree<cr>
 
@@ -201,11 +199,13 @@ Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation levels
 
 " Themes
+
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'baskerville/bubblegum'
+" Plug 'jeffkreeftmeijer/vim-dim'
 " Plug 'nanotech/jellybeans.vim'
 " Plug 'squarefrog/tomorrow-night.vim'
-" Plug 'w0ng/vim-hybrid'
+Plug 'w0ng/vim-hybrid'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
@@ -298,7 +298,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme dim
+colorscheme hybrid
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
@@ -573,12 +573,10 @@ vnoremap _[ <Esc>`>a]<Esc>`<i[<Esc>
 vnoremap _< <Esc>`>a><Esc>`<i<<Esc>
 vnoremap _{ <Esc>`>a}<Esc>`<i{<Esc>
 
-" Cursor color
-highlight Cursor guifg=Black guibg=#ffffff gui=reverse
 " Change line numbers so they're readable https://stackoverflow.com/a/32128209/2892779
 highlight LineNr term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey80 guibg=NONE
-" Grey comments
-highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
+" Grey comments for certain themes
+" highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
 
 " Edit/save and automatically reload vimrc file
 " https://stackoverflow.com/a/39294493/2892779
