@@ -200,11 +200,12 @@ Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation lev
 
 " Themes
 
-" Plug 'ayu-theme/ayu-vim'
-" Plug 'baskerville/bubblegum'
-" Plug 'jeffkreeftmeijer/vim-dim'
-" Plug 'nanotech/jellybeans.vim'
-" Plug 'squarefrog/tomorrow-night.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'baskerville/bubblegum'
+Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'squarefrog/tomorrow-night.vim'
+Plug 'tpope/vim-vividchalk'
 Plug 'w0ng/vim-hybrid'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -298,7 +299,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme hybrid
+colorscheme dim
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
