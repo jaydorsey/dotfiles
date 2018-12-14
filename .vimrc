@@ -238,7 +238,7 @@ set directory=~/.vim/tmp                           " List of directory names for
 set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
 set expandtab                                      " Expand tabs to spaces
-set foldcolumn=4
+set foldcolumn=2
 set foldenable                                     " Fold or don't fold files by default
 set foldnestmax=12                                 " Deepest fold
 set formatoptions+=j                               " Join comments better
