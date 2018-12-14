@@ -238,7 +238,8 @@ set directory=~/.vim/tmp                           " List of directory names for
 set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
 set expandtab                                      " Expand tabs to spaces
-" set foldcolumn=2
+set foldcolumn=4
+set foldenable                                     " Fold or don't fold files by default
 set foldnestmax=12                                 " Deepest fold
 set formatoptions+=j                               " Join comments better
 set grepprg=rg\ --vimgrep\ --no-heading            " Use ripgrep instead of ag for :Ag commands
@@ -257,7 +258,6 @@ set mouse=                                         " Disable mouse
 set noerrorbells                                   " No sounds
 set nocursorcolumn                                 " Enable cursor column highlighting
 set nocursorline                                     " Disable line highlighting, for performance
-set nofoldenable                                   " Don't fold files by default
 set norelativenumber                               " Disable relative line numbers for performance
 set noruler                                        " No ruler needed, because lightline
 set noshowmode                                     " Disable current mode, handled by lightline
