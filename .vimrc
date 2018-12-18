@@ -150,9 +150,12 @@ let g:move_key_modifier = 'C'
 
 Plug 'mechatroner/rainbow_csv', { 'for': 'csv' }
 
-Plug 'mhinz/vim-startify' " Always update session on vim close
+" Startify provides a page on vim open with recent files, sessions, etc. I
+" also use it to automatically update session on vim close
+Plug 'mhinz/vim-startify'
 let g:startify_session_persistence = 1
 let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
+let g:startify_change_to_vcs_root = 1 " Always change to vcs root
 
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
@@ -453,7 +456,7 @@ augroup vim_ruby_group
 
   " Disable highlighting for RSpec by default for performance
   " autocmd BufRead,BufNewFile *_spec.rb setlocal syntax=off
-  " autocmd BufRead,BufNewFile *_spec.rb setlocal foldmethod=indent
+  autocmd BufRead,BufNewFile *_spec.rb setlocal foldmethod=indent
 augroup END
 
 " ALE
