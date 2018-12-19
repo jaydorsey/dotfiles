@@ -176,6 +176,8 @@ augroup nerdtree_autocmd
 augroup END
 
 Plug 'sheerun/vim-polyglot'
+" vim-ruby is already included, this isn't necessary
+let g:polyglot_disable = ['ruby']
 
 Plug 'sjl/gundo.vim' " Visualize your vim undo tree
 nnoremap <leader>u :GundoToggle<cr>

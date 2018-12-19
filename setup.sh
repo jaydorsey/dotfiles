@@ -114,3 +114,18 @@ ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
 
 echo "Symlink or create your .personalrc file"
 echo "Symlink or create your .localrc file"
+
+
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Twilight.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/SpaceGray%20Eighties%20Dull.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Relaxed.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/UltraViolent.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Pnevma.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/PencilDark.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Tomorrow%20Night%20Burns.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Obsidian.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/NightLion%20v2.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/IR_Black.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ciapre.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Espresso.itermcolors
+https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Afterglow.itermcolors
