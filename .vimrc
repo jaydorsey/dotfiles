@@ -308,7 +308,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme dim
+colorscheme hybrid
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
