@@ -56,9 +56,6 @@ let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
 
 Plug 'bfontaine/brewfile.vim' " Brewfile syntax highlighting
 
-Plug 'blueyed/vim-diminactive' " Disable syntax highlight for inactive windows
-let g:diminactive_use_syntax = 1
-
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red
 
 Plug 'chiel92/vim-autoformat'
