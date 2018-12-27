@@ -38,7 +38,6 @@ call plug#begin()
 " Plug 'mustache/vim-mustache-handlebars' " I don't use this
 " Plug 'mxw/vim-jsx' I don't use this
 " Plug 'nathanaelkane/vim-indent-guides' " Performance
-" Plug 'ngmy/vim-rubocop' Included with ale already
 " Plug 'Raimondi/delimitMate' " Add automatic delimiters ([<{, quotes, etc.  Doesn't work quite right with Deoplete
 " Plug 'ryanoasis/vim-devicons' " Add icons to plugins. This needs to be loaded last. I don't use this because it doesn't work
 " Plug 'thoughtbot/vim-rspec' " Rspec runner. I run my specs manually
