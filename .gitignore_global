@@ -33,3 +33,4 @@ storage/**/*
 frontend/dist/assets/**/*
 frontend/tmp
 spec/vcr/**/*
+default-env-vars.yml
