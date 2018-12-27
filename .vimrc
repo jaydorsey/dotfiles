@@ -83,7 +83,11 @@ vmap <Leader>t, :Tabularize /,\zs<cr>
 nmap <Leader>t- :Tabularize / -><cr>
 vmap <Leader>t- :Tabularize / -><cr>
 
-Plug 'guns/xterm-color-table.vim' " View xterm colors with :XtermColorTable
+" View xterm colors with :XtermColorTable
+Plug 'guns/xterm-color-table.vim'
+
+" Shows a little highlight of where the search ends up
+Plug 'inside/vim-search-pulse'
 
 Plug 'itchyny/lightline.vim'
 
@@ -586,8 +590,9 @@ vnoremap _{ <Esc>`>a}<Esc>`<i{<Esc>
 " Change line numbers so they're readable https://stackoverflow.com/a/32128209/2892779
 highlight LineNr term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey80 guibg=NONE
 " Change the colors of the Omnifunc select and highlighting
-highlight Pmenu ctermfg=15 ctermbg=8 guibg=Grey40 guifg=White
-highlight PmenuSel ctermfg=15 ctermbg=8 guibg=White guifg=Grey40
+" Disabled these while using hybrid
+" highlight Pmenu ctermfg=15 ctermbg=8 guibg=Grey40 guifg=White
+" highlight PmenuSel ctermfg=15 ctermbg=8 guibg=White guifg=Grey40
 
 " Grey comments for certain themes
 " highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
