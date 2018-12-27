@@ -168,6 +168,8 @@ Plug 'rhysd/committia.vim' " See git diff in commit window as another pane
 Plug 'rizzatti/dash.vim' " Dash integration
 nnoremap <leader>d :Dash<cr>
 
+Plug 'RRethy/vim-illuminate'
+
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 augroup nerdtree_autocmd
@@ -593,6 +595,10 @@ highlight LineNr term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE gu
 " Disabled these while using hybrid
 " highlight Pmenu ctermfg=15 ctermbg=8 guibg=Grey40 guifg=White
 " highlight PmenuSel ctermfg=15 ctermbg=8 guibg=White guifg=Grey40
+
+" Highlight current word under cursor with vim-illuminate. This needs to go
+" here, after all themes have loaded
+highlight illuminatedWord cterm=underline gui=underline
 
 " Grey comments for certain themes
 " highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
