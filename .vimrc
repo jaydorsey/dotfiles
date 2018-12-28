@@ -60,6 +60,9 @@ Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red
 Plug 'chiel92/vim-autoformat'
 let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify']
 
+" Color colornames & codes with :ColorToggle
+Plug 'Chrisbra/Colorizer'
+
 Plug 'editorconfig/editorconfig-Vim'
 
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' } " Elixir configuration files
@@ -313,7 +316,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme allomancer
+colorscheme hybrid
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
