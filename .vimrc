@@ -241,7 +241,6 @@ set backup                                         " Make backups
 set backupdir=~/.vim/backups                       " Specify backup directory
 set backspace=indent,eol,start                     " Backspace configuration
 set cindent
-set colorcolumn=80,120                             " Add color markers to columns to identify where wraps should occur
 set directory=~/.vim/tmp                           " List of directory names for the swap file, separated by commas
 set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
@@ -599,6 +598,10 @@ highlight LineNr term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE gu
 " Highlight current word under cursor with vim-illuminate. This needs to go
 " here, after all themes have loaded
 highlight illuminatedWord cterm=underline gui=underline
+
+" Always use a dark background color, and allow range for colorcolumn
+highlight ColorColumn ctermbg=0 guibg=#000000
+let &colorcolumn="80,".join(range(120,999),",")
 
 " Grey comments for certain themes
 " highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
