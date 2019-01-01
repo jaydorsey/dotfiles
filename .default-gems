@@ -8,9 +8,10 @@ nokogiri
 overcommit
 pg
 pry
-pry-byebug
 pry-awesome_print
+pry-byebug
 pry-coolline
+pry-doc
 pry-highlight
 rails
 rake
