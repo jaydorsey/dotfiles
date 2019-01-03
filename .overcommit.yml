@@ -58,7 +58,7 @@ PreCommit:
     enabled: true
   RailsSchemaUpToDate:
     enabled: true
-    on_warn: fail
+    on_fail: warn
   RuboCop:
     enabled: true
     on_warn: fail

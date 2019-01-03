@@ -1,4 +1,7 @@
 # -*- mode: ruby -*- vim:set ft=ruby:
+# Show X lines before and after the exception line
+Pry.config.default_window_size = 10
+
 Pry.config.editor = 'nvim'
 
 Pry.config.history.file = "~/.pry_history"
