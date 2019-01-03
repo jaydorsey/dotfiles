@@ -120,3 +120,15 @@ fi
 
 # Do not share history between terminal tabs/sessions
 unsetopt share_history
+
+# Remove command line from history list when first character on the line is a space
+setopt hist_ignore_space
+
+# Remove extra blanks from each command line being added to history
+setopt hist_reduce_blanks
+
+# When trimming history, lose oldest duplicates first
+setopt hist_expire_dups_first
+
+# Allow multiple terminal sessions to all append to one zsh command history
+setopt append_history
