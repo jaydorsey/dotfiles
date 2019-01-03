@@ -222,6 +222,7 @@ Plug 'baskerville/bubblegum'
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'Nequo/vim-allomancer'
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'squarefrog/tomorrow-night.vim'
 Plug 'tpope/vim-vividchalk'
 Plug 'w0ng/vim-hybrid'
@@ -316,7 +317,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme hybrid
+colorscheme vim-monokai-tasty
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
@@ -482,7 +483,7 @@ let g:ale_ruby_rubocop_options = ''
 " Lightline
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
 let g:lightline = {
-\ 'colorscheme': 'jay',
+\ 'colorscheme': 'monokai_tasty',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
