@@ -92,7 +92,8 @@ export PATH=~/bin:$PATH
 # Most of the homebrew executables end up here
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:/Users/jay/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn global bin` to find this path
-export PATH=$PATH:/Users/jaydorsey/Library/Python/3.7/bin # brew install python path
+export PATH=$PATH:/Users/jay/Library/Python/3.7/bin # brew install python path
+export PATH=$PATH:/Users/jay/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$PATH:/usr/local/opt/postgresql/bin
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
