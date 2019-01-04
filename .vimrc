@@ -25,21 +25,32 @@ call plug#begin()
 "
 " Plug 'arnar/vim-matchopen' " Highlight the last opened tag
 " Plug 'chun-yang/auto-pairs' "
-"" Plug 'ervandew/supertab' " Supertab, an omnicomplete popup menu. Conflicts with Deoplete
+"
+" Plug 'ervandew/supertab' " Supertab, an omnicomplete popup menu. Conflicts with Deoplete
 " http://vim.wikia.com/wiki/Omni_completion_popup_menu
 " let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 " let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabContextDefaultCompletionType = "<C-N>"
+"
 " Plug 'haya14busa/is.vim' " I don't use this at all
+"
 " Plug 'juanibiapina/vim-lighttree' " LightTree is an in-window file explorer
 " map <leader>e :LightTree<cr>
+"
 " Plug 'junegunn/vim-easy-align' " I don't use this. I use tabularize instead
 " Plug 'maxbrunsfeld/vim-yankstack' " I don't use this
+" Plug 'mkarmona/colorsbox' " Doesn't work on cterm?
 " Plug 'mustache/vim-mustache-handlebars' " I don't use this
 " Plug 'mxw/vim-jsx' I don't use this
 " Plug 'nathanaelkane/vim-indent-guides' " Performance
 " Plug 'Raimondi/delimitMate' " Add automatic delimiters ([<{, quotes, etc.  Doesn't work quite right with Deoplete
 " Plug 'ryanoasis/vim-devicons' " Add icons to plugins. This needs to be loaded last. I don't use this because it doesn't work
+"
+" Press `v` multiple times to expand the selected region in visual mode
+" Plug 'terryma/vim-expand-region'
+" vmap v <Plug>(expand_region_expand)
+" vmap <leader>v <Plug>(expand_region_shrink)
+"
 " Plug 'thoughtbot/vim-rspec' " Rspec runner. I run my specs manually
 " let g:rspec_runner = "os_x_iterm2"
 " Plug 'Townk/vim-autoclose' " Automatically close bracket pairs
@@ -107,45 +118,45 @@ let g:gutentags_enabled=0
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
-Plug 'majutsushi/tagbar' " Tag browsing & grouping
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-let g:tagbar_ctags_bin = 'ctags'
-nmap <end> :TagbarToggle<cr>
-let g:tagbar_type_elixir = {
-    \ 'ctagstype' : 'elixir',
-    \ 'kinds' : [
-        \ 'f:functions',
-        \ 'functions:functions',
-        \ 'c:callbacks',
-        \ 'd:delegates',
-        \ 'e:exceptions',
-        \ 'i:implementations',
-        \ 'a:macros',
-        \ 'o:operators',
-        \ 'm:modules',
-        \ 'p:protocols',
-        \ 'r:records',
-        \ 't:tests'
-    \ ]
-    \ }
-
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'F:singleton methods',
-        \ 'f:methods',
-        \ 'a:aliases',
-        \ 's:symbols',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'i:its',
-        \ '?:unknown',
-    \ ],
-    \ 'kind2scope': { 'c' : 'class', 'm': 'class' },
-    \ 'scope2kind': { 'class' : 'c' },
-        \ }
+" Plug 'majutsushi/tagbar' " Tag browsing & grouping
+" let g:tagbar_autofocus = 1
+" let g:tagbar_autoclose = 1
+" let g:tagbar_ctags_bin = 'ctags'
+" nmap <end> :TagbarToggle<cr>
+" let g:tagbar_type_elixir = {
+"     \ 'ctagstype' : 'elixir',
+"     \ 'kinds' : [
+"         \ 'f:functions',
+"         \ 'functions:functions',
+"         \ 'c:callbacks',
+"         \ 'd:delegates',
+"         \ 'e:exceptions',
+"         \ 'i:implementations',
+"         \ 'a:macros',
+"         \ 'o:operators',
+"         \ 'm:modules',
+"         \ 'p:protocols',
+"         \ 'r:records',
+"         \ 't:tests'
+"     \ ]
+"     \ }
+"
+" let g:tagbar_type_ruby = {
+"     \ 'kinds' : [
+"         \ 'm:modules',
+"         \ 'c:classes',
+"         \ 'F:singleton methods',
+"         \ 'f:methods',
+"         \ 'a:aliases',
+"         \ 's:symbols',
+"         \ 'd:describes',
+"         \ 'C:contexts',
+"         \ 'i:its',
+"         \ '?:unknown',
+"     \ ],
+"     \ 'kind2scope': { 'c' : 'class', 'm': 'class' },
+"     \ 'scope2kind': { 'class' : 'c' },
+"         \ }
 
 Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected lines
 " On ergodox, this allows the left ctrl key to work as the move key
@@ -170,7 +181,7 @@ Plug 'rhysd/committia.vim' " See git diff in commit window as another pane
 Plug 'rizzatti/dash.vim' " Dash integration
 nnoremap <leader>d :Dash<cr>
 
-Plug 'RRethy/vim-illuminate'
+Plug 'RRethy/vim-illuminate' " Highlight other words that match current cursor word
 
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
@@ -190,12 +201,7 @@ let g:gundo_prefer_python3 = 1
 
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' } " Elixir project integration
 
-" Press `v` multiple times to expand the selected region in visual mode
-" Plug 'terryma/vim-expand-region'
-" vmap v <Plug>(expand_region_expand)
-" vmap <leader>v <Plug>(expand_region_shrink)
-
-Plug 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim' " Comment with gc and motion
 
 Plug 'tpope/vim-bundler'
 
@@ -219,12 +225,11 @@ Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation levels
 
 " colorschemes
-
 Plug 'flazz/vim-colorschemes'
 Plug 'ayu-theme/ayu-vim'
-Plug 'mkarmona/colorsbox'
 Plug 'nanotech/jellybeans.vim'
 Plug 'Nequo/vim-allomancer'
+Plug 'patstockwell/vim-monokai-tasty' " Lightline theme
 Plug 'w0ng/vim-hybrid'
 Plug 'Heorhiy/VisualStudioDark.vim'
 
@@ -318,7 +323,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme colorsbox-stbright
+colorscheme vim-monokai-tasty
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
