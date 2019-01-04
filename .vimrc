@@ -211,21 +211,22 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 
+" Type :SCROLL to scroll thru themes with arrow keys
+Plug 'vim-scripts/ScrollColors'
+
 Plug 'w0rp/ale'
 
 Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation levels
 
-" Color schemes
+" colorschemes
 
+Plug 'flazz/vim-colorschemes'
 Plug 'ayu-theme/ayu-vim'
-Plug 'baskerville/bubblegum'
-Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'mkarmona/colorsbox'
 Plug 'nanotech/jellybeans.vim'
 Plug 'Nequo/vim-allomancer'
-Plug 'patstockwell/vim-monokai-tasty'
-Plug 'squarefrog/tomorrow-night.vim'
-Plug 'tpope/vim-vividchalk'
 Plug 'w0ng/vim-hybrid'
+Plug 'Heorhiy/VisualStudioDark.vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
@@ -317,7 +318,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme vim-monokai-tasty
+colorscheme colorsbox-stbright
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
@@ -641,6 +642,11 @@ nnoremap <c-p> p`[v`]
 
 " Convert non-let syntax to let syntax in rspec files
 let @l = '^ilet(:f i)llxi{$a }'
+
+" Print out the color syntax group of the highlighted line
+" https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
+command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
+
 " Stuff
 "
 " Capture keys pressed while editing a vim file (for debugging)
