@@ -4,3 +4,4 @@ args = ["stdio"]
 install = [["gem", "install", "solargraph"]]
 num_server_instances = 1
 always_prefer = false
+synchronous_timeout_ms = 50
