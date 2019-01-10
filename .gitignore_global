@@ -35,3 +35,4 @@ frontend/tmp
 spec/vcr/**/*
 default-env-vars.yml
 .solargraph.yml
+deoplete.log
