@@ -74,6 +74,10 @@ let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify']
 " Color colornames & codes with :ColorToggle
 Plug 'Chrisbra/Colorizer'
 
+" Both of these must be installed
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+
 Plug 'editorconfig/editorconfig-Vim'
 
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' } " Elixir configuration files
