@@ -95,7 +95,7 @@ export PATH=$PATH:/Users/jay/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn g
 export PATH=$PATH:/Users/jay/Library/Python/3.7/bin # brew install python path
 export PATH=$PATH:/Users/jay/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
-export PATH=$PATH:/usr/local/opt/postgresql/bin
+export PATH=$PATH:/usr/local/opt/postgresql@10/bin
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
 # Run `brew --prefix readline` to find this path
