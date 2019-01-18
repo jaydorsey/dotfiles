@@ -103,8 +103,10 @@ vmap <Leader>t- :Tabularize / -><cr>
 " View xterm colors with :XtermColorTable
 Plug 'guns/xterm-color-table.vim'
 
-" Shows a little highlight of where the search ends up
-Plug 'inside/vim-search-pulse'
+" " Shows a little highlight of where the search ends up
+" Plug 'inside/vim-search-pulse'
+" " Use my own mappings
+" let g:vim_search_pulse_disable_auto_mappings = 1
 
 Plug 'itchyny/lightline.vim'
 
@@ -117,7 +119,7 @@ let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/
 let g:gutentags_gtags_options_file="~/.ctags"
 " Type :messages after gutentag loads to see the trace
 let g:gutentags_trace=0
-let g:gutentags_enabled=0
+let g:gutentags_enabled=1
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
@@ -406,7 +408,10 @@ noremap <f1> <noop>
 noremap Q @q
 
 " Clear search highlighting by pressing //
-noremap // :noh<cr>
+nnoremap // :noh<cr>
+" Visually highlight a selection, then use it as the search string
+" http://vim.wikia.com/wiki/Search_for_visually_selected_text
+vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
 
 " ripgrep customization
 "
