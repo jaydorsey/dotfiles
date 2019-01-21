@@ -62,6 +62,10 @@ Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 Plug 'airblade/vim-gitgutter'
 
 Plug 'alvan/vim-closetag'
+
+" Formatting & validating json via :Jacinto
+Plug 'alfredodeza/jacinto.vim'
+
 let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
 
 Plug 'bfontaine/brewfile.vim' " Brewfile syntax highlighting
