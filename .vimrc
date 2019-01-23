@@ -84,9 +84,10 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 
 Plug 'editorconfig/editorconfig-Vim'
 
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' } " Elixir configuration files
+" Elixir configuration files
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 
-Plug 'elzr/vim-json'
+Plug 'elzr/vim-json', { 'for': 'json' }
 
 Plug 'francoiscabrol/ranger.vim'
 
@@ -349,6 +350,9 @@ filetype indent on
 
 augroup vimrc_autocmd
   autocmd!
+
+  " All yaml files should load as yaml, not eruby.yml because of vimruby
+  au! BufRead,BufNewFile *.yml  setfiletype yaml
 
   " http://vim.wikia.com/wiki/Make_views_automatic
   autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
