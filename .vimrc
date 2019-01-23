@@ -351,9 +351,6 @@ filetype indent on
 augroup vimrc_autocmd
   autocmd!
 
-  " All yaml files should load as yaml, not eruby.yml because of vimruby
-  au! BufRead,BufNewFile *.yml  setfiletype yaml
-
   " http://vim.wikia.com/wiki/Make_views_automatic
   autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
   autocmd BufWinEnter ?* silent! loadview
@@ -668,7 +665,6 @@ let @l = '^ilet(:f i)llxi{$a }'
 " Print out the color syntax group of the highlighted line
 " https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
 command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
-
 " Stuff
 "
 " Capture keys pressed while editing a vim file (for debugging)
