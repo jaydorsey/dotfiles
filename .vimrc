@@ -243,6 +243,8 @@ Plug 'Nequo/vim-allomancer'
 Plug 'patstockwell/vim-monokai-tasty' " Lightline theme
 Plug 'w0ng/vim-hybrid'
 Plug 'Heorhiy/VisualStudioDark.vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'rakr/vim-one'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
@@ -334,7 +336,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme vim-monokai-tasty
+colorscheme one
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
