@@ -32,8 +32,6 @@ call plug#begin()
 " let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabContextDefaultCompletionType = "<C-N>"
 "
-" Plug 'haya14busa/is.vim' " I don't use this at all
-"
 " Plug 'juanibiapina/vim-lighttree' " LightTree is an in-window file explorer
 " map <leader>e :LightTree<cr>
 "
@@ -77,6 +75,28 @@ let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify']
 
 " Color colornames & codes with :ColorToggle
 Plug 'Chrisbra/Colorizer'
+
+" Incremental search
+Plug 'haya14busa/is.vim'
+" map / <Plug>(is-stay)
+
+Plug 'osyo-manga/vim-anzu'
+" Integration with anzu to display search position
+map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
+map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
+
+Plug 'haya14busa/vim-asterisk'
+map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+vnoremap // <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
+map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+
+" Clear search highlighting by pressing //
+nnoremap // :noh<cr>
+" Visually highlight a selection, then use it as the search string
+" http://vim.wikia.com/wiki/Search_for_visually_selected_text
+" vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
 
 " Both of these must be installed
 Plug 'kana/vim-textobj-user'
@@ -414,12 +434,6 @@ noremap <f1> <noop>
 " quit it with q, then replay it back with Q
 noremap Q @q
 
-" Clear search highlighting by pressing //
-nnoremap // :noh<cr>
-" Visually highlight a selection, then use it as the search string
-" http://vim.wikia.com/wiki/Search_for_visually_selected_text
-vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
-
 " ripgrep customization
 "
 " http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
@@ -645,12 +659,13 @@ endif " has autocmd
 " Change the local window current directory to that of current file
 nmap <leader>cd lcd %:p:h
 
+" DEPRECATED by is.vim & vim-asterisk
 " https://stackoverflow.com/q/4256697/2892779
 " When pressing * or #, highlight current word and move to beginning of word,
 " but don't jump to next occurence
 " Also can use viwo<esc> instead of lb
-nnoremap * m`:keepjumps normal! *``<cr>lb
-nnoremap # m`:keepjumps normal! #``<cr>lb
+" nnoremap * m`:keepjumps normal! *``<cr>lb
+" nnoremap # m`:keepjumps normal! #``<cr>lb
 
 " Automatically re-select the visually selected text
 " https://superuser.com/a/207521/354661
