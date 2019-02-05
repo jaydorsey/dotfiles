@@ -202,6 +202,10 @@ let g:startify_session_persistence = 1
 let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
 let g:startify_change_to_vcs_root = 1 " Always change to vcs root
 
+" Cursorline highlighting
+Plug 'miyakogi/conoline.vim'
+let g:conoline_auto_enable = 1
+
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
 nmap k <Plug>(accelerated_jk_gk)
