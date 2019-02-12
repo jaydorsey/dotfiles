@@ -5,7 +5,7 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
   ignorecase = false
-  pager = "tig"
+  pager = "diff-so-fancy | GREP_COLOR='1;37' grep --color=always -E 'Merge (branch|pull request).*|$' | less --tabs=4 -RFX"
 [alias]
   a = add -A
   b = branch
@@ -33,7 +33,7 @@
   interactive = true
   status = auto
   ui = true
-  pager = false
+  pager = true
 [commit]
   verbose = false
 [filter "lfs"]
@@ -61,3 +61,5 @@
   whitespace = red reverse
 [diff]
   compactionHeuristic = true
+[diff-so-fancy]
+	changeHunkIndicators = false
