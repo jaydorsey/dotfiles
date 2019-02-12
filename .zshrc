@@ -96,6 +96,8 @@ export PATH=$PATH:/Users/jay/Library/Python/3.7/bin # brew install python path
 export PATH=$PATH:/Users/jay/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$PATH:/usr/local/opt/postgresql@10/bin
+# capybara-webkit, temporary
+export PATH=$PATH:/Users/jay/Qt5.5.0/5.5/clang_64/bin/
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
 # Run `brew --prefix readline` to find this path
