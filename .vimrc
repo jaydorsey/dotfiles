@@ -137,7 +137,13 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'junegunn/fzf.vim'
 
-Plug 'junegunn/gv.vim' " Browse git history with :GV
+" Browse git history with :GV
+Plug 'junegunn/gv.vim'
+
+" Focus highlighting
+Plug 'junegunn/limelight.vim'
+nmap <leader>l <Plug>(Limelight)
+xmap <leader>l <Plug>(Limelight)
 
 Plug 'ludovicchabant/vim-gutentags' " Tag creation
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
