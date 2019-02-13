@@ -145,6 +145,11 @@ Plug 'junegunn/limelight.vim'
 nmap <leader>l <Plug>(Limelight)
 xmap <leader>l <Plug>(Limelight)
 
+" Extends " and @ in normal mode and CTRL-R in insert mode so you can see the
+" contents of registers
+Plug 'junegunn/vim-peekaboo'
+let g:peekaboo_window = 'vert bo 50new'
+
 Plug 'ludovicchabant/vim-gutentags' " Tag creation
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
 let g:gutentags_gtags_options_file="~/.ctags"
