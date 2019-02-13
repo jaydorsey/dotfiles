@@ -21,7 +21,7 @@ CommitMsg:
     on_warn: fail
   RussianNovel:
     enabled: true
-    on_warn: fail
+    on_warn: warn
 
 PostCheckout:
   BundleInstall:
