@@ -104,7 +104,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # This is unnecessary right now, ruby-build picks up readline & ssl from homebrew
 # export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline"
 # RSpec, I prefer my specs to fail fast & document
-export SPEC_OPT="-f d --fail-fast"
+export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
 
 alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
