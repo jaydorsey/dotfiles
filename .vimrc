@@ -298,7 +298,7 @@ set background=dark                                " Always use colors for dark 
 set backup                                         " Make backups
 set backupdir=~/.vim/backups                       " Specify backup directory
 set backspace=indent,eol,start                     " Backspace configuration
-set cindent
+set nocindent                                      " Don't indent text with parentheses https://stackoverflow.com/a/2129313/2892779
 set directory=~/.vim/tmp                           " List of directory names for the swap file, separated by commas
 set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
@@ -458,7 +458,7 @@ let g:rg_command = '
   \ -g "!tmux*"
   \ -g "!*.log"
   \ -g "!docs/api/apiary.apib"
-  \ -g "!docs/api/index.html"
+  \ -g "!swagger/*"
   \ -g "!db/data/*"
   \ -g "!tags"
   \ -g "!tags.temp"
