@@ -32,7 +32,6 @@ config/rails_best_practices.yml
 storage/**/*
 frontend/dist/assets/**/*
 frontend/tmp
-spec/vcr/**/*
 default-env-vars.yml
 .solargraph.yml
 deoplete.log
