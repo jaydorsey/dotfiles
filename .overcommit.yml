@@ -14,25 +14,35 @@
 # https://github.com/brigade/overcommit#configuration
 #
 # Uncomment the following lines to make the configuration take effect.
-
+---
 CommitMsg:
+  CapitalizedSubject:
+    enabled: true
   HardTabs:
     enabled: true
     on_warn: fail
   RussianNovel:
     enabled: true
-    on_warn: warn
+    on_fail: warn
+  SingleLineSubject:
+    enabled: true
+  TextWidth:
+    enabled: true
+  TrailingPeriod:
+    enabled: true
 
 PostCheckout:
   BundleInstall:
     enabled: true
-  YarnInstall:
-    enabled: true
   IndexTags:
+    enabled: true
+  YarnInstall:
     enabled: true
 
 PostMerge:
   BundleInstall:
+    enabled: true
+  IndexTags:
     enabled: true
   YarnInstall:
     enabled: true
@@ -44,24 +54,61 @@ PostRewrite:
     enabled: true
 
 PreCommit:
+  AuthorEmail:
+    enabled: true
+  AuthorName:
+    enabled: true
   BundleAudit:
     enabled: true
   BundleCheck:
     enabled: true
+  BundleOutdated:
+    enabled: false
+  CaseConflict:
+    enabled: true
   Fasterer:
+    enabled: true
+  Flay:
+    enabled: true
+    on_fail: warn
+  HardTabs:
+    enabled: true
+    exclude:
+    exclude:
+      - '**/db/schema.rb'
+      - '**/db/structure.sql'
+      - '**/db/data/development.txt'
+      - 'db/data/development.txt'
+  JsonSyntax:
     enabled: true
   LineEndings:
     enabled: true
     exclude:
-      - 'db/data/development.txt'
+      - '**/db/schema.rb'
+      - '**/db/structure.sql'
+      - '**/db/data/development.txt'
   LocalPathsInGemfile:
     enabled: true
+  MergeConflicts:
+    enabled: true
+  RailsBestPractices:
+    enabled: true
+    on_fail: warn
   RailsSchemaUpToDate:
     enabled: true
     on_fail: warn
+  Reek:
+    enabled: true
+    on_fail: warn
+    exclude:
+      - '**/db/schema.rb'
+      - '**/db/structure.sql'
+      - '**/db/data/development.txt'
   RuboCop:
     enabled: true
     on_warn: fail
+  RubyLint:
+    enabled: false
   TrailingWhitespace:
     enabled: true
     exclude:
@@ -69,11 +116,13 @@ PreCommit:
       - '**/db/structure.sql'
       - '**/db/data/development.txt'
     on_warn: fail
+  YamlSyntax:
+    enabled: true
 
 PrePush:
   Brakeman:
     enabled: false
 
-#PostCheckout:
+# PostCheckout:
 #  ALL: # Special hook name that customizes all hooks of this type
 #    quiet: true # Change all post-checkout hooks to only display output on failure
