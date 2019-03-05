@@ -35,3 +35,4 @@ frontend/tmp
 default-env-vars.yml
 .solargraph.yml
 deoplete.log
+.tabnineignore

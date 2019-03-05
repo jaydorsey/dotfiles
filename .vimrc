@@ -24,35 +24,15 @@ call plug#begin()
 " maintained, incompatible with something, or I don't use them in my workflow
 "
 " Plug 'arnar/vim-matchopen' " Highlight the last opened tag
-" Plug 'chun-yang/auto-pairs' "
-"
-" Plug 'ervandew/supertab' " Supertab, an omnicomplete popup menu. Conflicts with Deoplete
-" http://vim.wikia.com/wiki/Omni_completion_popup_menu
-" let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-" let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabContextDefaultCompletionType = "<C-N>"
-"
-" Plug 'juanibiapina/vim-lighttree' " LightTree is an in-window file explorer
-" map <leader>e :LightTree<cr>
+" Plug 'chun-yang/auto-pairs'
 "
 " Plug 'junegunn/vim-easy-align' " I don't use this. I use tabularize instead
-" Plug 'maxbrunsfeld/vim-yankstack' " I don't use this
-" Plug 'mkarmona/colorsbox' " Doesn't work on cterm?
-" Plug 'mustache/vim-mustache-handlebars' " I don't use this
-" Plug 'mxw/vim-jsx' I don't use this
-" Plug 'nathanaelkane/vim-indent-guides' " Performance
-" Plug 'Raimondi/delimitMate' " Add automatic delimiters ([<{, quotes, etc.  Doesn't work quite right with Deoplete
-" Plug 'ryanoasis/vim-devicons' " Add icons to plugins. This needs to be loaded last. I don't use this because it doesn't work
-"
-" Press `v` multiple times to expand the selected region in visual mode
-" Plug 'terryma/vim-expand-region'
-" vmap v <Plug>(expand_region_expand)
-" vmap <leader>v <Plug>(expand_region_shrink)
-"
-" Plug 'thoughtbot/vim-rspec' " Rspec runner. I run my specs manually
-" let g:rspec_runner = "os_x_iterm2"
+Plug 'Raimondi/delimitMate' " Add automatic delimiters ([<{, quotes, etc.  Doesn't work quite right with Deoplete
+
+" Automatically add an `end` when you type def, class, etc.
+Plug 'tpope/vim-endwise'
+
 " Plug 'Townk/vim-autoclose' " Automatically close bracket pairs
-" Plug 'xolox/vim-easytags' " Automatically generate tags files. I use gutentags instead
 
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
@@ -75,6 +55,11 @@ let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify']
 
 " Color colornames & codes with :ColorToggle
 Plug 'Chrisbra/Colorizer'
+
+" Easy find & replace across multiple files. Use <leader>vr to grep the
+" word under the cursor and the pattern with which to replace it
+Plug 'dkprice/vim-easygrep'
+let g:EasyGrepCommand='rg'
 
 " Incremental search
 Plug 'haya14busa/is.vim'
@@ -253,7 +238,6 @@ Plug 'tpope/vim-bundler'
 
 Plug 'tpope/vim-characterize' " Add Unicode character metadata when using ga
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
