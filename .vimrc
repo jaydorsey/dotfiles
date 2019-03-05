@@ -271,14 +271,7 @@ Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation levels
 
 " colorschemes
-Plug 'flazz/vim-colorschemes'
-Plug 'ayu-theme/ayu-vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'Nequo/vim-allomancer'
 Plug 'patstockwell/vim-monokai-tasty' " Lightline theme
-Plug 'w0ng/vim-hybrid'
-Plug 'Heorhiy/VisualStudioDark.vim'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rakr/vim-one'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -286,7 +279,7 @@ Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
 " Disable tags file as a source
-let g:deoplete#ignore_sources.ruby = ['tag']
+let g:deoplete#ignore_sources.ruby = ['tags']
 
 " Use <tab> key to step into the selections
 inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
