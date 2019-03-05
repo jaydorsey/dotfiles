@@ -20,20 +20,6 @@ endif
 
 call plug#begin()
 
-" Plugins I'm not using for one reason or another. These are either not
-" maintained, incompatible with something, or I don't use them in my workflow
-"
-" Plug 'arnar/vim-matchopen' " Highlight the last opened tag
-" Plug 'chun-yang/auto-pairs'
-"
-" Plug 'junegunn/vim-easy-align' " I don't use this. I use tabularize instead
-Plug 'Raimondi/delimitMate' " Add automatic delimiters ([<{, quotes, etc.  Doesn't work quite right with Deoplete
-
-" Automatically add an `end` when you type def, class, etc.
-Plug 'tpope/vim-endwise'
-
-" Plug 'Townk/vim-autoclose' " Automatically close bracket pairs
-
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 
@@ -202,6 +188,9 @@ let g:startify_change_to_vcs_root = 1 " Always change to vcs root
 Plug 'miyakogi/conoline.vim'
 let g:conoline_auto_enable = 1
 
+" Add automatic delimiters ([<{, quotes, etc.
+Plug 'Raimondi/delimitMate'
+
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
 nmap k <Plug>(accelerated_jk_gk)
@@ -236,8 +225,11 @@ Plug 'tomtom/tcomment_vim' " Comment with gc and motion
 
 Plug 'tpope/vim-bundler'
 
-Plug 'tpope/vim-characterize' " Add Unicode character metadata when using ga
+" Add Unicode character metadata when using ga
+Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-dispatch'
+" Automatically add an `end` when you type def, class, etc.
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
