@@ -69,7 +69,7 @@ PreCommit:
   Fasterer:
     enabled: true
   Flay:
-    enabled: true
+    enabled: false
     on_fail: warn
   HardTabs:
     enabled: true
@@ -92,13 +92,13 @@ PreCommit:
   MergeConflicts:
     enabled: true
   RailsBestPractices:
-    enabled: true
+    enabled: false
     on_fail: warn
   RailsSchemaUpToDate:
     enabled: true
     on_fail: warn
   Reek:
-    enabled: true
+    enabled: false
     on_fail: warn
     exclude:
       - '**/db/schema.rb'

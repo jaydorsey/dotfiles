@@ -53,10 +53,15 @@ Plug 'haya14busa/is.vim'
 
 Plug 'osyo-manga/vim-anzu'
 " Integration with anzu to display search position
-map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
-map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
+map n <Plug>(is-nohl)<Plug>(anzu-n)
+map N <Plug>(is-nohl)<Plug>(anzu-N)
+map * <Plug>(is-nohl)<Plug>(anzu-star)
+map # <Plug>(is-nohl)<Plug>(anzu-sharp)
 
+" Improved * motions
 Plug 'haya14busa/vim-asterisk'
+" Keep cursor position across matches
+let g:asterisk#keeppos = 1
 map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
 map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
 vnoremap // <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
@@ -250,6 +255,7 @@ Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation lev
 Plug 'patstockwell/vim-monokai-tasty' " Lightline theme
 Plug 'rakr/vim-one'
 
+Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 let g:deoplete#enable_at_startup = 1
@@ -505,7 +511,7 @@ let g:ale_ruby_rubocop_options = ''
 let g:lightline = {
 \ 'colorscheme': 'monokai_tasty',
 \ 'active': {
-\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
+\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'anzu']],
 \   'right': [['lineinfo'],
 \             ['percent'],
 \             ['lightline_character', 'fileformat', 'fileencoding', 'filetype', 'linter_warnings', 'linter_errors', 'linter_ok']]
@@ -530,6 +536,7 @@ let g:lightline = {
 \   'linter_errors': 'error'
 \ },
 \ 'component_function': {
+\   'anzu': 'anzu#search_status',
 \   'lightline_character': 'LightLineCharacter',
 \   'filename': 'LightlineFilename'
 \ },
