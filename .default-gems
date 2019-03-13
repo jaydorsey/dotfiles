@@ -1,6 +1,7 @@
 bundler
 bundler-audit
 coderay
+colorls
 gem-browse
 gem-ctags
 neovim
