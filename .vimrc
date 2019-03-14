@@ -202,6 +202,7 @@ nmap k <Plug>(accelerated_jk_gk)
 nmap j <Plug>(accelerated_jk_gj)
 
 Plug 'rhysd/committia.vim' " See git diff in commit window as another pane
+let g:committia_open_only_vim_starting = 1
 
 Plug 'rizzatti/dash.vim' " Dash integration
 nnoremap <leader>d :Dash<cr>
@@ -259,9 +260,9 @@ Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
+" let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
 " Disable tags file as a source
-let g:deoplete#ignore_sources.ruby = ['tags']
+" let g:deoplete#ignore_sources.ruby = ['tags']
 
 " Use <tab> key to step into the selections
 inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
@@ -329,7 +330,6 @@ set splitright                                     " Open new split panes to rig
 set synmaxcol=256                                  " Don't highlight on lines longer than X chars
 set tabstop=2
 set title                                          " Set the title of the iTerm tab
-set ttyfast
 set undofile                                       " Persistent undo
 set undodir=~/.vim/undo                            " Persistent undo directory
 set viewoptions=cursor,curdir,folds,unix,slash
@@ -667,8 +667,13 @@ vnoremap > >gv
 " https://stackoverflow.com/a/4313335/2892779
 nnoremap <c-p> p`[v`]
 
+" To save a macro and define it here, record the macro as normal, then
+" paste it in normal mode using "qp (assuming you used the q register)
+" https://stackoverflow.com/a/2024537/2892779
+
 " Convert non-let syntax to let syntax in rspec files
-let @l = '^ilet(:f i)llxi{$a }'
+" let @l = '^ilet(:f i)llxi{$a }'
+let @l = ':DelimitMateOff^ilet(:ea)llxxi{ $a }:DelimitMateOn'
 
 " Print out the color syntax group of the highlighted line
 " https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
