@@ -225,9 +225,14 @@ Plug 'sjl/gundo.vim' " Visualize your vim undo tree
 nnoremap <leader>u :GundoToggle<cr>
 let g:gundo_prefer_python3 = 1
 
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' } " Elixir project integration
+" Elixir project integration
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
-Plug 'tomtom/tcomment_vim' " Comment with gc and motion
+" Vim git branch management. Invoke with :Twiggy
+Plug 'sodapopcan/vim-twiggy'
+
+" Comment with gc and motion
+Plug 'tomtom/tcomment_vim'
 
 Plug 'tpope/vim-bundler'
 
@@ -260,9 +265,9 @@ Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 let g:deoplete#enable_at_startup = 1
-" let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
+let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
 " Disable tags file as a source
-" let g:deoplete#ignore_sources.ruby = ['tags']
+let g:deoplete#ignore_sources.ruby = ['tags']
 
 " Use <tab> key to step into the selections
 inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
