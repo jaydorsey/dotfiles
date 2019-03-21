@@ -36,3 +36,5 @@ default-env-vars.yml
 .solargraph.yml
 deoplete.log
 .tabnineignore
+.yardoc
+/doc/**/*
