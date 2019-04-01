@@ -123,8 +123,8 @@ xmap <leader>l <Plug>(Limelight)
 
 " Extends " and @ in normal mode and CTRL-R in insert mode so you can see the
 " contents of registers
-Plug 'junegunn/vim-peekaboo'
-let g:peekaboo_window = 'vert bo 50new'
+" Plug 'junegunn/vim-peekaboo'
+" let g:peekaboo_window = 'vert bo 50new'
 
 Plug 'ludovicchabant/vim-gutentags' " Tag creation
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
@@ -267,7 +267,8 @@ Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
 " Disable tags file as a source
-let g:deoplete#ignore_sources.ruby = ['tags']
+let g:deoplete#ignore_sources.ruby = ['tags', 'tags.lock']
+let g:deoplete#max_list = 20
 
 " Use <tab> key to step into the selections
 inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
@@ -279,7 +280,7 @@ set background=dark                                " Always use colors for dark 
 set backup                                         " Make backups
 set backupdir=~/.vim/backups                       " Specify backup directory
 set backspace=indent,eol,start                     " Backspace configuration
-set nocindent                                      " Don't indent text with parentheses https://stackoverflow.com/a/2129313/2892779
+set concealcursor=nv                               " From vim-markdown, conceals links, headings, etc in normal & visual mode
 set directory=~/.vim/tmp                           " List of directory names for the swap file, separated by commas
 set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
@@ -301,6 +302,7 @@ set redrawtime=10000                               " Increase redraw time so syn
 set matchtime=5                                    " Show matching bracket for 0.5 seconds
 set mouse=                                         " Disable mouse
 set noerrorbells                                   " No sounds
+set nocindent                                      " Don't indent text with parentheses https://stackoverflow.com/a/2129313/2892779
 set nocursorcolumn                                 " Enable cursor column highlighting
 set nocursorline                                   " Disable line highlighting, for performance
 set nofoldenable                                   " Fold or don't fold files by default
@@ -434,7 +436,7 @@ noremap Q @q
 " http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 let g:rg_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "!{.git,log,coverage,node_modules,vendor,frontend,tmp}/*"
+  \ -g "!{.git,log,coverage,node_modules,vendor,frontend,tmp,.yardoc,doc}/*"
   \ -g "!tmux*"
   \ -g "!*.log"
   \ -g "!docs/api/apiary.apib"
@@ -442,6 +444,7 @@ let g:rg_command = '
   \ -g "!db/data/*"
   \ -g "!tags"
   \ -g "!tags.temp"
+  \ -g "!.yardopts"
   \ -g "!spec/vcr/*"
   \ '
   " \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
@@ -637,7 +640,8 @@ highlight illuminatedWord cterm=underline gui=underline
 
 " Always use a dark background color, and allow range for colorcolumn
 highlight ColorColumn ctermbg=0 guibg=#000000
-let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn="120"
+" let &colorcolumn="80,".join(range(120,999),",")
 
 " Grey comments for certain themes
 " highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
