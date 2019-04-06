@@ -138,3 +138,6 @@ setopt hist_expire_dups_first
 
 # Allow multiple terminal sessions to all append to one zsh command history
 setopt append_history
+
+# pip3 install --upgrade --user pip setuptools neovim wheel neovim yamllint
+# pip install --upgrade --user pip setuptools neovim wheel neovim yamllint

@@ -681,8 +681,12 @@ nnoremap <c-p> p`[v`]
 " https://stackoverflow.com/a/2024537/2892779
 
 " Convert non-let syntax to let syntax in rspec files
-" let @l = '^ilet(:f i)llxi{$a }'
-let @l = ':DelimitMateOff^ilet(:ea)llxxi{ $a }:DelimitMateOn'
+"
+" For some reason, vim/neovim/mac insists on adding a ^J to the end of this
+" macro even when it's not defined. I have to add some kind of NOOP character
+" after the <cr> in order for it to work correctly and not execute CTRL-J,
+" which is mapped to swap lines on my setup
+let @l = ":DelimitMateOff^ilet(:ea)llxxi{ $a }:DelimitMateOn\<cr>\\"
 
 " Print out the color syntax group of the highlighted line
 " https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
