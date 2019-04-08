@@ -234,6 +234,9 @@ Plug 'sodapopcan/vim-twiggy'
 " Comment with gc and motion
 Plug 'tomtom/tcomment_vim'
 
+" Use :ToGithub to open the current line in your browser
+Plug 'tonchis/vim-to-github'
+
 Plug 'tpope/vim-bundler'
 
 " Add Unicode character metadata when using ga
