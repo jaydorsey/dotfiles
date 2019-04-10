@@ -649,6 +649,7 @@ let &colorcolumn="120"
 
 " Slightly lighter grey for comments
 highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
+highlight gitcommitComment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
 
 " Edit/save and automatically reload vimrc file
 " https://stackoverflow.com/a/39294493/2892779
