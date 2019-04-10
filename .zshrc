@@ -141,3 +141,6 @@ setopt append_history
 
 # pip3 install --upgrade --user pip setuptools neovim wheel neovim yamllint
 # pip install --upgrade --user pip setuptools neovim wheel neovim yamllint
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
