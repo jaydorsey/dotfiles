@@ -135,6 +135,9 @@ let g:gutentags_enabled=1
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
+let g:rainbow_conf = {
+      \ 'guifgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta']
+      \}
 
 " Plug 'majutsushi/tagbar' " Tag browsing & grouping
 " let g:tagbar_autofocus = 1
@@ -263,6 +266,7 @@ Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation lev
 " colorschemes
 Plug 'patstockwell/vim-monokai-tasty' " Lightline theme
 Plug 'rakr/vim-one'
+Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -356,7 +360,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme one
+colorscheme onehalfdark
 
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
@@ -519,8 +523,9 @@ let g:ale_ruby_rubocop_options = ''
 
 " Lightline
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
+" \ 'colorscheme': 'monokai_tasty',
 let g:lightline = {
-\ 'colorscheme': 'monokai_tasty',
+\ 'colorscheme': 'onehalfdark',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'anzu']],
 \   'right': [['lineinfo'],
@@ -632,10 +637,6 @@ vnoremap _{ <Esc>`>a}<Esc>`<i{<Esc>
 
 " Change line numbers so they're readable https://stackoverflow.com/a/32128209/2892779
 highlight LineNr term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey80 guibg=NONE
-" Change the colors of the Omnifunc select and highlighting
-" Disabled these while using hybrid
-" highlight Pmenu ctermfg=15 ctermbg=8 guibg=Grey40 guifg=White
-" highlight PmenuSel ctermfg=15 ctermbg=8 guibg=White guifg=Grey40
 
 " Highlight current word under cursor with vim-illuminate. This needs to go
 " here, after all themes have loaded
@@ -646,8 +647,8 @@ highlight ColorColumn ctermbg=0 guibg=#000000
 let &colorcolumn="120"
 " let &colorcolumn="80,".join(range(120,999),",")
 
-" Grey comments for certain themes
-" highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
+" Slightly lighter grey for comments
+highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
 
 " Edit/save and automatically reload vimrc file
 " https://stackoverflow.com/a/39294493/2892779
