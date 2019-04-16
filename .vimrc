@@ -201,8 +201,10 @@ Plug 'Raimondi/delimitMate'
 
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
-nmap k <Plug>(accelerated_jk_gk)
 nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)
+" default
+let g:accelerated_jk_acceleration_table = [7,12,17,21,24,26,28,30]
 
 Plug 'rhysd/committia.vim' " See git diff in commit window as another pane
 let g:committia_open_only_vim_starting = 1
