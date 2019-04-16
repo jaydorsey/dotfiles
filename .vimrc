@@ -26,15 +26,19 @@ Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 Plug 'airblade/vim-gitgutter'
 
 Plug 'alvan/vim-closetag'
+let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
 
 " Formatting & validating json via :Jacinto
 Plug 'alfredodeza/jacinto.vim'
 
-let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
+" An improved matchit plugin with additional motions & matchers
+Plug 'andymass/vim-matchup'
 
-Plug 'bfontaine/brewfile.vim' " Brewfile syntax highlighting
+" Brewfile syntax highlighting
+Plug 'bfontaine/brewfile.vim'
 
-Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red
+" Highlights trailing whitespace in red
+Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'chiel92/vim-autoformat'
 let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify']
@@ -246,7 +250,9 @@ Plug 'tpope/vim-bundler'
 
 " Add Unicode character metadata when using ga
 Plug 'tpope/vim-characterize'
+
 Plug 'tpope/vim-dispatch'
+
 " Automatically add an `end` when you type def, class, etc.
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
@@ -256,7 +262,16 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+
 Plug 'vim-ruby/vim-ruby'
+" Using vim-ruby, indent per work convention
+let g:ruby_indent_access_modifier_style="normal"
+" Indent for multi-line statements against left
+let g:ruby_indent_assignment_style = 'variable'
+" Indent nested blocks
+let g:ruby_indent_block_style = 'do'
+" Highlight whitespace errors
+let g:ruby_space_errors = 1
 
 " Type :SCROLL to scroll thru themes with arrow keys
 Plug 'vim-scripts/ScrollColors'
@@ -363,11 +378,6 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 colorscheme onehalfdark
-
-" Using vim-ruby, indent per work convention
-let g:ruby_indent_access_modifier_style="normal"
-" Highlight whitespace errors
-let g:ruby_space_errors = 1
 
 " htt://vim.wikia.com/wiki/Fix_indentation
 " Format file with indention settings
