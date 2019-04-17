@@ -139,8 +139,8 @@ setopt hist_expire_dups_first
 # Allow multiple terminal sessions to all append to one zsh command history
 setopt append_history
 
-# pip3 install --upgrade --user pip setuptools neovim wheel neovim yamllint
-# pip install --upgrade --user pip setuptools neovim wheel neovim yamllint
+# pip3 install --upgrade --user pip setuptools neovim wheel neovim yamllint pynvim
+# pip install --upgrade --user pip setuptools neovim wheel neovim yamllint pynvim
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
