@@ -94,7 +94,11 @@ export PATH=$PATH:/Users/jay/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn g
 export PATH=$PATH:/Users/jay/Library/Python/3.7/bin # brew install python path
 export PATH=$PATH:/Users/jay/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
-export PATH=$PATH:/usr/local/opt/postgresql@10/bin
+export PATH=$PATH:/usr/local/opt/postgresql/bin
+export PATH=/usr/local/opt/openssl/bin:$PATH
+# This is necessary for, at least, crystal
+# https://github.com/brianmario/mysql2/issues/795#issuecomment-337006164
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 # capybara-webkit, temporary
 export PATH=$PATH:/Users/jay/Qt5.5.0/5.5/clang_64/bin/
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
