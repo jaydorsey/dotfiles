@@ -99,11 +99,13 @@ export PATH=$PATH:/usr/local/opt/postgresql@10/bin
 export PATH=$PATH:/Users/jay/Qt5.5.0/5.5/clang_64/bin/
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
+# Ignore deprecation warnings
+export RUBY_OPT="-W0"
 # Run `brew --prefix readline` to find this path
 # This is unnecessary right now, ruby-build picks up readline & ssl from homebrew
 # export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline"
 # RSpec, I prefer my specs to fail fast & document
-export SPEC_OPTS="-f d --fail-fast"
+# export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
 
 alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
@@ -115,6 +117,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias ls='colorls --sort-dirs --report'
 alias cat='bat'
+alias untracked='git ls-files -o --exclude-standard'
 
 if [ -f ~/.personalrc ]; then
   source ~/.personalrc
