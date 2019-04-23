@@ -213,6 +213,9 @@ let g:accelerated_jk_acceleration_table = [7,12,17,21,24,26,28,30]
 Plug 'rhysd/committia.vim' " See git diff in commit window as another pane
 let g:committia_open_only_vim_starting = 1
 
+" Crystal syntax highlighting & support
+Plug 'rhysd/vim-crystal'
+
 Plug 'rizzatti/dash.vim' " Dash integration
 nnoremap <leader>d :Dash<cr>
 
