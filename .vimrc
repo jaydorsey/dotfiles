@@ -258,6 +258,7 @@ Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-dispatch'
 
 " Automatically add an `end` when you type def, class, etc.
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
