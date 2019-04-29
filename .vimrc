@@ -74,9 +74,6 @@ map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 
 " Clear search highlighting by pressing //
 nnoremap // :noh<cr>
-" Visually highlight a selection, then use it as the search string
-" http://vim.wikia.com/wiki/Search_for_visually_selected_text
-" vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
 
 " Both of these must be installed
 Plug 'kana/vim-textobj-user'
@@ -108,8 +105,8 @@ vmap <Leader>t- :Tabularize / -><cr>
 " View xterm colors with :XtermColorTable
 Plug 'guns/xterm-color-table.vim'
 
-" " Shows a little highlight of where the search ends up
-" Plug 'inside/vim-search-pulse'
+" Shows a little highlight of where the search ends up
+Plug 'inside/vim-search-pulse'
 " " Use my own mappings
 " let g:vim_search_pulse_disable_auto_mappings = 1
 
@@ -435,7 +432,7 @@ set list listchars=tab:»·,trail:·,nbsp:·
 
 syntax on               " Basic syntax
 syntax enable           " Basic syntax
-syntax sync minlines=32 " Look back up to X lines for syntax highlighting
+syntax sync minlines=80 " Look back up to X lines for syntax highlighting
 
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
