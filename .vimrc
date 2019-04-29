@@ -215,6 +215,7 @@ let g:committia_open_only_vim_starting = 1
 
 " Crystal syntax highlighting & support
 Plug 'rhysd/vim-crystal'
+let g:crystal_define_mappings = 0
 
 Plug 'rizzatti/dash.vim' " Dash integration
 nnoremap <leader>d :Dash<cr>
@@ -309,6 +310,7 @@ set backup                                         " Make backups
 set backupdir=~/.vim/backups                       " Specify backup directory
 set backspace=indent,eol,start                     " Backspace configuration
 set concealcursor=nv                               " From vim-markdown, conceals links, headings, etc in normal & visual mode
+set conceallevel=0                                 " Expand everything, particularly in markdown files
 set directory=~/.vim/tmp                           " List of directory names for the swap file, separated by commas
 set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
