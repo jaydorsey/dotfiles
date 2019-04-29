@@ -119,7 +119,7 @@ alias ping='prettyping --nolegend'
 alias top='sudo htop'
 alias vi='nvim'
 alias vim='nvim'
-alias ls='colorls --sort-dirs --report'
+alias ls='~/bin/colorls --report'
 alias cat='bat'
 alias untracked='git ls-files -o --exclude-standard'
 
