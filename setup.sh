@@ -45,8 +45,8 @@ sudo xcodebuild -license
 # neovim/python stuff for deoplete, gundo, etc.
 #
 #######################################################
-pip install --user --upgrade pip neovim yamllint wheel setuptools yamllint pynvim
-pip3 install --user --upgrade pip neovim yamllint wheel setuptools yamllint pynvim
+pip install --user --upgrade pip neovim yamllint wheel setuptools pynvim
+pip3 install --user --upgrade pip neovim yamllint wheel setuptools pynvim
 
 #######################################################
 #
@@ -79,7 +79,6 @@ git clone https://github.com/zsh-users/zsh-history-substring-search.git ${ZSH_CU
 
 curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > ~/.zsh/completion/_docker
 curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker_compose
-
 #######################################################
 #
 # Neovim folders

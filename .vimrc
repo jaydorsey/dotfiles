@@ -55,22 +55,29 @@ let g:EasyGrepCommand='rg'
 Plug 'haya14busa/is.vim'
 " map / <Plug>(is-stay)
 
+" Shows a little highlight of where the search ends up
+Plug 'inside/vim-search-pulse'
+" Use my own mappings
+let g:vim_search_pulse_disable_auto_mappings = 1
+" Pulse cursor line on first match with ?/ search
+cmap <silent> <expr> <enter> search_pulse#PulseFirst()
+
 Plug 'osyo-manga/vim-anzu'
 " Integration with anzu to display search position
-map n <Plug>(is-nohl)<Plug>(anzu-n)
-map N <Plug>(is-nohl)<Plug>(anzu-N)
-map * <Plug>(is-nohl)<Plug>(anzu-star)
-map # <Plug>(is-nohl)<Plug>(anzu-sharp)
+map n <Plug>(is-nohl)<Plug>(anzu-n)<Plug>Pulse
+map N <Plug>(is-nohl)<Plug>(anzu-N)<Plug>Pulse
+map * <Plug>(is-nohl)<Plug>(anzu-star)<Plug>Pulse
+map # <Plug>(is-nohl)<Plug>(anzu-sharp)<Plug>Pulse
 
 " Improved * motions
 Plug 'haya14busa/vim-asterisk'
 " Keep cursor position across matches
 let g:asterisk#keeppos = 1
-map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
-map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)<Plug>Pulse
+map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)<Plug>Pulse
 vnoremap // <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
-map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
-map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)<Plug>Pulse
+map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)<Plug>Pulse
 
 " Clear search highlighting by pressing //
 nnoremap // :noh<cr>
@@ -104,11 +111,6 @@ vmap <Leader>t- :Tabularize / -><cr>
 
 " View xterm colors with :XtermColorTable
 Plug 'guns/xterm-color-table.vim'
-
-" Shows a little highlight of where the search ends up
-Plug 'inside/vim-search-pulse'
-" " Use my own mappings
-" let g:vim_search_pulse_disable_auto_mappings = 1
 
 Plug 'itchyny/lightline.vim'
 
