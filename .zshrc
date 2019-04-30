@@ -53,6 +53,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git asdf bundler gem zsh-completions zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
+autoload -U compinit && compinit
 
 # Always automatically update oh-my-zsh
 DISABLE_UPDATE_PROMPT="true"
