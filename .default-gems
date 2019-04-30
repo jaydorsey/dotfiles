@@ -1,10 +1,9 @@
+gem-ctags
 bundler
 bundler-audit
 coderay
-colorls
 fasterer
 gem-browse
-gem-ctags
 neovim
 nokogiri
 overcommit
