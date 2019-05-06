@@ -53,7 +53,15 @@ let g:EasyGrepCommand='rg'
 
 " Incremental search
 Plug 'haya14busa/is.vim'
-" map / <Plug>(is-stay)
+
+" Improved * motions
+Plug 'haya14busa/vim-asterisk'
+" Keep cursor position across matches
+let g:asterisk#keeppos = 1
+map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)<Plug>Pulse
+map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)<Plug>Pulse
+map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)<Plug>Pulse
+map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)<Plug>Pulse
 
 " Shows a little highlight of where the search ends up
 Plug 'inside/vim-search-pulse'
@@ -61,23 +69,8 @@ Plug 'inside/vim-search-pulse'
 let g:vim_search_pulse_disable_auto_mappings = 1
 " Pulse cursor line on first match with ?/ search
 cmap <silent> <expr> <enter> search_pulse#PulseFirst()
-
-Plug 'osyo-manga/vim-anzu'
-" Integration with anzu to display search position
-map n <Plug>(is-nohl)<Plug>(anzu-n)<Plug>Pulse
-map N <Plug>(is-nohl)<Plug>(anzu-N)<Plug>Pulse
-map * <Plug>(is-nohl)<Plug>(anzu-star)<Plug>Pulse
-map # <Plug>(is-nohl)<Plug>(anzu-sharp)<Plug>Pulse
-
-" Improved * motions
-Plug 'haya14busa/vim-asterisk'
-" Keep cursor position across matches
-let g:asterisk#keeppos = 1
-map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)<Plug>Pulse
-map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)<Plug>Pulse
-vnoremap // <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
-map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)<Plug>Pulse
-map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)<Plug>Pulse
+nmap n n<Plug>Pulse
+nmap N N<Plug>Pulse
 
 " Clear search highlighting by pressing //
 nnoremap // :noh<cr>
@@ -681,14 +674,6 @@ endif " has autocmd
 
 " Change the local window current directory to that of current file
 nmap <leader>cd lcd %:p:h
-
-" DEPRECATED by is.vim & vim-asterisk
-" https://stackoverflow.com/q/4256697/2892779
-" When pressing * or #, highlight current word and move to beginning of word,
-" but don't jump to next occurence
-" Also can use viwo<esc> instead of lb
-" nnoremap * m`:keepjumps normal! *``<cr>lb
-" nnoremap # m`:keepjumps normal! #``<cr>lb
 
 " Automatically re-select the visually selected text
 " https://superuser.com/a/207521/354661
