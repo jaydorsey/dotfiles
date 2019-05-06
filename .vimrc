@@ -463,6 +463,7 @@ let g:rg_command = '
   \ -g "!{.git,log,coverage,node_modules,vendor,frontend,tmp,.yardoc,doc}/*"
   \ -g "!tmux*"
   \ -g "!*.log"
+  \ -g "!*.map"
   \ -g "!docs/api/apiary.apib"
   \ -g "!swagger/*"
   \ -g "!db/data/*"
