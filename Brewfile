@@ -29,6 +29,7 @@ brew "bat"
 brew "libpng"
 brew "fontconfig"
 brew "libffi"
+brew "pcre"
 brew "glib"
 brew "cairo"
 brew "cmake"
@@ -47,7 +48,6 @@ brew "fd"
 brew "giflib"
 brew "p11-kit"
 brew "gnutls"
-brew "harfbuzz"
 brew "jpeg"
 brew "sdl2"
 brew "x264"
@@ -81,6 +81,7 @@ brew "libtool"
 brew "graphviz"
 brew "hadolint"
 brew "szip"
+brew "hdf5"
 brew "hexyl"
 brew "ncurses"
 brew "htop"
@@ -107,9 +108,7 @@ brew "luarocks"
 brew "mas"
 brew "maven"
 brew "msgpack"
-brew "mysql"
 brew "neovim"
-brew "netcdf"
 brew "opam"
 brew "optipng"
 brew "tmux"
@@ -186,17 +185,12 @@ cask "sublime-text"
 cask "textsoap"
 cask "visual-studio-code"
 cask "zeplin"
-mas "com.amazon.Kindle", id: 405399194
-mas "com.apple.dt.Xcode", id: 497799835
-mas "com.apple.garageband10", id: 682658836
-mas "com.apple.iMovieApp", id: 408981434
 mas "com.apple.iWork.Keynote", id: 409183694
 mas "com.apple.iWork.Numbers", id: 409203825
 mas "com.apple.iWork.Pages", id: 409201541
 mas "com.appsoftstudio.FolderFactory", id: 521419726
 mas "com.boinx.Mousepose.Mac", id: 405904955
 mas "com.macpaw.Gemini2", id: 1090488118
-mas "com.microsoft.onenote.mac", id: 784801555
 mas "com.monosnap.monosnap", id: 540348655
 mas "com.pixelmatorteam.pixelmator", id: 407963104
 mas "com.pixelresearchlabs.osx.ringer", id: 402437824
