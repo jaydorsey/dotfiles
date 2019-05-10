@@ -275,7 +275,9 @@ Plug 'vim-scripts/ScrollColors'
 
 Plug 'w0rp/ale'
 
-Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation levels
+" Display thin vertical lines at code indentation levels
+" Disabled for now because it breaks conceallevel
+" Plug 'Yggdroot/indentLine'
 
 " colorschemes
 Plug 'patstockwell/vim-monokai-tasty' " Lightline theme
