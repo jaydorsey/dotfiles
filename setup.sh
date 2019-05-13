@@ -129,3 +129,6 @@ https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/
 https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ciapre.itermcolors
 https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Espresso.itermcolors
 https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Afterglow.itermcolors
+
+# Install the pg-extras plugin
+# heroku plugins:install git://github.com/heroku/heroku-pg-extras.git
