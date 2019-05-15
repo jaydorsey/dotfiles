@@ -406,6 +406,9 @@ augroup vimrc_autocmd
   " https://github.com/tpope/vim-commentary#faq
   autocmd FileType Dockerfile setlocal commentstring=#\ %s
 
+  " Crystal comments should add comment prefix on newline
+  autocmd FileType crystal setlocal formatoptions=jcroql
+
   " Make fzf quit quickly when esc is pressed
   " https://github.com/junegunn/fzf/issues/1393#issuecomment-426576577
   autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
