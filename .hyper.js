@@ -9,7 +9,7 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 14,
+    fontSize: 16,
 
     // font family with optional fallbacks
     fontFamily: '"DroidSansMono Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -21,7 +21,7 @@ module.exports = {
     fontWeightBold: 'bold',
 
     // line height as a relative unit
-    lineHeight: 1,
+    lineHeight: 1.1,
 
     // letter spacing as a relative unit
     letterSpacing: 0,
@@ -146,7 +146,14 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyper-material-theme", "hyperpower", "hyper-pane", "hypercwd", "hyperlinks", "hyper-night-owl"],
+  plugins: [
+    "hyperpower",
+    "hypercwd",
+    "hyper-night-owl",
+    "hyperlinks",
+    "hyper-pane",
+    "hyper-active-tab"
+  ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
