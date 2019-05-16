@@ -152,3 +152,4 @@ setopt append_history
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+export PATH="/usr/local/opt/llvm@6/bin:$PATH"
