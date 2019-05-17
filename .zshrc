@@ -102,6 +102,8 @@ export PATH=/usr/local/opt/openssl/bin:$PATH
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 # capybara-webkit, temporary
 export PATH=$PATH:/Users/jay/Qt5.5.0/5.5/clang_64/bin/
+# For crystal
+export PATH="/usr/local/opt/llvm@6/bin:$PATH"
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
 # Ignore deprecation warnings
@@ -152,4 +154,3 @@ setopt append_history
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-export PATH="/usr/local/opt/llvm@6/bin:$PATH"
