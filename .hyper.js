@@ -1,6 +1,7 @@
 // Future versions of Hyper may add additional config options,
 // which will not automatically be merged into this file.
 // See https://hyper.is#cfg for all currently supported options.
+const overlap = "rgba(0, 0, 0, .15)";
 
 module.exports = {
   config: {
@@ -26,33 +27,139 @@ module.exports = {
     // letter spacing as a relative unit
     letterSpacing: 0,
 
-    // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(248,28,229,0.8)',
-
-    // terminal text color under BLOCK cursor
-    cursorAccentColor: '#000',
-
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
     cursorShape: 'BLOCK',
 
     // set to `true` (without backticks and without quotes) for blinking cursor
-    cursorBlink: true,
+    cursorBlink: false,
 
-    // color of the text
-    foregroundColor: '#fff',
+    // hyper-night-owl theme
+    backgroundColor: "#011627",
+    foregroundColor: "#d6deeb",
+    borderColor: "rgba(126, 87, 194, 0.3)",
+    // cursorColor: "#E436FF", // purple
+    cursorColor: "#ff4301", // red-orange
+    cursorAccentColor: "#ffffff",
+    selectionColor: "rgba(248, 28, 229, 0.3)",
+    colors: {
+      black: "#011627",
+      red: "#EF5350",
+      green: "#22da6e",
+      yellow: "#addb67",
+      blue: "#82aaff",
+      magenta: "#c792ea",
+      cyan: "#21c7a8",
+      white: "#ffffff",
+      lightBlack: "#575656",
+      lightRed: "#ef5350",
+      lightGreen: "#22da6e",
+      lightYellow: "#ffeb95",
+      lightBlue: "#82aaff",
+      lightMagenta: "#c792ea",
+      lightCyan: "#7fdbca",
+      lightWhite: "#ffffff"
+    },
 
-    // terminal background color
-    // opacity is only supported on macOS
-    backgroundColor: '#000',
 
-    // terminal selection color
-    selectionColor: 'rgba(248,28,229,0.3)',
-
-    // border color (window, tabs)
-    borderColor: '#333',
+    // // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
+    // cursorColor: 'rgba(248,28,229,0.8)',
+    //
+    // // terminal text color under BLOCK cursor
+    // cursorAccentColor: '#000',
+    //
+    // // color of the text
+    // foregroundColor: '#fff',
+    //
+    // // terminal background color
+    // // opacity is only supported on macOS
+    // backgroundColor: '#000',
+    //
+    // // terminal selection color
+    // selectionColor: 'rgba(248,28,229,0.3)',
+    //
+    // // border color (window, tabs)
+    // borderColor: '#333',
 
     // custom CSS to embed in the main window
-    css: '',
+      css: `
+      .hyper_main {
+        border: none !important;
+      }
+      .header_header {
+        background-color: ${overlap} !important;
+      }
+      .tabs_borderShim {
+        border-color: transparent !important;
+      }
+      .tab_tab {
+        border: 0;
+        background-color: #010e1a;
+        color: #5f7e97;
+      }
+      .tab_tab::before {
+        background-color: #272B3B;
+      }
+      .tab_active {
+        background-color: #0b2942;
+        color: #d2dee7;
+      }
+      .tab_active::before {
+        background-color: #262A39;
+      }
+      .tab_text {
+        background-color: #010e1a;
+        color: #5f7e97;
+      }
+      .tab_textActive {
+        background-color: #0b2942;
+        color: #d2dee7;
+      }
+      .hyper-search-wrapper {
+          border: 0 !important;
+          padding: 0 !important;
+          background-color: transparent !important;
+          display: flex;
+          opacity: 0.8 !important;
+        }
+      .hyper-search-wrapper button {
+        top: 0 !important;
+        opacity: 0.8 !important;
+        padding: 0 6px;
+        cursor: pointer;
+      }
+      .hyper-search-wrapper button:hover {
+        opacity: 1.0 !important;
+      }
+      .hyper-search-wrapper button:nth-of-type(1) {
+        border-radius: 4px 0 0 4px !important;
+        border-right: 1px solid #575656 !important;
+      }
+      .hyper-search-wrapper button:nth-of-type(2) {
+        border-radius: 0 4px 4px 0 !important;
+      }
+      .hyper-search-wrapper:before {
+        width: 20px;
+        color: #000;
+        position: absolute;
+        content: "🔍";
+        font-size: 10px;
+        margin: 7px;
+        z-index: 999;
+      }
+      #hyper-search-input {
+        background-color: #ffffff !important;
+        border-radius: 4px;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+        padding: 3px 6px 3px 24px !important;
+        color: #011627 !important;
+        opacity: 0.9 !important;
+        margin-right: 2px;
+      }
+      #hyper-search-input:focus {
+        opacity: 1.0 !important;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 1.0);
+      }
+    `,
 
     // custom CSS to embed in the terminal window
     termCSS: '',
@@ -72,24 +179,24 @@ module.exports = {
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
-    colors: {
-      black: '#000000',
-      red: '#C51E14',
-      green: '#1DC121',
-      yellow: '#C7C329',
-      blue: '#0A2FC4',
-      magenta: '#C839C5',
-      cyan: '#20C5C6',
-      white: '#C7C7C7',
-      lightBlack: '#686868',
-      lightRed: '#FD6F6B',
-      lightGreen: '#67F86F',
-      lightYellow: '#FFFA72',
-      lightBlue: '#6A76FB',
-      lightMagenta: '#FD7CFC',
-      lightCyan: '#68FDFE',
-      lightWhite: '#FFFFFF',
-    },
+    // colors: {
+    //   black: '#000000',
+    //   red: '#C51E14',
+    //   green: '#1DC121',
+    //   yellow: '#C7C329',
+    //   blue: '#0A2FC4',
+    //   magenta: '#C839C5',
+    //   cyan: '#20C5C6',
+    //   white: '#C7C7C7',
+    //   lightBlack: '#686868',
+    //   lightRed: '#FD6F6B',
+    //   lightGreen: '#67F86F',
+    //   lightYellow: '#FFFA72',
+    //   lightBlue: '#6A76FB',
+    //   lightMagenta: '#FD7CFC',
+    //   lightCyan: '#68FDFE',
+    //   lightWhite: '#FFFFFF',
+    // },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
@@ -147,9 +254,7 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    "hyperpower",
     "hypercwd",
-    "hyper-night-owl",
     "hyperlinks",
     "hyper-pane",
     "hyper-active-tab"

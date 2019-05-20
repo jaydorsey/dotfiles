@@ -107,6 +107,9 @@ Plug 'guns/xterm-color-table.vim'
 
 Plug 'itchyny/lightline.vim'
 
+" Send to tmux
+Plug 'jgdavey/tslime.vim'
+
 Plug 'junegunn/fzf.vim'
 
 " Browse git history with :GV
@@ -236,6 +239,13 @@ Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
 " Vim git branch management. Invoke with :Twiggy
 Plug 'sodapopcan/vim-twiggy'
+
+" Vim rspec helpers
+Plug 'thoughtbot/vim-rspec'
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+map <leader>t :call RunCurrentSpecFile()<cr>
+map <leader>r :call RunNearestSpec()<cr>
+map <leader>l :call RunLastSpec()<cr>
 
 " Comment with gc and motion
 Plug 'tomtom/tcomment_vim'
