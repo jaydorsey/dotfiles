@@ -117,8 +117,8 @@ Plug 'junegunn/gv.vim'
 
 " Focus highlighting
 Plug 'junegunn/limelight.vim'
-nmap <leader>l <Plug>(Limelight)
-xmap <leader>l <Plug>(Limelight)
+nmap <leader>ll <Plug>(Limelight)
+xmap <leader>ll <Plug>(Limelight)
 
 " Extends " and @ in normal mode and CTRL-R in insert mode so you can see the
 " contents of registers
@@ -242,7 +242,7 @@ Plug 'sodapopcan/vim-twiggy'
 
 " Vim rspec helpers
 Plug 'thoughtbot/vim-rspec'
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --fail-fast --seed 42\n")'
 map <leader>t :call RunCurrentSpecFile()<cr>
 map <leader>r :call RunNearestSpec()<cr>
 map <leader>l :call RunLastSpec()<cr>
