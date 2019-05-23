@@ -195,7 +195,6 @@ mas "com.apple.iWork.Pages", id: 409201541
 mas "com.appsoftstudio.FolderFactory", id: 521419726
 mas "com.boinx.Mousepose.Mac", id: 405904955
 mas "com.macpaw.Gemini2", id: 1090488118
-mas "com.monosnap.monosnap", id: 540348655
 mas "com.pixelmatorteam.pixelmator", id: 407963104
 mas "com.pixelresearchlabs.osx.ringer", id: 402437824
 mas "com.seriflabs.affinitydesigner", id: 824171161
