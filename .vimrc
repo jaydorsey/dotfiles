@@ -224,6 +224,7 @@ augroup nerdtree_autocmd
   " Close vim if the only window left open is NERDtree
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
+let g:NERDTreeChDirMode = 2
 
 Plug 'sheerun/vim-polyglot'
 " vim-ruby is already included, this isn't necessary
