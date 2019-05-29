@@ -257,7 +257,8 @@ module.exports = {
     "hypercwd",
     "hyperlinks",
     "hyper-pane",
-    "hyper-active-tab"
+    "hyper-active-tab",
+    "hyper-search"
   ],
 
   // in development, you can create a directory under
