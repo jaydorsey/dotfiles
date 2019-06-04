@@ -94,10 +94,11 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: DroidSansMono Nerd Font
+    # family: DroidSansMono Nerd Font
+    family: Iosevka NF
 
     # The `style` can be specified to pick a specific face.
-    style: Book
+    style: Regular
 
   # Bold font face
   bold:
@@ -105,10 +106,11 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: DroidSansMono Nerd Font
+    # family: DroidSansMono Nerd Font
+    family: Iosevka NF
 
     # The `style` can be specified to pick a specific face.
-    style: Book
+    style: Bold
 
   # Italic font face
   italic:
@@ -116,13 +118,14 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: DroidSansMono Nerd Font
+    # family: DroidSansMono Nerd Font
+    family: Iosevka NF
 
     # The `style` can be specified to pick a specific face.
-    style: Book
+    style: Italic
 
   # Point size
-  size: 16.0
+  size: 18.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -160,7 +163,7 @@ render_timer: false
 persistent_logging: false
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 # Colors (Tomorrow Night Bright)
 colors:
@@ -181,9 +184,9 @@ colors:
   #
   # Colors which should be used to draw the terminal cursor. If these are unset,
   # the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '0x000000'
-  #  cursor: '0xffffff'
+  cursor:
+   text: '0x000000'
+   cursor: '0xffffff'
 
   # Selection colors
   #
