@@ -108,6 +108,7 @@ brew "lnav"
 brew "lolcat"
 brew "lsd"
 brew "luarocks"
+brew "mailhog"
 brew "mas"
 brew "maven"
 brew "msgpack"
@@ -183,23 +184,26 @@ cask "pdfkey-pro"
 cask "pdfpenpro"
 cask "pgadmin4"
 cask "scapple"
+cask "sip"
 cask "slack"
 cask "snagit"
 cask "sublime-text"
 cask "textsoap"
 cask "visual-studio-code"
 cask "zeplin"
-mas "com.apple.iWork.Keynote", id: 409183694
-mas "com.apple.iWork.Numbers", id: 409203825
-mas "com.apple.iWork.Pages", id: 409201541
-mas "com.appsoftstudio.FolderFactory", id: 521419726
-mas "com.boinx.Mousepose.Mac", id: 405904955
-mas "com.macpaw.Gemini2", id: 1090488118
-mas "com.pixelmatorteam.pixelmator", id: 407963104
-mas "com.pixelresearchlabs.osx.ringer", id: 402437824
-mas "com.seriflabs.affinitydesigner", id: 824171161
-mas "com.seriflabs.affinityphoto", id: 824183456
-mas "com.syniumsoftware.screenium3", id: 921553264
-mas "com.visualdiffer", id: 412386481
-mas "com.zoltanhosszu.GAgetOSX", id: 968487158
-mas "info.chrismiles.easyres", id: 688211836
+mas "Affinity Designer", id: 824171161
+mas "Affinity Photo", id: 824183456
+mas "EasyRes", id: 688211836
+mas "Folder Factory", id: 521419726
+mas "GAget", id: 968487158
+mas "Gemini 2", id: 1090488118
+mas "Keynote", id: 409183694
+mas "Monosnap", id: 540348655
+mas "Mouseposé", id: 405904955
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Pixelmator", id: 407963104
+mas "Ringer", id: 402437824
+mas "Screenium 3", id: 921553264
+mas "VisualDiffer", id: 412386481
+mas "Xcode", id: 497799835
