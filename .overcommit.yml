@@ -87,6 +87,7 @@ PreCommit:
       - '**/db/schema.rb'
       - '**/db/structure.sql'
       - '**/db/data/development.txt'
+      - '**/spec/fixtures/**/*'
   LocalPathsInGemfile:
     enabled: true
   MergeConflicts:
