@@ -231,6 +231,10 @@ Plug 'sheerun/vim-polyglot'
 let g:polyglot_disable = ['ruby']
 let g:vim_markdown_conceal = 0
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+let g:UltiSnipsEditSplit="vertical"
+
 Plug 'sjl/gundo.vim' " Visualize your vim undo tree
 nnoremap <leader>u :GundoToggle<cr>
 let g:gundo_prefer_python3 = 1
@@ -262,7 +266,7 @@ Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-dispatch'
 
 " Automatically add an `end` when you type def, class, etc.
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
@@ -299,15 +303,23 @@ Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" Configuration for deoplete is outside of the plug block
+
+" Use <tab> key to step into the selections
+inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
+call plug#end()
+
+let g:deoplete#auto_complete_delay = 150
 let g:deoplete#enable_at_startup = 1
+
 let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
 " Disable tags file as a source
 let g:deoplete#ignore_sources.ruby = ['tags', 'tags.lock']
 let g:deoplete#max_list = 20
 
-" Use <tab> key to step into the selections
-inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
-call plug#end()
+" call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
+" call deoplete#custom#source('ultisnips', 'rank', 1000)
+" call deoplete#custom#source('syntax', 'rank', 100)
 
 set autoindent                                     " Automatic indenting/formatting
 set autoread                                       " Reload files changed outside of vim
