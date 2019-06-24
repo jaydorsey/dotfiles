@@ -309,13 +309,13 @@ Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
 call plug#end()
 
-let g:deoplete#auto_complete_delay = 150
+let g:deoplete#auto_complete_delay = 500
 let g:deoplete#enable_at_startup = 1
 
 let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
 " Disable tags file as a source
 let g:deoplete#ignore_sources.ruby = ['tags', 'tags.lock']
-let g:deoplete#max_list = 20
+let g:deoplete#max_list = 10
 
 " call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 " call deoplete#custom#source('ultisnips', 'rank', 1000)
@@ -413,6 +413,11 @@ filetype indent on
 
 augroup vimrc_autocmd
   autocmd!
+
+  " Disable paste mode because I never use it
+  "
+  " https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
+  au InsertLeave * set nopaste
 
   " http://vim.wikia.com/wiki/Make_views_automatic
   autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
