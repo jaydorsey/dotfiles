@@ -58,19 +58,10 @@ Plug 'haya14busa/is.vim'
 Plug 'haya14busa/vim-asterisk'
 " Keep cursor position across matches
 let g:asterisk#keeppos = 1
-map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)<Plug>Pulse
-map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)<Plug>Pulse
-map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)<Plug>Pulse
-map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)<Plug>Pulse
-
-" Shows a little highlight of where the search ends up
-Plug 'inside/vim-search-pulse'
-" Use my own mappings
-let g:vim_search_pulse_disable_auto_mappings = 1
-" Pulse cursor line on first match with ?/ search
-cmap <silent> <expr> <enter> search_pulse#PulseFirst()
-nmap n n<Plug>Pulse
-nmap N N<Plug>Pulse
+map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
 
 " Clear search highlighting by pressing //
 nnoremap // :noh<cr>
@@ -290,10 +281,6 @@ Plug 'vim-scripts/ScrollColors'
 
 Plug 'w0rp/ale'
 
-" Display thin vertical lines at code indentation levels
-" Disabled for now because it breaks conceallevel
-" Plug 'Yggdroot/indentLine'
-
 " colorschemes
 Plug 'haishanh/night-owl.vim'
 Plug 'patstockwell/vim-monokai-tasty' " Lightline theme
@@ -301,25 +288,10 @@ Plug 'rakr/vim-one'
 Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-" Configuration for deoplete is outside of the plug block
 
-" Use <tab> key to step into the selections
-inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
-
-let g:deoplete#auto_complete_delay = 500
-let g:deoplete#enable_at_startup = 1
-
-let g:deoplete#ignore_sources = get(g:,'deoplete#ignore_sources',{})
-" Disable tags file as a source
-let g:deoplete#ignore_sources.ruby = ['tags', 'tags.lock']
-let g:deoplete#max_list = 10
-
-" call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
-" call deoplete#custom#source('ultisnips', 'rank', 1000)
-" call deoplete#custom#source('syntax', 'rank', 100)
 
 set autoindent                                     " Automatic indenting/formatting
 set autoread                                       " Reload files changed outside of vim
@@ -401,8 +373,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-" colorscheme onehalfdark
-colorscheme night-owl
+colorscheme onehalfdark
 
 " htt://vim.wikia.com/wiki/Fix_indentation
 " Format file with indention settings
@@ -573,10 +544,10 @@ let g:ale_ruby_rubocop_options = ''
 let g:lightline = {
 \ 'colorscheme': 'onehalfdark',
 \ 'active': {
-\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'anzu']],
+\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
 \             ['percent'],
-\             ['lightline_character', 'fileformat', 'fileencoding', 'filetype', 'linter_warnings', 'linter_errors', 'linter_ok']]
+\             ['cocstatus', 'currentfunction', 'lightline_character', 'fileformat', 'fileencoding', 'filetype', 'linter_warnings', 'linter_errors', 'linter_ok']]
 \ },
 \ 'component': {
 \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
@@ -598,7 +569,8 @@ let g:lightline = {
 \   'linter_errors': 'error'
 \ },
 \ 'component_function': {
-\   'anzu': 'anzu#search_status',
+\   'cocstatus': 'coc#status',
+\   'currentfunction': 'CocCurrentFunction',
 \   'lightline_character': 'LightLineCharacter',
 \   'filename': 'LightlineFilename'
 \ },
