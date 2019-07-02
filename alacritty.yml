@@ -52,7 +52,7 @@ window:
   decorations: full
 
   # When true, alacritty starts maximized.
-  start_maximized: false
+  startup_mode: Windowed
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -159,11 +159,12 @@ font:
   # effect.
   use_thin_strokes: true
 
-# Display the time it takes to redraw each frame.
-render_timer: false
+debug:
+  # Display the time it takes to redraw each frame.
+  render_timer: false
 
-# Keep the log file after quitting Alacritty.
-persistent_logging: false
+  # Keep the log file after quitting Alacritty.
+  persistent_logging: false
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -172,7 +173,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x000000'
+    # background: '0x383e49'
+    background: '0x373737'
     foreground: '0xeaeaea'
 
     # Bright and dim foreground colors
