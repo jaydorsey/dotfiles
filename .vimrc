@@ -58,13 +58,14 @@ Plug 'haya14busa/is.vim'
 Plug 'haya14busa/vim-asterisk'
 " Keep cursor position across matches
 let g:asterisk#keeppos = 1
-map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
-map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
-map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
-map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
+
+" Display search position (2/10)
+Plug 'henrik/vim-indexed-search'
+let g:indexed_search_dont_move = 1
 
 " Clear search highlighting by pressing //
 nnoremap // :noh<cr>
+nnoremap <esc><esc> :noh<cr>
 
 " Both of these must be installed
 Plug 'kana/vim-textobj-user'
