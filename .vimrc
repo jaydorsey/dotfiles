@@ -40,16 +40,16 @@ Plug 'bfontaine/brewfile.vim'
 " Highlights trailing whitespace in red
 Plug 'bronson/vim-trailing-whitespace'
 
+" Find and Replace plugin
+" https://github.com/brooth/far.vim
+Plug 'brooth/far.vim'
+let g:far#source = 'rgnvim'
+
 Plug 'chiel92/vim-autoformat'
 let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify']
 
 " Color colornames & codes with :ColorToggle
 Plug 'Chrisbra/Colorizer'
-
-" Easy find & replace across multiple files. Use <leader>vr to grep the
-" word under the cursor and the pattern with which to replace it
-Plug 'dkprice/vim-easygrep'
-let g:EasyGrepCommand='rg'
 
 " Incremental search
 Plug 'haya14busa/is.vim'
@@ -58,6 +58,11 @@ Plug 'haya14busa/is.vim'
 Plug 'haya14busa/vim-asterisk'
 " Keep cursor position across matches
 let g:asterisk#keeppos = 1
+
+map * <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+map # <Plug>(asterisk-z#)<Plug>(is-nohl-1)
+map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 
 " Display search position (2/10)
 Plug 'henrik/vim-indexed-search'
@@ -112,63 +117,12 @@ Plug 'junegunn/limelight.vim'
 nmap <leader>ll <Plug>(Limelight)
 xmap <leader>ll <Plug>(Limelight)
 
-" Extends " and @ in normal mode and CTRL-R in insert mode so you can see the
-" contents of registers
-" Plug 'junegunn/vim-peekaboo'
-" let g:peekaboo_window = 'vert bo 50new'
-
 Plug 'ludovicchabant/vim-gutentags' " Tag creation
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
 let g:gutentags_gtags_options_file="~/.ctags"
 " Type :messages after gutentag loads to see the trace
 let g:gutentags_trace=0
 let g:gutentags_enabled=1
-
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-      \ 'guifgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta']
-      \}
-
-" Plug 'majutsushi/tagbar' " Tag browsing & grouping
-" let g:tagbar_autofocus = 1
-" let g:tagbar_autoclose = 1
-" let g:tagbar_ctags_bin = 'ctags'
-" nmap <end> :TagbarToggle<cr>
-" let g:tagbar_type_elixir = {
-"     \ 'ctagstype' : 'elixir',
-"     \ 'kinds' : [
-"         \ 'f:functions',
-"         \ 'functions:functions',
-"         \ 'c:callbacks',
-"         \ 'd:delegates',
-"         \ 'e:exceptions',
-"         \ 'i:implementations',
-"         \ 'a:macros',
-"         \ 'o:operators',
-"         \ 'm:modules',
-"         \ 'p:protocols',
-"         \ 'r:records',
-"         \ 't:tests'
-"     \ ]
-"     \ }
-"
-" let g:tagbar_type_ruby = {
-"     \ 'kinds' : [
-"         \ 'm:modules',
-"         \ 'c:classes',
-"         \ 'F:singleton methods',
-"         \ 'f:methods',
-"         \ 'a:aliases',
-"         \ 's:symbols',
-"         \ 'd:describes',
-"         \ 'C:contexts',
-"         \ 'i:its',
-"         \ '?:unknown',
-"     \ ],
-"     \ 'kind2scope': { 'c' : 'class', 'm': 'class' },
-"     \ 'scope2kind': { 'class' : 'c' },
-"         \ }
 
 Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected lines
 " On ergodox, this allows the left ctrl key to work as the move key
@@ -201,7 +155,7 @@ Plug 'rhysd/committia.vim' " See git diff in commit window as another pane
 let g:committia_open_only_vim_starting = 1
 
 " Crystal syntax highlighting & support
-Plug 'rhysd/vim-crystal'
+Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
 let g:crystal_define_mappings = 0
 
 Plug 'rizzatti/dash.vim' " Dash integration
@@ -220,6 +174,9 @@ Plug 'sheerun/vim-polyglot'
 " vim-ruby is already included, this isn't necessary
 let g:polyglot_disable = ['ruby']
 let g:vim_markdown_conceal = 0
+" https://stackoverflow.com/a/44974239/2892779
+let g:formatdef_sql = '"sqlformat --reindent --keywords upper - identifiers lower -"'
+let g:formatters_sql = ['sql']
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -305,7 +262,7 @@ set history=10000                                  " Max history
 set hlsearch                                       " Highlight matches
 set ignorecase                                     " Ignore case when searching...
 set incsearch                                      " Find the next match as we type
-set nolazyredraw                                   " Disable screen redraw when running macros, for performance
+set lazyredraw                                     " Disable screen redraw when running macros, for performance
 set redrawtime=10000                               " Increase redraw time so syntax highlighting works on larger files
 set matchtime=5                                    " Show matching bracket for 0.5 seconds
 set mouse=                                         " Disable mouse
