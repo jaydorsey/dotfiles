@@ -477,7 +477,6 @@ let g:ale_ruby_rubocop_options = ''
 " Lightline
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
 let g:lightline = {
-\ 'colorscheme': 'darkness',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
