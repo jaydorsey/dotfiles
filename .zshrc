@@ -104,6 +104,10 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 export PATH=$PATH:/Users/jay/Qt5.5.0/5.5/clang_64/bin/
 # For crystal
 export PATH="/usr/local/opt/llvm@6/bin:$PATH"
+
+# https://luckyframework.org/guides/getting-started/installing
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
 # Ignore deprecation warnings
