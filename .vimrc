@@ -287,6 +287,7 @@ Plug 'haishanh/night-owl.vim'
 Plug 'patstockwell/vim-monokai-tasty' " Lightline theme
 Plug 'rakr/vim-one'
 Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+Plug 'nightsense/cosmic_latte'
 
 Plug 'Shougo/echodoc.vim'
 
@@ -374,7 +375,8 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme onehalfdark
+" colorscheme onehalfdark
+colorscheme cosmic_latte
 
 " htt://vim.wikia.com/wiki/Fix_indentation
 " Format file with indention settings
