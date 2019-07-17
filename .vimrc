@@ -207,8 +207,6 @@ let g:crystal_define_mappings = 0
 Plug 'rizzatti/dash.vim' " Dash integration
 nnoremap <leader>d :Dash<cr>
 
-Plug 'RRethy/vim-illuminate' " Highlight other words that match current cursor word
-
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 augroup nerdtree_autocmd
@@ -230,9 +228,6 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'sjl/gundo.vim' " Visualize your vim undo tree
 nnoremap <leader>u :GundoToggle<cr>
 let g:gundo_prefer_python3 = 1
-
-" Elixir project integration
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 
 " Vim git branch management. Invoke with :Twiggy
 Plug 'sodapopcan/vim-twiggy'
@@ -257,8 +252,6 @@ Plug 'tpope/vim-characterize'
 
 Plug 'tpope/vim-dispatch'
 
-" Automatically add an `end` when you type def, class, etc.
-" Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
@@ -277,17 +270,10 @@ let g:ruby_indent_block_style = 'do'
 " Highlight whitespace errors
 let g:ruby_space_errors = 1
 
-" Type :SCROLL to scroll thru themes with arrow keys
-Plug 'vim-scripts/ScrollColors'
-
 Plug 'w0rp/ale'
 
 " colorschemes
-Plug 'haishanh/night-owl.vim'
-Plug 'patstockwell/vim-monokai-tasty' " Lightline theme
-Plug 'rakr/vim-one'
-Plug 'sonph/onehalf', { 'rtp': 'vim/' }
-Plug 'nightsense/cosmic_latte'
+Plug 'jaydorsey/darkness.vim'
 
 Plug 'Shougo/echodoc.vim'
 
@@ -375,12 +361,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-" colorscheme onehalfdark
-colorscheme cosmic_latte
-
-" htt://vim.wikia.com/wiki/Fix_indentation
-" Format file with indention settings
-map <leader>7 mzgg=G`z
+colorscheme darkness
 
 filetype plugin on
 filetype indent on
@@ -453,8 +434,7 @@ let g:netrw_liststyle=3
 noremap <f1> <noop>
 
 " Macros
-" Use Q as a default macro. This lets you quickly create a macro with qq, then
-" quit it with q, then replay it back with Q
+" Use Q as a default macro. This lets you quickly create a macro with qq & replay it back with Q
 noremap Q @q
 
 " ripgrep customization
@@ -498,10 +478,6 @@ command! -bang -nargs=* Find
 nnoremap K :Find <cr>
 nnoremap <leader>p :Files<cr>
 
-" Pretty format json!
-" https://til.hashrocket.com/posts/ha0ci0pvkj-format-json-in-vim-with-jq
-" nnoremap <C-p> :%!jq '.'<cr>
-
 augroup vim_ruby_group
   autocmd!
 
@@ -543,9 +519,8 @@ let g:ale_ruby_rubocop_options = ''
 
 " Lightline
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
-" \ 'colorscheme': 'monokai_tasty',
 let g:lightline = {
-\ 'colorscheme': 'onehalfdark',
+\ 'colorscheme': 'darkness',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
@@ -621,7 +596,7 @@ augroup AleStuff
   autocmd User ALELint call s:MaybeUpdateLightline()
 augroup END
 
-" Update and show lightline but only if it's visible (e.g., not in Goyo)
+" Update and show lightline but only if it's visible
 function! s:MaybeUpdateLightline()
   if exists('#lightline')
     call lightline#update()
@@ -650,28 +625,6 @@ vnoremap <S-Down> <Nop>
 inoremap <S-Up> <Nop>
 inoremap <S-Down> <Nop>
 
-" Call _ before a brace on a visual selection to add wrapped pair
-vnoremap _( <Esc>`>a)<Esc>`<i(<Esc>
-vnoremap _[ <Esc>`>a]<Esc>`<i[<Esc>
-vnoremap _< <Esc>`>a><Esc>`<i<<Esc>
-vnoremap _{ <Esc>`>a}<Esc>`<i{<Esc>
-
-" Change line numbers so they're readable https://stackoverflow.com/a/32128209/2892779
-highlight LineNr term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey80 guibg=NONE
-
-" Highlight current word under cursor with vim-illuminate. This needs to go
-" here, after all themes have loaded
-highlight illuminatedWord cterm=underline gui=underline
-
-" Always use a dark background color, and allow range for colorcolumn
-highlight ColorColumn ctermbg=0 guibg=#000000
-let &colorcolumn="120"
-" let &colorcolumn="80,".join(range(120,999),",")
-
-" Slightly lighter grey for comments
-highlight Comment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
-highlight gitcommitComment term=bold cterm=NONE ctermfg=LightGrey ctermbg=NONE gui=NONE guifg=Grey50 guibg=NONE
-
 " Edit/save and automatically reload vimrc file
 " https://stackoverflow.com/a/39294493/2892779
 nnoremap gev :e ~/.vimrc<cr>
@@ -680,7 +633,7 @@ if has ('autocmd') " Remain compatible with earlier versions
  augroup vimrc     " Source vim configuration upon save
     autocmd! BufWritePost ~/.vimrc nested source % | tabdo e
   augroup END
-endif " has autocmd
+endif
 
 " Change the local window current directory to that of current file
 nmap <leader>cd lcd %:p:h
@@ -709,6 +662,7 @@ let @l = ":DelimitMateOff^ilet(:ea)llxxi{ $a }:DelimitMateOn\<cr>\\"
 " Print out the color syntax group of the highlighted line
 " https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
 command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
+
 " Stuff
 "
 " Capture keys pressed while editing a vim file (for debugging)
