@@ -1,3 +1,5 @@
+# Uncomment this, and the last line in this file for profiling information
+# zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -52,8 +54,11 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf bundler gem zsh-completions zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
-autoload -U compinit && compinit
+plugins=(git asdf bundler gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
+
+# Automatically load additional completion scripts. This is really slow so I've disabled for now
+# https://github.com/zsh-users/zsh-completions/blob/master/README.md
+# autoload -U compinit && compinit
 
 # Always automatically update oh-my-zsh
 DISABLE_UPDATE_PROMPT="true"
@@ -81,7 +86,7 @@ export ARCHFLAGS="-arch x86_64"
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
 # Also defines the default command run when :Files is called in vim
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,frontend,frontend/node_modules,node_modules,Library,.gnupg,swagger,.config/yarn,tmp,.yardopts,doc}/*" -g "!*.map" -g "!*.log" -g "!tags" 2> /dev/null'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,frontend,frontend/node_modules,node_modules,Library,.gnupg,swagger,storage,.config/yarn,tmp,.yardopts,doc}/*" -g "!package-lock.json" -g "!*.map" -g "!*.log" -g "!tags" 2> /dev/null'
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
@@ -158,3 +163,4 @@ setopt append_history
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+# zprof
