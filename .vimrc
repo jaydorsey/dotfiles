@@ -236,6 +236,8 @@ Plug 'Shougo/echodoc.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'Lenovsky/nuake'
+
 call plug#end()
 
 set autoindent                                     " Automatic indenting/formatting
@@ -262,7 +264,7 @@ set history=10000                                  " Max history
 set hlsearch                                       " Highlight matches
 set ignorecase                                     " Ignore case when searching...
 set incsearch                                      " Find the next match as we type
-set lazyredraw                                     " Disable screen redraw when running macros, for performance
+set nolazyredraw                                   " Disable screen redraw when running macros, for performance
 set redrawtime=10000                               " Increase redraw time so syntax highlighting works on larger files
 set matchtime=5                                    " Show matching bracket for 0.5 seconds
 set mouse=                                         " Disable mouse
@@ -405,10 +407,13 @@ let g:rg_command = '
   \ -g "!*.map"
   \ -g "!docs/api/apiary.apib"
   \ -g "!swagger/*"
+  \ -g "!storage/*"
   \ -g "!db/data/*"
+  \ -g "!package-lock.json"
   \ -g "!tags"
   \ -g "!tags.temp"
   \ -g "!.yardopts"
+  \ -g "!.yarn.lock"
   \ -g "!spec/vcr/*"
   \ '
   " \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
@@ -478,6 +483,7 @@ let g:ale_ruby_rubocop_options = ''
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
 let g:lightline = {
 \ 'active': {
+\ 'colorscheme': 'darkness',
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
 \             ['percent'],
@@ -602,6 +608,10 @@ vnoremap > >gv
 " Automatically highlight the pasted text
 " https://stackoverflow.com/a/4313335/2892779
 nnoremap <c-p> p`[v`]
+
+" Highlight the column at 120
+highlight ColorColumn ctermbg=0 guibg=#252a2e
+let &colorcolumn="120"
 
 " To save a macro and define it here, record the macro as normal, then
 " paste it in normal mode using "qp (assuming you used the q register)
