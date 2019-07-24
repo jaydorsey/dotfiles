@@ -29,7 +29,8 @@ export ZSH_THEME="powerlevel9k/powerlevel9k"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# https://stackoverflow.com/a/41620534/2892779
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
