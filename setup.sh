@@ -39,6 +39,9 @@ done
 #######################################################
 xcode-select --install
 sudo xcodebuild -license
+# May also need to run below, from: https://nokogiri.org/tutorials/installing_nokogiri.html#unable-to-find-libraries-on-macos-mojave
+# open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+
 
 #######################################################
 #
