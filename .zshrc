@@ -93,7 +93,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
 
 # Ignore certain commands from zsh history via regex
-export HISTORY_IGNORE='cd|ls|clear|tmux|vi|ls'
+export HISTORY_IGNORE='cd|ls|clear|tmux|vi|ls|exit|git a|git s|cd ..|git co master'
 
 export KERL_CONFIGURE_OPTIONS="--disable-debug --disable-silent-rules --without-javac --enable-shared-zlib --enable-dynamic-ssl-lib --enable-hipe --enable-sctp --enable-smp-support --enable-threads --enable-kernel-poll --enable-wx --enable-darwin-64bit --with-ssl=/usr/local/opt/openssl"
 export PAGER="less"
@@ -159,6 +159,9 @@ setopt hist_reduce_blanks
 
 # When trimming history, lose oldest duplicates first
 setopt hist_expire_dups_first
+
+# Older commands that duplicate newer ones are omitted
+setopt hist_save_no_dups
 
 # Allow multiple terminal sessions to all append to one zsh command history
 setopt append_history
