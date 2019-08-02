@@ -1,6 +1,5 @@
 set nocompatible  " We don't want vi compatibility.
 set termguicolors " Enable true color support
-set t_Co=256
 
 let mapleader=" " " Use the space key as a leader
 " Ignore space key in normal mode
@@ -117,12 +116,31 @@ Plug 'junegunn/limelight.vim'
 nmap <leader>ll <Plug>(Limelight)
 xmap <leader>ll <Plug>(Limelight)
 
+Plug 'Konfekt/FastFold'
+nmap zuz <Plug>(FastFoldUpdate)
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+let g:markdown_folding = 1
+let g:vimsyn_folding = 'af'
+" let g:xml_syntax_folding = 1
+" let g:javaScript_fold = 1
+let g:sh_fold_enabled= 7
+let g:ruby_fold = 1
+
+" Show key mappings
+" Plug 'liuchengxu/vim-which-key'
+" nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
 Plug 'ludovicchabant/vim-gutentags' " Tag creation
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
 let g:gutentags_gtags_options_file="~/.ctags"
 " Type :messages after gutentag loads to see the trace
 let g:gutentags_trace=0
 let g:gutentags_enabled=1
+
+" Format SQL with :SQLFmt. Only works on a whole file, not visual selection
+Plug 'mattn/vim-sqlfmt'
 
 Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected lines
 " On ergodox, this allows the left ctrl key to work as the move key
@@ -151,8 +169,13 @@ nmap k <Plug>(accelerated_jk_gk)
 " default
 let g:accelerated_jk_acceleration_table = [7,12,17,21,24,26,28,30]
 
-Plug 'rhysd/committia.vim' " See git diff in commit window as another pane
+" See git diff in commit window as another pane
+Plug 'rhysd/committia.vim'
 let g:committia_open_only_vim_starting = 1
+
+" Git message viewer with <leader>gm. Requires neovim 0.4+ for floating panel
+" Install with brew install neovim --HEAD
+Plug 'rhysd/git-messenger.vim'
 
 " Crystal syntax highlighting & support
 Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
@@ -169,6 +192,9 @@ augroup nerdtree_autocmd
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 let g:NERDTreeChDirMode = 2
+
+" Use :Silicon <filename> with a visual block highlighted to generate a screenshot image
+Plug 'segeljakt/vim-silicon'
 
 Plug 'sheerun/vim-polyglot'
 " vim-ruby is already included, this isn't necessary
@@ -231,10 +257,14 @@ Plug 'w0rp/ale'
 
 " colorschemes
 Plug 'jaydorsey/darkness.vim'
+Plug 'srcery-colors/srcery-vim'
 
 Plug 'Shougo/echodoc.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Select text in visual mode & use *# to search for it elsewhere
+Plug 'nelstrom/vim-visual-star-search'
 
 Plug 'Lenovsky/nuake'
 
@@ -272,7 +302,7 @@ set noerrorbells                                   " No sounds
 set nocindent                                      " Don't indent text with parentheses https://stackoverflow.com/a/2129313/2892779
 set nocursorcolumn                                 " Enable cursor column highlighting
 set nocursorline                                   " Disable line highlighting, for performance
-set nofoldenable                                   " Fold or don't fold files by default
+set foldenable                                     " Fold or don't fold files by default
 set norelativenumber                               " Disable relative line numbers for performance
 set noruler                                        " No ruler needed, because lightline
 set noshowmode                                     " Disable current mode, handled by lightline
@@ -320,7 +350,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme darkness
+colorscheme srcery
 
 filetype plugin on
 filetype indent on
@@ -483,7 +513,7 @@ let g:ale_ruby_rubocop_options = ''
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
 let g:lightline = {
 \ 'active': {
-\ 'colorscheme': 'darkness',
+\ 'colorscheme': 'srcery',
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
 \             ['percent'],
