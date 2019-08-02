@@ -4,9 +4,9 @@ bundler-audit
 coderay
 fasterer
 gem-browse
+lefthook
 neovim
 nokogiri
-overcommit
 pg
 pry
 pry-awesome_print
@@ -14,9 +14,11 @@ pry-byebug
 pry-coolline
 pry-doc
 pry-highlight
-rails
 rake
 rouge
 rubocop
+rubocop-performance
+rubocop-rails
+rubocop-rspec
 ruby-beautify2
 solargraph

@@ -12,6 +12,7 @@ Thumbs.db
 .idea
 .ignore
 .overcommit.yml
+lefthook.yml
 .rspec_parallel
 .ruby-version
 .tool-versions
