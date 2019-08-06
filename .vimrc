@@ -71,7 +71,8 @@ let g:indexed_search_dont_move = 1
 nnoremap // :noh<cr>
 nnoremap <esc><esc> :noh<cr>
 
-" Both of these must be installed
+" Both of these must be installed. Yank and delete blocks of ruby code
+" using ar (all block) and ir (inner block). e.g. var/vir/dar/dir
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
@@ -81,6 +82,10 @@ Plug 'editorconfig/editorconfig-Vim'
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 
 Plug 'elzr/vim-json', { 'for': 'json' }
+
+" A better plugin for remembering the last place your cursor was. Ignores
+" git commit message windows and others
+Plug 'farmergreg/vim-lastplace'
 
 Plug 'francoiscabrol/ranger.vim'
 
@@ -97,6 +102,9 @@ nmap <Leader>t, :Tabularize /,\zs<cr>
 vmap <Leader>t, :Tabularize /,\zs<cr>
 nmap <Leader>t- :Tabularize / -><cr>
 vmap <Leader>t- :Tabularize / -><cr>
+
+" Better, automatic swap file management
+Plug 'gioele/vim-autoswap'
 
 " View xterm colors with :XtermColorTable
 Plug 'guns/xterm-color-table.vim'
@@ -167,7 +175,11 @@ Plug 'rhysd/accelerated-jk'
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 " default
-let g:accelerated_jk_acceleration_table = [7,12,17,21,24,26,28,30]
+" let g:accelerated_jk_acceleration_table = [7,12,17,21,24,26,28,30]
+let g:accelerated_jk_acceleration_table = [12,17,24,28,34,38,44,48]
+
+" Smooth scrolling with C-d/C-u/C-f/C-b
+Plug 'yuttie/comfortable-motion.vim'
 
 " See git diff in commit window as another pane
 Plug 'rhysd/committia.vim'
@@ -252,6 +264,10 @@ let g:ruby_indent_assignment_style = 'variable'
 let g:ruby_indent_block_style = 'do'
 " Highlight whitespace errors
 let g:ruby_space_errors = 1
+
+" Better mark management. Add with m+, delete with m-, toggle with m,
+" Display with m? or m~
+Plug 'jeetsukumaran/vim-markology'
 
 Plug 'w0rp/ale'
 
@@ -472,9 +488,6 @@ nnoremap <leader>p :Files<cr>
 
 augroup vim_ruby_group
   autocmd!
-
-  " Start on last line edited
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
   " For shell files, always add a comment leader following <Enter>
   au FileType sh setlocal fo+=r
