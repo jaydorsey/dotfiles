@@ -1,7 +1,6 @@
 gem-ctags
 bundler
 bundler-audit
-coderay
 fasterer
 gem-browse
 lefthook
@@ -11,7 +10,6 @@ pg
 pry
 pry-awesome_print
 pry-byebug
-pry-coolline
 pry-doc
 pry-highlight
 rake
