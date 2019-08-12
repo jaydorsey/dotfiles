@@ -19,7 +19,7 @@
   lgg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\n--abbrev-commit --date=relative
   ls = ls-files
   s = status
-  standup = log --since yesterday --oneline --author jaydorsey
+  standup = log --since yesterday --oneline --no-merges --author jaydorsey
   state = !git fetch origin && git remote show origin && :
   stats = shortlog -sn --since='30 days'
   sync = !git fetch origin && git remote prune origin && :
