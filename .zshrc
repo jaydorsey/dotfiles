@@ -87,7 +87,7 @@ export ARCHFLAGS="-arch x86_64"
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
 # Also defines the default command run when :Files is called in vim
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,frontend,frontend/node_modules,node_modules,Library,.gnupg,swagger,storage,.config/yarn,tmp,.yardopts,doc}/*" -g "!package-lock.json" -g "!*.map" -g "!*.log" -g "!tags" 2> /dev/null'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,frontend,frontend/node_modules,node_modules,Library,.gnupg,swagger,storage,.config/yarn,tmp,.yardopts,doc}/*" -g "!package-lock.json" -g "!*.map" -g "!*.log" -g "!tags" -g "!yarn.lock" 2> /dev/null'
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
@@ -126,8 +126,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # Ignore deprecation warnings
 export RUBY_OPT="-W0"
 # Run `brew --prefix readline` to find this path
-# This is unnecessary right now, ruby-build picks up readline & ssl from homebrew
-# export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline"
+export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
