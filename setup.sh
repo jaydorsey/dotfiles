@@ -119,19 +119,23 @@ echo "Symlink or create your .personalrc file"
 echo "Symlink or create your .localrc file"
 
 
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Twilight.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/SpaceGray%20Eighties%20Dull.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Relaxed.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/UltraViolent.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Pnevma.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/PencilDark.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Tomorrow%20Night%20Burns.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Obsidian.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/NightLion%20v2.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/IR_Black.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ciapre.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Espresso.itermcolors
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Afterglow.itermcolors
+# iTerm themes
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Twilight.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/SpaceGray%20Eighties%20Dull.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Relaxed.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/UltraViolent.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Pnevma.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/PencilDark.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Tomorrow%20Night%20Burns.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Obsidian.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/NightLion%20v2.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/IR_Black.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ciapre.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Espresso.itermcolors
+# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Afterglow.itermcolors
+
+# Generate tags for bundled gems
+# ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')
 
 # Install the pg-extras plugin
 # heroku plugins:install git://github.com/heroku/heroku-pg-extras.git
