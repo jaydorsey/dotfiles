@@ -10,6 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 export TERM="screen-256color"
+export POWERLEVEL9K_MODE='awesome-fontconfig'
 export ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -93,7 +94,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
 
 # Ignore certain commands from zsh history via regex
-export HISTORY_IGNORE='cd|ls|clear|tmux|vi|ls|exit|git a|git s|cd ..|git co master'
+export HISTORY_IGNORE='cd|ls|clear|tmux|vi|ls|exit|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim'
 
 export KERL_CONFIGURE_OPTIONS="--disable-debug --disable-silent-rules --without-javac --enable-shared-zlib --enable-dynamic-ssl-lib --enable-hipe --enable-sctp --enable-smp-support --enable-threads --enable-kernel-poll --enable-wx --enable-darwin-64bit --with-ssl=/usr/local/opt/openssl"
 export PAGER="less"
@@ -122,6 +123,7 @@ export PATH="$PATH:$CARGO_HOME/bin"
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator)
 export RANGER_LOAD_DEFAULT_RC=FALSE
 # Ignore deprecation warnings
 export RUBY_OPT="-W0"
