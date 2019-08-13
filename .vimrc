@@ -1,5 +1,10 @@
 set nocompatible  " We don't want vi compatibility.
-set termguicolors " Enable true color support
+" Enable true color support
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 let mapleader=" " " Use the space key as a leader
 " Ignore space key in normal mode
@@ -17,7 +22,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
@@ -50,6 +55,19 @@ let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify']
 " Color colornames & codes with :ColorToggle
 Plug 'Chrisbra/Colorizer'
 
+"{{{ Searching
+" Better motions
+Plug 'easymotion/vim-easymotion'
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f2)
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+" JK motions: Line motions
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+
 " Incremental search
 Plug 'haya14busa/is.vim'
 
@@ -63,13 +81,18 @@ map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
 map # <Plug>(asterisk-z#)<Plug>(is-nohl-1)
 map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 
+" Disabled for now, this breaks highlighting for unknown reasons
 " Display search position (2/10)
-Plug 'henrik/vim-indexed-search'
-let g:indexed_search_dont_move = 1
+" Plug 'henrik/vim-indexed-search'
+" let g:indexed_search_dont_move = 1
+
+" Select text in visual mode & use *# to search for it elsewhere
+Plug 'nelstrom/vim-visual-star-search'
 
 " Clear search highlighting by pressing //
 nnoremap // :noh<cr>
 nnoremap <esc><esc> :noh<cr>
+"}}}
 
 " Both of these must be installed. Yank and delete blocks of ruby code
 " using ar (all block) and ir (inner block). e.g. var/vir/dar/dir
@@ -124,6 +147,7 @@ Plug 'junegunn/limelight.vim'
 nmap <leader>ll <Plug>(Limelight)
 xmap <leader>ll <Plug>(Limelight)
 
+" Faster vim, better folding options
 Plug 'Konfekt/FastFold'
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
@@ -135,6 +159,8 @@ let g:vimsyn_folding = 'af'
 " let g:javaScript_fold = 1
 let g:sh_fold_enabled= 7
 let g:ruby_fold = 1
+" Automated view session creation & restoration
+Plug 'zhimsel/vim-stay'
 
 " Show key mappings
 " Plug 'liuchengxu/vim-which-key'
@@ -269,18 +295,22 @@ let g:ruby_space_errors = 1
 " Display with m? or m~
 Plug 'jeetsukumaran/vim-markology'
 
+" Vim understands line & column syntax when opening & editing files
+Plug 'wsdjeg/vim-fetch'
+
 Plug 'w0rp/ale'
 
 " colorschemes
 Plug 'jaydorsey/darkness.vim'
-Plug 'srcery-colors/srcery-vim'
+Plug 'rakr/vim-one'
+Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 Plug 'Shougo/echodoc.vim'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" High vim indent guides
+Plug 'nathanaelkane/vim-indent-guides'
 
-" Select text in visual mode & use *# to search for it elsewhere
-Plug 'nelstrom/vim-visual-star-search'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'Lenovsky/nuake'
 
@@ -299,7 +329,9 @@ set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
 set expandtab                                      " Expand tabs to spaces
 set foldcolumn=2
+set foldlevel=2
 set foldnestmax=12                                 " Deepest fold
+set foldenable                                     " Fold or don't fold files by default
 set formatoptions+=j                               " Join comments better
 set grepprg=rg\ --vimgrep\ --no-heading            " Use ripgrep instead of ag for :Ag commands
 set grepformat=%f:%l:%c:%m,%f:%l:%m
@@ -318,7 +350,6 @@ set noerrorbells                                   " No sounds
 set nocindent                                      " Don't indent text with parentheses https://stackoverflow.com/a/2129313/2892779
 set nocursorcolumn                                 " Enable cursor column highlighting
 set nocursorline                                   " Disable line highlighting, for performance
-set foldenable                                     " Fold or don't fold files by default
 set norelativenumber                               " Disable relative line numbers for performance
 set noruler                                        " No ruler needed, because lightline
 set noshowmode                                     " Disable current mode, handled by lightline
@@ -336,7 +367,7 @@ set regexpengine=1                                 " Use old regular expression 
 set rtp+=/usr/local/opt/fzf                        " fzf.vim
 set scrolloff=10                                   " Prevent scrolling past bottom line
 set sessionoptions-=options                        " Disable options because sessions capture runtime path
-set sessionoptions+=folds                          " Include folds between sessions
+set sessionoptions-=folds                          " FastFold recommended setting to make sure buffer not overwritten in manual
 set showtabline=2                                  " Always show a tab line in vim https://stackoverflow.com/a/47129698/2892779
 set shiftround                                     " Round indent of shifts
 set shiftwidth=2                                   " Round indent to multiples of 2
@@ -352,10 +383,12 @@ set tabstop=2
 set title                                          " Set the title of the iTerm tab
 set undofile                                       " Persistent undo
 set undodir=~/.vim/undo                            " Persistent undo directory
-set viewoptions=cursor,curdir,folds,unix,slash
+set viewoptions=cursor,curdir,folds,unix,slash     " Recommended vim-stay option
+set viewoptions-=options                           " Recommended vim-stay option
 set viewdir=~/.vim/views
 set viminfo^=!                                     " Add recently accessed projects menu (project plugin)
 set visualbell                                     " No visual feedback
+set writebackup                                    " write backup file before overwriting
 
 " tt toggles between current and last tab
 let g:lasttab = 1
@@ -366,7 +399,7 @@ nnoremap <leader>tn :tabnew<cr> " Open a new tab
 " Opens a new tab with the current buffer's path
 nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-colorscheme srcery
+colorscheme onehalfdark
 
 filetype plugin on
 filetype indent on
@@ -378,10 +411,6 @@ augroup vimrc_autocmd
   "
   " https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
   au InsertLeave * set nopaste
-
-  " http://vim.wikia.com/wiki/Make_views_automatic
-  autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
-  autocmd BufWinEnter ?* silent! loadview
 
   " https://github.com/neovim/neovim/issues/1936#issuecomment-309311829
   au FocusGained * :checktime
@@ -459,7 +488,7 @@ let g:rg_command = '
   \ -g "!tags"
   \ -g "!tags.temp"
   \ -g "!.yardopts"
-  \ -g "!.yarn.lock"
+  \ -g "!yarn.lock"
   \ -g "!spec/vcr/*"
   \ '
   " \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
@@ -506,7 +535,7 @@ augroup vim_ruby_group
 
   " Disable highlighting for RSpec by default for performance
   " autocmd BufRead,BufNewFile *_spec.rb setlocal syntax=off
-  autocmd BufRead,BufNewFile *_spec.rb setlocal foldmethod=indent
+  " autocmd BufRead,BufNewFile *_spec.rb setlocal foldmethod=indent
 augroup END
 
 " ALE
@@ -526,7 +555,7 @@ let g:ale_ruby_rubocop_options = ''
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
 let g:lightline = {
 \ 'active': {
-\ 'colorscheme': 'srcery',
+\ 'colorscheme': 'onehalfdark',
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
 \             ['percent'],
@@ -653,7 +682,7 @@ vnoremap > >gv
 nnoremap <c-p> p`[v`]
 
 " Highlight the column at 120
-highlight ColorColumn ctermbg=0 guibg=#252a2e
+highlight ColorColumn ctermbg=DarkRed guibg=#ffa3fe
 let &colorcolumn="120"
 
 " To save a macro and define it here, record the macro as normal, then
@@ -671,6 +700,10 @@ let @l = ":DelimitMateOff^ilet(:ea)llxxi{ $a }:DelimitMateOn\<cr>\\"
 " Print out the color syntax group of the highlighted line
 " https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
 command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
+
+" Change colors of current incremental search result and all search results
+hi! link Search PMenu
+hi! link IncSearch PMenuSel
 
 " Stuff
 "
