@@ -61,7 +61,8 @@ Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f2)
+nmap <leader>s <Plug>(easymotion-overwin-f2)
+nmap <leader>w <Plug>(easymotion-w)
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
@@ -76,18 +77,17 @@ Plug 'haya14busa/vim-asterisk'
 " Keep cursor position across matches
 let g:asterisk#keeppos = 1
 
-map * <Plug>(asterisk-z*)<Plug>(is-nohl-1)
-map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
-map # <Plug>(asterisk-z#)<Plug>(is-nohl-1)
-map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+map * <Plug>(asterisk-z*)
+"<Plug>(is-nohl-1)
+" map g* <Plug>(asterisk-gz*)
+"<Plug>(is-nohl-1)
+map # <Plug>(asterisk-z#)
+"<Plug>(is-nohl-1)
+" map g# <Plug>(asterisk-gz#)
+"<Plug>(is-nohl-1)
 
-" Disabled for now, this breaks highlighting for unknown reasons
-" Display search position (2/10)
-" Plug 'henrik/vim-indexed-search'
-" let g:indexed_search_dont_move = 1
-
-" Select text in visual mode & use *# to search for it elsewhere
-Plug 'nelstrom/vim-visual-star-search'
+" Display current match index & number of times a match occurs with a search
+Plug 'google/vim-searchindex'
 
 " Clear search highlighting by pressing //
 nnoremap // :noh<cr>
@@ -311,6 +311,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-emoji', 'coc-solargraph', 'coc-json', 'coc-yaml', 'coc-ultisnips']
 
 Plug 'Lenovsky/nuake'
 
