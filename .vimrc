@@ -173,6 +173,8 @@ let g:gutentags_gtags_options_file="~/.ctags"
 let g:gutentags_trace=0
 let g:gutentags_enabled=1
 
+Plug 'majutsushi/tagbar'
+
 " Format SQL with :SQLFmt. Only works on a whole file, not visual selection
 Plug 'mattn/vim-sqlfmt'
 
@@ -189,9 +191,9 @@ let g:startify_session_persistence = 1
 let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
 let g:startify_change_to_vcs_root = 1 " Always change to vcs root
 
-" Cursorline highlighting
-Plug 'miyakogi/conoline.vim'
-let g:conoline_auto_enable = 1
+" Cursorline highlighting. Disabled, because iterm has this natively
+" Plug 'miyakogi/conoline.vim'
+" let g:conoline_auto_enable = 1
 
 " Add automatic delimiters ([<{, quotes, etc.
 Plug 'Raimondi/delimitMate'
@@ -299,6 +301,9 @@ Plug 'jeetsukumaran/vim-markology'
 Plug 'wsdjeg/vim-fetch'
 
 Plug 'w0rp/ale'
+
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " colorschemes
 Plug 'jaydorsey/darkness.vim'
@@ -685,6 +690,10 @@ nnoremap <c-p> p`[v`]
 " Highlight the column at 120
 highlight ColorColumn ctermbg=DarkRed guibg=#ffa3fe
 let &colorcolumn="120"
+
+highlight rubyComment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
+highlight vimLineComment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
+highlight Comment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
 
 " To save a macro and define it here, record the macro as normal, then
 " paste it in normal mode using "qp (assuming you used the q register)
