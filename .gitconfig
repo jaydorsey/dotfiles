@@ -23,6 +23,7 @@
   state = !git fetch origin && git remote show origin && :
   stats = shortlog -sn --since='30 days'
   sync = !git fetch origin && git remote prune origin && :
+  sw = switch
   visual = !gitk
 [branch]
   autosetuprebase = always
