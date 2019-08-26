@@ -1,0 +1,19 @@
+---
+pre-commit:
+  parallel: true
+  commands:
+    bundle:
+      run: bundle check || bundle install
+    brakeman:
+      run: bundle exec brakeman --no-pager --no-summary --quiet
+    gem-audit:
+      run: bundle audit check --update
+    fasterer:
+      run: fasterer
+      skip: true
+    rubocop:
+      files: git diff --name-only --staged
+      glob: "*.{rb}"
+      run: bundle exec rubocop -DEPS {files}
+    yarn:
+      run: yarn check || yarn install
