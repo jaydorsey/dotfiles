@@ -61,7 +61,7 @@ Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap <leader>s <Plug>(easymotion-overwin-f2)
+nmap <leader>s <Plug>(easymotion-overwin-f)
 nmap <leader>w <Plug>(easymotion-w)
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
@@ -75,7 +75,7 @@ Plug 'haya14busa/is.vim'
 " Improved * motions
 Plug 'haya14busa/vim-asterisk'
 " Keep cursor position across matches
-let g:asterisk#keeppos = 1
+" let g:asterisk#keeppos = 1
 
 map * <Plug>(asterisk-z*)
 "<Plug>(is-nohl-1)
@@ -159,6 +159,7 @@ let g:vimsyn_folding = 'af'
 " let g:javaScript_fold = 1
 let g:sh_fold_enabled= 7
 let g:ruby_fold = 1
+
 " Automated view session creation & restoration
 Plug 'zhimsel/vim-stay'
 
@@ -178,9 +179,13 @@ Plug 'majutsushi/tagbar'
 " Format SQL with :SQLFmt. Only works on a whole file, not visual selection
 Plug 'mattn/vim-sqlfmt'
 
-Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected lines
+Plug 'ap/vim-buftabline'
+nnoremap <c-n> :bnext<cr>
+nnoremap <c-h> :bprev<cr>
+" Disabled this for now so I can look at vim-buftabline
+" Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected lines
 " On ergodox, this allows the left ctrl key to work as the move key
-let g:move_key_modifier = 'C'
+" let g:move_key_modifier = 'C'
 
 Plug 'mechatroner/rainbow_csv', { 'for': 'csv' }
 
@@ -278,7 +283,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -287,7 +292,7 @@ Plug 'vim-ruby/vim-ruby'
 " Using vim-ruby, indent per work convention
 let g:ruby_indent_access_modifier_style="normal"
 " Indent for multi-line statements against left
-let g:ruby_indent_assignment_style = 'variable'
+let g:ruby_indent_assignment_style = 'hanging'
 " Indent nested blocks
 let g:ruby_indent_block_style = 'do'
 " Highlight whitespace errors
@@ -316,9 +321,27 @@ Plug 'Shougo/echodoc.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-emoji', 'coc-solargraph', 'coc-json', 'coc-yaml', 'coc-ultisnips']
+let g:coc_global_extensions = ['coc-emoji', 'coc-solargraph', 'coc-json', 'coc-yaml', 'coc-ultisnips', 'coc-tabnine']
 
 Plug 'Lenovsky/nuake'
+
+" Plantuml syntax
+Plug 'aklt/plantuml-syntax'
+if exists("g:loaded_plantuml_plugin")
+  finish
+endif
+let g:loaded_plantuml_plugin = 1
+if !exists("g:plantuml_executable_script")
+  let g:plantuml_executable_script='/usr/local/bin/plantuml'
+endif
+let s:makecommand=g:plantuml_executable_script." %"
+augroup plantuml
+  autocmd!
+  autocmd Filetype plantuml let &l:makeprg=s:makecommand
+augroup END
+nnoremap <F5> :w<CR> :silent make<CR>
+inoremap <F5> <Esc>:w<CR>:silent make<CR>
+vnoremap <F5> :<C-U>:w<CR>:silent make<CR>
 
 call plug#end()
 
@@ -557,11 +580,11 @@ highlight ALEWarning ctermbg=LightGreen
 let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
 let g:ale_ruby_rubocop_options = ''
 
-" Lightline
+" lightline
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
 let g:lightline = {
 \ 'active': {
-\ 'colorscheme': 'onehalfdark',
+\   'colorscheme': 'onehalfdark',
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
 \             ['percent'],
