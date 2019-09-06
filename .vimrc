@@ -29,8 +29,9 @@ Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'alvan/vim-closetag'
-let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
+" Disabled for now; when's the last time I created one of these?
+" Plug 'alvan/vim-closetag'
+" let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
 
 " Formatting & validating json via :Jacinto
 Plug 'alfredodeza/jacinto.vim'
@@ -113,18 +114,6 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'francoiscabrol/ranger.vim'
 
 Plug 'godlygeek/tabular' " Align text
-nmap <Leader>t= :Tabularize /=<cr>
-vmap <Leader>t= :Tabularize /=<cr>
-nmap <Leader>t" :Tabularize /"<cr>
-vmap <Leader>t" :Tabularize /"<cr>
-nmap <Leader>t: :Tabularize /:\zs<cr>
-vmap <Leader>t: :Tabularize /:\zs<cr>
-nmap <Leader>t> :Tabularize /=><cr>
-vmap <Leader>t> :Tabularize /=><cr>
-nmap <Leader>t, :Tabularize /,\zs<cr>
-vmap <Leader>t, :Tabularize /,\zs<cr>
-nmap <Leader>t- :Tabularize / -><cr>
-vmap <Leader>t- :Tabularize / -><cr>
 
 " Better, automatic swap file management
 Plug 'gioele/vim-autoswap'
@@ -133,6 +122,15 @@ Plug 'gioele/vim-autoswap'
 Plug 'guns/xterm-color-table.vim'
 
 Plug 'itchyny/lightline.vim'
+" Buffer tabs
+Plug 'mengelbrecht/lightline-bufferline'
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#show_number = 1
+let g:lightline#bufferline#unicode_symbols = 1
+
+" Use c-n/c-h to switch buffers
+nnoremap <c-n> :bnext<cr>
+nnoremap <c-h> :bprev<cr>
 
 " Send to tmux
 Plug 'jgdavey/tslime.vim'
@@ -179,9 +177,6 @@ Plug 'majutsushi/tagbar'
 " Format SQL with :SQLFmt. Only works on a whole file, not visual selection
 Plug 'mattn/vim-sqlfmt'
 
-Plug 'ap/vim-buftabline'
-nnoremap <c-n> :bnext<cr>
-nnoremap <c-h> :bprev<cr>
 " Disabled this for now so I can look at vim-buftabline
 " Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected lines
 " On ergodox, this allows the left ctrl key to work as the move key
@@ -210,9 +205,6 @@ nmap k <Plug>(accelerated_jk_gk)
 " default
 " let g:accelerated_jk_acceleration_table = [7,12,17,21,24,26,28,30]
 let g:accelerated_jk_acceleration_table = [12,17,24,28,34,38,44,48]
-
-" Smooth scrolling with C-d/C-u/C-f/C-b
-Plug 'yuttie/comfortable-motion.vim'
 
 " See git diff in commit window as another pane
 Plug 'rhysd/committia.vim'
@@ -423,10 +415,6 @@ set writebackup                                    " write backup file before ov
 let g:lasttab = 1
 nnoremap <leader>tt :exe "tabn ".g:lasttab<cr>
 au TabLeave * let g:lasttab = tabpagenr()
-nnoremap <leader>n :tabnext<cr>
-nnoremap <leader>tn :tabnew<cr> " Open a new tab
-" Opens a new tab with the current buffer's path
-nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 colorscheme onehalfdark
 
@@ -596,6 +584,7 @@ let g:lightline = {
 \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
 \ },
 \ 'component_expand': {
+\   'buffers': 'lightline#bufferline#buffers',
 \   'linter_warnings': 'LightlineLinterWarnings',
 \   'linter_errors': 'LightlineLinterErrors',
 \   'linter_ok': 'LightlineLinterOK'
@@ -606,6 +595,7 @@ let g:lightline = {
 \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
 \ },
 \ 'component_type': {
+\   'buffers': 'tabsel',
 \   'linter_warnings': 'warning',
 \   'linter_errors': 'error'
 \ },
@@ -615,6 +605,12 @@ let g:lightline = {
 \   'lightline_character': 'LightLineCharacter',
 \   'filename': 'LightlineFilename'
 \ },
+\ 'enable': {
+\   'statusline': 1, 'tabline': 1
+\ },
+\ 'tabline': {
+\   'left': [['buffers']], 'right': [['close']]
+\ }
 \ }
 
 function! LightlineLinterWarnings() abort
