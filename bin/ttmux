@@ -5,10 +5,8 @@ tmux start-server
 tmux new-session -d -s $session -n vim
 
 tmux new-window -t $session:1 -n rspec
-
 tmux new-window -t $session:2 -n backend
-
-tmux new-window -t $session:3 -n frontend
+tmux new-window -t $session:3 -n frontend -c ../frontend
 
 tmux select-window -t $session:0
 
