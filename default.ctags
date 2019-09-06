@@ -1,8 +1,7 @@
 --recurse=yes
 --tag-relative=yes
---exclude=.git
---exclude=.config
---languages=Ruby
+--exclude=.git/*,node_modules/*,log/*
+--languages=Ruby,RSpec
 --regex-ruby=/^[ \t]*describe ['"](.*)['"] do/\1/d,rspec describe/
 --regex-ruby=/^[ \t]*context ['"](.*)['"] do/\1/C,rspec context/
 --regex-ruby=/^[ \t]*it ['"](.*)['"] do/\1/i,rspec tests/

@@ -93,6 +93,7 @@ mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/views
+mkdir -p ~/.ctags.d
 
 #######################################################
 #
@@ -100,7 +101,7 @@ mkdir -p ~/.vim/views
 #
 #######################################################
 ln -sf "$(pwd)/.agignore" ~/.agignore
-ln -sf "$(pwd)/.ctags" ~/.ctags
+ln -sf "$(pwd)/default.ctags" ~/.ctags.d/default.ctags
 ln -sf "$(pwd)/.default-gems" ~/.default-gems
 ln -sf "$(pwd)/.gemrc" ~/.gemrc
 ln -sf "$(pwd)/.gitconfig" ~/.gitconfig
