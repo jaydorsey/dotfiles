@@ -312,8 +312,7 @@ Plug 'Shougo/echodoc.vim'
 " High vim indent guides
 Plug 'nathanaelkane/vim-indent-guides'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-emoji', 'coc-solargraph', 'coc-json', 'coc-yaml', 'coc-ultisnips', 'coc-tabnine']
+Plug 'zxqfl/tabnine-vim'
 
 Plug 'Lenovsky/nuake'
 
@@ -576,7 +575,7 @@ let g:lightline = {
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
 \             ['percent'],
-\             ['cocstatus', 'currentfunction', 'lightline_character', 'fileformat', 'fileencoding', 'filetype', 'linter_warnings', 'linter_errors', 'linter_ok']]
+\             ['currentfunction', 'lightline_character', 'fileformat', 'fileencoding', 'filetype', 'linter_warnings', 'linter_errors', 'linter_ok']]
 \ },
 \ 'component': {
 \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
@@ -600,8 +599,6 @@ let g:lightline = {
 \   'linter_errors': 'error'
 \ },
 \ 'component_function': {
-\   'cocstatus': 'coc#status',
-\   'currentfunction': 'CocCurrentFunction',
 \   'lightline_character': 'LightLineCharacter',
 \   'filename': 'LightlineFilename'
 \ },
