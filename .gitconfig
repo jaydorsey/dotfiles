@@ -62,11 +62,12 @@
   whitespace = red reverse
 [diff]
   compactionHeuristic = true
-  tool = nvimdiff
+  tool = githubdiff
 [difftool]
-  prompt = true
-[difftool "nvimdiff"]
-  # cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-  cmd = nvim -R -d $LOCAL $REMOTE -c '$wincmd w'
+  prompt = false
+[difftool "githubdiff"]
+  cmd = github
 [diff-so-fancy]
   changeHunkIndicators = false
+[rerere]
+  enabled = true
