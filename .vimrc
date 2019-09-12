@@ -204,6 +204,7 @@ let g:startify_change_to_vcs_root = 1 " Always change to vcs root
 
 " Add automatic delimiters ([<{, quotes, etc.
 Plug 'Raimondi/delimitMate'
+let delimitMate_expand_space = 1
 
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
