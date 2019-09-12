@@ -722,6 +722,7 @@ highlight Comment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
 highlight rubyComment cterm=italic term=italic gui=italic
 highlight vimLineComment cterm=italic term=italic gui=italic
 highlight Comment cterm=italic term=italic gui=italic
+highlight rubyBoolean cterm=italic term=italic gui=italic guifg=Yellow
 
 " To save a macro and define it here, record the macro as normal, then
 " paste it in normal mode using "qp (assuming you used the q register)
