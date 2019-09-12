@@ -3,6 +3,8 @@ set nocompatible  " We don't want vi compatibility.
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  let &t_ZH="\e[3m"
+  let &t_ZR="\e[23m"
   set termguicolors
 endif
 
@@ -136,6 +138,11 @@ nnoremap <c-h> :bprev<cr>
 Plug 'jgdavey/tslime.vim'
 
 Plug 'junegunn/fzf.vim'
+" Override and open ctrl-t in a new buffer to help me using buffers
+let g:fzf_action = {
+  \ 'ctrl-t': 'edit',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 " Browse git history with :GV
 Plug 'junegunn/gv.vim'
@@ -309,7 +316,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 Plug 'Shougo/echodoc.vim'
 
-" High vim indent guides
+" Highlight vim indent guides
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'zxqfl/tabnine-vim'
@@ -350,8 +357,9 @@ set eol                                            " include a new line at EOF
 set expandtab                                      " Expand tabs to spaces
 set foldcolumn=2
 set foldlevel=2
+set foldlevelstart=99                              " Edit with all folds open when opening a file
 set foldnestmax=12                                 " Deepest fold
-set foldenable                                     " Fold or don't fold files by default
+set nofoldenable                                   " Fold or don't fold files by default
 set formatoptions+=j                               " Join comments better
 set grepprg=rg\ --vimgrep\ --no-heading            " Use ripgrep instead of ag for :Ag commands
 set grepformat=%f:%l:%c:%m,%f:%l:%m
@@ -710,6 +718,9 @@ let &colorcolumn="120"
 highlight rubyComment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
 highlight vimLineComment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
 highlight Comment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
+highlight rubyComment cterm=italic term=italic gui=italic
+highlight vimLineComment cterm=italic term=italic gui=italic
+highlight Comment cterm=italic term=italic gui=italic
 
 " To save a macro and define it here, record the macro as normal, then
 " paste it in normal mode using "qp (assuming you used the q register)
