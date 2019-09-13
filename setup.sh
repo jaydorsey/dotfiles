@@ -94,6 +94,8 @@ mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/views
 mkdir -p ~/.ctags.d
+mkdir -p ~/.terminfo
+tic -o ~/.terminfo xterm-256color.terminfo
 
 #######################################################
 #
