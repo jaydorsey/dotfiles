@@ -129,8 +129,15 @@ export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 # Always show full history
 export PROMPT_COMMAND='history -a'
 
+# Allow vi-mode in zsh
+#
+# https://dougblack.io/words/zsh-vi-mode.html
+bindkey -v
+# Reduce the delay after pressing <ESC> key
+export KEYTIMEOUT=0.4
+
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator)
+export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status root_indicator)
 export RANGER_LOAD_DEFAULT_RC=FALSE
 # Ignore deprecation warnings
 export RUBY_OPT="-W0"
