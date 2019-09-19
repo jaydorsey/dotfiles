@@ -93,7 +93,6 @@ mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/views
-mkdir -p ~/.ctags.d
 mkdir -p ~/.terminfo
 tic -o ~/.terminfo xterm-256color.terminfo
 
@@ -103,7 +102,6 @@ tic -o ~/.terminfo xterm-256color.terminfo
 #
 #######################################################
 ln -sf "$(pwd)/.agignore" ~/.agignore
-ln -sf "$(pwd)/default.ctags" ~/.ctags.d/default.ctags
 ln -sf "$(pwd)/.default-gems" ~/.default-gems
 ln -sf "$(pwd)/.gemrc" ~/.gemrc
 ln -sf "$(pwd)/.gitconfig" ~/.gitconfig
@@ -117,25 +115,10 @@ ln -sf "$(pwd)/.zshrc" ~/.zshrc
 ln -sf "$(pwd)/TabNine.toml" ~/Library/Preferences/TabNine/
 ln -sf "$(pwd)/bin/" ~/bin
 ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
+ln -sf "$(pwd)/.ctags.d" ~/.ctags.d
 
 echo "Symlink or create your .personalrc file"
 echo "Symlink or create your .localrc file"
-
-
-# iTerm themes
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Twilight.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/SpaceGray%20Eighties%20Dull.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Relaxed.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/UltraViolent.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Pnevma.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/PencilDark.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Tomorrow%20Night%20Burns.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Obsidian.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/NightLion%20v2.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/IR_Black.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ciapre.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Espresso.itermcolors
-# https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Afterglow.itermcolors
 
 # Generate tags for bundled gems
 # ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')
