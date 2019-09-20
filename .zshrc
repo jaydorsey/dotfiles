@@ -60,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf bundler gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
+plugins=(git asdf bundler gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua)
 
 # Automatically load additional completion scripts. This is really slow so I've disabled for now
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
@@ -92,16 +92,37 @@ export ARCHFLAGS="-arch x86_64"
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
 # Also defines the default command run when :Files is called in vim
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,frontend,frontend/node_modules,node_modules,Library,.gnupg,swagger,storage,.config/yarn,tmp,.yardopts,doc}/*" -g "!package-lock.json" -g "!*.map" -g "!*.log" -g "!tags" -g "!yarn.lock" 2> /dev/null'
+export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow \
+  -g \"!{.git,frontend,frontend/node_modules,node_modules,Library,.gnupg,swagger,storage,.config/yarn,tmp,.yardopts,doc}/*\" \
+  -g \"!package-lock.json\" \
+  -g \"!*.map\" \
+  -g \"!*.log\" \
+  -g \"!tags\" \
+  -g \"!yarn.lock\" \
+  2> /dev/null"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
 
 # Ignore certain commands from zsh history via regex
-export HISTORY_IGNORE='cd|ls|clear|tmux|ttmux|vi|ls|exit|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd'
+export HISTORY_IGNORE="cd|ls|clear|tmux|ttmux|vi|ls|exit"
+export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd"
 
-export KERL_CONFIGURE_OPTIONS="--disable-debug --disable-silent-rules --without-javac --enable-shared-zlib --enable-dynamic-ssl-lib --enable-hipe --enable-sctp --enable-smp-support --enable-threads --enable-kernel-poll --enable-wx --enable-darwin-64bit --with-ssl=/usr/local/opt/openssl"
+export KERL_CONFIGURE_OPTIONS="--disable-debug \
+  --disable-silent-rules \
+  --without-javac \
+  --enable-shared-zlib \
+  --enable-dynamic-ssl-lib \
+  --enable-hipe \
+  --enable-sctp \
+  --enable-smp-support \
+  --enable-threads \
+  --enable-kernel-poll \
+  --enable-wx \
+  --enable-darwin-64bit \
+  --with-ssl=/usr/local/opt/openssl"
 export PAGER="less"
+
 # My custom scripts go in ~/bin, put that in the path first
 export PATH=~/bin:$PATH
 # Most of the homebrew executables end up here
@@ -135,6 +156,21 @@ export PROMPT_COMMAND='history -a'
 bindkey -v
 # Reduce the delay after pressing <ESC> key
 export KEYTIMEOUT=0.4
+
+# Make home/end work right inside of tmux. These still don't work quite right
+# outside of tmux but I'll deal with that issue separately
+#
+# https://zserge.com/blog/terminal.html
+bindkey '\e[3~'   delete-char
+bindkey '^A'      beginning-of-line
+bindkey '^E'      end-of-line
+# bindkey '^R'      history-incremental-pattern-search-backward
+
+# https://github.com/junegunn/fzf/issues/1304#issuecomment-394171410
+bindkey "^I" fzf-completion
+bindkey "^R" fzf-history-widget
+bindkey "^T" fzf-file-widget
+bindkey "^[c" fzf-cd-widget
 
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status root_indicator)
@@ -178,11 +214,15 @@ setopt hist_reduce_blanks
 # When trimming history, lose oldest duplicates first
 setopt hist_expire_dups_first
 
+# Not sure how this is different from the others
+setopt hist_ignore_all_dups
+
 # Older commands that duplicate newer ones are omitted
 setopt hist_save_no_dups
 
 # Allow multiple terminal sessions to all append to one zsh command history
 setopt append_history
+
 
 # Don't find duplicates in history
 setopt hist_find_no_dups
