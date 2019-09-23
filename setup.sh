@@ -122,6 +122,9 @@ echo "Symlink or create your .localrc file"
 
 # Generate tags for bundled gems
 # ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')
+# Ctags debugging
+# ctags --verbose 2> out.txt
 
 # Install the pg-extras plugin
 # heroku plugins:install git://github.com/heroku/heroku-pg-extras.git
+
