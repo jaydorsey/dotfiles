@@ -69,5 +69,8 @@
   cmd = github
 [diff-so-fancy]
   changeHunkIndicators = false
+[diff "hex"]
+  textconv = hexdump -v -C
+  binary = true
 [rerere]
   enabled = true
