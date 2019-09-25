@@ -40,3 +40,4 @@ deoplete.log
 .yardoc
 /doc/**/*
 *.dump
+tmp/*
