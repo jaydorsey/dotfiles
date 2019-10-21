@@ -360,6 +360,21 @@ set foldcolumn=2
 set foldlevel=2
 set foldlevelstart=99                              " Edit with all folds open when opening a file
 set foldnestmax=12                                 " Deepest fold
+function! MyFoldText()
+    let nblines = v:foldend - v:foldstart + 1
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let line = getline(v:foldstart)
+    let comment = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
+    let expansionString = repeat(".", w - strwidth(nblines.comment.'"'))
+    let txt = '"' . comment . expansionString . nblines
+    return txt
+    " let nl = v:foldend - v:foldstart + 1
+    " let comment = substitute(getline(v:foldstart),"^ *","",1)
+    " let linetext = substitute(getline(v:foldstart+1),"^ *","",1)
+    " let txt = '+ ' . linetext . ' : "' . comment . '" : length ' . nl
+    " return txt
+endfunction
+set foldtext=MyFoldText()
 set nofoldenable                                   " Fold or don't fold files by default
 set formatoptions+=j                               " Join comments better
 set grepprg=rg\ --vimgrep\ --no-heading            " Use ripgrep instead of ag for :Ag commands
