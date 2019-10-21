@@ -9,6 +9,7 @@
 [alias]
   a = add -A
   b = branch
+  cane = commit --amend --no-edit
   co = checkout
   d = diff -w --word-diff
   fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && git rebase -i --autosquash $REV^' -
