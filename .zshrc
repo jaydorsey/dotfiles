@@ -105,7 +105,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
 
 # Ignore certain commands from zsh history via regex
-export HISTORY_IGNORE="cd|ls|clear|tmux|ttmux|vi|ls|exit"
+export HISTORY_IGNORE="cd|ls|clear|tmux|ttmux|vi|ls|exit|z *"
 export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd"
 
 export KERL_CONFIGURE_OPTIONS="--disable-debug \
@@ -121,6 +121,8 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --enable-wx \
   --enable-darwin-64bit \
   --with-ssl=/usr/local/opt/openssl"
+
+export NAVI_PATH="$HOME/.navi"
 export PAGER="less"
 
 # My custom scripts go in ~/bin, put that in the path first
