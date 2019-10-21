@@ -144,6 +144,28 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
+let $FZF_DEFAULT_OPTS='--layout=reverse'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = float2nr(&lines * 0.5)
+  let width = float2nr(&columns * 0.6)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 1
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+
 " Browse git history with :GV
 Plug 'junegunn/gv.vim'
 
@@ -758,6 +780,7 @@ command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
 " Change colors of current incremental search result and all search results
 hi! link Search PMenu
 hi! link IncSearch PMenuSel
+highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#93a1a1 guibg=#002931
 
 " Stuff
 "
