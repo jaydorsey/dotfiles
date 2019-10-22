@@ -60,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf bundler gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua)
+plugins=(git asdf bundler gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua fzf tmux navi)
 
 # Automatically load additional completion scripts. This is really slow so I've disabled for now
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
@@ -135,6 +135,8 @@ export PATH=$PATH:/Users/jay/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$PATH:/usr/local/opt/postgresql/bin
 export PATH=/usr/local/opt/openssl/bin:$PATH
+# https://github.com/denisidoro/navi#using-oh-my-zsh
+export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 # This is necessary for, at least, crystal
 # https://github.com/brianmario/mysql2/issues/795#issuecomment-337006164
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
@@ -235,4 +237,9 @@ setopt hist_find_no_dups
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+# Start navi with CTRL-G from a terminal
+# https://github.com/denisidoro/navi#shell-widget
+source "$(navi widget zsh)"
+
 # zprof

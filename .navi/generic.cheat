@@ -1,0 +1,13 @@
+% git, code
+
+# Change branch
+git checkout <branch>
+
+$ branch: git branch | awk '{print $NF}'
+
+% tmux
+
+# Kill tmux sessions
+tmux kill-session -t <session>
+
+$ session: tmux ls | awk '{print substr($1, 1, length($1)-1)}'

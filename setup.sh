@@ -83,6 +83,11 @@ git clone https://github.com/skywind3000/z.lua.git ${ZSH_CUSTOM:-~/.oh-my-zsh/cu
 
 curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > ~/.zsh/completion/_docker
 curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker_compose
+
+# Install navi
+mkdir -p ${ZSH_CUSTOM:~/.oh-my-zsh/custom}/plugins/navi
+git clone https://github.com/denisidoro/navi ${ZSH_CUSTOM:~/.oh-my-zsh/custom}/plugins/navi
+
 #######################################################
 #
 # Neovim folders
