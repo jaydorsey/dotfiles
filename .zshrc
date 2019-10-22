@@ -185,16 +185,17 @@ export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-j
 # export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
 
+alias cat='bat'
 alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
 # Exercism setup
 alias guardme="guard -c --guardfile ~/exercism/ruby/Guardfile"
+alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
+alias ls='~/bin/colorls --report'
 alias ping='prettyping --nolegend'
 alias top='sudo htop'
+alias untracked='git ls-files -o --exclude-standard'
 alias vi='nvim'
 alias vim='nvim'
-alias ls='~/bin/colorls --report'
-alias cat='bat'
-alias untracked='git ls-files -o --exclude-standard'
 
 if [ -f ~/.personalrc ]; then
   source ~/.personalrc
