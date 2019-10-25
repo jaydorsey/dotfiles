@@ -68,6 +68,8 @@
   prompt = false
 [difftool "githubdiff"]
   cmd = github
+[diff "spaceman-diff"]
+  command = /usr/local/bin/spaceman-diff
 [diff-so-fancy]
   changeHunkIndicators = false
 [diff "hex"]
