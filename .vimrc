@@ -578,6 +578,7 @@ command! -bang -nargs=* Find
 " bind F to ripgrep word under cursor
 nnoremap K :Find <cr>
 nnoremap <leader>p :Files<cr>
+nnoremap <leader>b :Buffers<cr>
 
 augroup vim_ruby_group
   autocmd!
