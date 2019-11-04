@@ -192,7 +192,8 @@ alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/
 # Exercism setup
 alias guardme="guard -c --guardfile ~/exercism/ruby/Guardfile"
 alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
-alias ls='~/bin/colorls --report'
+# alias ls='~/bin/colorls --report'
+alias ls='lsd'
 alias ping='prettyping --nolegend'
 alias top='sudo htop'
 alias untracked='git ls-files -o --exclude-standard'
@@ -207,30 +208,36 @@ if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
 
+# Extended format with dates
+setopt EXTENDED_HISTORY
+
 # Do not share history between terminal tabs/sessions
-unsetopt share_history
+setopt SHARE_HISTORY
 
 # Remove command line from history list when first character on the line is a space
-setopt hist_ignore_space
+setopt HIST_IGNORE_SPACE
 
 # Remove extra blanks from each command line being added to history
 setopt hist_reduce_blanks
 
 # When trimming history, lose oldest duplicates first
-setopt hist_expire_dups_first
+setopt HIST_EXPIRE_DUPS_FIRST
 
 # Not sure how this is different from the others
-setopt hist_ignore_all_dups
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 
 # Older commands that duplicate newer ones are omitted
-setopt hist_save_no_dups
+setopt HIST_SAVE_NO_DUPS
 
 # Allow multiple terminal sessions to all append to one zsh command history
-setopt append_history
+# setopt APPEND_HISTORY
 
+# Write to the history file immediately
+setopt INC_APPEND_HISTORY
 
 # Don't find duplicates in history
-setopt hist_find_no_dups
+setopt HIST_FIND_NO_DUPS
 
 # pip3 install --upgrade --user pip setuptools neovim wheel neovim yamllint pynvim
 # pip install --upgrade --user pip setuptools neovim wheel neovim yamllint pynvim

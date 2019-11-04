@@ -336,6 +336,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'jaydorsey/darkness.vim'
 Plug 'rakr/vim-one'
 Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+" Minimal colorscheme
+Plug 'axvr/photon.vim'
 
 Plug 'Shougo/echodoc.vim'
 
