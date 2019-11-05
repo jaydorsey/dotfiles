@@ -89,6 +89,8 @@ source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
 export ARCHFLAGS="-arch x86_64"
+# macOS Catalina fix: https://stackoverflow.com/a/58323411/2892779
+export CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
 # Also defines the default command run when :Files is called in vim
