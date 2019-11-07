@@ -448,7 +448,8 @@ let g:lasttab = 1
 nnoremap <leader>tt :exe "tabn ".g:lasttab<cr>
 au TabLeave * let g:lasttab = tabpagenr()
 
-colorscheme onehalfdark
+" colorscheme onehalfdark
+colorscheme photon
 
 filetype plugin on
 filetype indent on
@@ -574,7 +575,7 @@ augroup vim_ruby_group
 
   " Disable highlighting and set folding to indent for schema.rb
   autocmd BufRead,BufNewFile db/schema.rb setlocal syntax=off
-  autocmd BufRead,BufNewFile db/schema.rb setlocal foldmethod=indent
+  autocmd BufRead,BufNewFile db/schema.rb setlocal nofoldenable
 
   " Read Envfile as ruby
   au BufRead,BufNewFile Envfile setfiletype ruby
