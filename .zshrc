@@ -90,7 +90,14 @@ source $HOME/.asdf/completions/asdf.bash
 
 export ARCHFLAGS="-arch x86_64"
 # macOS Catalina fix: https://stackoverflow.com/a/58323411/2892779
-export CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+# export CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+# oh Catalina, how do you disappoint me? let me count the ways
+# https://github.com/rbenv/ruby-build/issues/1361#issuecomment-543815155
+export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+export CFLAGS="-I/usr/local/opt/openssl/include"
+export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
 # Also defines the default command run when :Files is called in vim
@@ -184,7 +191,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # Ignore deprecation warnings
 export RUBY_OPT="-W0"
 # Run `brew --prefix readline` to find this path
-export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
+export RUBY_CONFIGURE_OPTS="--with=openssl-dir=/usr/local/opt/openssl --with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
