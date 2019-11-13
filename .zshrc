@@ -201,8 +201,8 @@ alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/
 # Exercism setup
 alias guardme="guard -c --guardfile ~/exercism/ruby/Guardfile"
 alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
-# alias ls='~/bin/colorls --report'
-alias ls='lsd'
+alias ls='~/bin/colorls --report'
+# alias ls='lsd'
 alias ping='prettyping --nolegend'
 alias top='sudo htop'
 alias untracked='git ls-files -o --exclude-standard'
