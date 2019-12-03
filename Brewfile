@@ -10,13 +10,14 @@ tap "homebrew/services"
 tap "luckyframework/lucky"
 tap "neovim/neovim"
 tap "universal-ctags/universal-ctags"
+cask "adoptopenjdk8"
 cask "xquartz"
 brew "icu4c"
 brew "boost"
 brew "docbook"
 brew "source-highlight"
 brew "asciidoc"
-brew "openssl"
+brew "openssl@1.1"
 brew "readline", link: true
 brew "sqlite"
 brew "xz"
@@ -86,7 +87,6 @@ brew "gnupg"
 brew "go"
 brew "pkg-config"
 brew "gobject-introspection"
-brew "libtool"
 brew "graphviz"
 brew "hadolint"
 brew "szip"
@@ -98,6 +98,7 @@ brew "htop"
 brew "hyperfine"
 brew "libheif"
 brew "libomp"
+brew "libtool"
 brew "imagemagick", link: false
 brew "imagemagick@6", link: true
 brew "jemalloc"
@@ -126,7 +127,6 @@ brew "lsd"
 brew "luarocks"
 brew "mailhog", restart_service: true
 brew "mas"
-brew "maven"
 brew "msgpack"
 brew "mysql", restart_service: true
 brew "neovim", args: ["HEAD"]
@@ -190,7 +190,7 @@ cask "colorsnapper"
 cask "contexts"
 cask "daisydisk"
 cask "dash"
-cask "devonthink-pro-office"
+cask "devonthink"
 cask "discord"
 cask "docker"
 cask "dropbox"
@@ -203,7 +203,6 @@ cask "hazel"
 cask "hyper"
 cask "iterm2"
 cask "java"
-cask "java8"
 cask "kitty"
 cask "lepton"
 cask "macdown"
@@ -218,7 +217,6 @@ cask "sip"
 cask "slack"
 cask "snagit"
 cask "sublime-text"
-cask "textsoap"
 cask "visual-studio-code"
 cask "wkhtmltopdf"
 cask "zeplin"
@@ -227,7 +225,9 @@ mas "Affinity Photo", id: 824183456
 mas "EasyRes", id: 688211836
 mas "Folder Factory", id: 521419726
 mas "GAget", id: 968487158
+mas "GarageBand", id: 682658836
 mas "Gemini 2", id: 1090488118
+mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Mouseposé", id: 405904955
 mas "Numbers", id: 409203825
