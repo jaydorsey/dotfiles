@@ -191,7 +191,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # Ignore deprecation warnings
 export RUBY_OPT="-W0"
 # Run `brew --prefix readline` to find this path
-export RUBY_CONFIGURE_OPTS="--with=openssl-dir=/usr/local/opt/openssl --with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl --with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
