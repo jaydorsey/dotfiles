@@ -100,6 +100,7 @@ mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/views
 mkdir -p ~/.terminfo
+mkdir -p ~/.config/nvim
 tic -o ~/.terminfo xterm-256color.terminfo
 
 #######################################################
@@ -122,6 +123,11 @@ ln -sf "$(pwd)/TabNine.toml" ~/Library/Preferences/TabNine/
 ln -sf "$(pwd)/bin/" ~/bin
 ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
 ln -sf "$(pwd)/.ctags.d" ~/.ctags.d
+ln -sf "$(pwd)/.solargraph.yml" ~/.solargraph.yml
+ln -sf "$(pwd)/.navi" ~/.navi
+ln -sf "$(pwd)/.tmux.conf" ~/.tmux.conf
+ln -sf "$(pwd)/.yamllint" ~/.yamllint
+ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
 
 echo "Symlink or create your .personalrc file"
 echo "Symlink or create your .localrc file"
