@@ -6,6 +6,7 @@
   excludesfile = ~/.gitignore_global
   ignorecase = false
   pager = "diff-so-fancy | GREP_COLOR='1;37' grep --color=always -E 'Merge (branch|pull request).*|$' | less --tabs=4 -RFX"
+	commitGraph = true
 [alias]
   a = add -A
   b = branch
@@ -77,3 +78,7 @@
   binary = true
 [rerere]
   enabled = true
+[gc]
+	writeCommitGraph = true
+[fetch]
+	writeCommitGraph = true
