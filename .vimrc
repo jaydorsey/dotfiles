@@ -197,6 +197,8 @@ Plug 'zhimsel/vim-stay'
 Plug 'ludovicchabant/vim-gutentags' " Tag creation
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
 let g:gutentags_gtags_options_file="~/.ctags"
+" https://github.com/ludovicchabant/vim-gutentags/issues/178#issuecomment-547475742
+let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git']
 " Type :messages after gutentag loads to see the trace
 let g:gutentags_trace=0
 let g:gutentags_enabled=1
@@ -312,10 +314,10 @@ Plug 'tpope/vim-surround'
 
 Plug 'vim-ruby/vim-ruby'
 " Using vim-ruby, indent per work convention
-let g:ruby_indent_access_modifier_style="normal"
-" Indent for multi-line statements against left
-let g:ruby_indent_assignment_style = 'hanging'
-" Indent nested blocks
+" let g:ruby_indent_access_modifier_style = 'normal'
+" Indent for multi-line statements against left. variable or hanging
+let g:ruby_indent_assignment_style = 'variable'
+" Indent nested blocks, do or expression
 let g:ruby_indent_block_style = 'do'
 " Highlight whitespace errors
 let g:ruby_space_errors = 1
@@ -431,7 +433,7 @@ set smarttab                                       " Backspace should delete tab
 set softtabstop=2
 set splitbelow                                     " Open new split panes to right and bottom
 set splitright                                     " Open new split panes to right and bottom
-set synmaxcol=256                                  " Don't highlight on lines longer than X chars
+set synmaxcol=512                                  " Don't highlight on lines longer than X chars
 set tabstop=2
 set title                                          " Set the title of the iTerm tab
 set undofile                                       " Persistent undo
@@ -448,8 +450,8 @@ let g:lasttab = 1
 nnoremap <leader>tt :exe "tabn ".g:lasttab<cr>
 au TabLeave * let g:lasttab = tabpagenr()
 
-" colorscheme onehalfdark
-colorscheme photon
+colorscheme onehalfdark
+" colorscheme photon
 
 filetype plugin on
 filetype indent on
@@ -540,6 +542,10 @@ let g:rg_command = '
   \ -g "!.yardopts"
   \ -g "!yarn.lock"
   \ -g "!spec/vcr/*"
+  \ -g "!**/node_modules/*"
+  \ -g "!**/tmp/*"
+  \ -g "!sales_app/tmp/**"
+  \ -g "!sales_app/node_modules/**"
   \ '
   " \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
 
@@ -603,6 +609,7 @@ highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
 highlight ALEWarning ctermbg=LightGreen
 
+" let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/bundle exec rubocop'
 let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
 let g:ale_ruby_rubocop_options = ''
 
@@ -774,6 +781,21 @@ command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
 hi! link Search PMenu
 hi! link IncSearch PMenuSel
 highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#93a1a1 guibg=#002931
+
+" https://vi.stackexchange.com/a/440
+" Like gJ, but always remove spaces
+fun! JoinSpaceless()
+    execute 'normal gJ'
+
+    " Character under cursor is whitespace?
+    if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
+        " When remove it!
+        execute 'normal dw'
+    endif
+endfun
+
+" Map it to a key
+nnoremap gJ :call JoinSpaceless()<CR>
 
 " Stuff
 "
