@@ -101,6 +101,7 @@ mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/views
 mkdir -p ~/.terminfo
 mkdir -p ~/.config/nvim
+mkdir -p ~/.config/yamllint
 tic -o ~/.terminfo xterm-256color.terminfo
 
 #######################################################
@@ -128,6 +129,7 @@ ln -sf "$(pwd)/.navi" ~/.navi
 ln -sf "$(pwd)/.tmux.conf" ~/.tmux.conf
 ln -sf "$(pwd)/.yamllint" ~/.yamllint
 ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
+ln -sf "$(pwd)/.yamllint" ~/.config/yamllint/config
 
 echo "Symlink or create your .personalrc file"
 echo "Symlink or create your .localrc file"
