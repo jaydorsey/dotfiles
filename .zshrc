@@ -60,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf bundler gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua fzf tmux navi)
+plugins=(git asdf gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua fzf tmux navi)
 
 # Automatically load additional completion scripts. This is really slow so I've disabled for now
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
@@ -88,6 +88,13 @@ _fzf_compgen_dir() { fd --type d --hidden --follow --exclude ".git" . "$1" }
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
+# Used with active-record-query-trace gem &
+# ActiveRecord::Type::Boolean.new.cast(ENV.fetch("AR_TRACE") { false }) to conditionally enable
+# query tracing in console
+export AR_TRACE=true
+# Used with the devtrace gem provided by Scout
+export SCOUT_DEV_TRACE=true
+
 export ARCHFLAGS="-arch x86_64"
 # macOS Catalina fix: https://stackoverflow.com/a/58323411/2892779
 # export CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
@@ -106,8 +113,12 @@ export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow \
   -g \"!package-lock.json\" \
   -g \"!*.map\" \
   -g \"!*.log\" \
+  -g \"!tmp/*\" \
+  -g \"!**/tmp/*\" \
+  -g \"!**/node_modules/*\" \
   -g \"!tags\" \
   -g \"!yarn.lock\" \
+  -g \"!*.jay\" \
   2> /dev/null"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -196,6 +207,7 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl --with-rea
 # export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
 
+alias be='bundle exec'
 alias cat='bat'
 alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
 # Exercism setup
@@ -257,5 +269,18 @@ HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test 
 # Start navi with CTRL-G from a terminal
 # https://github.com/denisidoro/navi#shell-widget
 source "$(navi widget zsh)"
+
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # zprof
