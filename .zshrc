@@ -102,8 +102,8 @@ export ARCHFLAGS="-arch x86_64"
 # https://github.com/rbenv/ruby-build/issues/1361#issuecomment-543815155
 export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
 export CFLAGS="-I/usr/local/opt/openssl/include"
-export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
 
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -157,6 +157,8 @@ export PATH=$PATH:/usr/local/opt/postgresql/bin
 export PATH=/usr/local/opt/openssl/bin:$PATH
 # https://github.com/denisidoro/navi#using-oh-my-zsh
 export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
+# https://embeddedartistry.com/blog/2017/02/24/installing-llvm-clang-on-osx/
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 # This is necessary for, at least, crystal
 # https://github.com/brianmario/mysql2/issues/795#issuecomment-337006164
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
@@ -199,6 +201,7 @@ bindkey "^[c" fzf-cd-widget
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status root_indicator)
 export RANGER_LOAD_DEFAULT_RC=FALSE
+export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings
 export RUBY_OPT="-W0"
 # Run `brew --prefix readline` to find this path
@@ -216,6 +219,7 @@ alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
 alias ls='~/bin/colorls --report'
 # alias ls='lsd'
 alias ping='prettyping --nolegend'
+alias python='/usr/local/bin/python3'
 alias top='sudo htop'
 alias untracked='git ls-files -o --exclude-standard'
 alias vi='nvim'
