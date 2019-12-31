@@ -284,7 +284,7 @@ set grepformat=%f:%l:%c:%m,%f:%l:%m
 set guicursor=a:blinkon0-Cursor/Cursor             " Turn off blink for all modes
 set guicursor+=i:blinkwait0-blinkon100-blinkoff100 " Turn on blinking in insert mode
 set hidden                                         " Required for operations modifying multiple buffers like rename.
-set history=10000                                  " Max history
+set history=500                                    " Max history
 set hlsearch                                       " Highlight matches
 set ignorecase                                     " Ignore case when searching...
 set incsearch                                      " Find the next match as we type
@@ -303,12 +303,6 @@ set nospell                                        " Turn spell checking off by 
 set nowrap                                         " Don't wrap lines. Call `:set wrap` to change
 set number                                         " Line numbers on
 set numberwidth=5                                  " Use 5 characters for number well
-set path+=**                                       " Search within subfolders by default
-set path-=.git                                     " But ignore these folders
-set path-=lib/node_modules
-set path-=node_modules
-set path-=frontend/dist
-set path-=lock
 set regexpengine=1                                 " Use old regular expression engine because it's faster
 set rtp+=/usr/local/opt/fzf                        " fzf.vim
 set scrolloff=10                                   " Prevent scrolling past bottom line
@@ -336,13 +330,7 @@ set viminfo^=!                                     " Add recently accessed proje
 set visualbell                                     " No visual feedback
 set writebackup                                    " write backup file before overwriting
 
-" tt toggles between current and last tab
-let g:lasttab = 1
-nnoremap <leader>tt :exe "tabn ".g:lasttab<cr>
-au TabLeave * let g:lasttab = tabpagenr()
-
 colorscheme onehalfdark
-" colorscheme photon
 
 filetype plugin on
 filetype indent on
@@ -378,16 +366,8 @@ augroup END
 
 set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
+" stuff to ignore when tab completing
+set wildignore=*.o,*.obj,*~,*vim/backups*,*sass-cache*,*DS_Store*,vendor/rails/**,vendor/cache/**,*.gem,log/**,tmp/**,*.png,*.jpg,*.gif
 
 " Display tabs & trailing spaces visually
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -395,20 +375,6 @@ set list listchars=tab:»·,trail:·,nbsp:·
 syntax on               " Basic syntax
 syntax enable           " Basic syntax
 syntax sync minlines=80 " Look back up to X lines for syntax highlighting
-
-" Minibuffer Explorer Settings
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-let g:multicursor_insert_maps = 1
-let g:multicursor_normal_maps = 1
-
-" Explore shortcut
-let g:netrw_liststyle=3
-
-" Use :help instead of f1, which I always hit by accident
-noremap <f1> <noop>
 
 " Macros
 " Use Q as a default macro. This lets you quickly create a macro with qq & replay it back with Q
@@ -512,7 +478,7 @@ let g:lightline = {
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
 \   'right': [['lineinfo'],
 \             ['percent'],
-\             ['currentfunction', 'lightline_character', 'fileformat', 'fileencoding', 'filetype', 'linter_warnings', 'linter_errors', 'linter_ok']]
+\             ['lightline_character', 'fileformat', 'fileencoding', 'filetype']]
 \ },
 \ 'component': {
 \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
@@ -520,10 +486,7 @@ let g:lightline = {
 \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
 \ },
 \ 'component_expand': {
-\   'buffers': 'lightline#bufferline#buffers',
-\   'linter_warnings': 'LightlineLinterWarnings',
-\   'linter_errors': 'LightlineLinterErrors',
-\   'linter_ok': 'LightlineLinterOK'
+\   'buffers': 'lightline#bufferline#buffers'
 \ },
 \ 'component_visible_condition': {
 \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -547,31 +510,10 @@ let g:lightline = {
 \ }
 \ }
 
-function! LightlineLinterWarnings() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
-endfunction
-
 " Shows a decimal & hex value of the currently selected character
 function! LightLineCharacter() abort
   let dec = char2nr(matchstr(getline('.'), '\%' . col('.') . 'c.'))
   return dec . "/0x" . printf('%x', dec)
-endfunction
-
-function! LightlineLinterErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
-endfunction
-
-function! LightlineLinterOK() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '✓ ' : ''
 endfunction
 
 " Full filename path. Requires fugitive
