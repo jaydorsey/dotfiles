@@ -44,9 +44,6 @@ Plug 'andymass/vim-matchup'
 " Brewfile syntax highlighting
 Plug 'bfontaine/brewfile.vim'
 
-" Highlights trailing whitespace in red
-Plug 'bronson/vim-trailing-whitespace'
-
 " Find and Replace plugin
 " https://github.com/brooth/far.vim
 Plug 'brooth/far.vim'
