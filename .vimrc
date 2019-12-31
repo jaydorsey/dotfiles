@@ -55,9 +55,6 @@ let g:far#source = 'rgnvim'
 Plug 'chiel92/vim-autoformat'
 let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify']
 
-" Color colornames & codes with :ColorToggle
-Plug 'Chrisbra/Colorizer'
-
 "{{{ Searching
 " Better motions
 Plug 'easymotion/vim-easymotion'
@@ -119,9 +116,6 @@ Plug 'godlygeek/tabular' " Align text
 
 " Better, automatic swap file management
 Plug 'gioele/vim-autoswap'
-
-" View xterm colors with :XtermColorTable
-Plug 'guns/xterm-color-table.vim'
 
 Plug 'itchyny/lightline.vim'
 " Buffer tabs
