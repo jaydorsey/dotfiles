@@ -31,10 +31,6 @@ Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 
 Plug 'airblade/vim-gitgutter'
 
-" Disabled for now; when's the last time I created one of these?
-" Plug 'alvan/vim-closetag'
-" let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
-
 " Formatting & validating json via :Jacinto
 Plug 'alfredodeza/jacinto.vim'
 
