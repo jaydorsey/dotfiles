@@ -141,11 +141,6 @@ endfunction
 " Browse git history with :GV
 Plug 'junegunn/gv.vim'
 
-" Focus highlighting
-Plug 'junegunn/limelight.vim'
-nmap <leader>ll <Plug>(Limelight)
-xmap <leader>ll <Plug>(Limelight)
-
 " Faster vim, better folding options
 Plug 'Konfekt/FastFold'
 nmap zuz <Plug>(FastFoldUpdate)
