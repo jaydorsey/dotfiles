@@ -49,9 +49,6 @@ Plug 'bfontaine/brewfile.vim'
 Plug 'brooth/far.vim'
 let g:far#source = 'rgnvim'
 
-Plug 'chiel92/vim-autoformat'
-let g:formatterpath = ['/Users/jay/.asdf/shims/ruby-beautify']
-
 "{{{ Searching
 " Better motions
 Plug 'easymotion/vim-easymotion'
