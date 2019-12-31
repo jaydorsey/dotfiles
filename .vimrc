@@ -14,8 +14,8 @@ nnoremap <SPACE> <Nop>
 " Ignore space key in visual mode
 vnoremap <SPACE> <Nop>
 
-let g:python3_host_prog = '/usr/local/bin/python3'
-let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = 'python3'
+let g:python_host_prog = 'python2'
 
 " Install vim-plug if it's not present
 if empty(glob('~/.vim/autoload/plug.vim'))

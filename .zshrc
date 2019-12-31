@@ -150,7 +150,7 @@ export PATH=~/bin:$PATH
 # Most of the homebrew executables end up here
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:/Users/jay/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn global bin` to find this path
-export PATH=$PATH:/Users/jay/Library/Python/3.7/bin # brew install python path
+export PATH=$PATH:/Users/jay/Library/Python/3.7/bin
 export PATH=$PATH:/Users/jay/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$PATH:/usr/local/opt/postgresql/bin
@@ -219,7 +219,7 @@ alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
 alias ls='~/bin/colorls --report'
 # alias ls='lsd'
 alias ping='prettyping --nolegend'
-alias python='/usr/local/bin/python3'
+alias python='python3'
 alias top='sudo htop'
 alias untracked='git ls-files -o --exclude-standard'
 alias vi='nvim'
