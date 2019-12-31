@@ -37,7 +37,7 @@ Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 Plug 'airblade/vim-gitgutter'
 
 " Formatting & validating json via :Jacinto
-Plug 'alfredodeza/jacinto.vim'
+Plug 'alfredodeza/jacinto.vim', { 'for': 'json' }
 
 " An improved matchit plugin with additional motions & matchers
 Plug 'andymass/vim-matchup'
