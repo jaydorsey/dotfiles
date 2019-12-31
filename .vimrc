@@ -171,13 +171,6 @@ let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'git
 let g:gutentags_trace=0
 let g:gutentags_enabled=1
 
-" Startify provides a page on vim open with recent files, sessions, etc. I
-" also use it to automatically update session on vim close
-Plug 'mhinz/vim-startify'
-let g:startify_session_persistence = 1
-let g:startify_list_order = ['sessions', 'files', 'dir', 'commands']
-let g:startify_change_to_vcs_root = 1 " Always change to vcs root
-
 " Add automatic delimiters ([<{, quotes, etc.
 Plug 'Raimondi/delimitMate'
 let delimitMate_expand_space = 1
