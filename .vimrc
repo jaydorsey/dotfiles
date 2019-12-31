@@ -201,15 +201,6 @@ let g:crystal_define_mappings = 0
 Plug 'rizzatti/dash.vim' " Dash integration
 nnoremap <leader>d :Dash<cr>
 
-Plug 'scrooloose/nerdtree'
-nnoremap <leader>e :NERDTreeToggle<cr>
-augroup nerdtree_autocmd
-  autocmd!
-  " Close vim if the only window left open is NERDtree
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup END
-let g:NERDTreeChDirMode = 2
-
 Plug 'sheerun/vim-polyglot'
 " vim-ruby is already included, this isn't necessary
 let g:polyglot_disable = ['ruby']
