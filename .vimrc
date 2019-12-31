@@ -273,10 +273,6 @@ let g:vim_markdown_conceal = 0
 let g:formatdef_sql = '"sqlformat --reindent --keywords upper - identifiers lower -"'
 let g:formatters_sql = ['sql']
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-let g:UltiSnipsEditSplit="vertical"
-
 Plug 'sjl/gundo.vim' " Visualize your vim undo tree
 nnoremap <leader>u :GundoToggle<cr>
 let g:gundo_prefer_python3 = 1
