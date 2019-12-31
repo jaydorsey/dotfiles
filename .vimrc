@@ -68,17 +68,8 @@ Plug 'haya14busa/is.vim'
 
 " Improved * motions
 Plug 'haya14busa/vim-asterisk'
-" Keep cursor position across matches
-" let g:asterisk#keeppos = 1
-
 map * <Plug>(asterisk-z*)
-"<Plug>(is-nohl-1)
-" map g* <Plug>(asterisk-gz*)
-"<Plug>(is-nohl-1)
 map # <Plug>(asterisk-z#)
-"<Plug>(is-nohl-1)
-" map g# <Plug>(asterisk-gz#)
-"<Plug>(is-nohl-1)
 
 " Display current match index & number of times a match occurs with a search
 Plug 'google/vim-searchindex'
@@ -94,9 +85,6 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
 Plug 'editorconfig/editorconfig-Vim'
-
-" Elixir configuration files
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 
 Plug 'elzr/vim-json', { 'for': 'json' }
 
@@ -178,10 +166,6 @@ let g:ruby_fold = 1
 " Automated view session creation & restoration
 Plug 'zhimsel/vim-stay'
 
-" Show key mappings
-" Plug 'liuchengxu/vim-which-key'
-" nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
 Plug 'ludovicchabant/vim-gutentags' " Tag creation
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
 let g:gutentags_gtags_options_file="~/.ctags"
@@ -191,40 +175,16 @@ let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'git
 let g:gutentags_trace=0
 let g:gutentags_enabled=1
 
-Plug 'majutsushi/tagbar'
-
-" Format SQL with :SQLFmt. Only works on a whole file, not visual selection
-Plug 'mattn/vim-sqlfmt'
-
-" Disabled this for now so I can look at vim-buftabline
-" Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected lines
-" On ergodox, this allows the left ctrl key to work as the move key
-" let g:move_key_modifier = 'C'
-
-Plug 'mechatroner/rainbow_csv', { 'for': 'csv' }
-
 " Startify provides a page on vim open with recent files, sessions, etc. I
 " also use it to automatically update session on vim close
 Plug 'mhinz/vim-startify'
 let g:startify_session_persistence = 1
-let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
+let g:startify_list_order = ['sessions', 'files', 'dir', 'commands']
 let g:startify_change_to_vcs_root = 1 " Always change to vcs root
-
-" Cursorline highlighting. Disabled, because iterm has this natively
-" Plug 'miyakogi/conoline.vim'
-" let g:conoline_auto_enable = 1
 
 " Add automatic delimiters ([<{, quotes, etc.
 Plug 'Raimondi/delimitMate'
 let delimitMate_expand_space = 1
-
-" j and k keys move faster when held down
-Plug 'rhysd/accelerated-jk'
-nmap j <Plug>(accelerated_jk_gj)
-nmap k <Plug>(accelerated_jk_gk)
-" default
-" let g:accelerated_jk_acceleration_table = [7,12,17,21,24,26,28,30]
-let g:accelerated_jk_acceleration_table = [12,17,24,28,34,38,44,48]
 
 " See git diff in commit window as another pane
 Plug 'rhysd/committia.vim'
