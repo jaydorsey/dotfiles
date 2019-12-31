@@ -9,10 +9,15 @@ if exists('+termguicolors')
 endif
 
 let mapleader=" " " Use the space key as a leader
-" Ignore space key in normal mode
-nnoremap <SPACE> <Nop>
-" Ignore space key in visual mode
-vnoremap <SPACE> <Nop>
+
+nnoremap <space> <nop>
+vnoremap <space> <nop>
+nnoremap <s-up> <nop>
+nnoremap <s-down> <nop>
+vnoremap <s-up> <nop>
+vnoremap <s-down> <nop>
+inoremap <s-up> <nop>
+inoremap <s-down> <nop>
 
 let g:python3_host_prog = 'python3'
 let g:python_host_prog = 'python2'
@@ -602,14 +607,6 @@ vmap <leader>y "+y
 
 " Open tag/definition in a new tab. Requires vim-ruby
 nmap <c-\> <c-w><c-]><c-w>T
-
-" Disable Shift + up/down arrow. It makes me jump around and I don't want to
-nnoremap <S-Up> <Nop>
-nnoremap <S-Down> <Nop>
-vnoremap <S-Up> <Nop>
-vnoremap <S-Down> <Nop>
-inoremap <S-Up> <Nop>
-inoremap <S-Down> <Nop>
 
 " Edit/save and automatically reload vimrc file
 " https://stackoverflow.com/a/39294493/2892779
