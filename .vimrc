@@ -18,6 +18,8 @@ vnoremap <s-up> <nop>
 vnoremap <s-down> <nop>
 inoremap <s-up> <nop>
 inoremap <s-down> <nop>
+" Use :help instead of f1, which I always hit by accident
+noremap <f1> <nop>
 
 let g:python3_host_prog = 'python3'
 let g:python_host_prog = 'python2'
