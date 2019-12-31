@@ -210,23 +210,14 @@ augroup nerdtree_autocmd
 augroup END
 let g:NERDTreeChDirMode = 2
 
-" Use :Silicon <filename> with a visual block highlighted to generate a screenshot image
-Plug 'segeljakt/vim-silicon'
-
 Plug 'sheerun/vim-polyglot'
 " vim-ruby is already included, this isn't necessary
 let g:polyglot_disable = ['ruby']
 let g:vim_markdown_conceal = 0
-" https://stackoverflow.com/a/44974239/2892779
-let g:formatdef_sql = '"sqlformat --reindent --keywords upper - identifiers lower -"'
-let g:formatters_sql = ['sql']
 
 Plug 'sjl/gundo.vim' " Visualize your vim undo tree
 nnoremap <leader>u :GundoToggle<cr>
 let g:gundo_prefer_python3 = 1
-
-" Vim git branch management. Invoke with :Twiggy
-Plug 'sodapopcan/vim-twiggy'
 
 " Vim rspec helpers
 Plug 'thoughtbot/vim-rspec'
@@ -275,42 +266,16 @@ Plug 'wsdjeg/vim-fetch'
 
 Plug 'w0rp/ale'
 
-Plug 'Yggdroot/indentLine'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
 " colorschemes
-Plug 'jaydorsey/darkness.vim'
-Plug 'rakr/vim-one'
 Plug 'sonph/onehalf', { 'rtp': 'vim/' }
-" Minimal colorscheme
-Plug 'axvr/photon.vim'
 
 Plug 'Shougo/echodoc.vim'
+let g:echodoc#enable_at_startup = 1
 
 " Highlight vim indent guides
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'zxqfl/tabnine-vim'
-
-Plug 'Lenovsky/nuake'
-
-" Plantuml syntax
-Plug 'aklt/plantuml-syntax'
-if exists("g:loaded_plantuml_plugin")
-  finish
-endif
-let g:loaded_plantuml_plugin = 1
-if !exists("g:plantuml_executable_script")
-  let g:plantuml_executable_script='/usr/local/bin/plantuml'
-endif
-let s:makecommand=g:plantuml_executable_script." %"
-augroup plantuml
-  autocmd!
-  autocmd Filetype plantuml let &l:makeprg=s:makecommand
-augroup END
-nnoremap <F5> :w<CR> :silent make<CR>
-inoremap <F5> <Esc>:w<CR>:silent make<CR>
-vnoremap <F5> :<C-U>:w<CR>:silent make<CR>
 
 call plug#end()
 
