@@ -1,14 +1,7 @@
-set nocompatible  " We don't want vi compatibility.
-" Enable true color support
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  let &t_ZH="\e[3m"
-  let &t_ZR="\e[23m"
-  set termguicolors
-endif
+set nocompatible
+set termguicolors
 
-let mapleader=" " " Use the space key as a leader
+let mapleader=" "
 
 nnoremap <space> <nop>
 vnoremap <space> <nop>
@@ -18,7 +11,6 @@ vnoremap <s-up> <nop>
 vnoremap <s-down> <nop>
 inoremap <s-up> <nop>
 inoremap <s-down> <nop>
-" Use :help instead of f1, which I always hit by accident
 noremap <f1> <nop>
 
 let g:python3_host_prog = 'python3'
@@ -34,7 +26,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Use shortcuts gJ and gS to join and split, respectively
-Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
+Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'airblade/vim-gitgutter'
 
@@ -52,7 +44,6 @@ Plug 'bfontaine/brewfile.vim'
 Plug 'brooth/far.vim'
 let g:far#source = 'rgnvim'
 
-"{{{ Searching
 " Better motions
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -83,12 +74,6 @@ Plug 'google/vim-searchindex'
 " Clear search highlighting by pressing //
 nnoremap // :noh<cr>
 nnoremap <esc><esc> :noh<cr>
-"}}}
-
-" Both of these must be installed. Yank and delete blocks of ruby code
-" using ar (all block) and ir (inner block). e.g. var/vir/dar/dir
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
 
 Plug 'editorconfig/editorconfig-Vim'
 
@@ -100,7 +85,8 @@ Plug 'farmergreg/vim-lastplace'
 
 Plug 'francoiscabrol/ranger.vim'
 
-Plug 'godlygeek/tabular' " Align text
+" Align text
+Plug 'godlygeek/tabular'
 
 " Better, automatic swap file management
 Plug 'gioele/vim-autoswap'
@@ -167,7 +153,8 @@ let g:ruby_fold = 1
 " Automated view session creation & restoration
 Plug 'zhimsel/vim-stay'
 
-Plug 'ludovicchabant/vim-gutentags' " Tag creation
+" Tag creation
+Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
 let g:gutentags_gtags_options_file="~/.ctags"
 " https://github.com/ludovicchabant/vim-gutentags/issues/178#issuecomment-547475742
@@ -175,6 +162,8 @@ let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'git
 " Type :messages after gutentag loads to see the trace
 let g:gutentags_trace=0
 let g:gutentags_enabled=1
+
+Plug 'neomake/neomake'
 
 " Add automatic delimiters ([<{, quotes, etc.
 Plug 'Raimondi/delimitMate'
@@ -192,7 +181,8 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
 let g:crystal_define_mappings = 0
 
-Plug 'rizzatti/dash.vim' " Dash integration
+" Dash integration
+Plug 'rizzatti/dash.vim'
 nnoremap <leader>d :Dash<cr>
 
 Plug 'sheerun/vim-polyglot'
@@ -200,7 +190,8 @@ Plug 'sheerun/vim-polyglot'
 let g:polyglot_disable = ['ruby']
 let g:vim_markdown_conceal = 0
 
-Plug 'sjl/gundo.vim' " Visualize your vim undo tree
+" Visualize your vim undo tree
+Plug 'sjl/gundo.vim'
 nnoremap <leader>u :GundoToggle<cr>
 let g:gundo_prefer_python3 = 1
 
@@ -217,8 +208,6 @@ Plug 'tomtom/tcomment_vim'
 " Use :ToGithub to open the current line in your browser
 Plug 'tonchis/vim-to-github'
 
-Plug 'tpope/vim-bundler'
-
 " Add Unicode character metadata when using ga
 Plug 'tpope/vim-characterize'
 
@@ -228,7 +217,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
-Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
@@ -249,10 +237,8 @@ Plug 'jeetsukumaran/vim-markology'
 " Vim understands line & column syntax when opening & editing files
 Plug 'wsdjeg/vim-fetch'
 
-Plug 'w0rp/ale'
-
 " colorschemes
-Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+Plug 'arzg/vim-colors-xcode'
 
 Plug 'Shougo/echodoc.vim'
 let g:echodoc#enable_at_startup = 1
@@ -262,7 +248,12 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'zxqfl/tabnine-vim'
 
+Plug 'sinetoami/lightline-neomake'
+
 call plug#end()
+
+call neomake#configure#automake('rw', 1000)
+let g:neomake_ruby_enabled_makers = ['rubocop']
 
 set autoindent                                     " Automatic indenting/formatting
 set autoread                                       " Reload files changed outside of vim
@@ -333,7 +324,7 @@ set viminfo^=!                                     " Add recently accessed proje
 set visualbell                                     " No visual feedback
 set writebackup                                    " write backup file before overwriting
 
-colorscheme onehalfdark
+colorscheme xcodedark
 
 filetype plugin on
 filetype indent on
@@ -342,16 +333,16 @@ augroup vimrc_autocmd
   autocmd!
 
   " Disable paste mode because I never use it
-  "
   " https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
   au InsertLeave * set nopaste
 
   " https://github.com/neovim/neovim/issues/1936#issuecomment-309311829
   au FocusGained * :checktime
-  " https://stackoverflow.com/a/19031285/2892779
 
   " Remove trailing whitespace from certain files
+  " https://stackoverflow.com/a/19031285/2892779
   autocmd FileType * autocmd BufWritePre <buffer> %s/\s\+$//e
+
   " Remove extra lines after end/end when writing ruby code
   " autocmd BufWritePre *.rb silent! %s/\v(end\n)(\n+)(\s*end)/\1\3//e
 
@@ -368,15 +359,13 @@ augroup vimrc_autocmd
 augroup END
 
 set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildmenu
 " stuff to ignore when tab completing
 set wildignore=*.o,*.obj,*~,*vim/backups*,*sass-cache*,*DS_Store*,vendor/rails/**,vendor/cache/**,*.gem,log/**,tmp/**,*.png,*.jpg,*.gif
 
 " Display tabs & trailing spaces visually
 set list listchars=tab:»·,trail:·,nbsp:·
 
-syntax on               " Basic syntax
-syntax enable           " Basic syntax
 syntax sync minlines=80 " Look back up to X lines for syntax highlighting
 
 " Macros
@@ -384,7 +373,6 @@ syntax sync minlines=80 " Look back up to X lines for syntax highlighting
 noremap Q @q
 
 " ripgrep customization
-"
 " http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 let g:rg_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
@@ -445,6 +433,7 @@ augroup vim_ruby_group
 
   " Read Envfile as ruby
   au BufRead,BufNewFile Envfile setfiletype ruby
+  au BufRead,BufNewFile Brewfile setfiletype ruby
 
   " Indent haml files
   autocmd FileType haml setlocal foldmethod=indent
@@ -459,29 +448,15 @@ augroup vim_ruby_group
   " autocmd BufRead,BufNewFile *_spec.rb setlocal foldmethod=indent
 augroup END
 
-" ALE
-" https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L400-L404
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-" Always leave sign gutter column open
-let g:ale_sign_column_always = 1
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
-highlight ALEWarning ctermbg=LightGreen
-
 " let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/bundle exec rubocop'
-let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
-let g:ale_ruby_rubocop_options = ''
 
 " lightline
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
 let g:lightline = {
 \ 'active': {
 \   'colorscheme': 'onehalfdark',
-\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
-\   'right': [['lineinfo'],
-\             ['percent'],
-\             ['lightline_character', 'fileformat', 'fileencoding', 'filetype']]
+\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'neomake_warnings', 'neomake_errors', 'neomake_infos', 'neomake_ok']],
+\   'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
 \ },
 \ 'component': {
 \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
@@ -489,7 +464,11 @@ let g:lightline = {
 \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
 \ },
 \ 'component_expand': {
-\   'buffers': 'lightline#bufferline#buffers'
+\   'buffers': 'lightline#bufferline#buffers',
+\   'neomake_infos': 'lightline#neomake#infos',
+\   'neomake_warnings': 'lightline#neomake#warnings',
+\   'neomake_errors': 'lightline#neomake#errors',
+\   'neomake_ok': 'lightline#neomake#ok',
 \ },
 \ 'component_visible_condition': {
 \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -502,22 +481,15 @@ let g:lightline = {
 \   'linter_errors': 'error'
 \ },
 \ 'component_function': {
-\   'lightline_character': 'LightLineCharacter',
 \   'filename': 'LightlineFilename'
 \ },
 \ 'enable': {
 \   'statusline': 1, 'tabline': 1
 \ },
 \ 'tabline': {
-\   'left': [['buffers']], 'right': [['close']]
+\   'left': [['buffers']]
 \ }
 \ }
-
-" Shows a decimal & hex value of the currently selected character
-function! LightLineCharacter() abort
-  let dec = char2nr(matchstr(getline('.'), '\%' . col('.') . 'c.'))
-  return dec . "/0x" . printf('%x', dec)
-endfunction
 
 " Full filename path. Requires fugitive
 " https://github.com/itchyny/lightline.vim/issues/293#issuecomment-373710096
@@ -528,17 +500,6 @@ function! LightlineFilename()
     return path[len(root)+1:]
   endif
   return expand('%')
-endfunction
-
-augroup AleStuff
-  autocmd User ALELint call s:MaybeUpdateLightline()
-augroup END
-
-" Update and show lightline but only if it's visible
-function! s:MaybeUpdateLightline()
-  if exists('#lightline')
-    call lightline#update()
-  end
 endfunction
 
 " Map ESC in terminal mode to exit terminal mode
