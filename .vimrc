@@ -66,6 +66,9 @@ let g:EasyMotion_smartcase = 1
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 
+" Highlight current search instance. This goes above is/asterisk
+Plug 'timakro/vim-searchant'
+
 " Incremental search
 Plug 'haya14busa/is.vim'
 
