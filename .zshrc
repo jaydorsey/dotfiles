@@ -125,6 +125,7 @@ export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow \
   -g \"!**/tmp/*\" \
   -g \"!**/node_modules/*\" \
   -g \"!tags\" \
+  -g \"!*.dwarf\" \
   -g \"!yarn.lock\" \
   -g \"!*.jay\" \
   2> /dev/null"

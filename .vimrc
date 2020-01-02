@@ -239,6 +239,7 @@ Plug 'wsdjeg/vim-fetch'
 
 " colorschemes
 Plug 'arzg/vim-colors-xcode'
+Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 Plug 'Shougo/echodoc.vim'
 let g:echodoc#enable_at_startup = 1
@@ -324,7 +325,7 @@ set viminfo^=!                                     " Add recently accessed proje
 set visualbell                                     " No visual feedback
 set writebackup                                    " write backup file before overwriting
 
-colorscheme xcodedark
+colorscheme onehalfdark
 
 filetype plugin on
 filetype indent on
