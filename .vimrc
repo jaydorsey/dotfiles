@@ -238,14 +238,10 @@ Plug 'jeetsukumaran/vim-markology'
 Plug 'wsdjeg/vim-fetch'
 
 " colorschemes
-Plug 'arzg/vim-colors-xcode'
 Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 Plug 'Shougo/echodoc.vim'
 let g:echodoc#enable_at_startup = 1
-
-" Highlight vim indent guides
-Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'zxqfl/tabnine-vim'
 
