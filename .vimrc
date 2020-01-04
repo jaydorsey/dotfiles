@@ -16,13 +16,6 @@ noremap <f1> <nop>
 let g:python3_host_prog = 'python3'
 let g:python_host_prog = 'python2'
 
-" Install vim-plug if it's not present
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 call plug#begin('~/.vim/plugged')
 
 " Use shortcuts gJ and gS to join and split, respectively
