@@ -16,6 +16,10 @@ noremap <f1> <nop>
 let g:python3_host_prog = 'python3'
 let g:python_host_prog = 'python2'
 
+let g:ruby_path="/Users/jay/.asdf/shims/ruby"
+let g:ruby_default_path="/Users/jay/.asdf/shims/ruby"
+let g:ruby_host_prog="/Users/jay/.asdf/shims/neovim-ruby-host"
+
 call plug#begin('~/.vim/plugged')
 
 " Use shortcuts gJ and gS to join and split, respectively
@@ -130,21 +134,18 @@ endfunction
 " Browse git history with :GV
 Plug 'junegunn/gv.vim'
 
-" Faster vim, better folding options
-Plug 'Konfekt/FastFold'
-nmap zuz <Plug>(FastFoldUpdate)
-let g:fastfold_savehook = 1
-let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
-let g:markdown_folding = 1
-let g:vimsyn_folding = 'af'
-" let g:xml_syntax_folding = 1
-" let g:javaScript_fold = 1
-let g:sh_fold_enabled= 7
-let g:ruby_fold = 1
-
-" Automated view session creation & restoration
-Plug 'zhimsel/vim-stay'
+" " Faster vim, better folding options
+" Plug 'Konfekt/FastFold'
+" nmap zuz <Plug>(FastFoldUpdate)
+" let g:fastfold_savehook = 1
+" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+" let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+" let g:markdown_folding = 1
+" let g:vimsyn_folding = 'af'
+" " let g:xml_syntax_folding = 1
+" " let g:javaScript_fold = 1
+" let g:sh_fold_enabled= 7
+" let g:ruby_fold = 1
 
 " Tag creation
 Plug 'ludovicchabant/vim-gutentags'
@@ -179,14 +180,7 @@ Plug 'rizzatti/dash.vim'
 nnoremap <leader>d :Dash<cr>
 
 Plug 'sheerun/vim-polyglot'
-" vim-ruby is already included, this isn't necessary
-let g:polyglot_disable = ['ruby']
 let g:vim_markdown_conceal = 0
-
-" Visualize your vim undo tree
-Plug 'sjl/gundo.vim'
-nnoremap <leader>u :GundoToggle<cr>
-let g:gundo_prefer_python3 = 1
 
 " Vim rspec helpers
 Plug 'thoughtbot/vim-rspec'
@@ -209,13 +203,11 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
-Plug 'vim-ruby/vim-ruby'
-" Using vim-ruby, indent per work convention
-" let g:ruby_indent_access_modifier_style = 'normal'
+" Using vim-ruby via vim-polyglot, indent per work convention
+let g:ruby_indent_access_modifier_style = 'normal'
 " Indent for multi-line statements against left. variable or hanging
 let g:ruby_indent_assignment_style = 'variable'
 " Indent nested blocks, do or expression
