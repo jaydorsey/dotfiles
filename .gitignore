@@ -1,3 +1,4 @@
 .personalrc
 .localrc
 bin/colorls
+bin/ttmux

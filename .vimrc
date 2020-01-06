@@ -57,6 +57,9 @@ map <leader>k <Plug>(easymotion-k)
 " Highlight current search instance. This goes above is/asterisk
 Plug 'timakro/vim-searchant'
 
+" Create images of source code
+Plug 'segeljakt/vim-silicon'
+
 " Incremental search
 Plug 'haya14busa/is.vim'
 
@@ -371,10 +374,12 @@ let g:rg_command = '
   \ -g "!tags.temp"
   \ -g "!.yardopts"
   \ -g "!yarn.lock"
+  \ -g "!*.jay"
   \ -g "!spec/vcr/*"
   \ -g "!**/node_modules/*"
   \ -g "!**/tmp/*"
   \ -g "!sales_app/tmp/**"
+  \ -g "!sales_app/dist"
   \ -g "!sales_app/node_modules/**"
   \ '
   " \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
