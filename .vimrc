@@ -22,6 +22,9 @@ let g:ruby_host_prog="/Users/jay/.asdf/shims/neovim-ruby-host"
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tarekbecker/vim-yaml-formatter', { 'for': 'yaml' }
+let g:yaml_formatter_indent_collection=1
+
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim'
 
