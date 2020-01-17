@@ -297,3 +297,5 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # zprof
+
+source /Users/jay/Library/Preferences/org.dystroy.broot/launcher/bash/br
