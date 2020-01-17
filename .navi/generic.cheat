@@ -16,3 +16,15 @@ $ session: tmux ls | awk '{print substr($1, 1, length($1)-1)}'
 
 # Remove all keys of all existing redis databases
 redis-cli FLUSHALL
+
+
+% xcode
+
+# Install Command Line Tools if you haven't already
+xcode-select --install
+
+# Enable command line tools
+sudo xcode-select --switch /Library/Developer/CommandLineTools
+
+# Enable Xcode app
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
