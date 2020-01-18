@@ -1,6 +1,7 @@
 gem-ctags
 bundler
 bundler-audit
+debride
 fasterer
 gem-browse
 lefthook
@@ -18,5 +19,6 @@ rubocop
 rubocop-performance
 rubocop-rails
 rubocop-rspec
+rufo
 ruby-beautify2
 solargraph

@@ -16,7 +16,7 @@ fi
 # This is the term setting I used before
 # export TERM="screen-256color"
 # This term setting is used to get italics working, along with this gist: https://gist.github.com/sos4nt/3187620
-# export TERM="xterm-256color"
+export TERM="xterm-256color-italic"
 export POWERLEVEL9K_MODE='awesome-fontconfig'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -125,6 +125,7 @@ export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow \
   -g \"!**/tmp/*\" \
   -g \"!**/node_modules/*\" \
   -g \"!tags\" \
+  -g \"!*.dwarf\" \
   -g \"!yarn.lock\" \
   -g \"!*.jay\" \
   2> /dev/null"
@@ -296,3 +297,5 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # zprof
+
+source /Users/jay/Library/Preferences/org.dystroy.broot/launcher/bash/br
