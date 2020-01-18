@@ -16,7 +16,7 @@ fi
 # This is the term setting I used before
 # export TERM="screen-256color"
 # This term setting is used to get italics working, along with this gist: https://gist.github.com/sos4nt/3187620
-# export TERM="xterm-256color"
+export TERM="xterm-256color-italic"
 export POWERLEVEL9K_MODE='awesome-fontconfig'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
