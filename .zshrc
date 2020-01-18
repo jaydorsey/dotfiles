@@ -6,6 +6,13 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # This is the term setting I used before
 # export TERM="screen-256color"
 # This term setting is used to get italics working, along with this gist: https://gist.github.com/sos4nt/3187620
@@ -15,7 +22,8 @@ export POWERLEVEL9K_MODE='awesome-fontconfig'
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-export ZSH_THEME="powerlevel9k/powerlevel9k"
+# export ZSH_THEME="powerlevel9k/powerlevel9k"
+export ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -216,8 +224,8 @@ alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/
 # Exercism setup
 alias guardme="guard -c --guardfile ~/exercism/ruby/Guardfile"
 alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
-alias ls='~/bin/colorls --report'
-# alias ls='lsd'
+# alias ls='~/bin/colorls --report'
+alias ls='lsd'
 alias ping='prettyping --nolegend'
 alias python='python3'
 alias top='sudo htop'
