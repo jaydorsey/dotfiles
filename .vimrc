@@ -312,7 +312,7 @@ set viminfo^=!                                     " Add recently accessed proje
 set visualbell                                     " No visual feedback
 set writebackup                                    " write backup file before overwriting
 
-colorscheme onehalfdark
+colorscheme darkjay
 
 filetype plugin on
 filetype indent on
