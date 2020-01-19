@@ -209,6 +209,8 @@ Plug 'wsdjeg/vim-fetch'
 
 Plug 'Shougo/echodoc.vim'
 let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'floating'
+highlight link EchoDocFloat Pmenu
 
 Plug 'zxqfl/tabnine-vim'
 
@@ -225,6 +227,8 @@ set background=dark                                " Always use colors for dark 
 set backup                                         " Make backups
 set backupdir=~/.vim/backups                       " Specify backup directory
 set backspace=indent,eol,start                     " Backspace configuration
+" set cmdheight=2                                    " echodoc recommendation
+" set showmode                                       " echodoc recommendation
 set concealcursor=nv                               " From vim-markdown, conceals links, headings, etc in normal & visual mode
 set conceallevel=0                                 " Expand everything, particularly in markdown files
 set directory=~/.vim/tmp                           " List of directory names for the swap file, separated by commas
