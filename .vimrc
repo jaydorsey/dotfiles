@@ -207,11 +207,6 @@ Plug 'jeetsukumaran/vim-markology'
 " Vim understands line & column syntax when opening & editing files
 Plug 'wsdjeg/vim-fetch'
 
-Plug 'Shougo/echodoc.vim'
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'floating'
-highlight link EchoDocFloat Pmenu
-
 Plug 'zxqfl/tabnine-vim'
 
 Plug 'sinetoami/lightline-neomake'
