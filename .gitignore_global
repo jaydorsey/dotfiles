@@ -41,3 +41,4 @@ deoplete.log
 /doc/**/*
 *.dump
 tmp/*
+.metadata_never_index
