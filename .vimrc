@@ -83,8 +83,6 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 " git commit message windows and others
 Plug 'farmergreg/vim-lastplace'
 
-Plug 'francoiscabrol/ranger.vim'
-
 " Align text
 Plug 'godlygeek/tabular'
 
