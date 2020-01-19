@@ -140,19 +140,6 @@ endfunction
 " Browse git history with :GV
 Plug 'junegunn/gv.vim'
 
-" " Faster vim, better folding options
-" Plug 'Konfekt/FastFold'
-" nmap zuz <Plug>(FastFoldUpdate)
-" let g:fastfold_savehook = 1
-" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-" let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
-" let g:markdown_folding = 1
-" let g:vimsyn_folding = 'af'
-" " let g:xml_syntax_folding = 1
-" " let g:javaScript_fold = 1
-" let g:sh_fold_enabled= 7
-" let g:ruby_fold = 1
-
 " Tag creation
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
