@@ -137,9 +137,6 @@ function! FloatingFZF()
   call nvim_open_win(buf, v:true, opts)
 endfunction
 
-" Browse git history with :GV
-Plug 'junegunn/gv.vim'
-
 " Tag creation
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
