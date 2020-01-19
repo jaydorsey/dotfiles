@@ -36,9 +36,6 @@ Plug 'alfredodeza/jacinto.vim', { 'for': 'json' }
 " An improved matchit plugin with additional motions & matchers
 Plug 'andymass/vim-matchup'
 
-" Brewfile syntax highlighting
-Plug 'bfontaine/brewfile.vim'
-
 " Find and Replace plugin
 " https://github.com/brooth/far.vim
 Plug 'brooth/far.vim'
