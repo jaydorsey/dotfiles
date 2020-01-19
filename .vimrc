@@ -207,9 +207,6 @@ Plug 'jeetsukumaran/vim-markology'
 " Vim understands line & column syntax when opening & editing files
 Plug 'wsdjeg/vim-fetch'
 
-" colorschemes
-Plug 'sonph/onehalf', { 'rtp': 'vim/' }
-
 Plug 'Shougo/echodoc.vim'
 let g:echodoc#enable_at_startup = 1
 
