@@ -116,25 +116,27 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
 # Also defines the default command run when :Files is called in vim
-export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow \
+export FZF_DEFAULT_COMMAND="rg --files --hidden \
   -g \"!{.git,frontend,frontend/node_modules,node_modules,Library,.gnupg,swagger,storage,.config/yarn,tmp,.yardopts,doc}/*\" \
   -g \"!package-lock.json\" \
   -g \"!*.map\" \
   -g \"!*.log\" \
-  -g \"!tmp/*\" \
-  -g \"!**/tmp/*\" \
+  -g \"!**/tmp/**/*\" \
   -g \"!**/node_modules/*\" \
+  -g \"!**/bower_modules/*\" \
+  -g \"!**/dist/*\" \
   -g \"!tags\" \
   -g \"!*.dwarf\" \
   -g \"!yarn.lock\" \
   -g \"!*.jay\" \
+  -g \"!*.tmp\" \
   2> /dev/null"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
 
 # Ignore certain commands from zsh history via regex
-export HISTORY_IGNORE="cd|ls|clear|tmux|ttmux|vi|ls|exit|z *"
+export HISTORY_IGNORE="cd|ls|clear|tmux|ttmux|vi|exit|z *"
 export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd"
 
 export KERL_CONFIGURE_OPTIONS="--disable-debug \
@@ -208,7 +210,22 @@ bindkey "^T" fzf-file-widget
 bindkey "^[c" fzf-cd-widget
 
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status root_indicator)
+
+export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status root_indicator time)
+
+# export POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-stash git-remotebranch git-tagname)
+# export POWERLEVEL9K_VCS_GIT_HOOKS=(git-untracked)
+export POWERLEVEL9K_VCS_HIDE_TAGS=true
+
+# vcs-detect-changes)
+#git-untracked)
+# git-aheadbehind git-stash)
+export POWERLEVEL9K_VCS_SHORTEN_LENGTH=6
+export POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=10
+export POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
+export POWERLEVEL9K_VCS_SHORTEN_DELIMITER=".."
+
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings

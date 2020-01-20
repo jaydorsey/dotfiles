@@ -117,7 +117,7 @@ function! FloatingFZF()
   call setbufvar(buf, '&signcolumn', 'no')
 
   let height = float2nr(&lines * 0.5)
-  let width = float2nr(&columns * 0.6)
+  let width = float2nr(&columns * 0.8)
   let horizontal = float2nr((&columns - width) / 2)
   let vertical = 1
 
@@ -336,7 +336,7 @@ noremap Q @q
 " ripgrep customization
 " http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --no-follow --color "always"
   \ -g "!{.git,log,coverage,node_modules,vendor,frontend,tmp,.yardoc,doc}/*"
   \ -g "!tmux*"
   \ -g "!*.log"
@@ -349,14 +349,14 @@ let g:rg_command = '
   \ -g "!tags"
   \ -g "!tags.temp"
   \ -g "!.yardopts"
+  \ -g "!**/dist/*"
   \ -g "!yarn.lock"
   \ -g "!*.jay"
   \ -g "!spec/vcr/*"
-  \ -g "!**/node_modules/*"
-  \ -g "!**/tmp/*"
-  \ -g "!sales_app/tmp/**"
-  \ -g "!sales_app/dist"
-  \ -g "!sales_app/node_modules/**"
+  \ -g "!**/dist/**/*"
+  \ -g "!**/node_modules/**/*"
+  \ -g "!**/bower_components/**/*"
+  \ -g "!**/tmp/**/*"
   \ '
   " \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
 
@@ -524,6 +524,7 @@ highlight rubyBoolean cterm=italic term=italic gui=italic guifg=Yellow
 " after the <cr> in order for it to work correctly and not execute CTRL-J,
 " which is mapped to swap lines on my setup
 let @l = ":DelimitMateOff^ilet(:ea)llxxi{ $a }:DelimitMateOn\<cr>\\"
+let @i = ":DelimitMateOff^xxxiRails.logger.info($a):DelimitMateOn\<cr>\\"
 
 " Print out the color syntax group of the highlighted line
 " https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
