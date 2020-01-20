@@ -12,6 +12,8 @@ vnoremap <s-down> <nop>
 inoremap <s-up> <nop>
 inoremap <s-down> <nop>
 noremap <f1> <nop>
+nnoremap { <nop>
+nnoremap } <nop>
 
 let g:python3_host_prog = 'python3'
 let g:python_host_prog = 'python2'
@@ -41,6 +43,11 @@ Plug 'andymass/vim-matchup'
 Plug 'brooth/far.vim'
 let g:far#source = 'rgnvim'
 
+Plug 'Chrisbra/Colorizer'
+
+" Custom plugin; toggle/remove this to test it locally
+" Plug 'jaydorsey/darkjay'
+
 " Better motions
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -54,14 +61,17 @@ let g:EasyMotion_smartcase = 1
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 
-" Highlight current search instance. This goes above is/asterisk
-Plug 'timakro/vim-searchant'
-
 " Create images of source code
 Plug 'segeljakt/vim-silicon'
 
 " Incremental search
 Plug 'haya14busa/is.vim'
+
+" Highlight current search instance. This goes above is/asterisk
+Plug 'timakro/vim-searchant'
+
+" Allows * to also work with visual selections
+Plug 'bronson/vim-visual-star-search'
 
 " Improved * motions
 Plug 'haya14busa/vim-asterisk'
@@ -88,6 +98,8 @@ Plug 'godlygeek/tabular'
 
 " Better, automatic swap file management
 Plug 'gioele/vim-autoswap'
+
+Plug 'yuttie/comfortable-motion.vim'
 
 Plug 'itchyny/lightline.vim'
 " Buffer tabs
@@ -236,8 +248,9 @@ set nofoldenable                                   " Fold or don't fold files by
 set formatoptions+=j                               " Join comments better
 set grepprg=rg\ --vimgrep\ --no-heading            " Use ripgrep instead of ag for :Ag commands
 set grepformat=%f:%l:%c:%m,%f:%l:%m
-set guicursor=a:blinkon0-Cursor/Cursor             " Turn off blink for all modes
-set guicursor+=i:blinkwait0-blinkon100-blinkoff100 " Turn on blinking in insert mode
+" set guicursor=a:blinkon0-Cursor/Cursor             " Turn off blink for all modes
+" set guicursor+=i:blinkwait0-blinkon100-blinkoff100 " Turn on blinking in insert mode
+" set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor50
 set hidden                                         " Required for operations modifying multiple buffers like rename.
 set history=500                                    " Max history
 set hlsearch                                       " Highlight matches
@@ -250,7 +263,7 @@ set mouse=                                         " Disable mouse
 set noerrorbells                                   " No sounds
 set nocindent                                      " Don't indent text with parentheses https://stackoverflow.com/a/2129313/2892779
 set nocursorcolumn                                 " Enable cursor column highlighting
-set nocursorline                                   " Disable line highlighting, for performance
+set cursorline                                     " Disable line highlighting, for performance
 set norelativenumber                               " Disable relative line numbers for performance
 set noruler                                        " No ruler needed, because lightline
 set noshowmode                                     " Disable current mode, handled by lightline
@@ -260,6 +273,7 @@ set number                                         " Line numbers on
 set numberwidth=5                                  " Use 5 characters for number well
 set regexpengine=1                                 " Use old regular expression engine because it's faster
 set rtp+=/usr/local/opt/fzf                        " fzf.vim
+set rtp+=~/projects/jaydorsey/darkjay              " Local path for theme development locally
 set scrolloff=10                                   " Prevent scrolling past bottom line
 set sessionoptions-=options                        " Disable options because sessions capture runtime path
 set sessionoptions-=folds                          " FastFold recommended setting to make sure buffer not overwritten in manual
@@ -468,11 +482,6 @@ endfunction
 " Map ESC in terminal mode to exit terminal mode
 tnoremap <esc> <c-\><c-n>
 
-" Disable these keys in normal mode because it makes my cursor jump all over
-" the place when I hit the wrong keys
-nmap { <ESC>
-nmap } <ESC>
-
 " Yank into the system clipboard
 vmap <leader>y "+y
 
@@ -501,17 +510,7 @@ vnoremap > >gv
 " https://stackoverflow.com/a/4313335/2892779
 nnoremap <c-p> p`[v`]
 
-" Highlight the column at 120
-highlight ColorColumn ctermbg=DarkRed guibg=#ffa3fe
 let &colorcolumn="120"
-
-highlight rubyComment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
-highlight vimLineComment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
-highlight Comment ctermfg=247 ctermbg=236 guifg=#919baa guibg=#282c34
-highlight rubyComment cterm=italic term=italic gui=italic
-highlight vimLineComment cterm=italic term=italic gui=italic
-highlight Comment cterm=italic term=italic gui=italic
-highlight rubyBoolean cterm=italic term=italic gui=italic guifg=Yellow
 
 " To save a macro and define it here, record the macro as normal, then
 " paste it in normal mode using "qp (assuming you used the q register)
@@ -529,11 +528,6 @@ let @i = ":DelimitMateOff^xxxiRails.logger.info($a):DelimitMateOn\<cr>\\"
 " Print out the color syntax group of the highlighted line
 " https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
 command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
-
-" Change colors of current incremental search result and all search results
-hi! link Search PMenu
-hi! link IncSearch PMenuSel
-highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#93a1a1 guibg=#002931
 
 " https://vi.stackexchange.com/a/440
 " Like gJ, but always remove spaces
