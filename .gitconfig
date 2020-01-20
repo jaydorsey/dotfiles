@@ -1,6 +1,6 @@
 [user]
-  name = Jay Dorsey
-  email = jaydorsey@fastmail.com
+	name = Jay Dorsey
+	email = jaydorsey@fastmail.com
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
@@ -64,10 +64,10 @@
   whitespace = red reverse
 [diff]
   compactionHeuristic = true
-  tool = githubdiff
+  tool = github
 [difftool]
   prompt = false
-[difftool "githubdiff"]
+[difftool "github"]
   cmd = github
 [diff "spaceman-diff"]
   command = /usr/local/bin/spaceman-diff
