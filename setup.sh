@@ -135,6 +135,10 @@ ln -sf "$(pwd)/.yamllint" ~/.config/yamllint/config
 echo "Symlink or create your .personalrc file"
 echo "Symlink or create your .localrc file"
 
+# Install tool for alacritty themes
+# pip3 install git+https://github.com/toggle-corp/alacritty-colorscheme.git
+# git clone https://github.com/eendroroy/alacritty-theme.git ~/.eendroroy-alacritty-theme
+
 # Generate tags for bundled gems
 # ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')
 # Ctags debugging
@@ -142,4 +146,3 @@ echo "Symlink or create your .localrc file"
 
 # Install the pg-extras plugin
 # heroku plugins:install git://github.com/heroku/heroku-pg-extras.git
-
