@@ -28,3 +28,8 @@ sudo xcode-select --switch /Library/Developer/CommandLineTools
 
 # Enable Xcode app
 sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+
+% font
+
+# List installed fonts
+fc-list
