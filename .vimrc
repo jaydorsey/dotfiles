@@ -45,9 +45,6 @@ let g:far#source = 'rgnvim'
 
 Plug 'Chrisbra/Colorizer'
 
-" Custom plugin; toggle/remove this to test it locally
-" Plug 'jaydorsey/darkjay'
-
 " Better motions
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -63,6 +60,9 @@ map <leader>k <Plug>(easymotion-k)
 
 " Create images of source code
 Plug 'segeljakt/vim-silicon'
+
+" Colorscheme
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " Incremental search
 Plug 'haya14busa/is.vim'
@@ -273,7 +273,6 @@ set number                                         " Line numbers on
 set numberwidth=5                                  " Use 5 characters for number well
 set regexpengine=1                                 " Use old regular expression engine because it's faster
 set rtp+=/usr/local/opt/fzf                        " fzf.vim
-set rtp+=~/projects/jaydorsey/darkjay              " Local path for theme development locally
 set scrolloff=10                                   " Prevent scrolling past bottom line
 set sessionoptions-=options                        " Disable options because sessions capture runtime path
 set sessionoptions-=folds                          " FastFold recommended setting to make sure buffer not overwritten in manual
@@ -299,7 +298,7 @@ set viminfo^=!                                     " Add recently accessed proje
 set visualbell                                     " No visual feedback
 set writebackup                                    " write backup file before overwriting
 
-colorscheme darkjay
+colorscheme onehalfdark
 
 filetype plugin on
 filetype indent on
