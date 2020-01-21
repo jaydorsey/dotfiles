@@ -32,6 +32,15 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'airblade/vim-gitgutter'
 
+Plug 'scrooloose/nerdtree'
+nnoremap <leader>e :NERDTreeToggle<cr>
+" augroup nerdtree_autocmd
+"   autocmd!
+"   " Close vim if the only window left open is NERDtree
+"   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" augroup END
+let g:NERDTreeChDirMode = 2
+
 " Formatting & validating json via :Jacinto
 Plug 'alfredodeza/jacinto.vim', { 'for': 'json' }
 
