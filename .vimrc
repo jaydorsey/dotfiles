@@ -552,6 +552,7 @@ endfun
 " Map it to a key
 nnoremap gJ :call JoinSpaceless()<CR>
 
+hi PMenu guibg=#000000 guifg=#dddddd
 " Stuff
 "
 " Capture keys pressed while editing a vim file (for debugging)
