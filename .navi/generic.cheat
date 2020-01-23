@@ -12,6 +12,11 @@ tmux kill-session -t <session>
 
 $ session: tmux ls | awk '{print substr($1, 1, length($1)-1)}'
 
+# Attach to existing tmux session
+tmux attach-session -t <session>
+
+$ session: tmux ls | awk '{print substr($1, 1, length($1)-1)}'
+
 % redis
 
 # Remove all keys of all existing redis databases
