@@ -2,3 +2,4 @@
 .localrc
 bin/colorls
 bin/ttmux
+bin/ngrok
