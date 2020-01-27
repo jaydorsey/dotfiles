@@ -236,6 +236,13 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl --with-rea
 # export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
 
+# testprof
+export TEST_STACK_PROF=1
+export TEST_RUBY_PROF=1
+export FDOC=1
+export FPROF=1
+export RD_PROF=1
+
 alias be='bundle exec'
 alias cat='bat'
 alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
