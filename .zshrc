@@ -109,7 +109,7 @@ export ARCHFLAGS="-arch x86_64"
 # oh Catalina, how do you disappoint me? let me count the ways
 # https://github.com/rbenv/ruby-build/issues/1361#issuecomment-543815155
 export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
-export CFLAGS="-I/usr/local/opt/openssl/include"
+export CFLAGS="-I/usr/local/opt/openssl/include -O2 -g"
 export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
 
