@@ -124,17 +124,6 @@ nnoremap <c-h> :bprev<cr>
 " Send to tmux
 Plug 'jgdavey/tslime.vim'
 
-" Build the extra binary if cargo exists on your system.
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-augroup TabNineClap
-  autocmd!
-  autocmd User ClapOnEnter call youcompleteme#DisableCursorMovedAutocommands()
-  autocmd User ClapOnExit call youcompleteme#EnableCursorMovedAutocommands()
-augroup END
-
-Plug 'liuchengxu/vista.vim'
-let g:vista_fzf_preview = ['left:50%']
-
 Plug 'junegunn/fzf.vim'
 " Override and open ctrl-t in a new buffer to help me using buffers
 let g:fzf_action = {
@@ -411,12 +400,9 @@ command! -bang -nargs=* Find
 \         : fzf#vim#with_preview('right:50%:hidden', '?'),
 \ <bang>0)
 
-nnoremap K :Clap grep ++query=<cword><cr>
-nnoremap <leader>p :Clap files<cr>
-nnoremap <leader>b :Clap buffers<cr>
-" nnoremap K :Find <cr>
-" nnoremap <leader>p :Files<cr>
-" nnoremap <leader>b :Buffers<cr>
+nnoremap K :Find <cr>
+nnoremap <leader>p :Files<cr>
+nnoremap <leader>b :Buffers<cr>
 
 augroup vim_ruby_group
   autocmd!
