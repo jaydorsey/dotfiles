@@ -153,7 +153,7 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --enable-darwin-64bit \
   --with-ssl=/usr/local/opt/openssl"
 
-export NAVI_PATH="$HOME/.navi"
+export NAVI_PATH="$HOME/.navi:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
 export PAGER="less"
 
 # My custom scripts go in ~/bin, put that in the path first
