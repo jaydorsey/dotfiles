@@ -421,6 +421,7 @@ augroup vim_ruby_group
 
   " Indent haml files
   autocmd FileType haml setlocal foldmethod=indent
+  autocmd FileType elixir setlocal foldmethod=syntax
 
   " vim-ruby completion
   autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
