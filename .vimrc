@@ -234,7 +234,7 @@ Plug 'sinetoami/lightline-neomake'
 
 call plug#end()
 
-call neomake#configure#automake('rw', 1000)
+call neomake#configure#automake('rw', 500)
 let g:neomake_ruby_enabled_makers = ['rubocop']
 
 set autoindent                                     " Automatic indenting/formatting
