@@ -203,9 +203,7 @@ cask "acorn"
 cask "alacritty"
 cask "alfred"
 cask "appcleaner"
-cask "atom"
 cask "bartender"
-cask "bettertouchtool"
 cask "betterzip"
 cask "camtasia"
 cask "chromedriver"
@@ -213,31 +211,22 @@ cask "colorsnapper"
 cask "contexts"
 cask "daisydisk"
 cask "dash"
-cask "devonthink"
 cask "discord"
 cask "docker"
 cask "dropbox"
 cask "firefox"
 cask "fission"
-cask "font-roboto"
 cask "gitter"
 cask "google-chrome"
-cask "hazel"
-cask "hyper"
 cask "insomnia"
 cask "iterm2"
 cask "java"
-cask "kaleidoscope"
-cask "keyboard-maestro"
 cask "lepton"
 cask "macdown"
 cask "moom"
-cask "notion"
 cask "path-finder"
 cask "pdfkey-pro"
 cask "pdfpenpro"
-cask "pgadmin4"
-cask "scapple"
 cask "sip"
 cask "slack"
 cask "snagit"
@@ -250,15 +239,7 @@ mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "EasyRes", id: 688211836
 mas "Folder Factory", id: 521419726
-mas "GAget", id: 968487158
-mas "GarageBand", id: 682658836
 mas "Gemini 2", id: 1090488118
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
-mas "Ringer", id: 402437824
 mas "Screenium 3", id: 921553264
 mas "VisualDiffer", id: 412386481
-mas "Xcode", id: 497799835
