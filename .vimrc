@@ -117,6 +117,9 @@ let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#show_number = 1
 let g:lightline#bufferline#unicode_symbols = 1
 
+Plug 'mhinz/vim-mix-format'
+let g:mix_format_on_save = 1
+
 " Use c-n/c-h to switch buffers
 nnoremap <c-n> :bnext<cr>
 nnoremap <c-h> :bprev<cr>
