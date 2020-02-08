@@ -110,8 +110,8 @@ export ARCHFLAGS="-arch x86_64"
 # https://github.com/rbenv/ruby-build/issues/1361#issuecomment-543815155
 export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
 export CFLAGS="-I/usr/local/opt/openssl/include -O2 -g"
-export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/"
+export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/ -I/usr/local/opt/readline/include"
 
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -176,13 +176,14 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 # capybara-webkit, temporary
 export PATH=$PATH:/Users/jay/Qt5.5.0/5.5/clang_64/bin/
 # For crystal
-export PATH="/usr/local/opt/llvm@6/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
 # For Rust
 export CARGO_HOME="$HOME/.cargo"
 export PATH="$PATH:$CARGO_HOME/bin"
 
 # https://luckyframework.org/guides/getting-started/installing
-export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig:/usr/local/opt/readline/lib/pkgconfig"
 
 # Always show full history
 export PROMPT_COMMAND='history -a'
