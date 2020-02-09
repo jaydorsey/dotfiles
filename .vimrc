@@ -54,6 +54,29 @@ let g:far#source = 'rgnvim'
 
 Plug 'Chrisbra/Colorizer'
 
+Plug 'dense-analysis/ale'
+let g:ale_sign_column_always = 1
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
+" Clone & compile
+let g:ale_elixir_elixir_ls_release = '/Users/jay/dev/elixir/elixir-ls/rel'
+
+let g:ale_fix_on_save = 1
+let g:ale_linters = {'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls', 'mix'] }
+let g:ale_fixers = {
+      \ 'elixir': ['mix_format'],
+      \ '*': ['remove_trailing_lines', 'trim_whitespace']
+      \ }
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
+highlight ALEWarning ctermbg=LightGreen
+Plug 'maximbaz/lightline-ale'
+
 " Better motions
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -117,8 +140,8 @@ let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#show_number = 1
 let g:lightline#bufferline#unicode_symbols = 1
 
-Plug 'mhinz/vim-mix-format'
-let g:mix_format_on_save = 1
+" Plug 'mhinz/vim-mix-format'
+" let g:mix_format_on_save = 1
 
 " Use c-n/c-h to switch buffers
 nnoremap <c-n> :bnext<cr>
@@ -165,8 +188,6 @@ let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'git
 " Type :messages after gutentag loads to see the trace
 let g:gutentags_trace=0
 let g:gutentags_enabled=1
-
-Plug 'neomake/neomake'
 
 " Add automatic delimiters ([<{, quotes, etc.
 Plug 'Raimondi/delimitMate'
@@ -233,12 +254,7 @@ Plug 'wsdjeg/vim-fetch'
 
 Plug 'zxqfl/tabnine-vim'
 
-Plug 'sinetoami/lightline-neomake'
-
 call plug#end()
-
-call neomake#configure#automake('rw', 500)
-let g:neomake_ruby_enabled_makers = ['rubocop']
 
 set autoindent                                     " Automatic indenting/formatting
 set autoread                                       " Reload files changed outside of vim
@@ -443,7 +459,7 @@ augroup END
 let g:lightline = {
 \ 'active': {
 \   'colorscheme': 'onehalfdark',
-\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'neomake_warnings', 'neomake_errors', 'neomake_infos', 'neomake_ok']],
+\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok']],
 \   'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
 \ },
 \ 'component': {
@@ -452,11 +468,12 @@ let g:lightline = {
 \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
 \ },
 \ 'component_expand': {
-\   'buffers': 'lightline#bufferline#buffers',
-\   'neomake_infos': 'lightline#neomake#infos',
-\   'neomake_warnings': 'lightline#neomake#warnings',
-\   'neomake_errors': 'lightline#neomake#errors',
-\   'neomake_ok': 'lightline#neomake#ok',
+\  'buffers': 'lightline#bufferline#buffers',
+\  'linter_checking': 'lightline#ale#checking',
+\  'linter_infos': 'lightline#ale#infos',
+\  'linter_warnings': 'lightline#ale#warnings',
+\  'linter_errors': 'lightline#ale#errors',
+\  'linter_ok': 'lightline#ale#ok'
 \ },
 \ 'component_visible_condition': {
 \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -465,8 +482,11 @@ let g:lightline = {
 \ },
 \ 'component_type': {
 \   'buffers': 'tabsel',
+\   'linter_checking': 'right',
+\   'linter_infos': 'right',
 \   'linter_warnings': 'warning',
-\   'linter_errors': 'error'
+\   'linter_errors': 'error',
+\   'linter_ok': 'right'
 \ },
 \ 'component_function': {
 \   'filename': 'LightlineFilename'
@@ -554,6 +574,17 @@ endfun
 
 " Map it to a key
 nnoremap gJ :call JoinSpaceless()<CR>
+
+augroup AleStuff
+  autocmd User ALELint call s:MaybeUpdateLightline()
+augroup END
+
+" Update and show lightline but only if it's visible
+function! s:MaybeUpdateLightline()
+  if exists('#lightline')
+    call lightline#update()
+  end
+endfunction
 
 hi PMenu guibg=#000000 guifg=#dddddd
 " Stuff
