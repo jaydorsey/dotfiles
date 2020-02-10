@@ -135,6 +135,9 @@ ln -sf "$(pwd)/.yamllint" ~/.config/yamllint/config
 echo "Symlink or create your .personalrc file"
 echo "Symlink or create your .localrc file"
 
+# https://github.com/VSCodeVim/Vim#mac
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
 # Install tool for alacritty themes
 # pip3 install git+https://github.com/toggle-corp/alacritty-colorscheme.git
 # git clone https://github.com/eendroroy/alacritty-theme.git ~/.eendroroy-alacritty-theme
