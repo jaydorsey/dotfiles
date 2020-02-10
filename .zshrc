@@ -156,8 +156,8 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
 export NAVI_PATH="$HOME/.navi:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
 export PAGER="less"
 
-# My custom scripts go in ~/bin, put that in the path first
-export PATH=~/bin:$PATH
+# My custom scripts go in ~/bin, put that in the path first. Also include a local-only bin path, ~/local_bin
+export PATH=~/bin:~/local_bin:$PATH
 # Most of the homebrew executables end up here
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:/Users/jay/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn global bin` to find this path
