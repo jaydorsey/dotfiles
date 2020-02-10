@@ -5,6 +5,7 @@
 Code.compiler_options(ignore_module_conflict: true)
 
 IO.puts IO.ANSI.red_background() <> IO.ANSI.white() <> " ❄❄❄ Good Luck with Elixir ❄❄❄ " <> IO.ANSI.reset
+IO.puts("<shell history is found in #{:filename.basedir(:user_cache, "erlang-history")}>")
 Application.put_env(:elixir, :ansi_enabled, true)
 IEx.configure(
  colors: [
@@ -31,5 +32,4 @@ IEx.configure(
       # ❤ ❤-»" ,  # plain string
     :reset
   ] |> IO.ANSI.format |> IO.chardata_to_string
-
 )
