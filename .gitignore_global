@@ -42,3 +42,4 @@ deoplete.log
 *.dump
 tmp/*
 .metadata_never_index
+*.code-workspace
