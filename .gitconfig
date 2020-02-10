@@ -1,12 +1,12 @@
 [user]
-	name = Jay Dorsey
-	email = jaydorsey@fastmail.com
+  name = Jay Dorsey
+  email = jaydorsey@fastmail.com
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
   ignorecase = false
   pager = "diff-so-fancy | GREP_COLOR='1;37' grep --color=always -E 'Merge (branch|pull request).*|$' | less --tabs=4 -RFX"
-	commitGraph = true
+  commitGraph = true
 [alias]
   a = add -A
   b = branch
@@ -79,6 +79,6 @@
 [rerere]
   enabled = true
 [gc]
-	writeCommitGraph = true
+  writeCommitGraph = true
 [fetch]
-	writeCommitGraph = true
+  writeCommitGraph = true
