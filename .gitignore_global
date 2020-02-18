@@ -43,3 +43,4 @@ deoplete.log
 tmp/*
 .metadata_never_index
 *.code-workspace
+.elixir_ls
