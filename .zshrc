@@ -109,11 +109,12 @@ export ARCHFLAGS="-arch x86_64"
 # oh Catalina, how do you disappoint me? let me count the ways
 # https://github.com/rbenv/ruby-build/issues/1361#issuecomment-543815155
 export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
-export CFLAGS="-I/usr/local/opt/openssl/include -O2 -g"
-export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/readline/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/ -I/usr/local/opt/readline/include"
+# export CFLAGS="-I/usr/local/opt/openssl/include -O2 -g"
+# export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/readline/lib"
+# export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/ -I/usr/local/opt/readline/include"
+# export CPPFLAGS="-I/usr/local/opt/readline/include"
 
-export EDITOR="nvim"
+export EDITOR="code"
 export ERL_AFLAGS="-kernel shell_history enabled"
 # Also defines the default command run when :Files is called in vim
 export FZF_DEFAULT_COMMAND="rg --files --hidden \
@@ -137,11 +138,11 @@ export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --colo
 
 # Ignore certain commands from zsh history via regex
 export HISTORY_IGNORE="cd|ls|clear|tmux|ttmux|vi|exit|z *"
-export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd"
+export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd|code|gcm"
 
+export KERL_BUILD_DOCS=yes
 export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --disable-silent-rules \
-  --without-javac \
   --enable-shared-zlib \
   --enable-dynamic-ssl-lib \
   --enable-hipe \
@@ -151,7 +152,8 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --enable-kernel-poll \
   --enable-wx \
   --enable-darwin-64bit \
-  --with-ssl=/usr/local/opt/openssl"
+  --with-ssl=/usr/local/opt/openssl \
+  --with-dynamic-trace=dtrace"
 
 export NAVI_PATH="$HOME/.navi:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
 export PAGER="less"
