@@ -110,6 +110,7 @@ export ARCHFLAGS="-arch x86_64"
 # https://github.com/rbenv/ruby-build/issues/1361#issuecomment-543815155
 export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
 # export CFLAGS="-I/usr/local/opt/openssl/include -O2 -g"
+export CFLAGS="-O2 -g -fno-stack-check"
 # export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/readline/lib"
 # export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/ -I/usr/local/opt/readline/include"
 # export CPPFLAGS="-I/usr/local/opt/readline/include"
