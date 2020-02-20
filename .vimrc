@@ -58,7 +58,8 @@ Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
+let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/bundle exec rubocop'
+
 " Clone & compile
 let g:ale_elixir_elixir_ls_release = '/Users/jay/dev/elixir/elixir-ls/rel'
 
@@ -66,7 +67,8 @@ let g:ale_fix_on_save = 1
 let g:ale_linters = {'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls', 'mix'] }
 let g:ale_fixers = {
       \ 'elixir': ['mix_format'],
-      \ '*': ['remove_trailing_lines', 'trim_whitespace']
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'ruby': ['remove_trailing_lines', 'trim_whitespace']
       \ }
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -91,7 +93,7 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 
 " Create images of source code
-Plug 'segeljakt/vim-silicon'
+Plug 'segeljakt/vim-silicon', { 'branch': 'version-2' }
 
 " Colorscheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
@@ -124,6 +126,8 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 " A better plugin for remembering the last place your cursor was. Ignores
 " git commit message windows and others
 Plug 'farmergreg/vim-lastplace'
+
+Plug 'wincent/ferret'
 
 " Align text
 Plug 'godlygeek/tabular'
@@ -398,6 +402,7 @@ let g:rg_command = '
   \ -g "!**/node_modules/**/*"
   \ -g "!**/bower_components/**/*"
   \ -g "!**/tmp/**/*"
+  \ -g "!db/backups"
   \ '
   " \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
 
@@ -451,8 +456,6 @@ augroup vim_ruby_group
   " autocmd BufRead,BufNewFile *_spec.rb setlocal syntax=off
   " autocmd BufRead,BufNewFile *_spec.rb setlocal foldmethod=indent
 augroup END
-
-" let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/bundle exec rubocop'
 
 " lightline
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
