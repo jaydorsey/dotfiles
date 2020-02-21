@@ -142,8 +142,9 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 # pip3 install git+https://github.com/toggle-corp/alacritty-colorscheme.git
 # git clone https://github.com/eendroroy/alacritty-theme.git ~/.eendroroy-alacritty-theme
 
-# Generate tags for bundled gems
-# ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')
+# Generate tags for bundled gems. The grep ignores lines started with "The", which includes certain
+# tzinfo warnings that's common
+# ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths | grep -v "^The" | sed 's/$/\/lib/'
 # Ctags debugging
 # ctags --verbose 2> out.txt
 
