@@ -132,6 +132,7 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden \
   -g \"!yarn.lock\" \
   -g \"!*.jay\" \
   -g \"!*.tmp\" \
+  -g \"!db/backups\" \
   2> /dev/null"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
