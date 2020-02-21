@@ -15,8 +15,8 @@ noremap <f1> <nop>
 nnoremap { <nop>
 nnoremap } <nop>
 
-let g:python3_host_prog = 'python3'
-let g:python_host_prog = 'python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/usr/local/bin/python3'
 
 let g:ruby_path="/Users/jay/.asdf/shims/ruby"
 let g:ruby_default_path="/Users/jay/.asdf/shims/ruby"
@@ -34,11 +34,6 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
-" augroup nerdtree_autocmd
-"   autocmd!
-"   " Close vim if the only window left open is NERDtree
-"   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" augroup END
 let g:NERDTreeChDirMode = 2
 
 " Formatting & validating json via :Jacinto
@@ -47,36 +42,34 @@ Plug 'alfredodeza/jacinto.vim', { 'for': 'json' }
 " An improved matchit plugin with additional motions & matchers
 Plug 'andymass/vim-matchup'
 
-" Find and Replace plugin
-" https://github.com/brooth/far.vim
-Plug 'brooth/far.vim'
-let g:far#source = 'rgnvim'
-
 Plug 'Chrisbra/Colorizer'
 
 Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/bundle exec rubocop'
+let g:ale_sign_warning = ''
+let g:ale_sign_error = ''
+let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
 
 " Clone & compile
 let g:ale_elixir_elixir_ls_release = '/Users/jay/dev/elixir/elixir-ls/rel'
 
 let g:ale_fix_on_save = 1
-let g:ale_linters = {'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls', 'mix'] }
+let g:ale_linters = {
+      \ 'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls', 'mix'],
+      \ 'ruby': ['rubocop']
+      \}
 let g:ale_fixers = {
       \ 'elixir': ['mix_format'],
-      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'ruby': ['remove_trailing_lines', 'trim_whitespace']
       \ }
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_echo_msg_error_str = 'E'
+" let g:ale_echo_msg_warning_str = 'W'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
 highlight ALEWarning ctermbg=LightGreen
+
 Plug 'maximbaz/lightline-ale'
 
 " Better motions
@@ -98,24 +91,11 @@ Plug 'segeljakt/vim-silicon', { 'branch': 'version-2' }
 " Colorscheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
-" Incremental search
-Plug 'haya14busa/is.vim'
-
-" Highlight current search instance. This goes above is/asterisk
-Plug 'timakro/vim-searchant'
-
 " Allows * to also work with visual selections
 Plug 'bronson/vim-visual-star-search'
 
-" Improved * motions
-Plug 'haya14busa/vim-asterisk'
-map * <Plug>(asterisk-z*)
-map # <Plug>(asterisk-z#)
-
-" Display current match index & number of times a match occurs with a search
-Plug 'google/vim-searchindex'
-
 " Clear search highlighting by pressing //
+" nnoremap // :noh<esc><c-c>
 nnoremap // :noh<cr>
 nnoremap <esc><esc> :noh<cr>
 
@@ -127,14 +107,24 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 " git commit message windows and others
 Plug 'farmergreg/vim-lastplace'
 
-Plug 'wincent/ferret'
+Plug 'inside/vim-search-pulse'
+let g:vim_search_pulse_disable_auto_mappings = 1
+let g:vim_search_pulse_mode = 'pattern'
+
+" Improved * motions
+Plug 'haya14busa/vim-asterisk'
+map * <Plug>(asterisk-z*)<Plug>Pulse
+map # <Plug>(asterisk-z#)<Plug>Pulse
+nmap n n<Plug>Pulse
+nmap N N<Plug>Pulse
 
 " Align text
-Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
 
 " Better, automatic swap file management
 Plug 'gioele/vim-autoswap'
 
+" Nicer scrolling with CTRL-d/u
 Plug 'yuttie/comfortable-motion.vim'
 
 Plug 'itchyny/lightline.vim'
@@ -295,7 +285,7 @@ set mouse=                                         " Disable mouse
 set noerrorbells                                   " No sounds
 set nocindent                                      " Don't indent text with parentheses https://stackoverflow.com/a/2129313/2892779
 set nocursorcolumn                                 " Enable cursor column highlighting
-set cursorline                                     " Disable line highlighting, for performance
+set nocursorline                                   " Disable line highlighting, for performance
 set norelativenumber                               " Disable relative line numbers for performance
 set noruler                                        " No ruler needed, because lightline
 set noshowmode                                     " Disable current mode, handled by lightline
@@ -424,7 +414,8 @@ command! -bang -nargs=* Find
 \         : fzf#vim#with_preview('right:50%:hidden', '?'),
 \ <bang>0)
 
-nnoremap K :Find <cr>
+
+nnoremap K :Find<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 
@@ -522,16 +513,6 @@ vmap <leader>y "+y
 " Open tag/definition in a new tab. Requires vim-ruby
 nmap <c-\> <c-w><c-]><c-w>T
 
-" Edit/save and automatically reload vimrc file
-" https://stackoverflow.com/a/39294493/2892779
-nnoremap gev :e ~/.vimrc<cr>
-nnoremap gsv :so ~/.vimrc<cr>
-if has ('autocmd') " Remain compatible with earlier versions
- augroup vimrc     " Source vim configuration upon save
-    autocmd! BufWritePost ~/.vimrc nested source % | tabdo e
-  augroup END
-endif
-
 " Change the local window current directory to that of current file
 nmap <leader>cd lcd %:p:h
 
@@ -590,6 +571,8 @@ function! s:MaybeUpdateLightline()
 endfunction
 
 hi PMenu guibg=#000000 guifg=#dddddd
+hi Search cterm=bold ctermfg=22 ctermbg=148 gui=bold guifg=#005f00 guibg=#afdf00
+hi incSearch cterm=bold ctermfg=22 ctermbg=148 gui=bold guifg=#005f00 guibg=#afdf00
 " Stuff
 "
 " Capture keys pressed while editing a vim file (for debugging)
