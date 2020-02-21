@@ -48,15 +48,15 @@ sudo xcodebuild -license
 # neovim/python stuff for deoplete, gundo, etc.
 #
 #######################################################
-pip2 install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim
-pip3 install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim
+pip2 install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim iredis
+pip3 install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim iredis
 
 #######################################################
 #
 # asdf for programming language version management
 #
 #######################################################
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.1
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 
 ~/.asdf/bin/asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 ~/.asdf/bin/asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
