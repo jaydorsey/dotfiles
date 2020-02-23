@@ -38,3 +38,8 @@ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
 
 # List installed fonts
 fc-list
+
+% macos, app, spotlight
+
+# Disable Spotlight in a folder
+touch .metadata_never_index
