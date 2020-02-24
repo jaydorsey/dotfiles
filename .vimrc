@@ -573,6 +573,9 @@ endfunction
 hi PMenu guibg=#000000 guifg=#dddddd
 hi Search cterm=bold ctermfg=22 ctermbg=148 gui=bold guifg=#005f00 guibg=#afdf00
 hi incSearch cterm=bold ctermfg=22 ctermbg=148 gui=bold guifg=#005f00 guibg=#afdf00
+
+nmap ,cs :let @*=expand("%")<CR>
+nmap ,cl :let @*=expand("%:p")<CR>
 " Stuff
 "
 " Capture keys pressed while editing a vim file (for debugging)
