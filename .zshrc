@@ -115,7 +115,7 @@ export CFLAGS="-O2 -g -fno-stack-check"
 # export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/ -I/usr/local/opt/readline/include"
 # export CPPFLAGS="-I/usr/local/opt/readline/include"
 
-export EDITOR="code"
+export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
 # Also defines the default command run when :Files is called in vim
 export FZF_DEFAULT_COMMAND="rg --files --hidden \
