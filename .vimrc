@@ -51,7 +51,7 @@ let g:ale_sign_error = ''
 let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
 
 " Clone & compile
-let g:ale_elixir_elixir_ls_release = '/Users/jay/dev/elixir/elixir-ls/rel'
+let g:ale_elixir_elixir_ls_release = '/Users/jay/dev/elixir-ls/release'
 
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
