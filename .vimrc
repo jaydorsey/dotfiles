@@ -206,6 +206,8 @@ nnoremap <leader>d :Dash<cr>
 Plug 'sheerun/vim-polyglot'
 let g:vim_markdown_conceal = 0
 
+Plug 'tpope/vim-rails'
+
 " Vim rspec helpers
 Plug 'thoughtbot/vim-rspec'
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --seed 42\n")'
