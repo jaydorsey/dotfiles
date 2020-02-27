@@ -131,6 +131,8 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden \
   -g \"!*.dwarf\" \
   -g \"!yarn.lock\" \
   -g \"!*.jay\" \
+  -g \"!deps/**/*\" \
+  -g \"!_build/**/*\" \
   -g \"!*.tmp\" \
   -g \"!db/backups\" \
   2> /dev/null"
@@ -341,3 +343,6 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 # zprof
 
 source /Users/jay/Library/Preferences/org.dystroy.broot/launcher/bash/br
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
