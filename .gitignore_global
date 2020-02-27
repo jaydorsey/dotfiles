@@ -13,7 +13,11 @@ Thumbs.db
 .ignore
 .overcommit.yml
 lefthook.yml
+# Ruby
 .rspec_parallel
+vendor/**/*
+db/backups/**/*
+db/data/**/*
 .ruby-version
 .tool-versions
 !db/structure.sql
@@ -30,9 +34,14 @@ tags.temp
 # Temporary
 .reek.yml
 config/rails_best_practices.yml
-storage/**/*
-frontend/dist/assets/**/*
-frontend/tmp
+**/storage/**/*
+# JavaScript
+**/dist/**/*
+**/node_modules/**/*
+**/bower_components/**/*
+yarn.lock
+package-lock.json
+# Config/settings
 default-env-vars.yml
 .solargraph.yml
 deoplete.log
@@ -43,4 +52,13 @@ deoplete.log
 tmp/*
 .metadata_never_index
 *.code-workspace
+# Elixir
 .elixir_ls
+_build/*
+deps/*
+# Yard
+.yardopts
+.yardoc/*
+# Miscellaneous
+*.map
+tmux*

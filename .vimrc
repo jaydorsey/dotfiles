@@ -54,14 +54,26 @@ let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
 let g:ale_elixir_elixir_ls_release = '/Users/jay/dev/elixir-ls/release'
 
 let g:ale_fix_on_save = 1
+let g:ale_elixir_mix_options = "/Users/jay/.asdf/shims/mix"
+
+      " \ 'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls', 'mix'],
 let g:ale_linters = {
-      \ 'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls', 'mix'],
+      \ 'elixir': ['elixir-ls', 'mix'],
       \ 'ruby': ['rubocop']
       \}
+
 let g:ale_fixers = {
-      \ 'elixir': ['mix_format'],
-      \ 'ruby': ['remove_trailing_lines', 'trim_whitespace']
-      \ }
+      \ 'elixir': [
+      \   'mix_format',
+      \   'remove_trailing_lines',
+      \   'trim_whitespace'
+      \ ],
+      \ '*': [
+      \   'remove_trailing_lines',
+      \   'trim_whitespace'
+      \ ]
+      \}
+
 " let g:ale_echo_msg_error_str = 'E'
 " let g:ale_echo_msg_warning_str = 'W'
 " let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -246,7 +258,7 @@ Plug 'jeetsukumaran/vim-markology'
 " Vim understands line & column syntax when opening & editing files
 Plug 'wsdjeg/vim-fetch'
 
-Plug 'zxqfl/tabnine-vim'
+" Plug 'zxqfl/tabnine-vim'
 
 call plug#end()
 
@@ -371,30 +383,10 @@ noremap Q @q
 " ripgrep customization
 " http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --no-follow --color "always"
-  \ -g "!{.git,log,coverage,node_modules,vendor,frontend,tmp,.yardoc,doc}/*"
-  \ -g "!tmux*"
-  \ -g "!*.log"
-  \ -g "!*.map"
-  \ -g "!docs/api/apiary.apib"
-  \ -g "!swagger/*"
-  \ -g "!storage/*"
-  \ -g "!db/data/*"
-  \ -g "!package-lock.json"
-  \ -g "!tags"
-  \ -g "!tags.temp"
-  \ -g "!.yardopts"
-  \ -g "!**/dist/*"
-  \ -g "!yarn.lock"
-  \ -g "!*.jay"
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always"
+  \ -g "!.git/*"
   \ -g "!spec/vcr/*"
-  \ -g "!**/dist/**/*"
-  \ -g "!**/node_modules/**/*"
-  \ -g "!**/bower_components/**/*"
-  \ -g "!**/tmp/**/*"
-  \ -g "!db/backups"
   \ '
-  " \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
 
 command! -bang -nargs=* Rg
 \ call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1,
