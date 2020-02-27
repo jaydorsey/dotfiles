@@ -8,32 +8,30 @@
 # Copyright (c) Conrad Irwin <conrad.irwin@gmail.com>
 # Copyright (c) Jan Lelis <mail@janlelis.de>
 
-module Debundle
-  VERSION = "1.1.0"
-
-  def self.debundle!
-    return unless defined?(Bundler)
-    return unless Gem.post_reset_hooks.reject!{ |hook|
-      hook.source_location.first =~ %r{/bundler/}
-    }
-    if defined? Bundler::EnvironmentPreserver
-      ENV.replace(Bundler::EnvironmentPreserver.new(ENV, %w[GEM_PATH]).backup)
-    end
-    Gem.clear_paths
-
-    load 'rubygems/core_ext/kernel_require.rb'
-    load 'rubygems/core_ext/kernel_gem.rb'
-  rescue
-    warn "DEBUNDLE.RB FAILED"
-    raise
-  end
-end
-
-Debundle.debundle!
+# module Debundle
+#   VERSION = "1.1.0"
+#
+#   def self.debundle!
+#     return unless defined?(Bundler)
+#     return unless Gem.post_reset_hooks.reject!{ |hook|
+#       hook.source_location.first =~ %r{/bundler/}
+#     }
+#     if defined? Bundler::EnvironmentPreserver
+#       ENV.replace(Bundler::EnvironmentPreserver.new(ENV, %w[GEM_PATH]).backup)
+#     end
+#     Gem.clear_paths
+#
+#     load 'rubygems/core_ext/kernel_require.rb'
+#     load 'rubygems/core_ext/kernel_gem.rb'
+#   rescue
+#     warn "DEBUNDLE.RB FAILED"
+#     raise
+#   end
+# end
+#
+# Debundle.debundle!
 
 ### END debundle.rb ###
-
-
 
 # rubocop:disable Rails/Output, Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
 print 'Loading ~/.irbrc...'
@@ -84,6 +82,16 @@ end
 
 IRB.conf[:SAVE_HISTORY] = 10_000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
+
+# https://ruby-doc.org/stdlib-2.7.0/libdoc/irb/rdoc/IRB.html#module-IRB-label-Auto+indentation
+IRB.conf[:PROMPT][:CUSTOM] = {
+  PROMPT_I: "irb \001\e[31m\002\001\e[0m\002 ", # normal prompt
+  PROMPT_S: '%l>> ', # continued strings
+  PROMPT_C: '.. ', # continued statement
+  PROMPT_N: '.. ', # indenting code
+  RETURN: "=> %s\n" # return value
+}
+IRB.conf[:PROMPT_MODE] = :CUSTOM
 IRB.conf[:AUTO_INDENT] = true
 
 def bm(times = 20)
