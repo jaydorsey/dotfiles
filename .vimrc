@@ -538,6 +538,16 @@ let @i = ":DelimitMateOff^xxxiRails.logger.info($a):DelimitMateOn\<cr>\\"
 " https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
 command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
 
+" Print all groups being applied
+" https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/
+nmap <leader>sp :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 " https://vi.stackexchange.com/a/440
 " Like gJ, but always remove spaces
 fun! JoinSpaceless()
