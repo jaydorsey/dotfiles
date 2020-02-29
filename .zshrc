@@ -25,6 +25,9 @@ export POWERLEVEL9K_MODE='awesome-fontconfig'
 # export ZSH_THEME="powerlevel9k/powerlevel9k"
 export ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# https://github.com/ansible/ansible/issues/32499#issuecomment-341578864
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -348,4 +351,3 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 source /Users/jay/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
