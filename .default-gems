@@ -1,4 +1,6 @@
 gem-ctags
+benchmark-memory
+benchmark-ips
 bundler
 bundler-audit
 debride
