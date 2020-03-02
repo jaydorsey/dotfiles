@@ -1,6 +1,7 @@
 gem-ctags
 benchmark-memory
 benchmark-ips
+binding_of_caller
 bundler
 bundler-audit
 debride
