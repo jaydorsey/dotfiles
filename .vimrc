@@ -102,6 +102,7 @@ Plug 'segeljakt/vim-silicon', { 'branch': 'version-2' }
 
 " Colorscheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'dracula/vim'
 
 " Allows * to also work with visual selections
 Plug 'bronson/vim-visual-star-search'
@@ -218,8 +219,18 @@ let g:crystal_define_mappings = 0
 Plug 'rizzatti/dash.vim'
 nnoremap <leader>d :Dash<cr>
 
+let g:polyglot_disabled = ['yard']
 Plug 'sheerun/vim-polyglot'
+" sheerun/vim-yardoc
 let g:vim_markdown_conceal = 0
+" Using vim-ruby via vim-polyglot, indent per work convention
+let g:ruby_indent_access_modifier_style = 'normal'
+" Indent for multi-line statements against left. variable or hanging
+let g:ruby_indent_assignment_style = 'variable'
+" Indent nested blocks, do or expression
+let g:ruby_indent_block_style = 'do'
+" Highlight whitespace errors
+let g:ruby_space_errors = 1
 
 Plug 'tpope/vim-rails'
 
@@ -246,15 +257,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-
-" Using vim-ruby via vim-polyglot, indent per work convention
-let g:ruby_indent_access_modifier_style = 'normal'
-" Indent for multi-line statements against left. variable or hanging
-let g:ruby_indent_assignment_style = 'variable'
-" Indent nested blocks, do or expression
-let g:ruby_indent_block_style = 'do'
-" Highlight whitespace errors
-let g:ruby_space_errors = 1
 
 " Better mark management. Add with m+, delete with m-, toggle with m,
 " Display with m? or m~
@@ -299,7 +301,6 @@ set nolazyredraw                                   " Disable screen redraw when 
 set redrawtime=10000                               " Increase redraw time so syntax highlighting works on larger files
 set matchtime=5                                    " Show matching bracket for 0.5 seconds
 set mouse=                                         " Disable mouse
-set noerrorbells                                   " No sounds
 set nocindent                                      " Don't indent text with parentheses https://stackoverflow.com/a/2129313/2892779
 set nocursorcolumn                                 " Enable cursor column highlighting
 set nocursorline                                   " Disable line highlighting, for performance
@@ -335,9 +336,12 @@ set viewoptions-=options                           " Recommended vim-stay option
 set viewdir=~/.vim/views
 set viminfo^=!                                     " Add recently accessed projects menu (project plugin)
 set visualbell                                     " No visual feedback
+" set errorbells
+" set belloff=
 set writebackup                                    " write backup file before overwriting
 
-colorscheme onehalfdark
+" colorscheme onehalfdark
+colorscheme dracula
 
 filetype plugin on
 filetype indent on
@@ -522,7 +526,7 @@ vnoremap > >gv
 " https://stackoverflow.com/a/4313335/2892779
 nnoremap <c-p> p`[v`]
 
-let &colorcolumn="120"
+let &colorcolumn="130"
 
 " To save a macro and define it here, record the macro as normal, then
 " paste it in normal mode using "qp (assuming you used the q register)
@@ -537,30 +541,23 @@ let &colorcolumn="120"
 let @l = ":DelimitMateOff^ilet(:ea)llxxi{ $a }:DelimitMateOn\<cr>\\"
 let @i = ":DelimitMateOff^xxxiRails.logger.info($a):DelimitMateOn\<cr>\\"
 
-" Print out the color syntax group of the highlighted line
-" https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
-command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
-
 " Print all groups being applied
 " https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/
-nmap <leader>sp :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+command! What echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+" Print out the color syntax group of the highlighted line
+" https://github.com/patstockwell/vim-monokai-tasty/blob/master/README.md
+command! Whatt echo synIDattr(synID(line('.'), col('.'), 1), 'name')
 
 " https://vi.stackexchange.com/a/440
 " Like gJ, but always remove spaces
 fun! JoinSpaceless()
-    execute 'normal gJ'
+  execute 'normal gJ'
 
-    " Character under cursor is whitespace?
-    if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
-        " When remove it!
-        execute 'normal dw'
-    endif
+  " Character under cursor is whitespace?
+  if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
+    " When remove it!
+    execute 'normal dw'
+  endif
 endfun
 
 " Map it to a key

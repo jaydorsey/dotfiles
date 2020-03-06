@@ -3,7 +3,7 @@ syn keyword Wildmenu private
 syn keyword Wildmenu protected
 syn keyword WarningMsg puts
 syn keyword WarningMsg print
-syn match WarningMsg 'binding\.pry'
+" syn match WarningMsg 'binding\.pry'
 
 syn keyword RSpecFocus fcontext fdescribe fit
 syn keyword RSpecSkip xdescribe xit skip xcontext
