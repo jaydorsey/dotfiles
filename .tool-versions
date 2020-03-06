@@ -1,4 +1,4 @@
-ruby 2.7.0
+ruby 2.6.5
 elixir 1.10.2-otp-22
 nodejs 10.16.0
 crystal 0.33.0
