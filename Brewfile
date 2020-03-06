@@ -238,7 +238,6 @@ mas "Affinity Photo", id: 824183456
 mas "EasyRes", id: 688211836
 mas "Folder Factory", id: 521419726
 mas "Gemini 2", id: 1090488118
-mas "Mouseposé", id: 405904955
 mas "OCRKit", id: 410309628
 mas "Ringer", id: 402437824
 mas "Screenium 3", id: 921553264
