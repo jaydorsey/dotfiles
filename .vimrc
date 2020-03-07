@@ -98,10 +98,9 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 
 " Create images of source code
-Plug 'segeljakt/vim-silicon', { 'branch': 'version-2' }
+Plug 'segeljakt/vim-silicon'
 
 " Colorscheme
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'dracula/vim'
 
 " Allows * to also work with visual selections
@@ -139,6 +138,8 @@ Plug 'gioele/vim-autoswap'
 
 " Nicer scrolling with CTRL-d/u
 Plug 'yuttie/comfortable-motion.vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'itchyny/lightline.vim'
 " Buffer tabs
@@ -340,7 +341,6 @@ set visualbell                                     " No visual feedback
 " set belloff=
 set writebackup                                    " write backup file before overwriting
 
-" colorscheme onehalfdark
 colorscheme dracula
 
 filetype plugin on
