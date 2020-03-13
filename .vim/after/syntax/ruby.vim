@@ -1,8 +1,8 @@
 " https://stackoverflow.com/questions/4162664/vim-highlight-a-list-of-words
 syn keyword Wildmenu private
 syn keyword Wildmenu protected
-syn keyword WarningMsg puts
-syn keyword WarningMsg print
+" syn keyword WarningMsg puts
+" syn keyword WarningMsg print
 " syn match WarningMsg 'binding\.pry'
 
 syn keyword RSpecFocus fcontext fdescribe fit
