@@ -3,10 +3,15 @@
 # rubocop:disable Rails/Output, Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
 print 'Loading ~/.irbrc...'
 
+if defined?(StructuredWarnings)
+  StructuredWarnings::StandardWarning.disable
+  StructuredWarnings::BuiltInWarning.disable
+end
+
 begin
   require 'irb'
 rescue LoadError => _e
-  puts "Failed loading"
+  puts 'Failed loading'
 end
 
 # begin
@@ -89,6 +94,5 @@ def ls
   %x(ls).split('\n')
 end
 
-puts "HERE"
 puts ' loaded!'
 # rubocop:enable Rails/Output, Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
