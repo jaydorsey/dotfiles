@@ -575,7 +575,7 @@ augroup END
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
 let g:lightline = {
 \ 'active': {
-\   'colorscheme': 'onehalfdark',
+\   'colorscheme': 'dracula',
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok']],
 \   'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
 \ },
