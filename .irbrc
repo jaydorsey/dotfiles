@@ -57,9 +57,9 @@ IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
 
 # https://ruby-doc.org/stdlib-2.7.0/libdoc/irb/rdoc/IRB.html#module-IRB-label-Auto+indentation
 IRB.conf[:PROMPT][:CUSTOM] = {
-  PROMPT_I: "irb \001\e[31m\002\001\e[0m\002 ", # normal prompt
-  PROMPT_S: '%l>> ', # continued strings
-  PROMPT_C: '.. ', # continued statement
+  PROMPT_I: "irb \001\e[31m\002 |>\001\e[0m\002 ", # normal prompt
+  PROMPT_S: "... \001\e[31m\002 |>\001\e[0m\002 ", # continued strings
+  PROMPT_C: "... \001\e[31m\002 |>\001\e[0m\002 ", # continued statement
   PROMPT_N: '.. ', # indenting code
   RETURN: "=> %s\n" # return value
 }
