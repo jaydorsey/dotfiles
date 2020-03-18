@@ -577,7 +577,7 @@ let g:lightline = {
 \ 'active': {
 \   'colorscheme': 'dracula',
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok']],
-\   'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
+\   'right': [['lineinfo'], ['percent'], ['lightline_character', 'fileformat', 'fileencoding', 'filetype']]
 \ },
 \ 'component': {
 \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
@@ -606,7 +606,8 @@ let g:lightline = {
 \   'linter_ok': 'right'
 \ },
 \ 'component_function': {
-\   'filename': 'LightlineFilename'
+\   'filename': 'LightlineFilename',
+\   'lightline_character': 'LightLineCharacter'
 \ },
 \ 'enable': {
 \   'statusline': 1, 'tabline': 1
@@ -615,6 +616,12 @@ let g:lightline = {
 \   'left': [['buffers']]
 \ }
 \ }
+
+" Shows a decimal & hex value of the character under cursor
+function! LightLineCharacter() abort
+  let dec = char2nr(matchstr(getline('.'), '\%' . col('.') . 'c.'))
+  return dec . "/0x" . printf('%x', dec)
+endfunction
 
 " Full filename path. Requires fugitive
 " https://github.com/itchyny/lightline.vim/issues/293#issuecomment-373710096
