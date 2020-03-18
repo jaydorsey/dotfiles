@@ -331,7 +331,7 @@ HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test 
 
 # Start navi with CTRL-G from a terminal
 # https://github.com/denisidoro/navi#shell-widget
-source "$(navi widget zsh)"
+source <(navi widget zsh)
 
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
