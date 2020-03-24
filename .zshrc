@@ -80,6 +80,10 @@ plugins=(git asdf gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-su
 # Always automatically update oh-my-zsh
 DISABLE_UPDATE_PROMPT="true"
 
+# Disable magic functions (can cause slow pasting)
+# https://github.com/ohmyzsh/ohmyzsh/issues/5569#issuecomment-491504337
+DISABLE_MAGIC_FUNCTIONS=true
+
 source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
