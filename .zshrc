@@ -238,10 +238,10 @@ export POWERLEVEL9K_VCS_HIDE_TAGS=true
 # vcs-detect-changes)
 #git-untracked)
 # git-aheadbehind git-stash)
-export POWERLEVEL9K_VCS_SHORTEN_LENGTH=6
-export POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=10
-export POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
-export POWERLEVEL9K_VCS_SHORTEN_DELIMITER=".."
+# export POWERLEVEL9K_VCS_SHORTEN_LENGTH=6
+# export POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=10
+# export POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
+# export POWERLEVEL9K_VCS_SHORTEN_DELIMITER=".."
 
 # Colorscheme
 # https://user-images.githubusercontent.com/704406/43988708-64c0fa52-9d4c-11e8-8cf9-c4d4b97a5200.png
