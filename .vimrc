@@ -106,6 +106,10 @@ Plug 'segeljakt/vim-silicon'
 
 " Colorscheme
 Plug 'dracula/vim'
+Plug 'patstockwell/vim-monokai-tasty'
+let g:vim_monokai_tasty_italic = 1
+
+Plug 'guns/xterm-color-table.vim'
 
 " Allows * to also work with visual selections
 Plug 'bronson/vim-visual-star-search'
@@ -156,6 +160,11 @@ let g:lightline#bufferline#unicode_symbols = 1
 " Use c-n/c-h to switch buffers
 nnoremap <c-n> :bnext<cr>
 nnoremap <c-h> :bprev<cr>
+
+Plug 'APZelos/blamer.nvim'
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+let g:blamer_show_in_visual_modes = 0
 
 " Completion support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -475,7 +484,8 @@ set visualbell                                     " No visual feedback
 " set belloff=
 set writebackup                                    " write backup file before overwriting
 
-colorscheme dracula
+" colorscheme dracula
+colorscheme vim-monokai-tasty
 
 filetype plugin on
 filetype indent on
@@ -596,7 +606,7 @@ augroup END
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L406-L453
 let g:lightline = {
 \ 'active': {
-\   'colorscheme': 'dracula',
+\   'colorscheme': 'monokai_tasty',
 \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok']],
 \   'right': [['lineinfo'], ['percent'], ['lightline_character', 'fileformat', 'fileencoding', 'filetype']]
 \ },
@@ -728,9 +738,17 @@ hi PMenu guibg=#000000 guifg=#dddddd
 hi Search cterm=bold ctermfg=22 ctermbg=148 gui=bold guifg=#005f00 guibg=#afdf00
 hi incSearch cterm=bold ctermfg=22 ctermbg=148 gui=bold guifg=#005f00 guibg=#afdf00
 
+hi rubyConstant ctermfg=33 guifg=#0087ff
+hi rubyClassName ctermfg=148 guifg=#A4E400
+hi rubyKeywordAsMethod ctermfg=164 guifg=#df00df
+
 nmap ,cs :let @*=expand("%")<CR>
 nmap ,cl :let @*=expand("%:p")<CR>
+
 " Stuff
 "
 " Capture keys pressed while editing a vim file (for debugging)
 " vi -w keys.txt file_name.rb
+"
+" Print out a list of all the colors in current syntax groups in a buffer
+" :so $VIMRUNTIME/syntax/hitest.vim
