@@ -3,26 +3,28 @@
 # rubocop:disable Rails/Output, Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
 print 'Loading ~/.irbrc...'
 
+begin
+  require "pry"
+  Pry.start
+  exit
+rescue LoadError => e
+  warn "=> Unable to load pry"
+end
+
 if defined?(StructuredWarnings)
   StructuredWarnings::StandardWarning.disable
   StructuredWarnings::BuiltInWarning.disable
 end
 
 begin
-  require 'irb'
+  require 'irb/completion'
 rescue LoadError => _e
-  puts 'Failed loading'
 end
 
-# begin
-#   require 'irb/completion'
-# rescue LoadError => _e
-# end
-
-# begin
-#   require 'irb/ext/save-history'
-# rescue LoadError => _e
-# end
+begin
+  require 'irb/ext/save-history'
+rescue LoadError => _e
+end
 
 begin
   require 'benchmark'

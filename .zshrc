@@ -71,7 +71,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua fzf tmux navi)
+plugins=(git asdf gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua fzf tmux)
 
 # Automatically load additional completion scripts. This is really slow so I've disabled for now
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
@@ -152,7 +152,8 @@ export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --colo
 
 # Ignore certain commands from zsh history via regex
 export HISTORY_IGNORE="cd|ls|clear|tmux|ttmux|vi|exit|z *"
-export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd|code|gcm"
+export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd"
+export HISTORY_IGNORE="$HISTORY_IGNORE|code|gcm|g a|g s|g commit|g diff|be rails s|be rails c|irb|pry|g a|g s"
 
 export KERL_BUILD_DOCS=yes
 export KERL_CONFIGURE_OPTIONS="--disable-debug \
@@ -169,7 +170,9 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --with-ssl=/usr/local/opt/openssl \
   --with-dynamic-trace=dtrace"
 
-export NAVI_PATH="$HOME/.navi:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
+# https://github.com/denisidoro/navi#using-oh-my-zsh
+export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
+export NAVI_PATH="$HOME/.navi:$HOME/.navi_cheatsheets:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
 export PAGER="less"
 
 # My custom scripts go in ~/bin, put that in the path first. Also include a local-only bin path, ~/local_bin
@@ -182,8 +185,6 @@ export PATH=$PATH:/Users/jay/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$PATH:/usr/local/opt/postgresql/bin
 export PATH=/usr/local/opt/openssl/bin:$PATH
-# https://github.com/denisidoro/navi#using-oh-my-zsh
-export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 # https://embeddedartistry.com/blog/2017/02/24/installing-llvm-clang-on-osx/
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 # This is necessary for, at least, crystal

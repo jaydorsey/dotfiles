@@ -126,7 +126,7 @@ ln -sf "$(pwd)/bin/" ~/bin
 ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
 ln -sf "$(pwd)/.ctags.d" ~/.ctags.d
 ln -sf "$(pwd)/.solargraph.yml" ~/.solargraph.yml
-ln -sf "$(pwd)/.navi" ~/.navi
+ln -sf "$(pwd)/.navi" ~/.navi_cheatsheets
 ln -sf "$(pwd)/.tmux.conf" ~/.tmux.conf
 ln -sf "$(pwd)/.yamllint" ~/.yamllint
 ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
@@ -137,6 +137,7 @@ echo "Symlink or create your .localrc file"
 
 # https://github.com/VSCodeVim/Vim#mac
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Install tool for alacritty themes
 # pip3 install git+https://github.com/toggle-corp/alacritty-colorscheme.git
