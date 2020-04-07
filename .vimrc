@@ -179,8 +179,7 @@ let g:coc_global_extensions = [
       \ 'coc-explorer',
       \ 'coc-git',
       \ 'coc-highlight',
-      \ 'coc-snippets',
-      \ 'coc-elixir'
+      \ 'coc-snippets'
       \ ]
 
 " Send to tmux
