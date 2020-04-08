@@ -30,9 +30,9 @@ let g:yaml_formatter_indent_collection=1
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim'
 
-Plug 'airblade/vim-rooter'
-" let g:rooter_targets = 'hapi_server'
-let g:rooter_patterns = ['.git/']
+" Plug 'airblade/vim-rooter'
+" " let g:rooter_targets = 'hapi_server'
+" let g:rooter_patterns = ['.git/']
 
 Plug 'airblade/vim-gitgutter'
 
@@ -105,7 +105,7 @@ map <leader>k <Plug>(easymotion-k)
 Plug 'segeljakt/vim-silicon'
 
 " Colorscheme
-Plug 'dracula/vim'
+" Plug 'dracula/vim'
 Plug 'patstockwell/vim-monokai-tasty'
 let g:vim_monokai_tasty_italic = 1
 
@@ -165,6 +165,7 @@ Plug 'APZelos/blamer.nvim'
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
 let g:blamer_show_in_visual_modes = 0
+let g:blamer_date_format = '%Y-%m-%d'
 
 " Completion support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
