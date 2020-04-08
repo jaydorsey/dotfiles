@@ -234,8 +234,10 @@ Plug 'Raimondi/delimitMate'
 let delimitMate_expand_space = 1
 
 " See git diff in commit window as another pane
-Plug 'rhysd/committia.vim'
+" Plug 'rhysd/committia.vim'
+Plug 'jaydorsey/committia.vim', {'branch': 'jay/variable_editor_width'}
 let g:committia_open_only_vim_starting = 1
+let g:committia_edit_window_width = 90
 
 " Git message viewer with <leader>gm. Requires neovim 0.4+ for floating panel
 " Install with brew install neovim --HEAD
