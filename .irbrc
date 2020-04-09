@@ -1,8 +1,6 @@
-# -*-ruby -*-
+# -*- mode: ruby -*- vim:set ft=ruby:
 #
 # rubocop:disable Rails/Output, Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
-print 'Loading ~/.irbrc...'
-
 begin
   require "pry"
   Pry.start
@@ -95,6 +93,4 @@ end
 def ls
   %x(ls).split('\n')
 end
-
-puts ' loaded!'
 # rubocop:enable Rails/Output, Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
