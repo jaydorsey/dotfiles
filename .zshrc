@@ -356,3 +356,6 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 source /Users/jay/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
