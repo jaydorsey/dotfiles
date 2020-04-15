@@ -219,14 +219,14 @@ function! FloatingFZF()
 endfunction
 
 " Tag creation
-Plug 'ludovicchabant/vim-gutentags'
-let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
-let g:gutentags_gtags_options_file="~/.ctags"
-" https://github.com/ludovicchabant/vim-gutentags/issues/178#issuecomment-547475742
-let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git']
-" Type :messages after gutentag loads to see the trace
-let g:gutentags_trace=0
-let g:gutentags_enabled=1
+" Plug 'ludovicchabant/vim-gutentags'
+" let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
+" let g:gutentags_gtags_options_file="~/.ctags"
+" " https://github.com/ludovicchabant/vim-gutentags/issues/178#issuecomment-547475742
+" let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git', 'json']
+" " Type :messages after gutentag loads to see the trace
+" let g:gutentags_trace=0
+" let g:gutentags_enabled=1
 
 " Add automatic delimiters ([<{, quotes, etc.
 Plug 'Raimondi/delimitMate'

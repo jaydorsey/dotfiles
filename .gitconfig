@@ -29,6 +29,7 @@
   sync = !git fetch origin && git remote prune origin && :
   sw = switch
   visual = !gitk
+	ctags = !.git/hooks/ctags
 [branch]
   autosetuprebase = always
   autosetupmerge = always
@@ -84,3 +85,5 @@
   writeCommitGraph = true
 [fetch]
   writeCommitGraph = true
+[init]
+	templatedir = ~/.git_template

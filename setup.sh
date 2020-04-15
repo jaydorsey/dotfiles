@@ -131,6 +131,8 @@ ln -sf "$(pwd)/.tmux.conf" ~/.tmux.conf
 ln -sf "$(pwd)/.yamllint" ~/.yamllint
 ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
 ln -sf "$(pwd)/.yamllint" ~/.config/yamllint/config
+# https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+ln -sf "$(pwd)/.git_template" ~/.git_template
 
 echo "Symlink or create your .personalrc file"
 echo "Symlink or create your .localrc file"
