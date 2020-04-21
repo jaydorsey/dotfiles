@@ -30,6 +30,7 @@ coverage
 tags
 tags.lock
 tags.temp
+*.tags
 *.jay
 # Temporary
 .reek.yml
