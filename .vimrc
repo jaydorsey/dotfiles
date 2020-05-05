@@ -141,6 +141,8 @@ nmap N N<Plug>Pulse
 " Align text
 Plug 'junegunn/vim-easy-align'
 
+Plug 'Konfekt/FastFold'
+
 " Better, automatic swap file management
 Plug 'gioele/vim-autoswap'
 
@@ -429,7 +431,7 @@ set foldcolumn=2
 set foldlevel=2
 set foldlevelstart=99                              " Edit with all folds open when opening a file
 set foldnestmax=12                                 " Deepest fold
-set nofoldenable                                   " Fold or don't fold files by default
+set foldenable                                     " Fold or don't fold files by default
 set formatoptions+=j                               " Join comments better
 set grepprg=rg\ --vimgrep\ --no-heading            " Use ripgrep instead of ag for :Ag commands
 set grepformat=%f:%l:%c:%m,%f:%l:%m
@@ -601,7 +603,7 @@ augroup vim_ruby_group
 
   " Disable highlighting for RSpec by default for performance
   " autocmd BufRead,BufNewFile *_spec.rb setlocal syntax=off
-  " autocmd BufRead,BufNewFile *_spec.rb setlocal foldmethod=indent
+  autocmd BufRead,BufNewFile *_spec.rb setlocal foldmethod=indent
 augroup END
 
 " lightline
@@ -712,15 +714,15 @@ command! Whatt echo synIDattr(synID(line('.'), col('.'), 1), 'name')
 
 " https://vi.stackexchange.com/a/440
 " Like gJ, but always remove spaces
-fun! JoinSpaceless()
-  execute 'normal gJ'
-
-  " Character under cursor is whitespace?
-  if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
-    " When remove it!
-    execute 'normal dw'
-  endif
-endfun
+" fun! JoinSpaceless()
+"   execute 'normal gJ'
+"
+"   " Character under cursor is whitespace?
+"   if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
+"     " When remove it!
+"     execute 'normal dw'
+"   endif
+" endfun
 
 " Map it to a key
 nnoremap gJ :call JoinSpaceless()<CR>
