@@ -275,6 +275,7 @@ export FPROF=1
 export RD_PROF=1
 
 alias be='bundle exec'
+alias br='bundle exec rails'
 alias bs='bundle exec rspec'
 alias cat='bat'
 alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
