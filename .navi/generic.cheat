@@ -12,6 +12,9 @@ git log --all --full-history -- "**/<file_name>.*"
 
 git log --all --full-history -- <full_path_to_file>
 
+# List branches merged into master
+
+git branch --merged master
 
 % tmux
 
@@ -51,3 +54,21 @@ fc-list
 
 # Disable Spotlight in a folder
 touch .metadata_never_index
+
+% rails
+
+# Routes for specific controller
+rails routes -c <controller_name>
+
+
+% postgres
+
+# Create a directory snapshot
+pg_dump --jobs=8 --format=d --file=<date>.snapshot.jay <database_name>
+
+$ date: date -u +%Y-%m-%d
+
+# Restore a directory snapshot
+pg_restore --if-exists --no-owner --clean --create --format=d --jobs=8 --dbname=<database_name> <date>.snapshot.jay
+
+$ date: date -u +%Y-%m-%d
