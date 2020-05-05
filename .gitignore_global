@@ -30,6 +30,7 @@ coverage
 tags
 tags.lock
 tags.temp
+*.tags.tmp
 *.tags
 *.jay
 # Temporary
