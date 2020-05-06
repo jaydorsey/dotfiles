@@ -4,9 +4,11 @@ Pry.config.default_window_size = 14
 
 Pry.config.editor = 'nvim'
 
+Pry.config.pager = false
+
 if Pry::Prompt.respond_to?(:new)
   # These are new pry version settings. We're using the old version in some places
-  Pry.config.history_file = "~/.pry_history"
+  Pry.config.history_file = "./.pry_history"
   Pry.config.history_should_load = true
 
   Pry.config.prompt = Pry::Prompt.new(
@@ -18,7 +20,7 @@ if Pry::Prompt.respond_to?(:new)
     ]
   )
 else
-  Pry.config.history.file = "~/.pry_history"
+  Pry.config.history.file = "./.pry_history"
   Pry.config.history.should_load = true
 
   Pry.config.prompt = [
@@ -53,3 +55,5 @@ end
 Pry::Commands.command /^$/, "repeat last command" do
   _pry_.run_command Pry.history.to_a.last
 end
+
+extend Rails::ConsoleMethods if defined?(Rails) && Rails.env
