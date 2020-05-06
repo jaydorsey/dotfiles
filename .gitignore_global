@@ -64,3 +64,5 @@ deps/*
 # Miscellaneous
 *.map
 tmux*
+.pry_history
+.irb_history
