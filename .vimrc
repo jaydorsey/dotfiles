@@ -169,11 +169,13 @@ let g:blamer_delay = 500
 let g:blamer_show_in_visual_modes = 0
 let g:blamer_date_format = '%Y-%m-%d'
 
+
 " Completion support
+" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" Plug 'zxqfl/tabnine-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-marketplace',
-      \ 'coc-tabnine',
       \ 'coc-solargraph',
       \ 'coc-json',
       \ 'coc-yaml',
@@ -297,8 +299,6 @@ Plug 'jeetsukumaran/vim-markology'
 
 " Vim understands line & column syntax when opening & editing files
 Plug 'wsdjeg/vim-fetch'
-
-" Plug 'zxqfl/tabnine-vim'
 
 call plug#end()
 
