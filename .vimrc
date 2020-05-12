@@ -30,12 +30,6 @@ let g:yaml_formatter_indent_collection=1
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim'
 
-" Plug 'airblade/vim-rooter'
-" " let g:rooter_targets = 'hapi_server'
-" let g:rooter_patterns = ['.git/']
-
-Plug 'airblade/vim-gitgutter'
-
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 let g:NERDTreeChDirMode = 2
@@ -468,7 +462,7 @@ set shiftwidth=2                                   " Round indent to multiples o
 set showmatch                                      " Briefly show matching brackets
 set showcmd                                        " Show leader key and partial commands in the bottom right corner
 set shortmess+=c
-set signcolumn=yes
+set signcolumn=auto:4
 set smartcase                                      " Don't ignore case if we type a capital
 set smarttab                                       " Backspace should delete tabwidth of characters
 set softtabstop=2
@@ -482,7 +476,9 @@ set undodir=~/.vim/undo                            " Persistent undo directory
 set viewoptions=cursor,curdir,folds,unix,slash     " Recommended vim-stay option
 set viewoptions-=options                           " Recommended vim-stay option
 set viewdir=~/.vim/views
-set viminfo^=!                                     " Add recently accessed projects menu (project plugin)
+" set viminfo^=!                                     " Add recently accessed projects menu (project plugin)
+" set viminfo='100,f1'                               " https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/
+set shada=!,'100,<50,s10,h,f1
 set visualbell                                     " No visual feedback
 " set errorbells
 " set belloff=
