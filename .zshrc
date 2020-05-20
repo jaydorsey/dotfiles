@@ -104,11 +104,12 @@ source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
 # Used with active-record-query-trace gem &
-# ActiveRecord::Type::Boolean.new.cast(ENV.fetch("AR_TRACE") { false }) to conditionally enable
+# ActiveRecord::Type::Boolean.new.cast(ENV.fetch("AR_TRACE", false)) to conditionally enable
 # query tracing in console
-export AR_TRACE=true
+export AR_TRACE=false
+
 # Used with the devtrace gem provided by Scout
-export SCOUT_DEV_TRACE=true
+export SCOUT_DEV_TRACE=false
 
 export ARCHFLAGS="-arch x86_64"
 # macOS Catalina fix: https://stackoverflow.com/a/58323411/2892779
