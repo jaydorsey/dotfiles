@@ -231,8 +231,7 @@ Plug 'Raimondi/delimitMate'
 let delimitMate_expand_space = 1
 
 " See git diff in commit window as another pane
-" Plug 'rhysd/committia.vim'
-Plug 'jaydorsey/committia.vim', {'branch': 'jay/variable_editor_width'}
+Plug 'rhysd/committia.vim'
 let g:committia_open_only_vim_starting = 1
 let g:committia_edit_window_width = 90
 
@@ -543,6 +542,18 @@ let g:rg_command = '
 
 command! -bang -nargs=* Rg
 \ call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1,
+\ <bang>0 ? fzf#vim#with_preview('up:60%')
+\         : fzf#vim#with_preview('right:50%:hidden', '?'),
+\ <bang>0)
+
+let g:rg_case_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore --ignore-global --hidden --no-follow --color "always"
+  \ -g "!.git/*"
+  \ -g "!spec/vcr/*"
+  \ '
+
+command! -bang -nargs=* Rgg
+\ call fzf#vim#grep(g:rg_case_command .shellescape(<q-args>), 1,
 \ <bang>0 ? fzf#vim#with_preview('up:60%')
 \         : fzf#vim#with_preview('right:50%:hidden', '?'),
 \ <bang>0)
