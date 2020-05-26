@@ -13,6 +13,12 @@ IEx.configure(
     eval_error: [:red, :bright],
     eval_info: [:yellow, :bright]
   ],
+  inspect: [
+    limit: :infinity,
+    pretty: true,
+    width: 160
+  ],
+  width: 160,
   default_prompt:
     [
       "\e[G",
