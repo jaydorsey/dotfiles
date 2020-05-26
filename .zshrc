@@ -195,6 +195,8 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 export PATH=$PATH:/Users/jay/Qt5.5.0/5.5/clang_64/bin/
 # For crystal
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+# For Yarn
+export PATH=$PATH:/Users/jay/.asdf/installs/nodejs/10.16.0/.npm/bin
 
 # For Rust
 export CARGO_HOME="$HOME/.cargo"
