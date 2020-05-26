@@ -407,6 +407,12 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " coc.vim sample config end
 "
 
+" Fugitive Conflict Resolution
+" https://www.prodops.io/blog/solving-git-merge-conflicts-with-vim
+nnoremap <leader>gd :Gdiffsplit!<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
+
 set autoindent                                     " Automatic indenting/formatting
 set autoread                                       " Reload files changed outside of vim
 set background=dark                                " Always use colors for dark color schemes
@@ -535,16 +541,20 @@ noremap Q @q
 " ripgrep customization
 " http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always"
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color always
   \ -g "!.git/*"
   \ -g "!spec/vcr/*"
   \ '
 
+" https://github.com/junegunn/fzf.vim/issues/419#issuecomment-479687537
 command! -bang -nargs=* Rg
-\ call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1,
+\ call fzf#vim#grep(
+\    g:rg_command
+\    . (len(<q-args>) > 0 ? <q-args> : '""'), 1,
 \ <bang>0 ? fzf#vim#with_preview('up:60%')
 \         : fzf#vim#with_preview('right:50%:hidden', '?'),
 \ <bang>0)
+
 
 let g:rg_case_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore --ignore-global --hidden --no-follow --color "always"
@@ -579,6 +589,9 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+" https://github.com/hashrocket/vim-hashrocket/blob/master/plugin/hashrocket.vim#L36
+command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
 
 nnoremap K :Find<cr>
 nnoremap <leader>p :Files<cr>
