@@ -16,6 +16,15 @@ git log --all --full-history -- <full_path_to_file>
 
 git branch --merged master
 
+# Delete local branches that have been merged
+
+git branch --merged master | grep -v "master" | grep -v "production" | xargs git b -D
+
+# Search git history for text within files
+
+git log -S "<text>" <file_name>
+
+
 % tmux
 
 # Kill tmux sessions
@@ -72,3 +81,13 @@ $ date: date -u +%Y-%m-%d
 pg_restore --if-exists --no-owner --clean --create --format=d --jobs=8 --dbname=<database_name> <date>.snapshot.jay
 
 $ date: date -u +%Y-%m-%d
+
+
+% zsh
+
+# List directories ordered by size
+du -hs * | sort -hr
+
+# Count files in subdirectories
+find . -type f | cut -d"/" -f2 | uniq -c
+
