@@ -4,3 +4,5 @@
 --exclude=.git/*,node_modules/*,log/*,tmp/*
 --languages=RSpec
 --languages=Ruby
+--languages=-javascript
+--languages=-sql
