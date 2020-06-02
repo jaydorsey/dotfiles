@@ -91,3 +91,5 @@ du -hs * | sort -hr
 # Count files in subdirectories
 find . -type f | cut -d"/" -f2 | uniq -c
 
+# Remove duplicates in zsh_history
+cat -n .zsh_history | sort -t ';' -uk2 | sort -nk1 | cut -f2- > .zsh_short_history && mv ~/.zsh_history ~/.zsh_history
