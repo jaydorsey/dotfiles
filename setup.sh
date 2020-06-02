@@ -148,6 +148,14 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # Generate tags for bundled gems. The grep ignores lines started with "The", which includes certain
 # tzinfo warnings that's common
 # ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths | grep -v "^The" | sed 's/$/\/lib/'
+#
+# Typically, you want to run this command once, in the repo root:
+#
+#     ctags --tag-relative --languages=-javascript,sql `bundle show --paths`
+#
+# Then, you'll run git init to setup your git hooks & symlink the .ctags.d folder to your $HOME. Inside
+# the git hooks is a command that will append the local code tags onto the tags file for you
+#
 # Ctags debugging
 # ctags --verbose 2> out.txt
 
