@@ -293,6 +293,7 @@ alias top='sudo htop'
 alias untracked='git ls-files -o --exclude-standard'
 alias vi='nvim'
 alias vim='nvim'
+alias wc='cw'
 
 if [ -f ~/.personalrc ]; then
   source ~/.personalrc
@@ -364,3 +365,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="/usr/local/opt/curl/bin:$PATH"
