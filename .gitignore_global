@@ -66,3 +66,4 @@ deps/*
 tmux*
 .pry_history
 .irb_history
+.scratchpads
