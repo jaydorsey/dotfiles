@@ -260,6 +260,9 @@ export POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=232
 export POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=211
 export POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=232
 
+# https://github.com/sharpstone/rack-timeout/blob/master/doc/settings.md#term-on-timeout
+export RACK_TIMEOUT_TERM_ON_TIMEOUT=1
+
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings
@@ -278,8 +281,8 @@ export FPROF=1
 export RD_PROF=1
 
 alias be='bundle exec'
-alias br='spring rails'
-alias bs='spring rspec'
+alias sp='spring rails'
+alias sr='spring rspec'
 alias cat='bat'
 alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
 # Exercism setup
