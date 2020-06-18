@@ -34,6 +34,8 @@ Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 let g:NERDTreeChDirMode = 2
 
+Plug 'mhinz/vim-startify'
+
 " Formatting & validating json via :Jacinto
 Plug 'alfredodeza/jacinto.vim', { 'for': 'json' }
 
@@ -184,6 +186,8 @@ let g:coc_global_extensions = [
       \ 'coc-highlight',
       \ 'coc-snippets'
       \ ]
+" Because old versions of node
+let g:coc_disable_startup_warning = 1
 
 " Send to tmux
 Plug 'jgdavey/tslime.vim'
@@ -268,7 +272,7 @@ Plug 'tpope/vim-rails'
 
 " Vim rspec helpers
 Plug 'thoughtbot/vim-rspec'
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --seed 42\n")'
+let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec} --seed 42\n")'
 map <leader>t :call RunCurrentSpecFile()<cr>
 map <leader>r :call RunNearestSpec()<cr>
 map <leader>l :call RunLastSpec()<cr>
