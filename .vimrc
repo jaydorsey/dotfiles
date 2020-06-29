@@ -34,6 +34,8 @@ Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 let g:NERDTreeChDirMode = 2
 
+Plug 'mhinz/vim-startify'
+
 " Formatting & validating json via :Jacinto
 Plug 'alfredodeza/jacinto.vim', { 'for': 'json' }
 
@@ -137,11 +139,15 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'Konfekt/FastFold'
 
+Plug 'Konfekt/vim-scratchpad'
+let g:scratchpad_ftype = 'text'
+
 " Better, automatic swap file management
 Plug 'gioele/vim-autoswap'
 
 " Nicer scrolling with CTRL-d/u
-Plug 'yuttie/comfortable-motion.vim'
+" Plug 'yuttie/comfortable-motion.vim'
+Plug 'psliwka/vim-smoothie'
 
 Plug 'itchyny/lightline.vim'
 " Buffer tabs
@@ -180,6 +186,8 @@ let g:coc_global_extensions = [
       \ 'coc-highlight',
       \ 'coc-snippets'
       \ ]
+" Because old versions of node
+let g:coc_disable_startup_warning = 1
 
 " Send to tmux
 Plug 'jgdavey/tslime.vim'
@@ -264,7 +272,7 @@ Plug 'tpope/vim-rails'
 
 " Vim rspec helpers
 Plug 'thoughtbot/vim-rspec'
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --seed 42\n")'
+let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec} --seed 42\n")'
 map <leader>t :call RunCurrentSpecFile()<cr>
 map <leader>r :call RunNearestSpec()<cr>
 map <leader>l :call RunLastSpec()<cr>
@@ -541,7 +549,7 @@ noremap Q @q
 " ripgrep customization
 " http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color always
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always"
   \ -g "!.git/*"
   \ -g "!spec/vcr/*"
   \ '
@@ -550,7 +558,7 @@ let g:rg_command = '
 command! -bang -nargs=* Rg
 \ call fzf#vim#grep(
 \    g:rg_command
-\    . (len(<q-args>) > 0 ? <q-args> : '""'), 1,
+\    . (len(<q-args>) > 0 ? shellescape(<q-args>) : '""'), 1,
 \ <bang>0 ? fzf#vim#with_preview('up:60%')
 \         : fzf#vim#with_preview('right:50%:hidden', '?'),
 \ <bang>0)
@@ -563,7 +571,9 @@ let g:rg_case_command = '
   \ '
 
 command! -bang -nargs=* Rgg
-\ call fzf#vim#grep(g:rg_case_command .shellescape(<q-args>), 1,
+\ call fzf#vim#grep(
+\    g:rg_case_command
+\    . shellescape(<q-args>), 1,
 \ <bang>0 ? fzf#vim#with_preview('up:60%')
 \         : fzf#vim#with_preview('right:50%:hidden', '?'),
 \ <bang>0)

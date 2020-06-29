@@ -180,9 +180,9 @@ export PAGER="less"
 export PATH=~/bin:~/local_bin:$PATH
 # Most of the homebrew executables end up here
 export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:/Users/jay/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn global bin` to find this path
-export PATH=$PATH:/Users/jay/Library/Python/3.7/bin
-export PATH=$PATH:/Users/jay/Library/Python/2.7/bin
+export PATH=$PATH:$HOME/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn global bin` to find this path
+export PATH=$PATH:$HOME/Library/Python/3.7/bin
+export PATH=$PATH:$HOME/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$PATH:/usr/local/opt/postgresql/bin
 export PATH=/usr/local/opt/openssl/bin:$PATH
@@ -192,11 +192,11 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 # https://github.com/brianmario/mysql2/issues/795#issuecomment-337006164
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 # capybara-webkit, temporary
-export PATH=$PATH:/Users/jay/Qt5.5.0/5.5/clang_64/bin/
+export PATH=$PATH:$HOME/Qt5.5.0/5.5/clang_64/bin/
 # For crystal
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 # For Yarn
-export PATH=$PATH:/Users/jay/.asdf/installs/nodejs/10.16.0/.npm/bin
+export PATH=$PATH:$HOME/.asdf/installs/nodejs/10.16.0/.npm/bin
 
 # For Rust
 export CARGO_HOME="$HOME/.cargo"
@@ -260,6 +260,9 @@ export POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=232
 export POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=211
 export POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=232
 
+# https://github.com/sharpstone/rack-timeout/blob/master/doc/settings.md#term-on-timeout
+export RACK_TIMEOUT_TERM_ON_TIMEOUT=1
+
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings
@@ -278,8 +281,8 @@ export FPROF=1
 export RD_PROF=1
 
 alias be='bundle exec'
-alias sr='spring rails'
-alias sp='spring rspec'
+alias sp='spring rails'
+alias sr='spring rspec'
 alias cat='bat'
 alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
 # Exercism setup
@@ -293,6 +296,7 @@ alias top='sudo htop'
 alias untracked='git ls-files -o --exclude-standard'
 alias vi='nvim'
 alias vim='nvim'
+alias wc='cw'
 
 if [ -f ~/.personalrc ]; then
   source ~/.personalrc
@@ -358,7 +362,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # zprof
 
-source /Users/jay/Library/Preferences/org.dystroy.broot/launcher/bash/br
+source $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

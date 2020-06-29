@@ -4,7 +4,7 @@ Pry.config.default_window_size = 14
 
 Pry.config.editor = 'nvim'
 
-Pry.config.pager = false
+Pry.config.pager = true
 
 if Pry::Prompt.respond_to?(:new)
   # These are new pry version settings. We're using the old version in some places
@@ -55,5 +55,8 @@ end
 Pry::Commands.command /^$/, "repeat last command" do
   _pry_.run_command Pry.history.to_a.last
 end
+
+# https://github.com/pry/pry/issues/1619
+Pry.config.collision_warning = true
 
 extend Rails::ConsoleMethods if defined?(Rails) && Rails.env

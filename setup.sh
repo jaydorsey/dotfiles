@@ -141,6 +141,8 @@ echo "Symlink or create your .localrc file"
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+cargo install cw
+
 # Install tool for alacritty themes
 # pip3 install git+https://github.com/toggle-corp/alacritty-colorscheme.git
 # git clone https://github.com/eendroroy/alacritty-theme.git ~/.eendroroy-alacritty-theme

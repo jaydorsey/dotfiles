@@ -16,10 +16,10 @@ cask "xquartz"
 brew "icu4c"
 brew "boost"
 brew "docbook"
-brew "readline", link: true
 brew "sqlite"
 brew "xz"
-brew "python@3.8"
+brew "openssl@1.1"
+brew "readline", link: true
 brew "source-highlight"
 brew "asciidoc"
 brew "asciinema"
@@ -33,19 +33,27 @@ brew "bat"
 brew "bdw-gc"
 brew "broot"
 brew "libpng"
+brew "freetype"
 brew "fontconfig"
 brew "libffi"
 brew "pcre"
 brew "glib"
+brew "pixman"
 brew "cairo"
 brew "mpfr"
+brew "circleci"
 brew "cmake"
 brew "coreutils"
 brew "cowsay"
 brew "libyaml"
 brew "llvm"
+<<<<<<< HEAD
 brew "crystal"
 brew "ctags", link: false
+=======
+brew "pkg-config"
+brew "crystal"
+>>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "curl"
 brew "dialog"
 brew "diff-so-fancy"
@@ -53,7 +61,7 @@ brew "docbook-xsl"
 brew "docker-completion"
 brew "docutils"
 brew "dos2unix"
-brew "elasticsearch"
+brew "elasticsearch", restart_service: true
 brew "exa"
 brew "faac"
 brew "fd"
@@ -68,17 +76,22 @@ brew "gnutls"
 brew "graphite2"
 brew "harfbuzz"
 brew "jpeg"
-brew "leptonica"
+brew "webp"
 brew "python"
 brew "libbluray"
 brew "libvpx"
+brew "rtmpdump"
 brew "sdl2"
 brew "x264"
 brew "x265"
+brew "snappy"
+brew "tesseract"
 brew "xvid"
 brew "ffmpeg"
 brew "fop"
 brew "fortune"
+brew "libtool"
+brew "unixodbc"
 brew "fswatch"
 brew "fzf"
 brew "fzy"
@@ -86,28 +99,41 @@ brew "isl"
 brew "libmpc"
 brew "gcc"
 brew "gd"
+brew "geos"
 brew "szip"
 brew "hdf5"
 brew "krb5"
 brew "libxml2"
+<<<<<<< HEAD
+=======
+brew "libdap"
+>>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "proj"
 brew "libpq"
-brew "libtool"
 brew "netcdf"
+brew "nspr"
 brew "nss"
 brew "numpy"
 brew "qt"
 brew "poppler"
+<<<<<<< HEAD
 brew "unixodbc"
 brew "zstd"
 brew "gdal"
 brew "geckodriver"
 brew "ghc"
+=======
+brew "zstd"
+brew "gdal"
+brew "geckodriver"
+brew "ghostscript"
+>>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "pcre2"
 brew "git"
 brew "git-quick-stats"
 brew "glew"
 brew "glm"
+brew "gnu-getopt"
 brew "libgpg-error"
 brew "libassuan"
 brew "libgcrypt"
@@ -121,6 +147,10 @@ brew "gobject-introspection"
 brew "sdl2_image"
 brew "gource"
 brew "netpbm"
+<<<<<<< HEAD
+=======
+brew "gts"
+>>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "pango"
 brew "graphviz"
 brew "hadolint"
@@ -130,16 +160,20 @@ brew "ncurses"
 brew "htop"
 brew "hyperfine"
 brew "ilmbase"
-brew "shared-mime-info"
+brew "libde265"
 brew "libheif"
 brew "libomp"
+<<<<<<< HEAD
 brew "openexr"
+=======
+>>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "imagemagick", link: false
 brew "imagemagick@6", link: true
 brew "jansson"
 brew "jemalloc"
 brew "oniguruma"
 brew "jq"
+brew "kerl"
 brew "kompose"
 brew "less"
 brew "libav"
@@ -155,20 +189,28 @@ brew "libvterm"
 brew "libxkbcommon"
 brew "libxslt"
 brew "lnav"
+brew "lolcat"
 brew "lsd"
 brew "luarocks"
 brew "mailhog", restart_service: true
 brew "mas"
 brew "maven"
+brew "memcached"
 brew "msgpack"
 brew "protobuf"
 brew "mysql"
+brew "utf8proc"
 brew "neovim", args: ["HEAD"]
+brew "nginx"
 brew "opam"
 brew "optipng"
 brew "tmux"
 brew "overmind"
 brew "packer"
+<<<<<<< HEAD
+=======
+brew "perl"
+>>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "pgcli"
 brew "plantuml"
 brew "pngcrush"
@@ -187,6 +229,10 @@ brew "ripgrep"
 brew "ruby"
 brew "rust"
 brew "s-lang"
+<<<<<<< HEAD
+=======
+brew "sbcl"
+>>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "selenium-server-standalone", restart_service: true
 brew "shellcheck"
 brew "siege"
@@ -208,9 +254,15 @@ brew "wxmac"
 brew "yajl"
 brew "zlib"
 brew "zsh"
+<<<<<<< HEAD
 brew "amberframework/amber/amber"
 brew "heroku/brew/heroku"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD", "with-jansson"]
+=======
+brew "heroku/brew/heroku"
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+brew "unused-code/formulae/unused"
+>>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 cask "1password"
 cask "acorn"
 cask "alacritty"
@@ -224,7 +276,7 @@ cask "colorsnapper"
 cask "contexts"
 cask "daisydisk"
 cask "dash"
-cask "devonthink-pro-office"
+cask "devonthink"
 cask "discord"
 cask "docker"
 cask "dropbox"
@@ -237,13 +289,20 @@ cask "iterm2"
 cask "java"
 cask "java8"
 cask "keybase"
+<<<<<<< HEAD
+=======
+cask "keyboard-maestro"
+>>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 cask "lepton"
 cask "macdown"
 cask "moom"
+cask "notion"
 cask "pastebot"
 cask "path-finder"
 cask "pdfkey-pro"
 cask "pdfpenpro"
+cask "pgadmin4"
+cask "scapple"
 cask "sip"
 cask "slack"
 cask "snagit"
@@ -257,9 +316,17 @@ mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "EasyRes", id: 688211836
 mas "Folder Factory", id: 521419726
+mas "GAget", id: 968487158
+mas "GarageBand", id: 682658836
 mas "Gemini 2", id: 1090488118
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
 mas "OCRKit", id: 410309628
+mas "Pages", id: 409201541
+mas "Pixelmator", id: 407963104
 mas "Ringer", id: 402437824
 mas "Screenium 3", id: 921553264
 mas "Turtle Beach Audio Hub", id: 948410748
 mas "VisualDiffer", id: 412386481
+mas "Xcode", id: 497799835
