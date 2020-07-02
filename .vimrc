@@ -42,7 +42,9 @@ Plug 'alfredodeza/jacinto.vim', { 'for': 'json' }
 " An improved matchit plugin with additional motions & matchers
 Plug 'andymass/vim-matchup'
 
-Plug 'Chrisbra/Colorizer'
+" Plug 'Chrisbra/Colorizer'
+Plug 'norcalli/nvim-colorizer.lua'
+
 
 Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
