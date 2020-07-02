@@ -34,6 +34,8 @@ Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 let g:NERDTreeChDirMode = 2
 
+Plug 'neovim/nvim-lsp'
+
 Plug 'mhinz/vim-startify'
 
 " Formatting & validating json via :Jacinto
