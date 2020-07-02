@@ -205,36 +205,6 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 let $FZF_DEFAULT_OPTS='--layout=reverse'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
-
-  let height = float2nr(&lines * 0.5)
-  let width = float2nr(&columns * 0.8)
-  let horizontal = float2nr((&columns - width) / 2)
-  let vertical = 1
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': vertical,
-        \ 'col': horizontal,
-        \ 'width': width,
-        \ 'height': height
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-endfunction
-
-" Tag creation
-" Plug 'ludovicchabant/vim-gutentags'
-" let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*', 'coverage', 'log']
-" let g:gutentags_gtags_options_file="~/.ctags"
-" " https://github.com/ludovicchabant/vim-gutentags/issues/178#issuecomment-547475742
-" let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git', 'json']
-" " Type :messages after gutentag loads to see the trace
-" let g:gutentags_trace=0
-" let g:gutentags_enabled=1
 
 " Add automatic delimiters ([<{, quotes, etc.
 Plug 'Raimondi/delimitMate'
@@ -304,15 +274,9 @@ Plug 'jeetsukumaran/vim-markology'
 Plug 'wsdjeg/vim-fetch'
 
 Plug 'jaydorsey/charblob'
-Plug '~/projects/jaydorsey/whid'
-Plug '~/projects/jaydorsey/fzf_float'
+Plug 'jaydorsey/fzf_float'
 
 Plug 'nvim-lua/completion-nvim'
-
-require'nvim_lsp'.solargraph.setup{}
-
-" require'nvim_lsp'.solargraph.setup{on_attach=require'completion'.on_attach}
-" autocmd BufEnter * lua require'completion'.on_attach()
 
 call plug#end()
 
