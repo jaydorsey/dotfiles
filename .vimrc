@@ -279,7 +279,7 @@ Plug 'jeetsukumaran/vim-markology'
 Plug 'wsdjeg/vim-fetch'
 
 Plug 'jaydorsey/charblob'
-Plug 'jaydorsey/fzf_float'
+Plug 'jaydorsey/fzf_float', {'branch': 'main'}
 
 Plug 'nvim-lua/completion-nvim'
 
