@@ -176,25 +176,16 @@ export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 export NAVI_PATH="$HOME/.navi:$HOME/.navi_cheatsheets:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
 export PAGER="less"
 
-# My custom scripts go in ~/bin, put that in the path first. Also include a local-only bin path, ~/local_bin
-export PATH=~/bin:~/local_bin:$PATH
-# Most of the homebrew executables end up here
-export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn global bin` to find this path
 export PATH=$PATH:$HOME/Library/Python/3.7/bin
 export PATH=$PATH:$HOME/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$PATH:/usr/local/opt/postgresql/bin
-export PATH=/usr/local/opt/openssl/bin:$PATH
-# https://embeddedartistry.com/blog/2017/02/24/installing-llvm-clang-on-osx/
-export PATH="/usr/local/opt/llvm/bin:$PATH"
 # This is necessary for, at least, crystal
 # https://github.com/brianmario/mysql2/issues/795#issuecomment-337006164
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 # capybara-webkit, temporary
 export PATH=$PATH:$HOME/Qt5.5.0/5.5/clang_64/bin/
-# For crystal
-export PATH="/usr/local/opt/llvm/bin:$PATH"
 # For Yarn
 export PATH=$PATH:$HOME/.asdf/installs/nodejs/10.16.0/.npm/bin
 
@@ -368,4 +359,26 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Shared personal scripts
+export PATH=~/bin:$PATH
+
+# Computer specific scripts
+export PATH=~/.localbin:$PATH
+
+# Most of the homebrew executables end up here
+export PATH=/usr/local/bin:$PATH
+
+# Use newer brew tools (curl, grep)
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/curl/bin:$PATH"
+
+# For crystal
+# https://embeddedartistry.com/blog/2017/02/24/installing-llvm-clang-on-osx/
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# For vim nightly
+export PATH=~/.localbin/nvim-osx64/bin:$PATH
+# export PATH="/Users/jay/.localbin/nvim-osx64/bin:$PATH"
