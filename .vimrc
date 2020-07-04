@@ -263,6 +263,9 @@ Plug 'jaydorsey/fzf_float', {'branch': 'main'}
 
 Plug 'nvim-lua/completion-nvim'
 
+" Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'unblevable/quick-scope'
 call plug#end()
 
 lua << EOF
