@@ -262,6 +262,7 @@ Plug 'jaydorsey/charblob'
 Plug 'jaydorsey/fzf_float', {'branch': 'main'}
 
 Plug 'nvim-lua/completion-nvim'
+Plug 'wincent/ferret'
 
 " Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 
