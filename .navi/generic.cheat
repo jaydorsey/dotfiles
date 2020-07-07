@@ -78,7 +78,7 @@ pg_dump --jobs=8 --format=d --file=<date>.snapshot.jay <database_name>
 $ date: date -u +%Y-%m-%d
 
 # Restore a directory snapshot
-pg_restore --if-exists --no-owner --clean --create --format=d --jobs=8 --dbname=<database_name> <date>.snapshot.jay
+pg_restore --if-exists --no-owner --clean --create --format=d --jobs=8 --dbname=<database_name> <date>.snapshot.jay --section=pre-data --section=data
 
 $ date: date -u +%Y-%m-%d
 
