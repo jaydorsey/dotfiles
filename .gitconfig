@@ -29,7 +29,8 @@
   sync = !git fetch origin && git remote prune origin && :
   sw = switch
   visual = !gitk
-	ctags = !.git/hooks/ctags
+  ctags = !.git/hooks/ctags
+  bclean = !sh -c 'git branch --merged ${1-master} | grep -v "${1-master}" | grep -v "production" | grep -v "v0.0.2" | xargs git b -D' -
 [branch]
   autosetuprebase = always
   autosetupmerge = always
