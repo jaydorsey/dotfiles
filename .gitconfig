@@ -30,7 +30,7 @@
   sw = switch
   visual = !gitk
   ctags = !.git/hooks/ctags
-  bclean = !sh -c 'git branch --merged ${1-master} | grep -v "${1-master}" | grep -v "production" | grep -v "v0.0.2" | xargs git b -D' -
+  bclean = !sh -c 'git branch --merged ${1-master} | grep -v "${1-master}" | grep -v "production" | xargs git b -D' -
 [branch]
   autosetuprebase = always
   autosetupmerge = always
