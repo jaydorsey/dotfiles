@@ -18,9 +18,9 @@ nnoremap } <nop>
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python3'
 
-let g:ruby_path="/Users/jay/.asdf/shims/ruby"
-let g:ruby_default_path="/Users/jay/.asdf/shims/ruby"
-let g:ruby_host_prog="/Users/jay/.asdf/shims/neovim-ruby-host"
+let g:ruby_path="~/.asdf/shims/ruby"
+let g:ruby_default_path="~/.asdf/shims/ruby"
+let g:ruby_host_prog="~/.asdf/shims/neovim-ruby-host"
 
 call plug#begin('~/.vim/plugged')
 
@@ -55,13 +55,18 @@ Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
 let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
-let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
+let g:ale_ruby_rubocop_executable = '~/.asdf/shims/rubocop'
 
-" Clone & compile
-let g:ale_elixir_elixir_ls_release = '/Users/jay/dev/elixir-ls/release'
+" elixir --erl "+S 2:2" -e "ElixirLS.LanguageServer.CLI.main()")
+" mix deps.get && mix compile
+"
+" Also need to setup the scheduler similar to below to limit usage, locally
+" https://github.com/elixir-lsp/elixir-ls/issues/96#issue-549432535
+let g:ale_elixir_elixir_ls_release = '~/dev/elixir-ls/release'
+let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
 
 let g:ale_fix_on_save = 1
-let g:ale_elixir_mix_options = "/Users/jay/.asdf/shims/mix"
+let g:ale_elixir_mix_options = "~/.asdf/shims/mix"
 
       " \ 'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls', 'mix'],
 let g:ale_linters = {
@@ -232,7 +237,7 @@ Plug 'thoughtbot/vim-rspec'
 let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec} --seed 42\n")'
 map <leader>t :call RunCurrentSpecFile()<cr>
 map <leader>r :call RunNearestSpec()<cr>
-map <leader>l :call RunLastSpec()<cr>
+" map <leader>l :call RunLastSpec()<cr>
 
 " Comment with gc and motion
 Plug 'tomtom/tcomment_vim'
@@ -266,7 +271,14 @@ Plug 'wincent/ferret'
 
 " Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" Highlight <f> jump commands on highlighted line
 Plug 'unblevable/quick-scope'
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" Highlight code blocks with :LimelightToggle
+Plug 'junegunn/limelight.vim'
+nmap <leader>l <Plug>(Limelight)
+xmap <leader>l <Plug>(Limelight)
 call plug#end()
 
 lua << EOF
@@ -276,7 +288,6 @@ EOF
 " Part of norcalli/nvim-colorizer.lua. Use the command
 " :ColorizerAttachToBuffer if the file has no filetype
 lua require'colorizer'.setup()
-
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -424,6 +435,7 @@ noremap Q @q
 let g:rg_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always"
   \ -g "!.git/*"
+  \ -g "!.elixir_ls/*"
   \ -g "!spec/vcr/*"
   \ '
 
@@ -440,6 +452,7 @@ command! -bang -nargs=* Rg
 let g:rg_case_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore --ignore-global --hidden --no-follow --color "always"
   \ -g "!.git/*"
+  \ -g "!.elixir_ls/*"
   \ -g "!spec/vcr/*"
   \ '
 

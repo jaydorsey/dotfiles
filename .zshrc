@@ -134,6 +134,7 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden \
   -g \"!package-lock.json\" \
   -g \"!*.map\" \
   -g \"!*.log\" \
+  -g \"!.elixir_ls\" \
   -g \"!**/tmp/**/*\" \
   -g \"!**/node_modules/*\" \
   -g \"!**/bower_modules/*\" \
