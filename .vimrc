@@ -57,8 +57,9 @@ let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
 let g:ale_ruby_rubocop_executable = '~/.asdf/shims/rubocop'
 
+" mix deps.get && mix compile && mix elixir_ls.release -o release
+" Then edit the release/language_server.sh file to add the --erl flag
 " elixir --erl "+S 2:2" -e "ElixirLS.LanguageServer.CLI.main()")
-" mix deps.get && mix compile
 "
 " Also need to setup the scheduler similar to below to limit usage, locally
 " https://github.com/elixir-lsp/elixir-ls/issues/96#issue-549432535
