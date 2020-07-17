@@ -18,9 +18,9 @@ nnoremap } <nop>
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python3'
 
-let g:ruby_path="~/.asdf/shims/ruby"
-let g:ruby_default_path="~/.asdf/shims/ruby"
-let g:ruby_host_prog="~/.asdf/shims/neovim-ruby-host"
+let g:ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
+let g:ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
+let g:ruby_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/neovim-ruby-host'
 
 call plug#begin('~/.vim/plugged')
 
@@ -55,7 +55,7 @@ Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
 let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
-let g:ale_ruby_rubocop_executable = '~/.asdf/shims/rubocop'
+let g:ale_ruby_rubocop_executable = escape(expand('$HOME'), '\') . '/.asdf/shims/rubocop'
 
 " mix deps.get && mix compile && mix elixir_ls.release -o release
 " Then edit the release/language_server.sh file to add the --erl flag
@@ -280,6 +280,137 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 Plug 'junegunn/limelight.vim'
 nmap <leader>l <Plug>(Limelight)
 xmap <leader>l <Plug>(Limelight)
+
+" Completion support
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+      \ 'coc-marketplace',
+      \ 'coc-solargraph',
+      \ 'coc-json',
+      \ 'coc-yaml',
+      \ 'coc-bookmark',
+      \ 'coc-actions',
+      \ 'coc-explorer',
+      \ 'coc-git',
+      \ 'coc-highlight',
+      \ 'coc-snippets'
+      \ ]
+" Because old versions of node
+let g:coc_disable_startup_warning = 1
+
+"
+" coc.vim sample config
+"
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+if has('patch8.1.1068')
+  " Use `complete_info` if your (Neo)Vim version supports it.
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" nnoremap <silent> J :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <TAB> for selections ranges.
+" NOTE: Requires 'textDocument/selectionRange' support from the language server.
+" coc-tsserver, coc-python are the examples of servers that support it.
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+
+" Disabled shortcuts
+" Resume latest coc list.
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" Manage extensions.
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+
+"
+" coc.vim sample config end
+"
+
 call plug#end()
 
 lua << EOF
@@ -349,6 +480,7 @@ set nospell                                        " Turn spell checking off by 
 set nowrap                                         " Don't wrap lines. Call `:set wrap` to change
 set number                                         " Line numbers on
 set numberwidth=5                                  " Use 5 characters for number well
+set pumheight=10                                   " Limit height of completion popup
 set regexpengine=1                                 " Use old regular expression engine because it's faster
 set rtp+=/usr/local/opt/fzf                        " fzf.vim
 set scrolloff=10                                   " Prevent scrolling past bottom line
