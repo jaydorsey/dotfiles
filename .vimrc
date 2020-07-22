@@ -18,9 +18,9 @@ nnoremap } <nop>
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python3'
 
-let g:ruby_path="/Users/jay/.asdf/shims/ruby"
-let g:ruby_default_path="/Users/jay/.asdf/shims/ruby"
-let g:ruby_host_prog="/Users/jay/.asdf/shims/neovim-ruby-host"
+let g:ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
+let g:ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
+let g:ruby_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/neovim-ruby-host'
 
 call plug#begin('~/.vim/plugged')
 
@@ -33,6 +33,11 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 let g:NERDTreeChDirMode = 2
+
+Plug 'neovim/nvim-lsp'
+Plug 'nvim-lua/completion-nvim'
+" require'nvim_lsp'.solargraph.setup{on_attach=require'completion'.on_attach}
+" autocmd BufEnter * lua require'completion'.on_attach()
 
 Plug 'mhinz/vim-startify'
 
@@ -50,13 +55,19 @@ Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
 let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
-let g:ale_ruby_rubocop_executable = '/Users/jay/.asdf/shims/rubocop'
+let g:ale_ruby_rubocop_executable = escape(expand('$HOME'), '\') . '/.asdf/shims/rubocop'
 
-" Clone & compile
-let g:ale_elixir_elixir_ls_release = '/Users/jay/dev/elixir-ls/release'
+" mix deps.get && mix compile && mix elixir_ls.release -o release
+" Then edit the release/language_server.sh file to add the --erl flag
+" elixir --erl "+S 2:2" -e "ElixirLS.LanguageServer.CLI.main()")
+"
+" Also need to setup the scheduler similar to below to limit usage, locally
+" https://github.com/elixir-lsp/elixir-ls/issues/96#issue-549432535
+let g:ale_elixir_elixir_ls_release = '~/dev/elixir-ls/release'
+let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
 
 let g:ale_fix_on_save = 1
-let g:ale_elixir_mix_options = "/Users/jay/.asdf/shims/mix"
+let g:ale_elixir_mix_options = "~/.asdf/shims/mix"
 
       " \ 'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls', 'mix'],
 let g:ale_linters = {
@@ -171,23 +182,6 @@ let g:blamer_delay = 500
 let g:blamer_show_in_visual_modes = 0
 let g:blamer_date_format = '%Y-%m-%d'
 
-" Completion support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-      \ 'coc-marketplace',
-      \ 'coc-solargraph',
-      \ 'coc-json',
-      \ 'coc-yaml',
-      \ 'coc-bookmark',
-      \ 'coc-actions',
-      \ 'coc-explorer',
-      \ 'coc-git',
-      \ 'coc-highlight',
-      \ 'coc-snippets'
-      \ ]
-" Because old versions of node
-let g:coc_disable_startup_warning = 1
-
 " Send to tmux
 Plug 'jgdavey/tslime.vim'
 
@@ -244,7 +238,7 @@ Plug 'thoughtbot/vim-rspec'
 let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec} --seed 42\n")'
 map <leader>t :call RunCurrentSpecFile()<cr>
 map <leader>r :call RunNearestSpec()<cr>
-map <leader>l :call RunLastSpec()<cr>
+" map <leader>l :call RunLastSpec()<cr>
 
 " Comment with gc and motion
 Plug 'tomtom/tcomment_vim'
@@ -271,16 +265,42 @@ Plug 'jeetsukumaran/vim-markology'
 Plug 'wsdjeg/vim-fetch'
 
 Plug 'jaydorsey/charblob'
-Plug 'jaydorsey/fzf_float'
+Plug 'jaydorsey/fzf_float', {'branch': 'main'}
 
 Plug 'nvim-lua/completion-nvim'
+Plug 'wincent/ferret'
 
-call plug#end()
+" Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" Part of norcalli/nvim-colorizer.lua. Use the command
-" :ColorizerAttachToBuffer if the file has no filetype
-lua require'colorizer'.setup()
+" Highlight <f> jump commands on highlighted line
+Plug 'unblevable/quick-scope'
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
+" Highlight code blocks with :LimelightToggle
+Plug 'junegunn/limelight.vim'
+nmap <leader>l <Plug>(Limelight)
+xmap <leader>l <Plug>(Limelight)
+
+" Completion support
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+      \ 'coc-marketplace',
+      \ 'coc-solargraph',
+      \ 'coc-json',
+      \ 'coc-yaml',
+      \ 'coc-bookmark',
+      \ 'coc-actions',
+      \ 'coc-explorer',
+      \ 'coc-git',
+      \ 'coc-highlight',
+      \ 'coc-snippets'
+      \ ]
+" Because old versions of node
+let g:coc_disable_startup_warning = 1
+" Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
+" Plug 'antoinemadec/coc-fzf'
+
+"
 " coc.vim sample config
 "
 " Use tab for trigger completion with characters ahead and navigate.
@@ -304,7 +324,8 @@ else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-" nnoremap <silent> J :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <a-d> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -372,6 +393,8 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Mappings using CoCList:
 " Show all diagnostics.
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
@@ -382,16 +405,33 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-
-" Disabled shortcuts
 " Resume latest coc list.
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-" Manage extensions.
-" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+
 
 "
 " coc.vim sample config end
 "
+
+call plug#end()
+
+lua << EOF
+require'nvim_lsp'.solargraph.setup{commandPath = '~/.asdf/shims/solargraph', on_attach=require'completion'.on_attach}
+EOF
+
+" Part of norcalli/nvim-colorizer.lua. Use the command
+" :ColorizerAttachToBuffer if the file has no filetype
+lua require'colorizer'.setup()
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
 
 " Fugitive Conflict Resolution
 " https://www.prodops.io/blog/solving-git-merge-conflicts-with-vim
@@ -442,6 +482,7 @@ set nospell                                        " Turn spell checking off by 
 set nowrap                                         " Don't wrap lines. Call `:set wrap` to change
 set number                                         " Line numbers on
 set numberwidth=5                                  " Use 5 characters for number well
+set pumheight=10                                   " Limit height of completion popup
 set regexpengine=1                                 " Use old regular expression engine because it's faster
 set rtp+=/usr/local/opt/fzf                        " fzf.vim
 set scrolloff=10                                   " Prevent scrolling past bottom line
@@ -529,6 +570,7 @@ noremap Q @q
 let g:rg_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always"
   \ -g "!.git/*"
+  \ -g "!.elixir_ls/*"
   \ -g "!spec/vcr/*"
   \ '
 
@@ -545,6 +587,7 @@ command! -bang -nargs=* Rg
 let g:rg_case_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore --ignore-global --hidden --no-follow --color "always"
   \ -g "!.git/*"
+  \ -g "!.elixir_ls/*"
   \ -g "!spec/vcr/*"
   \ '
 
