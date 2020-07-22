@@ -297,6 +297,8 @@ let g:coc_global_extensions = [
       \ ]
 " Because old versions of node
 let g:coc_disable_startup_warning = 1
+" Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
+" Plug 'antoinemadec/coc-fzf'
 
 "
 " coc.vim sample config
@@ -322,7 +324,8 @@ else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-" nnoremap <silent> J :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <a-d> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -390,6 +393,8 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Mappings using CoCList:
 " Show all diagnostics.
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
@@ -400,12 +405,9 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-
-" Disabled shortcuts
 " Resume latest coc list.
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-" Manage extensions.
-" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+
 
 "
 " coc.vim sample config end
