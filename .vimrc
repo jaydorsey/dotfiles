@@ -15,8 +15,8 @@ noremap <f1> <nop>
 nnoremap { <nop>
 nnoremap } <nop>
 
-let g:python3_host_prog = '/usr/local/bin/python3'
-let g:python_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
+let g:python_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
 
 let g:ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
 let g:ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
@@ -298,7 +298,7 @@ let g:coc_global_extensions = [
 " Because old versions of node
 let g:coc_disable_startup_warning = 1
 " Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
-" Plug 'antoinemadec/coc-fzf'
+Plug 'antoinemadec/coc-fzf'
 
 "
 " coc.vim sample config
@@ -392,19 +392,19 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings using CoCList:
 " Show all diagnostics.
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>a  :<C-u>CocFzfList diagnostics<cr>
 " Manage extensions.
 " nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>c  :<C-u>CocFzfList commands<cr>
 " Find symbol of current document.
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>o  :<C-u>CocFzfList outline<cr>
 " Search workspace symbols.
 " nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space>j  :<C-u>CocFzfNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <space>k  :<C-u>CocFzfPrev<CR>
 " Resume latest coc list.
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 

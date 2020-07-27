@@ -100,9 +100,6 @@ _fzf_compgen_path() { fd --hidden --follow --exclude ".git" . "$1" }
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() { fd --type d --hidden --follow --exclude ".git" . "$1" }
 
-source $HOME/.asdf/asdf.sh
-source $HOME/.asdf/completions/asdf.bash
-
 # Used with active-record-query-trace gem &
 # ActiveRecord::Type::Boolean.new.cast(ENV.fetch("AR_TRACE", false)) to conditionally enable
 # query tracing in console
@@ -178,8 +175,6 @@ export NAVI_PATH="$HOME/.navi:$HOME/.navi_cheatsheets:$HOME/.oh-my-zsh/custom/pl
 export PAGER="less"
 
 export PATH=$PATH:$HOME/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn global bin` to find this path
-export PATH=$PATH:$HOME/Library/Python/3.7/bin
-export PATH=$PATH:$HOME/Library/Python/2.7/bin
 export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$PATH:/usr/local/opt/postgresql/bin
 # This is necessary for, at least, crystal
@@ -283,7 +278,6 @@ alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
 # alias ls='~/bin/colorls --report'
 alias ls='lsd'
 alias ping='prettyping --nolegend'
-alias python='python3'
 alias top='sudo htop'
 alias untracked='git ls-files -o --exclude-standard'
 alias vi='nvim'
@@ -383,3 +377,6 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 # For vim nightly
 export PATH=~/.localbin/nvim-osx64/bin:$PATH
 # export PATH="/Users/jay/.localbin/nvim-osx64/bin:$PATH"
+
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash

@@ -1,3 +1,7 @@
 {
-  "suggest.maxCompleteItemCount": 10
+  "suggest.maxCompleteItemCount": 10,
+  "suggest.floatEnable": true,
+  "codeLens.enable": true,
+  "diagnostic.messageTarget": "float",
+  "coc.preferences.hoverTarget": "float"
 }
