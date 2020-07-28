@@ -5,4 +5,4 @@
 --languages=RSpec
 --languages=Ruby
 --languages=-javascript
---languages=-sql
+--languages=sql
