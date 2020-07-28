@@ -283,17 +283,41 @@ xmap <leader>l <Plug>(Limelight)
 
 " Completion support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-      \ 'coc-marketplace',
-      \ 'coc-solargraph',
-      \ 'coc-json',
-      \ 'coc-yaml',
-      \ 'coc-bookmark',
+let g:coC_global_extensions = [
       \ 'coc-actions',
+      \ 'coc-bookmark',
+      \ 'coc-css',
       \ 'coc-explorer',
+      \ 'coc-floaterm',
+      \ 'coc-format-json',
       \ 'coc-git',
+      \ 'coc-git-p',
+      \ 'coc-github',
+      \ 'coc-gitignore',
       \ 'coc-highlight',
-      \ 'coc-snippets'
+      \ 'coc-html',
+      \ 'coc-json',
+      \ 'coc-lines',
+      \ 'coc-lua',
+      \ 'coc-marketplace',
+      \ 'coc-markmap',
+      \ 'coc-nextword',
+      \ 'coc-pairs',
+      \ 'coc-prettier',
+      \ 'coc-smartf',
+      \ 'coc-snippets',
+      \ 'coc-solargraph',
+      \ 'coc-spell-checker',
+      \ 'coc-split-term',
+      \ 'coc-sql',
+      \ 'coc-terminal',
+      \ 'coc-utils',
+      \ 'coc-yaml',
+      \ 'coc-dictionary',
+      \ 'coc-omni',
+      \ 'coc-syntax',
+      \ 'coc-tag',
+      \ 'coc-word'
       \ ]
 " Because old versions of node
 let g:coc_disable_startup_warning = 1
