@@ -93,3 +93,15 @@ find . -type f | cut -d"/" -f2 | uniq -c
 
 # Remove duplicates in zsh_history
 cat -n .zsh_history | sort -t ';' -uk2 | sort -nk1 | cut -f2- > .zsh_short_history && mv ~/.zsh_short_history ~/.zsh_history
+
+% ctags
+
+# Generate ctags in from multiple directories
+ctags -R --append . <folders>
+
+$ folders: lsd */ -d | tr '\n' ' ' | grep -f <(git ls-files | sed "s/\/.*//" | uniq) --- --multi
+
+# Generate ctags for bundled gems in a sub-folder
+ctags -R --append . $(cd <folder> && bundle list --paths)
+
+$ folder: lsd */ -d | grep -f <(git ls-files | sed "s/\/.*//" | uniq)
