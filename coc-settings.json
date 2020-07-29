@@ -3,5 +3,6 @@
   "suggest.floatEnable": true,
   "codeLens.enable": true,
   "diagnostic.messageTarget": "float",
-  "coc.preferences.hoverTarget": "float"
+  "coc.preferences.hoverTarget": "float",
+  "coc.preferences.extensionUpdateCheck": "daily"
 }
