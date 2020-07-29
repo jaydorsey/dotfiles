@@ -48,8 +48,8 @@ sudo xcodebuild -license
 # neovim/python stuff for deoplete, gundo, etc.
 #
 #######################################################
-pip2 install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim iredis
-pip3 install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim iredis
+pip install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim iredis psutil
+pip3 install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim iredis psutil
 
 #######################################################
 #
@@ -64,6 +64,7 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 ~/.asdf/bin/asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 ~/.asdf/bin/asdf plugin-add golang https://github.com/asdf-vm/asdf-golang.git
 ~/.asdf/bin/asdf plugin-add crystal https://github.com/asdf-vm/asdf-crystal.git
+~/.asdf/bin/asdf plugin-add ruby https://github.com/asdf-vm/asdf-python.git
 
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
