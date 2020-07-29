@@ -275,7 +275,6 @@ alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/
 # Exercism setup
 alias guardme="guard -c --guardfile ~/exercism/ruby/Guardfile"
 alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
-# alias ls='~/bin/colorls --report'
 alias ls='lsd'
 alias ping='prettyping --nolegend'
 alias top='sudo htop'
@@ -380,6 +379,11 @@ export PATH=~/localbin/nvim-osx64/bin:$PATH
 
 # Python executable support for asdf
 export PATH="$PATH:$HOME/.local/bin"
+
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# asdf puts python scripts here
+export PATH="$HOME/.local/bin:$PATH"
 
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
