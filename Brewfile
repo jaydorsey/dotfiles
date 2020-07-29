@@ -1,4 +1,3 @@
-tap "amberframework/amber"
 tap "denisidoro/tools"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -47,13 +46,8 @@ brew "coreutils"
 brew "cowsay"
 brew "libyaml"
 brew "llvm"
-<<<<<<< HEAD
 brew "crystal"
-brew "ctags", link: false
-=======
 brew "pkg-config"
-brew "crystal"
->>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "curl"
 brew "dialog"
 brew "diff-so-fancy"
@@ -104,10 +98,7 @@ brew "szip"
 brew "hdf5"
 brew "krb5"
 brew "libxml2"
-<<<<<<< HEAD
-=======
 brew "libdap"
->>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "proj"
 brew "libpq"
 brew "netcdf"
@@ -116,18 +107,12 @@ brew "nss"
 brew "numpy"
 brew "qt"
 brew "poppler"
-<<<<<<< HEAD
 brew "unixodbc"
 brew "zstd"
 brew "gdal"
 brew "geckodriver"
 brew "ghc"
-=======
-brew "zstd"
-brew "gdal"
-brew "geckodriver"
 brew "ghostscript"
->>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "pcre2"
 brew "git"
 brew "git-quick-stats"
@@ -147,10 +132,7 @@ brew "gobject-introspection"
 brew "sdl2_image"
 brew "gource"
 brew "netpbm"
-<<<<<<< HEAD
-=======
 brew "gts"
->>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "pango"
 brew "graphviz"
 brew "hadolint"
@@ -163,10 +145,7 @@ brew "ilmbase"
 brew "libde265"
 brew "libheif"
 brew "libomp"
-<<<<<<< HEAD
 brew "openexr"
-=======
->>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "imagemagick", link: false
 brew "imagemagick@6", link: true
 brew "jansson"
@@ -207,10 +186,7 @@ brew "optipng"
 brew "tmux"
 brew "overmind"
 brew "packer"
-<<<<<<< HEAD
-=======
 brew "perl"
->>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "pgcli"
 brew "plantuml"
 brew "pngcrush"
@@ -229,10 +205,7 @@ brew "ripgrep"
 brew "ruby"
 brew "rust"
 brew "s-lang"
-<<<<<<< HEAD
-=======
 brew "sbcl"
->>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 brew "selenium-server-standalone", restart_service: true
 brew "shellcheck"
 brew "siege"
@@ -254,15 +227,9 @@ brew "wxmac"
 brew "yajl"
 brew "zlib"
 brew "zsh"
-<<<<<<< HEAD
-brew "amberframework/amber/amber"
 brew "heroku/brew/heroku"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD", "with-jansson"]
-=======
-brew "heroku/brew/heroku"
-brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "unused-code/formulae/unused"
->>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 cask "1password"
 cask "acorn"
 cask "alacritty"
@@ -288,11 +255,7 @@ cask "insomnia"
 cask "iterm2"
 cask "java"
 cask "java8"
-cask "keybase"
-<<<<<<< HEAD
-=======
 cask "keyboard-maestro"
->>>>>>> 8d008494de3ce58680afc67f09940660c005fe8a
 cask "lepton"
 cask "macdown"
 cask "moom"
