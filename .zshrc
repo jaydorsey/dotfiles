@@ -355,11 +355,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Shared personal scripts
+# Shared personal scripts; these are typically commited tot he repo
 export PATH=~/bin:$PATH
 
-# Computer specific scripts
-export PATH=~/.localbin:$PATH
+# Computer specific scripts; unique to each computer I use
+export PATH=~/localbin:$PATH
 
 # Most of the homebrew executables end up here
 export PATH=/usr/local/bin:$PATH
@@ -375,8 +375,11 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # For vim nightly
-export PATH=~/.localbin/nvim-osx64/bin:$PATH
-# export PATH="/Users/jay/.localbin/nvim-osx64/bin:$PATH"
+export PATH=~/localbin/nvim-osx64/bin:$PATH
+# export PATH="/Users/jay/localbin/nvim-osx64/bin:$PATH"
+
+# Python executable support for asdf
+export PATH="$PATH:$HOME/.local/bin"
 
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
