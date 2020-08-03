@@ -253,7 +253,7 @@ export RACK_TIMEOUT_TERM_ON_TIMEOUT=1
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings
-export RUBY_OPT="-W0"
+export RUBYOPT="-W0"
 # Run `brew --prefix readline` to find this path
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl --with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 # RSpec, I prefer my specs to fail fast & document
