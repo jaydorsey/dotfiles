@@ -2,19 +2,25 @@
 include:
 - "**/*.rb"
 exclude:
+- "**/*.jay"
+- ".bundle/**/*"
+- bower_components/**/*
+- coverage/**/*
+- integration_spec/**/*
+- log/**/*
+- node_modules/**/*
 - spec/**/*
 - test/**/*
+- tmp/**/*
 - vendor/**/*
-- ".bundle/**/*"
-- node_modules/**/*
 require:
 - rails
 domains: []
 diagnostics: true
 reporters:
-- rubocop
 - require_not_found
+- rubocop
 plugins:
 - runtime
 require_paths: []
-max_files: 5000
+max_files: 10000
