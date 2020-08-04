@@ -386,4 +386,4 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 source $HOME/.asdf/asdf.sh
-source $HOME/.asdf/completions/asdf.bash
+# source $HOME/.asdf/completions/asdf.bash
