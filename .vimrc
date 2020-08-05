@@ -305,7 +305,6 @@ let g:coC_global_extensions = [
       \ 'coc-pairs',
       \ 'coc-prettier',
       \ 'coc-smartf',
-      \ 'coc-snippets',
       \ 'coc-solargraph',
       \ 'coc-spell-checker',
       \ 'coc-split-term',
