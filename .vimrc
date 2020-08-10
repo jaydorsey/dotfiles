@@ -685,7 +685,7 @@ augroup END
 let g:lightline = {
 \ 'active': {
 \   'colorscheme': 'monokai_tasty',
-\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok']],
+\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'modified', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok']],
 \   'right': [['lineinfo'], ['percent'], ['lightline_character', 'fileformat', 'fileencoding', 'filetype']]
 \ },
 \ 'component': {
