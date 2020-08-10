@@ -4,5 +4,10 @@
   "codeLens.enable": true,
   "diagnostic.messageTarget": "float",
   "coc.preferences.hoverTarget": "float",
-  "coc.preferences.extensionUpdateCheck": "daily"
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "solargraph.completion": true,
+  "solargraph.definitions": true,
+  "solargraph.references": true,
+  "solargraph.folding": true,
+  "solargraph.hover": true
 }
