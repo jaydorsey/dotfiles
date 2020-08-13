@@ -232,7 +232,6 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD", "with-jan
 brew "unused-code/formulae/unused"
 cask "1password"
 cask "acorn"
-cask "alacritty"
 cask "alfred"
 cask "appcleaner"
 cask "bartender"
@@ -279,7 +278,6 @@ mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "EasyRes", id: 688211836
 mas "Folder Factory", id: 521419726
-mas "GAget", id: 968487158
 mas "GarageBand", id: 682658836
 mas "Gemini 2", id: 1090488118
 mas "iMovie", id: 408981434
@@ -290,6 +288,5 @@ mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Ringer", id: 402437824
 mas "Screenium 3", id: 921553264
-mas "Turtle Beach Audio Hub", id: 948410748
 mas "VisualDiffer", id: 412386481
 mas "Xcode", id: 497799835
