@@ -67,3 +67,5 @@ tmux*
 .pry_history
 .irb_history
 .scratchpads
+# Rubymine files
+.generators
