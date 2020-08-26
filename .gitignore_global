@@ -27,12 +27,12 @@ db/data/**/*
 sonar-project.properties
 coverage
 # gutentag
-tags
-tags.lock
-tags.temp
-*.tags.tmp
-*.tags
-*.jay
+**/tags
+**/tags.lock
+**/tags.temp
+**/*.tags.tmp
+**/*.tags
+**/*.jay
 # Temporary
 .reek.yml
 config/rails_best_practices.yml
@@ -64,7 +64,7 @@ deps/*
 # Miscellaneous
 *.map
 tmux*
-.pry_history
+**/.pry_history
 .irb_history
 .scratchpads
 # Rubymine files
