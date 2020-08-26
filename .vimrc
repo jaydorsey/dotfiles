@@ -188,6 +188,7 @@ Plug 'jgdavey/tslime.vim'
 " Extends " and @ in normal mode to auto-show registers
 Plug 'junegunn/vim-peekaboo'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Override and open ctrl-t in a new buffer to help me using buffers
 let g:fzf_action = {
