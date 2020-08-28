@@ -31,6 +31,7 @@
   visual = !gitk
   ctags = !.git/hooks/ctags
   bclean = !sh -c 'git branch --merged ${1-master} | grep -v "main" | grep -v "master" | grep -v "production" | xargs git b -D' -
+  untracked = ls-files --others --exclude-standard
 [branch]
   autosetuprebase = always
   autosetupmerge = always
