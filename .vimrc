@@ -494,7 +494,7 @@ set ignorecase                                     " Ignore case when searching.
 set incsearch                                      " Find the next match as we type
 set nolazyredraw                                   " Disable screen redraw when running macros, for performance
 set redrawtime=10000                               " Increase redraw time so syntax highlighting works on larger files
-set matchtime=5                                    " Show matching bracket for 0.5 seconds
+set matchtime=10                                   " Show matching bracket for 1 second
 set mouse=                                         " Disable mouse
 set nocindent                                      " Don't indent text with parentheses https://stackoverflow.com/a/2129313/2892779
 set nocursorcolumn                                 " Enable cursor column highlighting
@@ -508,7 +508,6 @@ set number                                         " Line numbers on
 set numberwidth=5                                  " Use 5 characters for number well
 set pumheight=10                                   " Limit height of completion popup
 set regexpengine=1                                 " Use old regular expression engine because it's faster
-set rtp+=/usr/local/opt/fzf                        " fzf.vim
 set scrolloff=10                                   " Prevent scrolling past bottom line
 set sessionoptions-=options                        " Disable options because sessions capture runtime path
 set sessionoptions-=folds                          " FastFold recommended setting to make sure buffer not overwritten in manual
@@ -526,6 +525,7 @@ set splitbelow                                     " Open new split panes to rig
 set splitright                                     " Open new split panes to right and bottom
 set synmaxcol=512                                  " Don't highlight on lines longer than X chars
 set tabstop=2
+set textwidth=80                                   " Text width before wrapping
 set title                                          " Set the title of the iTerm tab
 set undofile                                       " Persistent undo
 set undodir=~/.vim/undo                            " Persistent undo directory
