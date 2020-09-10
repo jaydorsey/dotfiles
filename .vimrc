@@ -573,6 +573,10 @@ augroup vimrc_autocmd
   " Make fzf quit quickly when esc is pressed
   " https://github.com/junegunn/fzf/issues/1393#issuecomment-426576577
   autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
+
+  " https://vim.fandom.com/wiki/Folding#Indent_folding_with_manual_folds
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 augroup END
 
 set wildmode=list:longest
