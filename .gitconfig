@@ -7,6 +7,7 @@
   ignorecase = false
   pager = "diff-so-fancy | GREP_COLOR='1;37' grep --color=always -E 'Merge (branch|pull request).*|$' | less --tabs=4 -RFX"
   commitGraph = true
+	attributesfile = /Users/jay/.gitattributes
 [alias]
   a = add -A
   b = branch
@@ -70,6 +71,8 @@
 [diff]
   compactionHeuristic = true
   tool = github
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 [difftool]
   prompt = false
 [difftool "github"]
