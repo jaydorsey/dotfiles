@@ -5,7 +5,7 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
   ignorecase = false
-  pager = "diff-so-fancy | GREP_COLOR='1;37' grep --color=always -E 'Merge (branch|pull request).*|$' | less --tabs=4 -RFX"
+  pager = delta
   commitGraph = true
 	attributesfile = /Users/jay/.gitattributes
 [alias]
@@ -33,6 +33,13 @@
   ctags = !.git/hooks/ctags
   bclean = !sh -c 'git branch --merged ${1-master} | grep -v "main" | grep -v "master" | grep -v "production" | xargs git b -D' -
   untracked = ls-files --others --exclude-standard
+[delta]
+  plus-color = "#012800"
+  minus-color = "#340001"
+  syntax-theme = Monokai Extended
+  side-by-side = true
+[interactive]
+  diffFilter = delta --color-only
 [branch]
   autosetuprebase = always
   autosetupmerge = always
