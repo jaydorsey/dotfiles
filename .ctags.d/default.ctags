@@ -1,6 +1,7 @@
 --recurse=yes
 --tag-relative=yes
 --append=yes
+--links=no
 --exclude=.git/*,node_modules/*,log/*,tmp/*
 --languages=RSpec
 --languages=Ruby
