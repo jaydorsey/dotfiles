@@ -102,12 +102,15 @@ awk 'length($0) > <max_length> {printf "%4d : %s(%4d):%s\n", length($0), FILENAM
 
 % ctags
 
-# Generate ctags in from multiple directories
+# Generate tags in from multiple directories
 ctags -R --append . <folders>
 
 $ folders: lsd */ -d | tr '\n' ' ' | grep -f <(git ls-files | sed "s/\/.*//" | uniq) --- --multi
 
-# Generate ctags for bundled gems in a sub-folder
+# Generate tags for bundled gems in a sub-folder
 ctags -R --append . $(cd <folder> && bundle list --paths)
 
 $ folder: lsd */ -d | grep -f <(git ls-files | sed "s/\/.*//" | uniq)
+
+# Generate tags for a ruby repository
+ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
