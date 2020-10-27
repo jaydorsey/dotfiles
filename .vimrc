@@ -50,6 +50,8 @@ Plug 'andymass/vim-matchup'
 " Plug 'Chrisbra/Colorizer'
 Plug 'norcalli/nvim-colorizer.lua'
 
+Plug 'liuchengxu/vista.vim'
+let g:vista_default_executive = 'nvim_lsp'
 
 Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
@@ -690,7 +692,7 @@ augroup END
 let g:lightline = {
 \ 'active': {
 \   'colorscheme': 'monokai_tasty',
-\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok']],
+\   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok', 'method']],
 \   'right': [['lineinfo'], ['percent'], ['lightline_character', 'fileformat', 'fileencoding', 'filetype']]
 \ },
 \ 'component': {
@@ -721,7 +723,8 @@ let g:lightline = {
 \ },
 \ 'component_function': {
 \   'filename': 'LightlineFilename',
-\   'lightline_character': 'LightLineCharacter'
+\   'lightline_character': 'LightLineCharacter',
+\   'method': 'NearestMethodOrFunction'
 \ },
 \ 'enable': {
 \   'statusline': 1, 'tabline': 1
