@@ -30,6 +30,11 @@ let g:yaml_formatter_indent_collection=1
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim'
 
+" Toggle a terminal with :ToggleTerminal
+Plug 'caenrique/nvim-toggle-terminal'
+nnoremap <silent> tt :ToggleTerminal<Enter>
+tnoremap <silent> tt <C-\><C-n>:ToggleTerminal<Enter>
+
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 let g:NERDTreeChDirMode = 2
@@ -208,6 +213,22 @@ let delimitMate_expand_space = 1
 Plug 'rhysd/committia.vim'
 let g:committia_open_only_vim_starting = 1
 let g:committia_edit_window_width = 90
+
+let g:committia_hooks = {}
+function! g:committia_hooks.edit_open(info)
+    " Additional settings
+    setlocal spell
+
+    " If no commit message, start with insert mode
+    if a:info.vcs ==# 'git' && getline(1) ==# ''
+        startinsert
+    endif
+
+    " Scroll the diff window from insert mode
+    " Map <C-n> and <C-u>
+    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-u> <Plug>(committia-scroll-diff-up-half)
+endfunction
 
 " Git message viewer with <leader>gm. Requires neovim 0.4+ for floating panel
 " Install with brew install neovim --HEAD
