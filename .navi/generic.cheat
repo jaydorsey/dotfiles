@@ -24,8 +24,8 @@ git branch --merged master | grep -v "master" | grep -v "production" | xargs git
 
 git log -S "<text>" <file_name>
 
-# Find last commit which deleted a file
 # https://stackoverflow.com/a/56054951/2892779
+# Find last commit which deleted a file
 
 git rev-list -n 1 HEAD -- <full_path_to_file>
 
