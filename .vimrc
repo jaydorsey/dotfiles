@@ -34,7 +34,7 @@ Plug 'scrooloose/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<cr>
 let g:NERDTreeChDirMode = 2
 
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 " require'nvim_lsp'.solargraph.setup{on_attach=require'completion'.on_attach}
 " autocmd BufEnter * lua require'completion'.on_attach()
@@ -51,7 +51,7 @@ Plug 'andymass/vim-matchup'
 Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'liuchengxu/vista.vim'
-let g:vista_default_executive = 'nvim_lsp'
+let g:vista_default_executive = 'lspconfig'
 
 Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
@@ -328,6 +328,7 @@ let g:coC_global_extensions = [
       \ 'coc-spell-checker',
       \ 'coc-split-term',
       \ 'coc-sql',
+      \ 'coc-tabnine',
       \ 'coc-terminal',
       \ 'coc-utils',
       \ 'coc-yaml',
@@ -458,7 +459,7 @@ nnoremap <silent> <space>k  :<C-u>CocFzfPrev<CR>
 call plug#end()
 
 lua << EOF
-require'nvim_lsp'.solargraph.setup{commandPath = '~/.asdf/shims/solargraph', on_attach=require'completion'.on_attach}
+require'lspconfig'.solargraph.setup{commandPath = '~/.asdf/shims/solargraph', on_attach=require'completion'.on_attach}
 EOF
 
 " Part of norcalli/nvim-colorizer.lua. Use the command
