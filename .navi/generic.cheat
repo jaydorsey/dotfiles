@@ -111,6 +111,10 @@ find <folder> -type f -exec wc -l {} + | sort -rn
 # Sort file by lines greater than
 awk 'length($0) > <max_length> {printf "%4d : %s(%4d):%s\n", length($0), FILENAME, FNR, $0}' <path_to_file>
 
+# Fold long lines
+fold -w <width> -s <input_file_name> > <output_file_name>
+
+
 % ctags
 
 # Generate tags in from multiple directories
@@ -125,3 +129,17 @@ $ folder: lsd */ -d | grep -f <(git ls-files | sed "s/\/.*//" | uniq)
 
 # Generate tags for a ruby repository
 ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+
+% profiling
+
+# Generate flamegraph with rbspy
+sudo --preserve-env rbspy record <which_ruby> <file_name>
+
+$ which_ruby: which ruby
+
+
+% rg, ripgrep, zsh
+
+# List files with lines greater than X characters
+rg '.{<character_count>,}' <folder> -g '<file_glob>'
