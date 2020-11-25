@@ -80,6 +80,9 @@ touch .metadata_never_index
 # Routes for specific controller
 rails routes -c <controller_name>
 
+# Update rails & dependencies
+bundle update rails actionview actionpack activerecord activesupport railties activemodel --conservative
+
 
 % postgres
 
