@@ -25,4 +25,4 @@ make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$BUILD_DIR
 make install
 cd -
 
-ln -sf "$BUILD_DIR/bin/nvim" ~/bin/nim
+ln -sf "$BUILD_DIR/bin/nvim" ~/bin/nvim
