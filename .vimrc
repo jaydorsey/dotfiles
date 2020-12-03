@@ -48,7 +48,8 @@ Plug 'alfredodeza/jacinto.vim', { 'for': 'json' }
 Plug 'andymass/vim-matchup'
 
 " Plug 'Chrisbra/Colorizer'
-Plug 'norcalli/nvim-colorizer.lua'
+" Plug 'norcalli/nvim-colorizer.lua'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 Plug 'liuchengxu/vista.vim'
 let g:vista_default_executive = 'lspconfig'
@@ -458,13 +459,15 @@ nnoremap <silent> <space>k  :<C-u>CocFzfPrev<CR>
 
 call plug#end()
 
+let g:Hexokinase_highlighters = [ 'sign_column' ]
+
 lua << EOF
 require'lspconfig'.solargraph.setup{commandPath = '~/.asdf/shims/solargraph', on_attach=require'completion'.on_attach}
 EOF
 
 " Part of norcalli/nvim-colorizer.lua. Use the command
 " :ColorizerAttachToBuffer if the file has no filetype
-lua require'colorizer'.setup()
+" lua require'colorizer'.setup()
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
