@@ -264,7 +264,8 @@ map <leader>r :call RunNearestSpec()<cr>
 Plug 'tomtom/tcomment_vim'
 
 " Use :ToGithub to open the current line in your browser
-Plug 'tonchis/vim-to-github'
+" Plug 'tonchis/vim-to-github'
+Plug 'jaydorsey/vim-to-github', {'branch': 'jay/add_blame_shortcut'}
 
 " Add Unicode character metadata when using ga
 Plug 'tpope/vim-characterize'
