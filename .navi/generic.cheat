@@ -59,6 +59,21 @@ sudo xcode-select --switch /Library/Developer/CommandLineTools
 # Enable Xcode app
 sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
 
+# Warning: A newer Command Line Tools release is available.
+# Update them from Software Update in System Preferences or run:
+#   softwareupdate --all --install --force
+#
+# If that doesn't show you an update run:
+#   sudo rm -rf /Library/Developer/CommandLineTools
+#   sudo xcode-select --install
+#
+# Alternatively, manually download them from:
+#  https://developer.apple.com/download/more/.
+#
+# Clear out CommandLineTools & re-install
+sudo rm -rf /Library/Developer/CommandLineTools && sudo xcode-select --install
+
+
 % font
 
 # List installed fonts
