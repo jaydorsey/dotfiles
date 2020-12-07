@@ -69,3 +69,4 @@ tmux*
 .scratchpads
 # Rubymine files
 .generators
+out.txt
