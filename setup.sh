@@ -154,7 +154,11 @@ cargo install cw
 #
 # Typically, you want to run this command once, in the repo root:
 #
-#     ctags --tag-relative --languages=-javascript,sql `bundle show --paths`
+#     ctags . $(bundle list --paths)
+#
+# For unused tool, you'll want to run this from the root:
+#
+#     unused --ignore /Users/jay/.asdf/installs/* > out.txt
 #
 # Then, you'll run git init to setup your git hooks & symlink the .ctags.d folder to your $HOME. Inside
 # the git hooks is a command that will append the local code tags onto the tags file for you
