@@ -39,7 +39,7 @@ brew "libffi"
 brew "pcre"
 brew "glib"
 brew "pixman"
-brew "python@3.8"
+brew "python", link: true
 brew "cairo"
 brew "mpfr"
 brew "cgal"
