@@ -65,6 +65,7 @@ deps/*
 *.map
 tmux*
 **/.pry_history
+**/.irb-history
 .irb_history
 .scratchpads
 # Rubymine files
