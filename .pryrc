@@ -91,7 +91,9 @@ def fb
   require 'factory_bot'
   require 'faker'
 
-  FactoryBot.definition_file_paths << File.join('spec', 'support', 'factories')
+  FactoryBot.definition_file_paths << File.join('spec', 'support', 'factories') if Dir.exist?(File.join('spec', 'support', 'factories'))
+  FactoryBot.definition_file_paths << File.join('spec', 'factories') if Dir.exist?(File.join('spec', 'factories'))
+
   FactoryBot.find_definitions
 
   include FactoryBot::Syntax::Methods # rubocop:disable Style/MixinUsage
