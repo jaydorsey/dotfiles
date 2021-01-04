@@ -806,7 +806,12 @@ let &colorcolumn="130"
 " after the <cr> in order for it to work correctly and not execute CTRL-J,
 " which is mapped to swap lines on my setup
 let @l = ":DelimitMateOff^ilet(:ea)llxxi{ $a }:DelimitMateOn\<cr>\\"
+
+" Change Rails.logger.info calls to use a block
 let @i = ":DelimitMateOff^xxxiRails.logger.info($a):DelimitMateOn\<cr>\\"
+
+" Add a frozen string literal comment to the top of a file
+let @f= "gg0ikki# frozen_string_literal_€kb: true``"
 
 " Print all groups being applied
 " https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/
