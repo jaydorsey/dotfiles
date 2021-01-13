@@ -2,6 +2,7 @@
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.hoverTarget": "float",
   "codeLens.enable": true,
+   "diagnostic.displayByAle": true,
   "diagnostic.messageTarget": "float",
   "solargraph.completion": true,
   "solargraph.definitions": true,
@@ -38,6 +39,5 @@
     "typeParameter": "\uf728",
     "default": "\uf29c"
   },
-  "list.source.files.defaultOptions": ["--auto-preview"],
   "list.source.outline.defaultOptions": ["--auto-preview"]
 }

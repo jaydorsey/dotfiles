@@ -22,6 +22,9 @@ let g:ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
 let g:ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
 let g:ruby_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/neovim-ruby-host'
 
+" https://github.com/dense-analysis/ale#faq-coc-nvim
+let g:ale_disable_lsp = 1
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'tarekbecker/vim-yaml-formatter', { 'for': 'yaml' }
