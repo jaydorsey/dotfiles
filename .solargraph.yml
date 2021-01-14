@@ -19,7 +19,6 @@ domains: []
 diagnostics: true
 reporters:
 - require_not_found
-- rubocop
 plugins:
 - runtime
 require_paths: []
