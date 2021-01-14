@@ -47,6 +47,9 @@ $ session: tmux ls | awk '{print substr($1, 1, length($1)-1)}'
 # Remove all keys of all existing redis databases
 redis-cli FLUSHALL
 
+# Fix "MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk"
+redis-cli config set stop-writes-on-bgsave-error no
+
 
 % xcode
 
