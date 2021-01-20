@@ -167,3 +167,11 @@ rg '.{<character_count>,}' <folder> -g '<file_glob>'
 
 # curl GET URL as JSON
 curl -H "Content-type: application/json" -H "Accept: application/json" <url>
+
+
+% ffmpeg
+
+# Split mp4 into multiple files
+ffmpeg -i <file> -c copy -vcodec copy -acodec copy -reset_timestamps 1 -segment_time 00:10:00 -f segment <file_base>-%03d.<file_extension>
+
+$ file: ls
