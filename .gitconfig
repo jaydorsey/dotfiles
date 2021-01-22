@@ -32,6 +32,7 @@
   visual = !gitk
   ctags = !.git/hooks/ctags
   bclean = !sh -c 'git branch --merged ${1-master} | grep -v "main" | grep -v "master" | grep -v "production" | xargs git b -D' -
+  bcleantest = !sh -c 'git branch --merged ${1-master} | grep -v "main" | grep -v "master" | grep -v "production"' -
   untracked = ls-files --others --exclude-standard
 [delta]
   plus-color = "#012800"
