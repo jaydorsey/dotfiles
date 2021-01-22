@@ -61,7 +61,8 @@ Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
 let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
-let g:ale_ruby_rubocop_executable = escape(expand('$HOME'), '\') . '/.asdf/shims/rubocop'
+" let g:ale_ruby_rubocop_executable = escape(expand('$HOME'), '\') . '/.asdf/shims/rubocop'
+let g:ale_ruby_rubocop_executable = escape(expand('$HOME'), '\') . '/.asdf/shims/bundle'
 
 " mix deps.get && mix compile && mix elixir_ls.release -o release
 " Then edit the release/language_server.sh file to add the --erl flag
