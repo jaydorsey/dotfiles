@@ -39,8 +39,6 @@ let g:NERDTreeChDirMode = 2
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-" require'nvim_lsp'.solargraph.setup{on_attach=require'completion'.on_attach}
-" autocmd BufEnter * lua require'completion'.on_attach()
 
 Plug 'mhinz/vim-startify'
 
@@ -466,9 +464,7 @@ call plug#end()
 
 let g:Hexokinase_highlighters = [ 'sign_column' ]
 
-lua << EOF
-require'lspconfig'.solargraph.setup{commandPath = '~/.asdf/shims/solargraph', on_attach=require'completion'.on_attach}
-EOF
+lua require'lspconfig'.solargraph.setup{commandPath = '~/.asdf/shims/solargraph', on_attach=require'completion'.on_attach}
 
 " Part of norcalli/nvim-colorizer.lua. Use the command
 " :ColorizerAttachToBuffer if the file has no filetype
