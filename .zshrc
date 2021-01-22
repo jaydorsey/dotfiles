@@ -28,6 +28,10 @@ export ZSH_THEME="powerlevel10k/powerlevel10k"
 # https://github.com/ansible/ansible/issues/32499#issuecomment-341578864
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
 
+# Location of my dotfiles repo, for symlinking. Override this in .localrc if
+# needed
+export DOTFILES_PATH="$HOME/projects/jaydorsey/dotfiles"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
