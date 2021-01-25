@@ -23,9 +23,16 @@ $(brew --prefix)/opt/fzf/install --all
 # zsh as an allowed, and my default, shell
 #
 #######################################################
-if [ ! grep -q $(which zsh) /etc/shells ]; then
-  sudo sh -c "echo $(which zsh) >> /etc/shells"
+ZSH_FOUND=$(grep -c /usr/local/bin/zsh /etc/shells)
+
+if [ $ZSH_FOUND == 0 ]
+then
+  echo "missing /usr/local/bin/zsh, adding..."
+  sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+else
+  echo "found /usr/local/bin/zsh, skipping..."
 fi
+
 
 echo $SHELL | grep -v zsh | while read
 do
