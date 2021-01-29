@@ -30,6 +30,10 @@ git log -S "<text>" <file_name>
 git rev-list -n 1 HEAD -- <full_path_to_file>
 
 
+# Empty commit
+
+git commit --allow-empty -m "Empty commit to trigger build"
+
 % tmux
 
 # Kill tmux sessions
