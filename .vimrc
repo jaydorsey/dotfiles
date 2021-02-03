@@ -240,7 +240,7 @@ let g:crystal_define_mappings = 0
 Plug 'rizzatti/dash.vim'
 nnoremap <leader>d :Dash<cr>
 
-let g:polyglot_disabled = ['yard']
+let g:polyglot_disabled = ['yard', 'typescript', 'jsx']
 Plug 'sheerun/vim-polyglot'
 " sheerun/vim-yardoc
 let g:vim_markdown_conceal = 0
