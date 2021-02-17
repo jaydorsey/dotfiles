@@ -464,7 +464,8 @@ call plug#end()
 
 let g:Hexokinase_highlighters = [ 'sign_column' ]
 
-lua require'lspconfig'.solargraph.setup{commandPath = '~/.asdf/shims/solargraph', on_attach=require'completion'.on_attach}
+" Ignoring again, doesn't respect a global solargraph config
+" lua require'lspconfig'.solargraph.setup{commandPath = '~/.asdf/shims/solargraph', on_attach=require'completion'.on_attach}
 
 " Part of norcalli/nvim-colorizer.lua. Use the command
 " :ColorizerAttachToBuffer if the file has no filetype
