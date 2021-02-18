@@ -1,3 +1,5 @@
+# vim: textwidth=0:filetype=sh
+
 % git, code
 
 # Change branch
@@ -190,3 +192,11 @@ $ file: ls
 # Generate a random number in a range
 
 shuf -i <start_range>-<end_range> -n 1
+
+
+% aws
+
+# Put a String parameter in SSM
+aws ssm put-parameter --name '<parameter-name>' --region '<aws_region>' --type 'String' --value '<value>'
+
+$ aws_region: echo us-west-2; echo us-west-1; echo us-east-2; echo us-east-1
