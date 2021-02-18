@@ -1,43 +1,62 @@
 #!/usr/bin/env sh
-
-if [ ! -f ~/Library/Fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf ]; then
-  wget -O ~/Library/Fonts/Droid\ Sans\ Mono\ Nerd\ Font\ Complete.otf "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf"
-fi
+# This is a rough outline of the steps that are necessary to setup a new system
+# with all my tools/settings on macos
 
 #######################################################
 #
-# homebrew install & application installation
+# Install Xcode from App Store or download link
+#
+#######################################################
+
+
+#######################################################
+#
+# Install homebrew if not found
 #
 #######################################################
 if [ ! $(which brew) ]; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-brew tap caskroom/cask
+
+#######################################################
+#
+# This gets exported as above later, at some point, by homebrew (I think) so
+# follow the same pattern
+#
+#######################################################
+HOMEBREW_PREFIX=$(brew --prefix)
+
+# Stops the "last logged in at" message when you open a new terminal window
+touch ~/.hushlogin
+
+brew tap homebrew/cask
 brew bundle --verbose
 brew link --force readline
-$(brew --prefix)/opt/fzf/install --all
+$HOMEBREW_PREFIX/opt/fzf/install --all
+
 
 #######################################################
 #
 # zsh as an allowed, and my default, shell
 #
 #######################################################
-ZSH_FOUND=$(grep -c /usr/local/bin/zsh /etc/shells)
+ZSH_FOUND=$(grep -c $HOMEBREW_PREFIX/bin/zsh /etc/shells)
 
 if [ $ZSH_FOUND == 0 ]
 then
-  echo "missing /usr/local/bin/zsh, adding..."
-  sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+  echo "missing $HOMEBREW_PREFIX/bin/zsh, adding..."
+  sudo sh -c "echo $HOMEBREW_PREFIX/bin/zsh >> /etc/shells"
 else
-  echo "found /usr/local/bin/zsh, skipping..."
+  echo "found $HOMEBREW_PREFIX/bin/zsh, skipping..."
 fi
 
 
 echo $SHELL | grep -v zsh | while read
 do
-  chsh -s /usr/local/bin/zsh
+  chsh -s $HOMEBREW_PREFIX/bin/zsh
 done
+
 
 #######################################################
 #
@@ -55,8 +74,8 @@ sudo xcodebuild -license
 # neovim/python stuff for deoplete, gundo, etc.
 #
 #######################################################
-pip install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim iredis psutil
 pip3 install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim iredis psutil
+
 
 #######################################################
 #
@@ -71,9 +90,10 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 ~/.asdf/bin/asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 ~/.asdf/bin/asdf plugin-add golang https://github.com/asdf-vm/asdf-golang.git
 ~/.asdf/bin/asdf plugin-add crystal https://github.com/asdf-vm/asdf-crystal.git
-~/.asdf/bin/asdf plugin-add ruby https://github.com/asdf-vm/asdf-python.git
+~/.asdf/bin/asdf plugin-add python https://github.com/asdf-vm/asdf-python.git
 
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
 
 #######################################################
 #
@@ -81,7 +101,6 @@ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 #
 #######################################################
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-git clone https://github.com/bhilburn/powerlevel9k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel9k
 git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -96,6 +115,7 @@ curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completi
 # Install navi
 mkdir -p ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/navi
 git clone https://github.com/denisidoro/navi ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/navi
+
 
 #######################################################
 #
@@ -112,6 +132,7 @@ mkdir -p ~/.terminfo
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/yamllint
 tic -o ~/.terminfo xterm-256color.terminfo
+
 
 #######################################################
 #
@@ -142,18 +163,17 @@ ln -sf "$(pwd)/.yamllint" ~/.config/yamllint/config
 # https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
 ln -sf "$(pwd)/.git_template" ~/.git_template
 
-echo "Symlink or create your .personalrc file"
-echo "Symlink or create your .localrc file"
+# This is where I put local exports, settings, etc.
+echo "Symlink or create your ~/.localrc file"
+
+# This is where I put local binaries
+mkdir -p ~/localbin
 
 # https://github.com/VSCodeVim/Vim#mac
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults write -g ApplePressAndHoldEnabled -bool false
 
 cargo install cw
-
-# Install tool for alacritty themes
-# pip3 install git+https://github.com/toggle-corp/alacritty-colorscheme.git
-# git clone https://github.com/eendroroy/alacritty-theme.git ~/.eendroroy-alacritty-theme
 
 # Generate tags for bundled gems. The grep ignores lines started with "The", which includes certain
 # tzinfo warnings that's common
@@ -172,6 +192,6 @@ cargo install cw
 #
 # Ctags debugging
 # ctags --verbose 2> out.txt
-
+#
 # Install the pg-extras plugin
 # heroku plugins:install git://github.com/heroku/heroku-pg-extras.git

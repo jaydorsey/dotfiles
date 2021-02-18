@@ -1,7 +1,7 @@
 # Uncomment this, and the last line in this file for profiling information
 # zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOMEBREW_PREFIX/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -11,6 +11,11 @@ export ZSH=$HOME/.oh-my-zsh
 # confirmations, etc.) must go above this block, everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# This appears to be set in at least the M1 version of brew
+if [[ -z "${HOMEBREW_PREFIX}" ]]; then
+  export HOMEBREW_PREFIX=$(brew --prefix)
 fi
 
 # This is the term setting I used before
@@ -93,9 +98,9 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # https://statico.github.io/vim3.html
-if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-  source /usr/local/opt/fzf/shell/completion.zsh
+if [ -e $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh ]; then
+  source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
+  source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
 fi
 
 # https://github.com/junegunn/fzf#settings
@@ -112,23 +117,17 @@ export AR_TRACE=false
 # Used with the devtrace gem provided by Scout
 export SCOUT_DEV_TRACE=false
 
-export ARCHFLAGS="-arch x86_64"
-# macOS Catalina fix: https://stackoverflow.com/a/58323411/2892779
-# export CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
-# oh Catalina, how do you disappoint me? let me count the ways
-# https://github.com/rbenv/ruby-build/issues/1361#issuecomment-543815155
+export ARCHFLAGS="-arch arm64"
 export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
-# export CFLAGS="-I/usr/local/opt/openssl/include -O2 -g"
-# export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/readline/lib"
-# export CPPFLAGS="-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/ -I/usr/local/opt/readline/include"
-# export CPPFLAGS="-I/usr/local/opt/readline/include"
-export CFLAGS="-I/usr/local/opt/openssl@1.1/include -O2 -g -fno-stack-check"
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
-export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+# export CFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -O2 -g -fno-stack-check"
+export CFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include"
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig"
 
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Also defines the default command run when :Files is called in vim
 export FZF_DEFAULT_COMMAND="rg --files --hidden \
   -g \"!{.git,frontend,frontend/node_modules,node_modules,Library,.gnupg,swagger,storage,.config/yarn,tmp,.yardopts,doc}/*\" \
@@ -170,7 +169,7 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --enable-kernel-poll \
   --enable-wx \
   --enable-darwin-64bit \
-  --with-ssl=/usr/local/opt/openssl \
+  --with-ssl=$HOMEBREW_PREFIX/opt/openssl \
   --with-dynamic-trace=dtrace"
 
 # https://github.com/denisidoro/navi#using-oh-my-zsh
@@ -178,23 +177,15 @@ export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 export NAVI_PATH="$HOME/.navi:$HOME/.navi_cheatsheets:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
 export PAGER="less"
 
-export PATH=$PATH:$HOME/.asdf/installs/nodejs/8.12.0/.npm/bin # Run `yarn global bin` to find this path
-export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
-export PATH=$PATH:/usr/local/opt/postgresql/bin
+export PATH=$PATH:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
+export PATH=$PATH:$HOMEBREW_PREFIX/opt/postgresql/bin
 # This is necessary for, at least, crystal
 # https://github.com/brianmario/mysql2/issues/795#issuecomment-337006164
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-# capybara-webkit, temporary
-export PATH=$PATH:$HOME/Qt5.5.0/5.5/clang_64/bin/
-# For Yarn
-export PATH=$PATH:$HOME/.asdf/installs/nodejs/10.16.0/.npm/bin
+export LIBRARY_PATH=$LIBRARY_PATH:$HOMEBREW_PREFIX/opt/openssl/lib/
 
 # For Rust
 export CARGO_HOME="$HOME/.cargo"
 export PATH="$PATH:$CARGO_HOME/bin"
-
-# https://luckyframework.org/guides/getting-started/installing
-export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig:/usr/local/opt/readline/lib/pkgconfig"
 
 # Always show full history
 export PROMPT_COMMAND='history -a'
@@ -259,7 +250,7 @@ export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings
 export RUBYOPT="-W0"
 # Run `brew --prefix readline` to find this path
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl --with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl --with-readline-dir=$HOMEBREW_PREFIX/opt/readline --with-jemalloc=$HOMEBREW_PREFIX/opt/jemalloc"
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
@@ -282,14 +273,9 @@ alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
 alias ls='lsd'
 alias ping='prettyping --nolegend'
 alias top='sudo htop'
-alias untracked='git ls-files -o --exclude-standard'
 alias vi='nvim'
 alias vim='nvim'
 alias wc='cw'
-
-if [ -f ~/.personalrc ]; then
-  source ~/.personalrc
-fi
 
 if [ -f ~/.localrc ]; then
   source ~/.localrc
@@ -351,8 +337,6 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # zprof
 
-source $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -365,29 +349,52 @@ export PATH=~/bin:$PATH
 export PATH=~/localbin:$PATH
 
 # Most of the homebrew executables end up here
-export PATH=/usr/local/bin:$PATH
+export PATH=$HOMEBREW_PREFIX/bin:$PATH
 
 # Use newer brew tools (curl, grep)
-export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 
 # For crystal
 # https://embeddedartistry.com/blog/2017/02/24/installing-llvm-clang-on-osx/
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
 
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# For vim nightly
-export PATH=~/localbin/nvim-osx64/bin:$PATH
-# export PATH="/Users/jay/localbin/nvim-osx64/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$PATH"
 
 # Python executable support for asdf
 export PATH="$PATH:$HOME/.local/bin"
-
-export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # asdf puts python scripts here
 export PATH="$HOME/.local/bin:$PATH"
 
 source $HOME/.asdf/asdf.sh
 # source $HOME/.asdf/completions/asdf.bash
+#
+
+# broot --print-shell-function zsh
+
+# This script was automatically generated by the broot program
+# More information can be found in https://github.com/Canop/broot
+# This function starts broot and executes the command
+# it produces, if any.
+# It's needed because some shell commands, like `cd`,
+# have no useful effect if executed in a subshell.
+function br {
+    f=$(mktemp)
+    (
+	set +e
+	broot --outcmd "$f" "$@"
+	code=$?
+	if [ "$code" != 0 ]; then
+	    rm -f "$f"
+	    exit "$code"
+	fi
+    )
+    code=$?
+    if [ "$code" != 0 ]; then
+	return "$code"
+    fi
+    d=$(<"$f")
+    rm -f "$f"
+    eval "$d"
+}

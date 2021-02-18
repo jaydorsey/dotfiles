@@ -182,3 +182,11 @@ curl -H "Content-type: application/json" -H "Accept: application/json" <url>
 ffmpeg -i <file> -c copy -vcodec copy -acodec copy -reset_timestamps 1 -segment_time 00:10:00 -f segment <file_base>-%03d.<file_extension>
 
 $ file: ls
+
+
+% shell
+
+# https://stackoverflow.com/a/2556282/2892779
+# Generate a random number in a range
+
+shuf -i <start_range>-<end_range> -n 1
