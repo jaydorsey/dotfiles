@@ -1,103 +1,104 @@
+# vim: textwidth=0:filetype=sh:autoindent:noexpandtab:tabstop=4:shiftwidth=4
 [user]
-  name = Jay Dorsey
-  email = jaydorsey@fastmail.com
+	name = Jay Dorsey
+	email = 191564+jaydorsey@users.noreply.github.com
 [core]
-  editor = nvim
-  excludesfile = ~/.gitignore_global
-  ignorecase = false
-  pager = delta
-  commitGraph = true
+	editor = nvim
+	excludesfile = ~/.gitignore_global
+	ignorecase = false
+	pager = delta
+	commitGraph = true
 	attributesfile = /Users/jay/.gitattributes
 [alias]
-  a = add -A
-  b = branch
-  cane = commit --amend --no-edit
-  co = checkout
-  d = diff -w --word-diff
-  fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && git rebase -i --autosquash $REV^' -
-  git = !exec git
-  graph = log --graph --all --decorate --stat --date=iso
-  last = log -1 HEAD
-  # http://ses4j.github.io/2020/04/01/git-alias-recent-branches/
-  lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
-  lg = log --oneline --graph
-  lgg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\n--abbrev-commit --date=relative
-  ls = ls-files
-  s = status
-  standup = log --since yesterday --oneline --no-merges --author jaydorsey
-  state = !git fetch origin && git remote show origin && :
-  stats = shortlog -sn --since='30 days'
-  sync = !git fetch origin && git remote prune origin && :
-  sw = switch
-  visual = !gitk
-  ctags = !.git/hooks/ctags
-  bclean = !sh -c 'git branch --merged ${1-master} | grep -v "main" | grep -v "master" | grep -v "production" | xargs git b -D' -
-  bcleantest = !sh -c 'git branch --merged ${1-master} | grep -v "main" | grep -v "master" | grep -v "production"' -
-  untracked = ls-files --others --exclude-standard
+	a = add -A
+	b = branch
+	cane = commit --amend --no-edit
+	co = checkout
+	d = diff -w --word-diff
+	fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && git rebase -i --autosquash $REV^' -
+	git = !exec git
+	graph = log --graph --all --decorate --stat --date=iso
+	last = log -1 HEAD
+	# http://ses4j.github.io/2020/04/01/git-alias-recent-branches/
+	lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+	lg = log --oneline --graph
+	lgg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\n--abbrev-commit --date=relative
+	ls = ls-files
+	s = status
+	standup = log --since yesterday --oneline --no-merges --author jaydorsey
+	state = !git fetch origin && git remote show origin && :
+	stats = shortlog -sn --since='30 days'
+	sync = !git fetch origin && git remote prune origin && :
+	sw = switch
+	visual = !gitk
+	ctags = !.git/hooks/ctags
+	bclean = !sh -c 'git branch --merged ${1-master} | grep -v "main" | grep -v "master" | grep -v "production" | xargs git b -D' -
+	bcleantest = !sh -c 'git branch --merged ${1-master} | grep -v "main" | grep -v "master" | grep -v "production"' -
+	untracked = ls-files --others --exclude-standard
 [delta]
-  plus-color = "#012800"
-  minus-color = "#340001"
-  syntax-theme = Monokai Extended
-  side-by-side = true
+	plus-color = "#012800"
+	minus-color = "#340001"
+	syntax-theme = Monokai Extended
+	side-by-side = true
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [branch]
-  autosetuprebase = always
-  autosetupmerge = always
+	autosetuprebase = always
+	autosetupmerge = always
 [color]
-  branch = auto
-  diff = true
-  interactive = true
-  status = auto
-  ui = true
-  pager = true
+	branch = auto
+	diff = true
+	interactive = true
+	status = auto
+	ui = true
+	pager = true
 [commit]
-  verbose = false
+	verbose = false
 [filter "lfs"]
-  required = true
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [push]
-  default = simple
+	default = simple
 [rebase]
-  autosquash = true
+	autosquash = true
 [remote "origin"]
-  fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [color "diff"]
-  meta = yellow
-  frag = magenta bold
-  commit = yellow bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [diff]
-  compactionHeuristic = true
-  tool = github
+	compactionHeuristic = true
+	tool = github
 [diff "rspec"]
-  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+	xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 [difftool]
-  prompt = false
+	prompt = false
 [difftool "github"]
-  cmd = github
+	cmd = github
 [diff "spaceman-diff"]
-  command = /usr/local/bin/spaceman-diff
+	command = /usr/local/bin/spaceman-diff
 [diff-so-fancy]
-  changeHunkIndicators = false
+	changeHunkIndicators = false
 [diff "hex"]
-  textconv = hexdump -v -C
-  binary = true
+	textconv = hexdump -v -C
+	binary = true
 [rerere]
-  enabled = true
+	enabled = true
 [gc]
-  writeCommitGraph = true
+	writeCommitGraph = true
 [fetch]
-  writeCommitGraph = true
+	writeCommitGraph = true
 [init]
 	templatedir = ~/.git_template
 [pull]
