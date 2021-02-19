@@ -1,18 +1,12 @@
-.DS_Store*
-.ehthumbs.db
-Icon
-Thumbs.db
-*.log
-*.sqlite
-*.sqldump
-*.dev
+# Dotenv
 .env
-.env.local
-.haml-lint.yml
-.idea
-.ignore
-.overcommit.yml
-lefthook.yml
+.env.development.local
+.env.test.local
+# These two are most commonly/suggested commited to the repo and would only
+# include non-secrets
+!.env.test
+!.env.development
+
 # Ruby
 .rspec_parallel
 vendor/**/*
@@ -21,29 +15,51 @@ db/data/**/*
 .ruby-version
 .tool-versions
 !db/structure.sql
+
 # Sonarcloud
 .scannerwork
 .sonar
 sonar-project.properties
 coverage
-# gutentag
+
+# ctags/gutentag
 **/tags
 **/tags.lock
 **/tags.temp
 **/*.tags.tmp
 **/*.tags
 **/*.jay
-# Temporary
-.reek.yml
-config/rails_best_practices.yml
-**/storage/**/*
+
 # JavaScript
 **/dist/**/*
 **/node_modules/**/*
 **/bower_components/**/*
 yarn.lock
 package-lock.json
-# Config/settings
+
+# Elixir
+.elixir_ls
+_build/*
+deps/*
+
+# Yard
+.yardopts
+.yardoc/*
+
+# Rubymine files
+.generators
+out.txt
+
+# Miscellaneous/General
+.reek.yml
+config/rails_best_practices.yml
+**/storage/**/*
+*.map
+tmux*
+**/.pry_history
+**/.irb-history
+.irb_history
+.scratchpads
 default-env-vars.yml
 .solargraph.yml
 deoplete.log
@@ -54,20 +70,16 @@ deoplete.log
 tmp/*
 .metadata_never_index
 *.code-workspace
-# Elixir
-.elixir_ls
-_build/*
-deps/*
-# Yard
-.yardopts
-.yardoc/*
-# Miscellaneous
-*.map
-tmux*
-**/.pry_history
-**/.irb-history
-.irb_history
-.scratchpads
-# Rubymine files
-.generators
-out.txt
+.haml-lint.yml
+.idea
+.ignore
+.overcommit.yml
+lefthook.yml
+.DS_Store*
+.ehthumbs.db
+Icon
+Thumbs.db
+*.log
+*.sqlite
+*.sqldump
+*.dev
