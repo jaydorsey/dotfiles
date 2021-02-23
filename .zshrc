@@ -398,3 +398,5 @@ function br {
     rm -f "$f"
     eval "$d"
 }
+
+bindkey '^q' push-line
