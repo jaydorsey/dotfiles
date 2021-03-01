@@ -118,12 +118,12 @@ export AR_TRACE=false
 export SCOUT_DEV_TRACE=false
 
 export ARCHFLAGS="-arch arm64"
-export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+# export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
 # export CFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -O2 -g -fno-stack-check"
-export CFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include"
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include"
-export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig"
+export CFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include"
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig"
 
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -169,7 +169,7 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --enable-kernel-poll \
   --enable-wx \
   --enable-darwin-64bit \
-  --with-ssl=$HOMEBREW_PREFIX/opt/openssl \
+  --with-ssl=$HOMEBREW_PREFIX/opt/openssl@1.1 \
   --with-dynamic-trace=dtrace"
 
 # https://github.com/denisidoro/navi#using-oh-my-zsh
@@ -177,11 +177,10 @@ export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 export NAVI_PATH="$HOME/.navi:$HOME/.navi_cheatsheets:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
 export PAGER="less"
 
-export PATH=$PATH:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
 export PATH=$PATH:$HOMEBREW_PREFIX/opt/postgresql/bin
 # This is necessary for, at least, crystal
 # https://github.com/brianmario/mysql2/issues/795#issuecomment-337006164
-export LIBRARY_PATH=$LIBRARY_PATH:$HOMEBREW_PREFIX/opt/openssl/lib/
+export LIBRARY_PATH=$LIBRARY_PATH:$HOMEBREW_PREFIX/opt/openssl@1.1/lib/
 
 # For Rust
 export CARGO_HOME="$HOME/.cargo"
@@ -250,7 +249,8 @@ export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings
 export RUBYOPT="-W0"
 # Run `brew --prefix readline` to find this path
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl --with-readline-dir=$HOMEBREW_PREFIX/opt/readline --with-jemalloc=$HOMEBREW_PREFIX/opt/jemalloc"
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl@1.1 --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
+export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
@@ -360,9 +360,11 @@ export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
 
 export PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/readline/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/jemalloc/bin:$PATH"
 
 # Python executable support for asdf
-export PATH="$PATH:$HOME/.local/bin"
+# export PATH="$PATH:$HOME/.local/bin"
 
 # asdf puts python scripts here
 export PATH="$HOME/.local/bin:$PATH"
