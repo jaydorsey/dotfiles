@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Uncomment this, and the last line in this file for profiling information
 # zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
@@ -5,13 +12,6 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 # This appears to be set in at least the M1 version of brew
 if [[ -z "${HOMEBREW_PREFIX}" ]]; then
@@ -22,12 +22,10 @@ fi
 # export TERM="screen-256color"
 # This term setting is used to get italics working, along with this gist: https://gist.github.com/sos4nt/3187620
 export TERM="xterm-256color-italic"
-export POWERLEVEL9K_MODE='awesome-fontconfig'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# export ZSH_THEME="powerlevel9k/powerlevel9k"
 export ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # https://github.com/ansible/ansible/issues/32499#issuecomment-341578864
@@ -212,34 +210,6 @@ bindkey "^T" fzf-file-widget
 bindkey "^[c" fzf-cd-widget
 
 export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-
-export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status root_indicator time)
-
-# export POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-stash git-remotebranch git-tagname)
-# export POWERLEVEL9K_VCS_GIT_HOOKS=(git-untracked)
-export POWERLEVEL9K_VCS_HIDE_TAGS=true
-
-# vcs-detect-changes)
-#git-untracked)
-# git-aheadbehind git-stash)
-# export POWERLEVEL9K_VCS_SHORTEN_LENGTH=6
-# export POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=10
-# export POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
-# export POWERLEVEL9K_VCS_SHORTEN_DELIMITER=".."
-
-# Colorscheme
-# https://user-images.githubusercontent.com/704406/43988708-64c0fa52-9d4c-11e8-8cf9-c4d4b97a5200.png
-# https://github.com/Powerlevel9k/powerlevel9k/blob/master/README.md#available-prompt-segments
-export POWERLEVEL9K_DIR_BACKGROUND=081
-export POWERLEVEL9K_DIR_PATH_HIGHLIGHT_FOREGROUND=237
-export POWERLEVEL9K_DIR_FOREGROUND=237
-export POWERLEVEL9K_VCS_BACKGROUND=120
-export POWERLEVEL9K_VCS_FOREGROUND=232
-export POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=227
-export POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=232
-export POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=211
-export POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=232
 
 # https://github.com/sharpstone/rack-timeout/blob/master/doc/settings.md#term-on-timeout
 export RACK_TIMEOUT_TERM_ON_TIMEOUT=1
