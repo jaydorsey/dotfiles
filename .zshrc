@@ -218,8 +218,6 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings
 export RUBYOPT="-W0"
-# Run `brew --prefix readline` to find this path
-# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl@1.1 --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
 export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
