@@ -310,9 +310,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Shared personal scripts; these are typically commited tot he repo
-export PATH=~/bin:$PATH
-
 # Computer specific scripts; unique to each computer I use
 export PATH=~/localbin:$PATH
 
@@ -339,7 +336,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 source $HOME/.asdf/asdf.sh
 # source $HOME/.asdf/completions/asdf.bash
-#
+
+# Shared personal scripts; these are typically commited tot he repo
+export PATH=~/bin:$PATH
+
 
 # broot --print-shell-function zsh
 
