@@ -200,3 +200,9 @@ shuf -i <start_range>-<end_range> -n 1
 aws ssm put-parameter --name '<parameter-name>' --region '<aws_region>' --type 'String' --value '<value>'
 
 $ aws_region: echo us-west-2; echo us-west-1; echo us-east-2; echo us-east-1
+
+
+% docker
+
+# Remove all my locally build images
+docker images -q | xargs docker rmi -f
