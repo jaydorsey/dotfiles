@@ -244,6 +244,7 @@ alias top='sudo htop'
 alias vi='nvim'
 alias vim='nvim'
 alias wc='cw'
+alias zf='z -I'
 
 if [ -f ~/.localrc ]; then
   source ~/.localrc
