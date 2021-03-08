@@ -78,7 +78,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua fzf tmux)
+plugins=(git asdf gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua fzf tmux zsh-interactive-cd)
 
 # Automatically load additional completion scripts. This is really slow so I've disabled for now
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
