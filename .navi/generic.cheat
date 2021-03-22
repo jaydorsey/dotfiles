@@ -206,3 +206,9 @@ $ aws_region: echo us-west-2; echo us-west-1; echo us-east-2; echo us-east-1
 
 # Remove all my locally build images
 docker images -q | xargs docker rmi -f
+
+
+% sed
+
+# Replace text in a file with sed
+sed -i .bak 's/<string_to_replace>/<new_string>/' <file_name>
