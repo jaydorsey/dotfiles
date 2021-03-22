@@ -152,8 +152,9 @@ export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --colo
 
 # Ignore certain commands from zsh history via regex
 export HISTORY_IGNORE="cd|ls|clear|tmux|ttmux|vi|exit|z *"
-export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co master|git pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd"
+export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co *|git pull|g pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd"
 export HISTORY_IGNORE="$HISTORY_IGNORE|code|gcm|g a|g s|g commit|g diff|be rails s|be rails c|irb|pry|g a|g s"
+export HISTORY_IGNORE="$HISTORY_IGNORE|which *"
 
 export KERL_BUILD_DOCS=yes
 export KERL_CONFIGURE_OPTIONS="--disable-debug \
