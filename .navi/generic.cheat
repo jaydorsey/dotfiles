@@ -1,6 +1,6 @@
 # vim: textwidth=0:filetype=sh
 
-% git, code
+% git
 
 # Change branch
 git checkout <branch>
