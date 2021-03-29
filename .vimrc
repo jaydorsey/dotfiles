@@ -240,7 +240,7 @@ let g:crystal_define_mappings = 0
 Plug 'rizzatti/dash.vim'
 nnoremap <leader>d :Dash<cr>
 
-let g:polyglot_disabled = ['yard', 'typescript', 'jsx']
+let g:polyglot_disabled = ['yard', 'typescript', 'jsx', 'tsx']
 Plug 'sheerun/vim-polyglot'
 " sheerun/vim-yardoc
 let g:vim_markdown_conceal = 0
@@ -525,7 +525,7 @@ set nowrap                                         " Don't wrap lines. Call `:se
 set number                                         " Line numbers on
 set numberwidth=5                                  " Use 5 characters for number well
 set pumheight=10                                   " Limit height of completion popup
-set regexpengine=1                                 " Use old regular expression engine because it's faster
+" set regexpengine=1                                 " Use old regular expression engine because it's faster
 set scrolloff=10                                   " Prevent scrolling past bottom line
 set sessionoptions-=options                        " Disable options because sessions capture runtime path
 set sessionoptions-=folds                          " FastFold recommended setting to make sure buffer not overwritten in manual
@@ -848,6 +848,8 @@ hi incSearch cterm=bold ctermfg=22 ctermbg=148 gui=bold guifg=#005f00 guibg=#afd
 hi rubyConstant ctermfg=33 guifg=#0087ff
 hi rubyClassName ctermfg=148 guifg=#A4E400
 hi rubyKeywordAsMethod ctermfg=164 guifg=#df00df
+
+hi Normal guibg=black guifg=white
 
 nmap ,cs :let @*=expand("%")<CR>
 nmap ,cl :let @*=expand("%:p")<CR>
