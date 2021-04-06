@@ -7,6 +7,9 @@ git checkout <branch>
 
 $ branch: git branch | awk '{print $NF}'
 
+# Use main as your main branch
+git branch -M main
+
 # Find file with unknown path
 git log --all --full-history -- "**/<file_name>.*"
 
