@@ -1,4 +1,4 @@
-ruby 3.0.0
+ruby 3.0.1
 elixir 1.10.4-otp-22
 nodejs ref:v15.8.0
 crystal 0.35.1
