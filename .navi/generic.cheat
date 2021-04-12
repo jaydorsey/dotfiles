@@ -174,6 +174,9 @@ $ which_ruby: which ruby
 # List files with lines greater than X characters
 rg '.{<character_count>,}' <folder> -g '<file_glob>'
 
+# Print line count of files in folder
+rg -g '<file_glob>' --files . | xargs wc -l | sort
+
 
 % curl
 
