@@ -184,7 +184,7 @@ rg -g '<file_glob>' --files . | xargs wc -l | sort
 % curl
 
 # curl GET URL as JSON
-curl -H "Content-type: application/json" -H "Accept: application/json" <url>
+curl -H "Content-type: application/json" -H "Accept: application/json" "<url>"
 
 
 % ffmpeg
