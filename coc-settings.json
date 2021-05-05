@@ -1,11 +1,10 @@
 {
   "coc.preferences.extensionUpdateCheck": "daily",
-  "coc.preferences.hoverTarget": "float",
   "codeLens.enable": true,
-   "diagnostic.displayByAle": true,
+  "diagnostic.displayByAle": true,
   "diagnostic.messageTarget": "float",
+  "solargraph.commandPath": "~/.asdf/shims/solargraph",
   "solargraph.completion": true,
-  "solargraph.useBundler": true,
   "solargraph.definitions": true,
   "solargraph.folding": true,
   "solargraph.hover": true,

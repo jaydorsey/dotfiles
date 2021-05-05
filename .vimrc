@@ -304,7 +304,8 @@ nmap <leader>l <Plug>(Limelight)
 xmap <leader>l <Plug>(Limelight)
 
 " Completion support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() } }
+
 let g:coC_global_extensions = [
       \ 'coc-actions',
       \ 'coc-bookmark',
