@@ -91,16 +91,19 @@ sudo rm -rf /Library/Developer/CommandLineTools && sudo xcode-select --install
 # List installed fonts
 fc-list
 
-% macos, security
+
+% macos
 
 # Remove the developer cannot be verified message
 
 xattr -d com.apple.quarantine <full_path_to_file>
 
-% macos, app, spotlight
-
 # Disable Spotlight in a folder
 touch .metadata_never_index
+
+# Enable rosetta on m1
+/usr/sbin/softwareupdate --install-rosetta
+
 
 % rails
 
