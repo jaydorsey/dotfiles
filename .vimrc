@@ -789,7 +789,7 @@ vnoremap > >gv
 " https://stackoverflow.com/a/4313335/2892779
 nnoremap <c-p> p`[v`]
 
-let &colorcolumn="130"
+let &colorcolumn="120"
 
 " To save a macro and define it here, record the macro as normal, then
 " paste it in normal mode using "qp (assuming you used the q register)
