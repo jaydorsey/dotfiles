@@ -5,6 +5,7 @@
    "diagnostic.displayByAle": true,
   "diagnostic.messageTarget": "float",
   "solargraph.completion": true,
+  "solargraph.useBundler": true,
   "solargraph.definitions": true,
   "solargraph.folding": true,
   "solargraph.hover": true,
