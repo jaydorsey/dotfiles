@@ -282,6 +282,9 @@ setopt INC_APPEND_HISTORY
 # Don't find duplicates in history
 setopt HIST_FIND_NO_DUPS
 
+# Run commands with unexpanded globs
+unsetopt nomatch
+
 # pip3 install --upgrade --user pip setuptools neovim wheel neovim yamllint pynvim
 # pip install --upgrade --user pip setuptools neovim wheel neovim yamllint pynvim
 
