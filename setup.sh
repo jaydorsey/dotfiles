@@ -173,7 +173,14 @@ mkdir -p ~/localbin
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+# Turn on full keyboard access (tab thru system menu items)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
 cargo install cw
+
+# Run this once
+# https://build.betterup.com/one-weird-trick-that-will-speed-up-your-bundle-install/
+echo 'export MAKE="make -j$(nproc)"' >> $home/.localrc
 
 # Generate tags for bundled gems. The grep ignores lines started with "The", which includes certain
 # tzinfo warnings that's common
