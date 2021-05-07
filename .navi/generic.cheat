@@ -136,7 +136,7 @@ du -hs * | sort -hr
 find . -type f | cut -d"/" -f2 | uniq -c
 
 # Remove duplicates in zsh_history
-cat -n .zsh_history | sort -t ';' -uk2 | sort -nk1 | cut -f2- > .zsh_short_history && mv ~/.zsh_short_history ~/.zsh_history
+cat -n .zsh_history | sort -t ';' -uk2 | sort -nk1 | cut -f2- > ~/.zsh_short_history && mv ~/.zsh_short_history ~/.zsh_history
 
 # Sort files by number of lines
 find <folder> -type f -exec wc -l {} + | sort -rn
@@ -221,3 +221,9 @@ docker images -q | xargs docker rmi -f
 
 # Replace text in a file with sed
 sed -i .bak 's/<string_to_replace>/<new_string>/' <file_name>
+
+
+% ruby bundler
+
+# Bundle audit and run updates
+bundle audit check --update
