@@ -1,1 +1,3 @@
+# This symlinks my shared solargraph config
+[ -z "$DOTFILES_PATH" ] && { echo "Need to set DOTFILES_PATH"; exit 1; }
 ln -sf "$DOTFILES_PATH/.solargraph.yml" .solargraph.yml
