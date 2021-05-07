@@ -15,6 +15,15 @@ exclude:
 - vendor/**/*
 require:
 - rails
+- actioncable
+- actionmailer
+- actionpack
+- actionview
+- activejob
+- activemodel
+- activerecord
+- activestorage
+- activesupport
 domains: []
 diagnostics: true
 reporters:
