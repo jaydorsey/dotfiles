@@ -312,7 +312,6 @@ let g:coC_global_extensions = [
       \ 'coc-css',
       \ 'coc-explorer',
       \ 'coc-floaterm',
-      \ 'coc-format-json',
       \ 'coc-git',
       \ 'coc-git-p',
       \ 'coc-github',
