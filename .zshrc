@@ -151,10 +151,21 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
 
 # Ignore certain commands from zsh history via regex
-export HISTORY_IGNORE="cd|ls|clear|tmux|ttmux|vi|exit|z *"
+export HISTORY_IGNORE="(cd|ls|clear|tmux|ttmux|vi|exit|z *"
 export HISTORY_IGNORE="$HISTORY_IGNORE|git a|git s|cd ..|git co *|git pull|g pull|brew update|brew upgrade|vi|vim|nvim|OA|pwd"
-export HISTORY_IGNORE="$HISTORY_IGNORE|code|gcm|g a|g s|g commit|g diff|be rails s|be rails c|irb|pry|g a|g s"
-export HISTORY_IGNORE="$HISTORY_IGNORE|which *"
+export HISTORY_IGNORE="$HISTORY_IGNORE|code|gcm|g a|g s|g commit|g diff|be rails s|be rails c|irb|pry|g a|g b|g pull|gpsup"
+export HISTORY_IGNORE="$HISTORY_IGNORE|which *)"
+
+# Custom history check to see if I have my history ignore configured correctly
+function hc() {
+  local cmd="$@";
+
+  if [[ "$cmd" == ${~HISTORY_IGNORE} ]];then                                                                                                                                                                  ✔  11:00:11 
+    echo "ignored $cmd";
+  else;
+    echo "not ignored $cmd";
+  fi;
+}
 
 export KERL_BUILD_DOCS=yes
 export KERL_CONFIGURE_OPTIONS="--disable-debug \
@@ -344,7 +355,6 @@ source $HOME/.asdf/asdf.sh
 
 # Shared personal scripts; these are typically commited tot he repo
 export PATH=~/bin:$PATH
-
 
 # broot --print-shell-function zsh
 
