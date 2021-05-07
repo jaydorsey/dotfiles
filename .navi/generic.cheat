@@ -217,10 +217,13 @@ $ aws_region: echo us-west-2; echo us-west-1; echo us-east-2; echo us-east-1
 docker images -q | xargs docker rmi -f
 
 
-% sed
+% general, system
 
 # Replace text in a file with sed
 sed -i .bak 's/<string_to_replace>/<new_string>/' <file_name>
+
+# List all files, but with some folders excluded
+tree -a -I '.git|node_modules'
 
 
 % ruby bundler
