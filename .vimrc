@@ -165,7 +165,8 @@ Plug 'gioele/vim-autoswap'
 
 " Nicer scrolling with CTRL-d/u
 " Plug 'yuttie/comfortable-motion.vim'
-Plug 'psliwka/vim-smoothie'
+" Plug 'psliwka/vim-smoothie'
+Plug 'karb94/neoscroll.nvim'
 
 Plug 'itchyny/lightline.vim'
 " Buffer tabs
@@ -464,6 +465,8 @@ let g:Hexokinase_highlighters = [ 'sign_column' ]
 " Part of norcalli/nvim-colorizer.lua. Use the command
 " :ColorizerAttachToBuffer if the file has no filetype
 " lua require'colorizer'.setup()
+
+lua require('neoscroll').setup()
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
