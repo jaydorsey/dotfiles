@@ -27,6 +27,10 @@ let g:ale_disable_lsp = 1
 
 call plug#begin('~/.vim/plugged')
 
+"" Dark color scheme plugin manager
+Plug 'tjdevries/colorbuddy.vim'
+Plug 'DilanGMB/nightbuddy'
+
 Plug 'tarekbecker/vim-yaml-formatter', { 'for': 'yaml' }
 let g:yaml_formatter_indent_collection=1
 
@@ -460,6 +464,9 @@ nnoremap <silent> <space>k  :<C-u>CocFzfPrev<CR>
 
 call plug#end()
 
+let g:nb_style = "STYLE"
+lua require('colorbuddy').colorscheme('nightbuddy')
+
 let g:Hexokinase_highlighters = [ 'sign_column' ]
 
 " Part of norcalli/nvim-colorizer.lua. Use the command
@@ -562,7 +569,7 @@ set visualbell                                     " No visual feedback
 set writebackup                                    " write backup file before overwriting
 
 " colorscheme dracula
-colorscheme vim-monokai-tasty
+" colorscheme vim-monokai-tasty
 
 filetype plugin on
 filetype indent on
