@@ -5,6 +5,25 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source $HOME/.antigen/antigen.zsh
+
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle heroku
+antigen bundle command-not-found
+
+antigen bundle denisidoro/navi
+antigen bundle skywind3000/z.lua
+
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+
+# antigen bundle leophys/zsh-plugin-fzf-finder
+
+antigen apply
+
 # Uncomment this, and the last line in this file for profiling information
 # zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
@@ -78,7 +97,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf gem zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages z.lua fzf tmux zsh-interactive-cd)
+plugins=(git asdf gem colored-man-pages tmux zsh-syntax-highlighting)
 
 # Automatically load additional completion scripts. This is really slow so I've disabled for now
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
@@ -367,21 +386,76 @@ export PATH=~/bin:$PATH
 function br {
     f=$(mktemp)
     (
-	set +e
-	broot --outcmd "$f" "$@"
-	code=$?
-	if [ "$code" != 0 ]; then
-	    rm -f "$f"
-	    exit "$code"
-	fi
+  set +e
+  broot --outcmd "$f" "$@"
+  code=$?
+  if [ "$code" != 0 ]; then
+      rm -f "$f"
+      exit "$code"
+  fi
     )
     code=$?
     if [ "$code" != 0 ]; then
-	return "$code"
+    return "$code"
     fi
     d=$(<"$f")
     rm -f "$f"
     eval "$d"
+}
+
+#
+#
+# Remove old remote & pruned local branches from the repo
+#
+#
+
+#https://blog.takanabe.tokyo/en/2020/04/remove-squash-merged-local-git-branches/
+
+# gcl: git-cleanup-remote-and-local-branches
+#
+# Cleaning up remote and local branch is delivered as follows:
+# 1. Prune remote branches when they are deleted or merged
+# 2. Remove local branches when their remote branches are removed
+# 3. Remove local branches when a main included squash and merge commits
+
+function git_prune_remote() {
+  echo "Start removing out-dated remote merged branches"
+  git fetch --prune
+  echo "Finish removing out-dated remote merged branches"
+}
+
+function git_remove_merged_local_branch() {
+  echo "Start removing out-dated local merged branches"
+  git branch --merged | egrep -v "(^\*|main|ANY_BRANCH_YOU_WANT_TO_EXCLUDE)" | xargs -I % git branch -d %
+  echo "Finish removing out-dated local merged branches"
+}
+
+# When we use `Squash and merge` on GitHub,
+# `git branch --merged` cannot detect the squash-merged branches.
+# As a result, git_remove_merged_local_branch() cannot clean up
+# unused local branches. This function detects and removes local branches
+# when remote branches are squash-merged.
+#
+# There is an edge case. If you add suggested commits on GitHub,
+# the contents in local and remote are different. As a result,
+# This clean up function cannot remove local squash-merged branch.
+function git_remove_squash_merged_local_branch() {
+  echo "Start removing out-dated local squash-merged branches"
+  git checkout -q main &&
+    git for-each-ref refs/heads/ "--format=%(refname:short)" |
+    while read branch; do
+      ancestor=$(git merge-base main $branch) &&
+        [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $ancestor -m _)) == "-"* ]] &&
+        git branch -D $branch
+    done
+  echo "Finish removing out-dated local squash-merged branches"
+}
+
+# Clean up remote and local branches
+function gitclean() {
+  git_prune_remote
+  git_remove_merged_local_branch
+  git_remove_squash_merged_local_branch
 }
 
 bindkey '^q' push-line

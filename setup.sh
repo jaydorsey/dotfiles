@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
+#
+# vim: textwidth=0:filetype=sh
+#
+
 # This is a rough outline of the steps that are necessary to setup a new system
 # with all my tools/settings on macos
 
@@ -33,8 +37,10 @@ touch ~/.hushlogin
 brew tap homebrew/cask
 brew bundle --verbose
 brew link --force readline
-$HOMEBREW_PREFIX/opt/fzf/install --all
 
+git clone https://github.com/zsh-users/antigen.git ~/.antigen
+
+git clone https://github.com/junegunn/fzf.git ~/.fzf ~/.fzf/install --all
 
 #######################################################
 #
@@ -104,10 +110,7 @@ git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
-git clone https://github.com/zsh-users/zsh-history-substring-search.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-git clone https://github.com/skywind3000/z.lua.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/z.lua
+
 
 curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > ~/.zsh/completion/_docker
 curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker_compose
