@@ -347,7 +347,7 @@ let g:coC_global_extensions = [
 " Because old versions of node
 let g:coc_disable_startup_warning = 1
 " Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
-Plug 'antoinemadec/coc-fzf'
+" Plug 'antoinemadec/coc-fzf'
 
 "
 " coc.vim sample config
@@ -451,9 +451,9 @@ nnoremap <silent> <space>o  :<C-u>CocFzfList outline<cr>
 " Search workspace symbols.
 " nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocFzfNext<CR>
+" nnoremap <silent> <space>j  :<C-u>CocFzfNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocFzfPrev<CR>
+" nnoremap <silent> <space>k  :<C-u>CocFzfPrev<CR>
 " Resume latest coc list.
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
