@@ -63,42 +63,23 @@ Plug 'dense-analysis/ale'
 let g:ale_sign_column_always = 1
 let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
-" let g:ale_ruby_rubocop_executable = escape(expand('$HOME'), '\') . '/.asdf/shims/rubocop'
 let g:ale_ruby_rubocop_executable = escape(expand('$HOME'), '\') . '/.asdf/shims/bundle'
 
-" mix deps.get && mix compile && mix elixir_ls.release -o release
-" Then edit the release/language_server.sh file to add the --erl flag
-" elixir --erl "+S 2:2" -e "ElixirLS.LanguageServer.CLI.main()")
-"
-" Also need to setup the scheduler similar to below to limit usage, locally
-" https://github.com/elixir-lsp/elixir-ls/issues/96#issue-549432535
-let g:ale_elixir_elixir_ls_release = '~/dev/elixir-ls/release'
-let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
-
 let g:ale_fix_on_save = 1
-let g:ale_elixir_mix_options = "~/.asdf/shims/mix"
 
-      " \ 'elixir': ['credo', 'dialyxir', 'dogma', 'elixir-ls', 'mix'],
 let g:ale_linters = {
-      \ 'elixir': ['elixir-ls', 'mix'],
       \ 'ruby': ['rubocop']
       \}
 
 let g:ale_fixers = {
-      \ 'elixir': [
-      \   'mix_format',
-      \   'remove_trailing_lines',
-      \   'trim_whitespace'
+      \ 'ruby': [
+      \   'standardrb'
       \ ],
       \ '*': [
       \   'remove_trailing_lines',
       \   'trim_whitespace'
       \ ]
       \}
-
-" let g:ale_echo_msg_error_str = 'E'
-" let g:ale_echo_msg_warning_str = 'W'
-" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
