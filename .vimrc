@@ -27,7 +27,7 @@ let g:ale_disable_lsp = 1
 
 call plug#begin('~/.vim/plugged')
 
-"" Dark color scheme plugin manager
+" Dark color scheme plugin manager
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'DilanGMB/nightbuddy'
 
