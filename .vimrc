@@ -464,7 +464,7 @@ nnoremap <silent> <space>o  :<C-u>CocFzfList outline<cr>
 
 call plug#end()
 
-let g:nb_style = "STYLE"
+let g:nb_style = "twilight"
 lua require('colorbuddy').colorscheme('nightbuddy')
 
 let g:Hexokinase_highlighters = [ 'sign_column' ]
