@@ -27,6 +27,12 @@ let g:ale_disable_lsp = 1
 
 call plug#begin('~/.vim/plugged')
 
+"Testing out telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
 " Dark color scheme plugin manager
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'DilanGMB/nightbuddy'
@@ -445,6 +451,25 @@ nnoremap <silent> <space>o  :<C-u>CocFzfList outline<cr>
 
 call plug#end()
 
+lua << EOF
+  local actions = require('telescope.actions')
+
+  require('telescope').setup {
+    defaults = {
+      file_sorter =  require'telescope.sorters'.get_fzy_sorter,
+      generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
+      mappings = {
+        i = {
+          ["<Esc>"] = actions.close,
+          ["<C-c>"] = function()
+            vim.cmd [[stopinsert]]
+          end,
+        },
+      },
+    },
+  }
+EOF
+
 let g:nb_style = "twilight"
 lua require('colorbuddy').colorscheme('nightbuddy')
 
@@ -662,7 +687,8 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
 
 nnoremap K :Find<cr>
-nnoremap <leader>p :Files<cr>
+" nnoremap <leader>p :Files<cr>
+nnoremap <leader>p :Telescope find_files<cr>
 nnoremap <leader>b :Buffers<cr>
 
 augroup vim_ruby_group
