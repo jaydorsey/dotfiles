@@ -456,6 +456,15 @@ lua << EOF
 
   require('telescope').setup {
     defaults = {
+      vimgrep_arguments = {
+        'rg',
+        '--color=never',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--smart-case'
+      },
       file_sorter =  require'telescope.sorters'.get_fzy_sorter,
       generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
       mappings = {
@@ -688,7 +697,8 @@ command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
 
 nnoremap K :Find<cr>
 " nnoremap <leader>p :Files<cr>
-nnoremap <leader>p :Telescope find_files<cr>
+" nnoremap <leader>p :Telescope find_files<cr>
+nnoremap <leader>p :lua require 'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>
 nnoremap <leader>b :Buffers<cr>
 
 augroup vim_ruby_group
