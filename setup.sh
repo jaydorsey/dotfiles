@@ -40,7 +40,7 @@ brew link --force readline
 
 git clone https://github.com/zsh-users/antigen.git ~/.antigen
 
-git clone https://github.com/junegunn/fzf.git ~/.fzf ~/.fzf/install --all
+git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all
 
 #######################################################
 #
