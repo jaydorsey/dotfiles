@@ -27,6 +27,8 @@ let g:ale_disable_lsp = 1
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
 "Testing out telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -479,7 +481,21 @@ lua << EOF
   }
 EOF
 
-let g:nb_style = "twilight"
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"ruby", "yaml", "json"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+  indent = {
+    enable = true
+  },
+}
+EOF
+
+let g:nb_style = "night"
 lua require('colorbuddy').colorscheme('nightbuddy')
 
 let g:Hexokinase_highlighters = [ 'sign_column' ]
@@ -519,6 +535,11 @@ set directory=~/.vim/tmp                           " List of directory names for
 set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
 set expandtab                                      " Expand tabs to spaces
+
+" These are for treesitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 set foldcolumn=2
 set foldlevel=2
 set foldlevelstart=99                              " Edit with all folds open when opening a file
@@ -618,8 +639,8 @@ augroup vimrc_autocmd
   autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 
   " https://vim.fandom.com/wiki/Folding#Indent_folding_with_manual_folds
-  au BufReadPre * setlocal foldmethod=indent
-  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+  " au BufReadPre * setlocal foldmethod=indent
+  " au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 augroup END
 
 set wildmode=list:longest
