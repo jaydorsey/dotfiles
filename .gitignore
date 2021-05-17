@@ -5,3 +5,5 @@ bin/colorls
 bin/ttmux
 bin/ngrok
 bin/nvim
+localbin/*
+!localbin/README.adoc

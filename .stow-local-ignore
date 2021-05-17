@@ -1,0 +1,10 @@
+.git
+.gitignore
+.pry_history
+Brewfile
+Brewfile.lock.json
+README.adoc
+TabNine.toml
+setup.sh
+tmux-256color.terminfo
+xterm-256color-italic.terminfo

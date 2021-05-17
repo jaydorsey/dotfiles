@@ -132,45 +132,14 @@ mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/views
 mkdir -p ~/.terminfo
-mkdir -p ~/.config/nvim
 mkdir -p ~/.config/yamllint
 tic -o ~/.terminfo xterm-256color.terminfo
 
 
-#######################################################
-#
-# Symlink all my files
-#
-#######################################################
-ln -sf "$(pwd)/.agignore" ~/.agignore
-ln -sf "$(pwd)/.default-gems" ~/.default-gems
-ln -sf "$(pwd)/.gemrc" ~/.gemrc
-ln -sf "$(pwd)/.gitconfig" ~/.gitconfig
-ln -sf "$(pwd)/.gitignore_global" ~/.gitignore_global
-ln -sf "$(pwd)/.pryrc" ~/.pryrc
-ln -sf "$(pwd)/.tool-versions" ~/.tool-versions
-ln -sf "$(pwd)/.vim/after/" ~/.vim/after
-ln -sf "$(pwd)/.vim/autoload/" ~/.vim/autoload
-ln -sf "$(pwd)/.vimrc" ~/.vimrc
-ln -sf "$(pwd)/.zshrc" ~/.zshrc
-ln -sf "$(pwd)/TabNine.toml" ~/Library/Preferences/TabNine/
-ln -sf "$(pwd)/bin/" ~/bin
-ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
-ln -sf "$(pwd)/.ctags.d" ~/.ctags.d
-ln -sf "$(pwd)/.solargraph.yml" ~/.solargraph.yml
-ln -sf "$(pwd)/.navi" ~/.navi_cheatsheets
-ln -sf "$(pwd)/.tmux.conf" ~/.tmux.conf
-ln -sf "$(pwd)/.yamllint" ~/.yamllint
-ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
-ln -sf "$(pwd)/.yamllint" ~/.config/yamllint/config
-# https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
-ln -sf "$(pwd)/.git_template" ~/.git_template
+echo "Use stow . to symlink all files/directories"
 
 # This is where I put local exports, settings, etc.
 echo "Symlink or create your ~/.localrc file"
-
-# This is where I put local binaries
-mkdir -p ~/localbin
 
 # https://github.com/VSCodeVim/Vim#mac
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
