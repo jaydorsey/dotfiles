@@ -51,8 +51,8 @@ export ZSH_THEME="powerlevel10k/powerlevel10k"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
 
 # Location of my dotfiles repo, for symlinking. Override this in .localrc if
-# needed
-export DOTFILES_PATH="$HOME/projects/jaydorsey/dotfiles"
+# needed. I might be able to remove this completely, now that I'm using stow
+export DOTFILES_PATH="$HOME"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
