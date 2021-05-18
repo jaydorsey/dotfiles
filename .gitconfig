@@ -84,10 +84,6 @@
 	tool = github
 [diff "rspec"]
 	xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
-[difftool]
-	prompt = false
-[difftool "github"]
-	cmd = github
 [diff "spaceman-diff"]
 	command = /usr/local/bin/spaceman-diff
 [diff-so-fancy]
