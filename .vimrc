@@ -25,7 +25,14 @@ let g:ruby_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/neovim-ruby-ho
 " https://github.com/dense-analysis/ale#faq-coc-nvim
 let g:ale_disable_lsp = 1
 
+" Allow formatting of files without pragma directive
+let g:prettier#autoformat_require_pragma = 0
+" Force prettier to be async. Default is not async
+let g:prettier#exec_cmd_async = 1
+
 call plug#begin('~/.vim/plugged')
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
@@ -75,14 +82,9 @@ let g:ale_ruby_rubocop_executable = escape(expand('$HOME'), '\') . '/.asdf/shims
 
 let g:ale_fix_on_save = 1
 
-let g:ale_linters = {
-      \ 'ruby': ['rubocop']
-      \}
+" let g:ale_linters = {}
 
 let g:ale_fixers = {
-      \ 'ruby': [
-      \   'standardrb'
-      \ ],
       \ '*': [
       \   'remove_trailing_lines',
       \   'trim_whitespace'
