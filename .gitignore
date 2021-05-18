@@ -1,4 +1,3 @@
-.config/coc
 .personalrc
 .localrc
 .navi/local.cheat
@@ -8,3 +7,6 @@ bin/ngrok
 bin/nvim
 localbin/*
 !localbin/README.adoc
+# Folders that should be ignored because of using stow
+.bundle/cache/**/*
+.config/coc
