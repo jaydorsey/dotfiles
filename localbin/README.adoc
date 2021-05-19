@@ -1,1 +1,7 @@
 This is where computer specific settings go
+
+This folder remains empty, otherwise, and it's git-ignored. This folder exists
+for stow to symlink it during setup
+
+TODO: Maybe I can just use ~/bin instead, and gitignore the things that are
+local specific?

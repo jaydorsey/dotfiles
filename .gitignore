@@ -1,12 +1,16 @@
+# Computer specific configurations
+localbin/*
+!localbin/README.adoc
 .personalrc
 .localrc
 .navi/local.cheat
+# Folders that should be ignored because of using stow
+.config
+!.config/nvim
+.bundle
+!.bundle/config
+# Computer-specific things that I should probably compile into localbin instead of here
 bin/colorls
 bin/ttmux
 bin/ngrok
 bin/nvim
-localbin/*
-!localbin/README.adoc
-# Folders that should be ignored because of using stow
-.bundle/cache/**/*
-.config/coc
