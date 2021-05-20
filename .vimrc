@@ -22,6 +22,9 @@ let g:ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
 let g:ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
 let g:ruby_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/neovim-ruby-host'
 
+" https://vi.stackexchange.com/a/22643
+let g:coc_node_path = substitute(system('which node'), '\n', '', '')
+
 " https://github.com/dense-analysis/ale#faq-coc-nvim
 let g:ale_disable_lsp = 1
 
@@ -721,9 +724,9 @@ command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
 
 nnoremap K :Find<cr>
 " nnoremap <leader>p :Files<cr>
-" nnoremap <leader>p :Telescope find_files<cr>
-nnoremap <leader>p :lua require 'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>
-nnoremap <leader>b :Buffers<cr>
+" nnoremap <leader>b :Buffers<cr>
+nnoremap <silent><leader>p :lua require 'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>
+nnoremap <silent><leader>b :lua require 'telescope.builtin'.buffers()<cr>
 
 augroup vim_ruby_group
   autocmd!
