@@ -22,6 +22,9 @@ antigen bundle zsh-users/zsh-history-substring-search
 
 # antigen bundle leophys/zsh-plugin-fzf-finder
 
+# This has to go last
+antigen bundle zsh-users/zsh-syntax-highlighting
+
 antigen apply
 
 # Uncomment this, and the last line in this file for profiling information
@@ -97,7 +100,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf gem colored-man-pages tmux zsh-syntax-highlighting)
+plugins=(git asdf gem colored-man-pages tmux)
 
 # Automatically load additional completion scripts. This is really slow so I've disabled for now
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
