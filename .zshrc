@@ -22,7 +22,8 @@ antigen bundle zsh-users/zsh-history-substring-search
 
 # antigen bundle leophys/zsh-plugin-fzf-finder
 
-# This has to go last
+# This has to go last. You also have to run:
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
@@ -255,7 +256,7 @@ export RUBYOPT="-W0"
 export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
+# export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
 
 # testprof
 export TEST_STACK_PROF=1
