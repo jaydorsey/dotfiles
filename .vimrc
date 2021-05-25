@@ -595,7 +595,7 @@ set splitbelow                                     " Open new split panes to rig
 set splitright                                     " Open new split panes to right and bottom
 set synmaxcol=512                                  " Don't highlight on lines longer than X chars
 set tabstop=2
-set textwidth=80                                   " Text width before wrapping
+set textwidth=120                                  " Text width before wrapping
 set title                                          " Set the title of the iTerm tab
 set undofile                                       " Persistent undo
 set undodir=~/.vim/undo                            " Persistent undo directory
@@ -727,6 +727,7 @@ nnoremap K :Find<cr>
 " nnoremap <leader>b :Buffers<cr>
 nnoremap <silent><leader>p :lua require 'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>
 nnoremap <silent><leader>b :lua require 'telescope.builtin'.buffers()<cr>
+noremap <silent>R @:<cr>
 
 augroup vim_ruby_group
   autocmd!
