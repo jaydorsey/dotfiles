@@ -80,7 +80,7 @@ sudo xcodebuild -license
 # neovim/python stuff for deoplete, gundo, etc.
 #
 #######################################################
-pip3 install --user --upgrade pip setuptools neovim wheel neovim yamllint sqlparse pynvim iredis psutil
+pip3 install --user --upgrade pip setuptools neovim wheel yamllint sqlparse pynvim iredis psutil graphtage
 
 
 #######################################################
