@@ -230,3 +230,9 @@ tree -a -I '.git|node_modules'
 
 # Bundle audit and run updates
 bundle audit check --update
+
+
+% heroku
+
+# Copy a file from a remote app, locally
+heroku ps:copy <relative_file_path> -a <heroku_app_name>
