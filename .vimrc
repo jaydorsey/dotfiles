@@ -534,7 +534,7 @@ set shortmess+=c
 
 " Fugitive Conflict Resolution
 " https://www.prodops.io/blog/solving-git-merge-conflicts-with-vim
-nnoremap <leader>gd :Gdiffsplit!<CR>
+nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 
