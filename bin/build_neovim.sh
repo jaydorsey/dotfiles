@@ -20,9 +20,10 @@ mkdir -p $BUILD_DIR
 
 cd $ROOT_DIR
 
-make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$BUILD_DIR
+/usr/local/bin/gmake CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$BUILD_DIR GNUMAKEFLAGS="--jobs=8"
 # rm -rf $BUILD_DIR
-make install
+/usr/local/bin/gmake install GNUMAKEFLAGS="--jobs=8"
+
 cd -
 
 ln -sf "$BUILD_DIR/bin/nvim" ~/bin/nvim
