@@ -251,8 +251,8 @@ export RACK_TIMEOUT_TERM_ON_TIMEOUT=1
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export REDIS_URL="redis://localhost:6379"
-# Ignore deprecation warnings
-export RUBYOPT="-W0"
+# Ignore deprecation warnings. Disabled this for now; this causes rubocop to fail silently
+# export RUBYOPT="-W0"
 export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
