@@ -34,6 +34,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
+Plug 'mbbill/undotree'
+
 "Testing out telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -44,7 +46,7 @@ Plug 'p00f/nvim-ts-rainbow'
 
 " Dark color scheme plugin manager
 Plug 'tjdevries/colorbuddy.vim'
-Plug 'DilanGMB/nightbuddy', { 'branch': 'main' }
+Plug 'DilanGMB/nebulous.nvim', { 'branch': 'main' }
 
 Plug 'tarekbecker/vim-yaml-formatter', { 'for': 'yaml' }
 let g:yaml_formatter_indent_collection=1
@@ -89,12 +91,12 @@ let g:ale_linters = {
       \}
 
 let g:ale_fixers = {
-      \ 'ruby': [
-      \   'rubocop'
-      \ ],
       \ '*': [
       \   'remove_trailing_lines',
       \   'trim_whitespace'
+      \ ],
+      \ 'ruby': [
+      \   'rubocop'
       \ ]
       \}
 
@@ -141,7 +143,8 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 
 " A better plugin for remembering the last place your cursor was. Ignores
 " git commit message windows and others
-Plug 'farmergreg/vim-lastplace'
+" Plug 'farmergreg/vim-lastplace'
+Plug 'ethanholz/nvim-lastplace'
 
 Plug 'inside/vim-search-pulse'
 let g:vim_search_pulse_disable_auto_mappings = 1
@@ -213,7 +216,7 @@ let delimitMate_expand_space = 1
 " See git diff in commit window as another pane
 Plug 'rhysd/committia.vim'
 let g:committia_open_only_vim_starting = 1
-let g:committia_edit_window_width = 90
+let g:committia_edit_window_width = 120
 
 let g:committia_hooks = {}
 function! g:committia_hooks.edit_open(info)
@@ -227,8 +230,8 @@ function! g:committia_hooks.edit_open(info)
 
     " Scroll the diff window from insert mode
     " Map <C-n> and <C-u>
-    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
-    imap <buffer><C-u> <Plug>(committia-scroll-diff-up-half)
+    imap <buffer><C-j> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-k> <Plug>(committia-scroll-diff-up-half)
 endfunction
 
 " Git message viewer with <leader>gm. Requires neovim 0.4+ for floating panel
@@ -281,7 +284,8 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 
 " Better mark management. Add with m+, delete with m-, toggle with m,
 " Display with m? or m~
@@ -461,6 +465,9 @@ nnoremap <silent> <space>o  :<C-u>CocFzfList outline<cr>
 
 call plug#end()
 
+" vim-sandwich
+runtime macros/sandwich/keymap/surround.vim
+
 lua << EOF
   local actions = require('telescope.actions')
 
@@ -511,8 +518,19 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+lua <<EOF
+require'nvim-lastplace'.setup {
+    lastplace_ignore_buftype = {"quickfix", "nofile", "help"},
+    lastplace_ignore_filetype = {"gitcommit", "gitrebase", "svn", "hgcommit"},
+    lastplace_open_folds = true
+}
+EOF
+
+let g:nb_italic_comments  = 0
+let g:nb_italic_keywords  = 1
+let g:nb_italic_functions = 0
+let g:nb_italic_variables = 1
 let g:nb_style = "night"
-lua require('colorbuddy').colorscheme('nightbuddy')
 
 let g:Hexokinase_highlighters = [ 'sign_column' ]
 
@@ -534,7 +552,7 @@ set shortmess+=c
 
 " Fugitive Conflict Resolution
 " https://www.prodops.io/blog/solving-git-merge-conflicts-with-vim
-nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gd :Gdiffsplit!<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 
@@ -551,6 +569,8 @@ set directory=~/.vim/tmp                           " List of directory names for
 set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
 set expandtab                                      " Expand tabs to spaces
+
+set fillchars=eob:\ ,                              " Fill empty gutter lines with nothing
 
 " These are for treesitter
 set foldmethod=expr
@@ -620,6 +640,7 @@ set visualbell                                     " No visual feedback
 " set belloff=
 set writebackup                                    " write backup file before overwriting
 
+colorscheme nebulous
 " colorscheme dracula
 " colorscheme vim-monokai-tasty
 
