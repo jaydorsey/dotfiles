@@ -144,7 +144,7 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 " A better plugin for remembering the last place your cursor was. Ignores
 " git commit message windows and others
 " Plug 'farmergreg/vim-lastplace'
-Plug 'ethanholz/nvim-lastplace'
+Plug 'ethanholz/nvim-lastplace', { 'branch': 'main' }
 
 Plug 'inside/vim-search-pulse'
 let g:vim_search_pulse_disable_auto_mappings = 1
