@@ -472,7 +472,7 @@ lua << EOF
   local actions = require('telescope.actions')
 
   require('telescope').setup {
-    defaults = {
+    config = {
       vimgrep_arguments = {
         'rg',
         '--color=never',
@@ -482,6 +482,8 @@ lua << EOF
         '--column',
         '--smart-case'
       },
+    },
+    defaults = {
       file_sorter =  require'telescope.sorters'.get_fzy_sorter,
       generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
       mappings = {
