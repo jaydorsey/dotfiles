@@ -38,10 +38,12 @@
 	bcleantest = !sh -c 'git branch --merged ${1-master} | grep -v "main" | grep -v "master" | grep -v "production"' -
 	untracked = ls-files --others --exclude-standard
 [delta]
-	plus-color = "#012800"
-	minus-color = "#340001"
+	plus-style = "syntax #012800"
+	minus-style = "syntax #340001"
 	syntax-theme = Monokai Extended
 	side-by-side = true
+	navigate = true
+	line-numbers = true
 [interactive]
 	diffFilter = delta --color-only
 [branch]
@@ -63,6 +65,11 @@
 	process = git-lfs filter-process
 [push]
 	default = simple
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
 [rebase]
 	autosquash = true
 [remote "origin"]
@@ -82,6 +89,7 @@
 [diff]
 	compactionHeuristic = true
 	tool = github
+	colorMoved = default
 [diff "rspec"]
 	xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 [diff "spaceman-diff"]
