@@ -46,7 +46,7 @@ Plug 'p00f/nvim-ts-rainbow'
 
 " Dark color scheme plugin manager
 Plug 'tjdevries/colorbuddy.vim'
-Plug 'DilanGMB/nebulous.nvim', { 'branch': 'main' }
+Plug 'Yagua/nebulous.nvim', { 'branch': 'main' }
 
 Plug 'tarekbecker/vim-yaml-formatter', { 'for': 'yaml' }
 let g:yaml_formatter_indent_collection=1
@@ -299,11 +299,17 @@ Plug 'jaydorsey/fzf_float', {'branch': 'main'}
 
 Plug 'wincent/ferret'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'windwp/nvim-spectre'
+
 " Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Highlight <f> jump commands on highlighted line
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+Plug 'misterbuckley/vim-definitive'
 
 " Highlight code blocks with :LimelightToggle
 Plug 'junegunn/limelight.vim'
@@ -642,6 +648,7 @@ set visualbell                                     " No visual feedback
 " set belloff=
 set writebackup                                    " write backup file before overwriting
 
+
 colorscheme nebulous
 " colorscheme dracula
 " colorscheme vim-monokai-tasty
@@ -862,7 +869,10 @@ tnoremap <esc> <c-\><c-n>
 vmap <leader>y "+y
 
 " Open tag/definition in a new tab. Requires vim-ruby
-nmap <c-\> <c-w><c-]><c-w>T
+" nmap <c-\> <c-w><c-]><c-w>T
+" vim-definitive
+nnoremap <c-\> :FindDefinition<CR> " Normal mode
+vnoremap <c-\> "ay:FindDefinition <C-R>a<CR> " Visual mode
 
 " Change the local window current directory to that of current file
 nmap <leader>cd lcd %:p:h
