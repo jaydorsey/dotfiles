@@ -1,0 +1,9 @@
+# Update tools that I commonly update
+asdf update
+asdf plugin-update --all
+cd ~/.oh-my-zsh/custom/plugins/
+find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
+cd ~/.oh-my-zsh/custom/themes/
+find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
+nvim +PlugUpdate +qall
+brew update
