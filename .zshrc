@@ -258,6 +258,9 @@ export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --wit
 # export SPEC_OPTS="-f d --fail-fast"
 # export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
 
+# Speed up local testing, for apps that have the ENV set as a flag
+export DISABLE_SIMPLECOV=1
+
 # testprof
 export TEST_STACK_PROF=1
 export TEST_RUBY_PROF=1
