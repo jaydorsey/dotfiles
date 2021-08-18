@@ -545,8 +545,12 @@ let g:Hexokinase_highlighters = [ 'sign_column' ]
 " Part of norcalli/nvim-colorizer.lua. Use the command
 " :ColorizerAttachToBuffer if the file has no filetype
 " lua require'colorizer'.setup()
+" vim.o.scrolloff = 10
+" vim.wo.scrolloff = 10
 
-lua require('neoscroll').setup()
+lua <<EOF
+require('neoscroll').setup()
+EOF
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
