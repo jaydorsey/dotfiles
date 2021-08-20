@@ -14,8 +14,6 @@ rm -rf ~/repos/neovim
 cd $REPO_DIR
 git clone https://github.com/neovim/neovim
 
-# git clone https://github.com/neovim/neovim
-
 mkdir -p $BUILD_DIR
 
 cd $ROOT_DIR
