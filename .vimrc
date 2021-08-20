@@ -54,9 +54,12 @@ let g:yaml_formatter_indent_collection=1
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim'
 
-Plug 'scrooloose/nerdtree'
-nnoremap <leader>e :NERDTreeToggle<cr>
-let g:NERDTreeChDirMode = 2
+" NERDTree replacement. Use g? to open up help
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+nnoremap <leader>e :NvimTreeToggle<cr>
+nnoremap <leader>r :NvimTreeRefresh<cr>
+nnoremap <leader>n :NvimTreeFindFile<cr>
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -170,8 +173,8 @@ Plug 'gioele/vim-autoswap'
 
 " Nicer scrolling with CTRL-d/u
 " Plug 'yuttie/comfortable-motion.vim'
-Plug 'psliwka/vim-smoothie'
-" Plug 'karb94/neoscroll.nvim'
+" Plug 'psliwka/vim-smoothie'
+Plug 'karb94/neoscroll.nvim'
 
 Plug 'itchyny/lightline.vim'
 " Buffer tabs
@@ -548,9 +551,9 @@ let g:Hexokinase_highlighters = [ 'sign_column' ]
 " vim.o.scrolloff = 10
 " vim.wo.scrolloff = 10
 
-" lua <<EOF
-" require('neoscroll').setup()
-" EOF
+lua <<EOF
+require('neoscroll').setup()
+EOF
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
