@@ -170,8 +170,8 @@ Plug 'gioele/vim-autoswap'
 
 " Nicer scrolling with CTRL-d/u
 " Plug 'yuttie/comfortable-motion.vim'
-" Plug 'psliwka/vim-smoothie'
-Plug 'karb94/neoscroll.nvim'
+Plug 'psliwka/vim-smoothie'
+" Plug 'karb94/neoscroll.nvim'
 
 Plug 'itchyny/lightline.vim'
 " Buffer tabs
@@ -548,9 +548,9 @@ let g:Hexokinase_highlighters = [ 'sign_column' ]
 " vim.o.scrolloff = 10
 " vim.wo.scrolloff = 10
 
-lua <<EOF
-require('neoscroll').setup()
-EOF
+" lua <<EOF
+" require('neoscroll').setup()
+" EOF
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
