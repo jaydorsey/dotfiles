@@ -14,3 +14,10 @@ bin/colorls
 bin/ttmux
 bin/ngrok
 bin/nvim
+Brewfile.lock.json
+.vim/backups/**/*
+.vim/plugged/**/*
+.vim/undo/**/*
+!.vim/backups/.keep
+!.vim/plugged/.keep
+!.vim/undo/.keep
