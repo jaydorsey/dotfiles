@@ -465,4 +465,6 @@ function gitclean() {
   git_remove_squash_merged_local_branch
 }
 
+export GIT_PAGER="delta"
+
 bindkey '^q' push-line
