@@ -81,7 +81,8 @@ o.tabstop=2
 o.textwidth=120 -- Text width before wrapping
 o.title = true -- Set the title of the iTerm tab
 o.undofile = true -- Persistent undo
-o.undodir=".vim/undo" -- Persistent undo directory
+-- TODO: Figure out where to send this
+-- o.undodir=".vim/undo" -- Persistent undo directory
 --o.viewoptions=cursor,curdir,folds,unix,slash -- Recommended vim-stay option
 --o.viewoptions-=options -- Recommended vim-stay option
 --o.viewdir="~/.vim/views"
@@ -113,6 +114,8 @@ vim.cmd('let g:committia_edit_window_width = 120')
 
 -- quick-scope
 vim.cmd("let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']")
+
+vim.cmd('colorscheme catppuccino')
 
 -- let g:python3_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
 -- let g:python_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'

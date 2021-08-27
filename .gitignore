@@ -8,6 +8,7 @@ localbin/*
 .config/coc
 .config/configstore
 .config/iterm2
+.config/nvim/plugin/packer_compiled.lua
 .bundle
 !.bundle/config
 # Computer-specific things that I should probably compile into localbin instead of here

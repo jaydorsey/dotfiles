@@ -53,6 +53,26 @@ map('n', 'N', 'N<Plug>Pulse', options)
 map('n', '<leader>l', '<Plug>(Limelight)', options)
 map('x', '<leader>l', '<Plug>(Limelight)', options)
 
+
+-- Note that we are using 'vimp' (not 'vim') below to add the maps
+-- vimp is shorthand for vimpeccable
+local vimp = require('vimp')
+
+map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", options)
+-- map('n', '<leader>p', ':Telescope find_files<cr>', options)
+
+map('n', '<leader>b', ":lua require('telescope.builtin').buffers()", options)
+
+-- Keep the cursor in place while joining lines
+map('n', 'J', 'mzJ`z', options)
+
+
+-- nnoremap K :Find<cr>
+
+-- vimp.nnoremap('<leader>vv', function()
+--   vim.cmd('e ~/.config/nvim/init.lua')
+-- end)
+
 -- " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 -- " `s{char}{label}`
 -- nmap <leader>s <Plug>(easymotion-overwin-f)
