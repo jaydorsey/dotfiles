@@ -5,8 +5,9 @@ localbin/*
 .localrc
 .navi/local.cheat
 # Folders that should be ignored because of using stow
-.config
-!.config/nvim
+.config/coc
+.config/configstore
+.config/iterm2
 .bundle
 !.bundle/config
 # Computer-specific things that I should probably compile into localbin instead of here
@@ -15,9 +16,10 @@ bin/ttmux
 bin/ngrok
 bin/nvim
 Brewfile.lock.json
+!.vim/undo/.keep
 .vim/backups/**/*
 .vim/plugged/**/*
-.vim/undo/**/*
+.vim/undo/*
 !.vim/backups/.keep
 !.vim/plugged/.keep
-!.vim/undo/.keep
+.pry_history
