@@ -1,6 +1,12 @@
 local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
+local opt = vim.opt
+
+opt.listchars = {
+	space = "⋅",
+	eol = "↴",
+}
 
 o.termguicolors = true
 

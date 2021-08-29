@@ -1,9 +1,61 @@
+-- Install packer, if not present
+-- https://gitlab.com/Iron_E/dotfiles
+require('settings')
+require('maps')
+
+local fn = vim.fn
+
+local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+
+if not vim.loop.fs_stat(fn.glob(install_path)) then
+  os.execute('git clone https://github.com/wbthomason/packer.nvim '..install_path)
+end
+
 vim.cmd [[packadd packer.nvim]]
 
-  require('settings')
-  require('maps')
 return require('packer').startup(function()
-  use 'wbthomason/packer.nvim' -- Packer can manage itself
+  use {'wbthomason/packer.nvim'} -- Packer can manage itself
+
+  -- Post-install/update hook with neovim command
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- use {
+  --   'folke/trouble.nvim',
+  --   wants='nvim-web-devicons',
+  --   config = function() require('trouble').setup({auto_preview=false}) end
+  -- }
+
+  -- use {
+  --   'folke/todo-comments.nvim',
+  --   requires = 'nvim-lua/plenary.nvim',
+  --   wants = 'trouble.nvim',
+  --   config = function() require('todo-comments').setup({highlight = {keyword = 'bg'}}) end
+  -- }
+
+	use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+
+	use {
+    'norcalli/nvim-colorizer.lua',
+    event='VimEnter',
+    config = function() require('colorizer').setup() end
+  }
+  -- map.n.nore.silent['<Leader>c'] = '<Cmd>ColorizerToggle<CR>'
+
+	use {'vim-ruby/vim-ruby'}
+	use {'ggandor/lightspeed.nvim', wants='vim-sandwich'} -- sneak
+	use {'wellle/targets.vim'}
+
+  -- Look at these
+	-- use {'dstein64/vim-win', config=req 'win'}
+	-- use {'liuchengxu/vista.vim', config=req 'vista'}
+	use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('indent_blankline').setup {
+          space_char_blankline = ' ',
+          show_current_context = true,
+      }
+    end
+  }
 
   use {'svermeulen/vimpeccable'}
   use {'AndrewRadev/splitjoin.vim'} -- Use shortcuts gJ and gS to join and split, respectively
@@ -25,7 +77,9 @@ return require('packer').startup(function()
   use {'jgdavey/tslime.vim', branch=main} -- Send to tmux
   use {'junegunn/limelight.vim'} -- Highlight code blocks with :LimelightToggle
   use {'junegunn/vim-easy-align'}
+
   use {'junegunn/vim-peekaboo'} -- Extends " and @ in normal mode to auto-show registers
+
   use {'karb94/neoscroll.nvim'}
   use {'kyazdani42/nvim-web-devicons'}
   use {'machakann/vim-sandwich'}
@@ -57,12 +111,14 @@ return require('packer').startup(function()
   use {'tarekbecker/vim-yaml-formatter', ft={'yaml', 'yml'}}
   use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
   use {'junegunn/fzf.vim'}
-  use {'kyazdani42/nvim-tree.lua'} -- NERDTree replacement. Use g? to open up help
+  use {'kyazdani42/nvim-tree.lua', wants='nvim-web-devicons'} -- NERDTree replacement. Use g? to open up help
 
-  use {
-    'glepnir/galaxyline.nvim', branch = 'main', config = function() require'statusline' end,
-    requires = {'kyazdani42/nvim-web-devicons'}
-  }
+--  use {
+--    'glepnir/galaxyline.nvim',
+--    branch = 'main',
+--    config = function() require('statusline') end,
+--    requires = {'kyazdani42/nvim-web-devicons'}
+--  }
 
   use {
     'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
@@ -121,12 +177,7 @@ return require('packer').startup(function()
   --   cmd = 'ALEEnable',
   --   config = 'vim.cmd[[ALEEnable]]'
   -- }
-
-  -- Post-install/update hook with neovim command
-  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 end)
-
-
 
 --require('galaxyline')
 
