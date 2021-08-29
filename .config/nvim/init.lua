@@ -3,11 +3,10 @@
 require('settings')
 require('maps')
 
-local fn = vim.fn
+-- local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local install_path = '~/.local/share/nvim/site/pack/packer/start/packer.nvim'
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-
-if not vim.loop.fs_stat(fn.glob(install_path)) then
+if not vim.loop.fs_stat(vim.fn.glob(install_path)) then
   os.execute('git clone https://github.com/wbthomason/packer.nvim '..install_path)
 end
 
@@ -17,7 +16,7 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim'} -- Packer can manage itself
 
   -- Post-install/update hook with neovim command
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   -- use {
   --   'folke/trouble.nvim',
   --   wants='nvim-web-devicons',
@@ -47,15 +46,37 @@ return require('packer').startup(function()
   -- Look at these
 	-- use {'dstein64/vim-win', config=req 'win'}
 	-- use {'liuchengxu/vista.vim', config=req 'vista'}
-	use {
+
+
+  use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('indent_blankline').setup {
-          space_char_blankline = ' ',
-          show_current_context = true,
+        show_trailing_blankline_indent = false,
+        char_highlight_list = {
+          'IndentBlanklineIndent1',
+          'IndentBlanklineIndent2',
+        }
       }
     end
   }
+
+  -- use {
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   config = function()
+  --     require('indent_blankline').setup {
+  --       space_char_blankline = ' ',
+  --       char_highlight_list = {
+  --         'IndentBlanklineIndent1',
+  --         'IndentBlanklineIndent2',
+  --         'IndentBlanklineIndent3',
+  --         'IndentBlanklineIndent4',
+  --         'IndentBlanklineIndent5',
+  --         'IndentBlanklineIndent6'
+  --       }
+  --     }
+  --   end
+  -- }
 
   use {'svermeulen/vimpeccable'}
   use {'AndrewRadev/splitjoin.vim'} -- Use shortcuts gJ and gS to join and split, respectively
@@ -76,17 +97,25 @@ return require('packer').startup(function()
   use {'jeetsukumaran/vim-markology'}
   use {'jgdavey/tslime.vim', branch=main} -- Send to tmux
   use {'junegunn/limelight.vim'} -- Highlight code blocks with :LimelightToggle
-  use {'junegunn/vim-easy-align'}
+  -- use {'junegunn/vim-easy-align'}
 
   use {'junegunn/vim-peekaboo'} -- Extends " and @ in normal mode to auto-show registers
 
   use {'karb94/neoscroll.nvim'}
   use {'kyazdani42/nvim-web-devicons'}
-  use {'machakann/vim-sandwich'}
+
+  use {'tpope/vim-surround'} -- vim-surround in lua
+  use {'machakann/vim-sandwich'} -- dependency for something else
+  -- use {
+  --   'blackCauldron7/surround.nvim',
+  --   config = function()
+  --     require('surround').setup {}
+  --   end
+  -- }
+
   use {'mbbill/undotree'}
   -- use {'mhinz/vim-startify'}
   use {'misterbuckley/vim-definitive'}
-  use {'morhetz/gruvbox'}
   use {'neovim/nvim-lspconfig'}
   use {'nvim-lua/completion-nvim'}
   use {'nvim-lua/plenary.nvim'}
@@ -128,8 +157,8 @@ return require('packer').startup(function()
   use {
     'ethanholz/nvim-lastplace', branch=main, 
     config = function() require('nvim-lastplace').setup({
-      lastplace_ignore_buftype = {"quickfix", "nofile", "help"},
-      lastplace_ignore_filetype = {"gitcommit", "gitrebase", "svn", "hgcommit"},
+      lastplace_ignore_buftype = {'quickfix', 'nofile', 'help'},
+      lastplace_ignore_filetype = {'gitcommit', 'gitrebase', 'svn', 'hgcommit'},
       lastplace_open_folds = true
     }) end
   } 
@@ -159,8 +188,8 @@ return require('packer').startup(function()
         generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
         mappings = {
           i = {
-            ["<Esc>"] = require('telescope.actions').close,
-            ["<C-c>"] = function()
+            ['<Esc>'] = require('telescope.actions').close,
+            ['<C-c>'] = function()
             vim.cmd [[stopinsert]]
             end,
           },

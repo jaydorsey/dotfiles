@@ -1,14 +1,24 @@
 local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
-local opt = vim.opt
-
-opt.listchars = {
-	space = "⋅",
-	eol = "↴",
-}
+local cmd = vim.cmd
 
 o.termguicolors = true
+
+vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f1f1f blend=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guibg=#1a1a1a blend=nocombine]]
+
+-- vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 blend=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B blend=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 blend=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 blend=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF blend=nocombine]]
+-- vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD blend=nocombine]]
+
+-- vim.opt.listchars = {
+--   space = '⋅',
+--   eol = '↴',
+-- }
 
 o.autoindent = true -- Automatic indenting/formatting
 o.autoread = true -- Reload files changed outside of vim
@@ -27,7 +37,7 @@ o.laststatus = 2
 --o.concealcursor=nv -- From vim-markdown, conceals links, headings, etc in normal & visual mode
 o.conceallevel=0 -- Expand everything, particularly in markdown files
 o.swapfile = true -- use a swap file
-o.directory="/tmp" -- List of directory names for the swap file, separated by commas
+o.directory='/tmp' -- List of directory names for the swap file, separated by commas
 --o.encoding=utf-8 -- Always UTF-8 enoding
 o.eol = true -- include a new line at EOF
 o.expandtab = true -- Expand tabs to spaces
