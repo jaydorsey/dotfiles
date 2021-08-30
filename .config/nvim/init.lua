@@ -3,6 +3,8 @@
 require('settings')
 require('maps')
 
+vim.api.nvim_command 'runtime init/config.vim'
+
 -- local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 local install_path = '~/.local/share/nvim/site/pack/packer/start/packer.nvim'
 
@@ -15,8 +17,8 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   use {'wbthomason/packer.nvim'} -- Packer can manage itself
 
-  -- Post-install/update hook with neovim command
-  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
   -- use {
   --   'folke/trouble.nvim',
   --   wants='nvim-web-devicons',
@@ -30,53 +32,40 @@ return require('packer').startup(function()
   --   config = function() require('todo-comments').setup({highlight = {keyword = 'bg'}}) end
   -- }
 
-	use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+  use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
 
-	use {
+  use {
     'norcalli/nvim-colorizer.lua',
     event='VimEnter',
     config = function() require('colorizer').setup() end
   }
   -- map.n.nore.silent['<Leader>c'] = '<Cmd>ColorizerToggle<CR>'
 
-	use {'vim-ruby/vim-ruby'}
-	use {'ggandor/lightspeed.nvim', wants='vim-sandwich'} -- sneak
-	use {'wellle/targets.vim'}
+  use {'vim-ruby/vim-ruby'}
+  use {'ggandor/lightspeed.nvim', wants='vim-sandwich'} -- sneak
+  use {'wellle/targets.vim'}
 
   -- Look at these
-	-- use {'dstein64/vim-win', config=req 'win'}
-	-- use {'liuchengxu/vista.vim', config=req 'vista'}
-
+  -- use {'dstein64/vim-win', config=req 'win'}
+  -- use {'liuchengxu/vista.vim', config=req 'vista'}
 
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      require('indent_blankline').setup {
-        show_trailing_blankline_indent = false,
+      require('indent_blankline').setup({
+        space_char_blankline = ' ',
+        show_end_of_line = true,
         char_highlight_list = {
           'IndentBlanklineIndent1',
           'IndentBlanklineIndent2',
+          'IndentBlanklineIndent3',
+          'IndentBlanklineIndent4',
+          'IndentBlanklineIndent5',
+          'IndentBlanklineIndent6'
         }
-      }
+      })
     end
   }
-
-  -- use {
-  --   'lukas-reineke/indent-blankline.nvim',
-  --   config = function()
-  --     require('indent_blankline').setup {
-  --       space_char_blankline = ' ',
-  --       char_highlight_list = {
-  --         'IndentBlanklineIndent1',
-  --         'IndentBlanklineIndent2',
-  --         'IndentBlanklineIndent3',
-  --         'IndentBlanklineIndent4',
-  --         'IndentBlanklineIndent5',
-  --         'IndentBlanklineIndent6'
-  --       }
-  --     }
-  --   end
-  -- }
 
   use {'svermeulen/vimpeccable'}
   use {'AndrewRadev/splitjoin.vim'} -- Use shortcuts gJ and gS to join and split, respectively
@@ -99,7 +88,8 @@ return require('packer').startup(function()
   use {'junegunn/limelight.vim'} -- Highlight code blocks with :LimelightToggle
   -- use {'junegunn/vim-easy-align'}
 
-  use {'junegunn/vim-peekaboo'} -- Extends " and @ in normal mode to auto-show registers
+  use {'tversteeg/registers.nvim'}
+  -- use {'junegunn/vim-peekaboo'} -- Extends " and @ in normal mode to auto-show registers
 
   use {'karb94/neoscroll.nvim'}
   use {'kyazdani42/nvim-web-devicons'}
@@ -121,7 +111,7 @@ return require('packer').startup(function()
   use {'nvim-lua/plenary.nvim'}
   use {'nvim-lua/popup.nvim'}
   use {'rhysd/committia.vim'}
-  use {'rrethy/vim-hexokinase', run='make hexakinase'}
+  -- use {'rrethy/vim-hexokinase', run='make hexakinase'}
   use {'tjdevries/colorbuddy.vim'}
   use {'tpope/vim-characterize'}
   use {'tpope/vim-dispatch'}
@@ -150,12 +140,15 @@ return require('packer').startup(function()
 --  }
 
   use {
-    'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('gitsigns').setup() end
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function() require('gitsigns').setup({
+    }) end
   }
 
   use {
-    'ethanholz/nvim-lastplace', branch=main, 
+    'ethanholz/nvim-lastplace',
+    branch=main, 
     config = function() require('nvim-lastplace').setup({
       lastplace_ignore_buftype = {'quickfix', 'nofile', 'help'},
       lastplace_ignore_filetype = {'gitcommit', 'gitrebase', 'svn', 'hgcommit'},
@@ -163,10 +156,7 @@ return require('packer').startup(function()
     }) end
   } 
 
-  use {
-    'terrortylor/nvim-comment',
-    config = function() require('nvim_comment').setup({comment_empty = false}) end
-  }
+  use {'tomtom/tcomment_vim'} -- comment with gc motions
 
   use {
     'nvim-telescope/telescope.nvim',

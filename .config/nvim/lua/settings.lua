@@ -1,27 +1,41 @@
 local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
-local cmd = vim.cmd
 
-o.termguicolors = true
+vim.opt.termguicolors = true
 
-vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f1f1f blend=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent2 guibg=#1a1a1a blend=nocombine]]
+vim.cmd [[colorscheme catppuccino]]
 
--- vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 blend=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B blend=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 blend=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 blend=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF blend=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD blend=nocombine]]
+vim.cmd [[filetype plugin indent on]]
+vim.cmd [[syntax on]]
 
--- vim.opt.listchars = {
---   space = '⋅',
---   eol = '↴',
--- }
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 blend=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B blend=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 blend=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 blend=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF blend=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD blend=nocombine]]
 
-o.autoindent = true -- Automatic indenting/formatting
-o.autoread = true -- Reload files changed outside of vim
+vim.opt.listchars = {
+  space = '⋅',   
+  trail = '⋅',   
+  nbsp = '⋅',   
+  eol = '↴',
+  tab = '»»'
+}
+
+vim.wo.list = true
+
+-- vim.cmd [[let g:indent_blankline_use_treesitter = v:true]]
+-- vim.cmd [[let g:indent_blankline_enabled = v:false]]
+-- vim.cmd [[let g:indent_blankline_show_current_context = v:false]]
+-- vim.cmd [[let g:indent_blankline_show_first_indent_level = v:false]]
+-- vim.cmd [[let g:indent_blankline_viewport_buffer = 5]]
+-- vim.cmd [[let g:indent_blankline_show_end_of_line = v:true]]
+-- vim.cmd [[let g:indent_blankline_strict_tabs = v:true]]
+
+vim.opt.autoindent = true -- Automatic indenting/formatting
+vim.opt.autoread = true -- Reload files changed outside of vim
 
 -- This doesn't work for some reason
 -- o.backup = true -- Make backups
@@ -115,10 +129,6 @@ o.errorbells = false
 wo.number = true -- Line numbers on
 vim.wo.colorcolumn = "120"
 
-vim.cmd('filetype plugin indent on')
-vim.cmd('syntax on')
-vim.cmd('colorscheme catppuccino')
-
 -- g.python3_host_prog = vim.env.HOME .. '/leet/vim-python3/bin/python3'
 
 -- delimtmate
@@ -130,8 +140,6 @@ vim.cmd('let g:committia_edit_window_width = 120')
 
 -- quick-scope
 vim.cmd("let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']")
-
-vim.cmd('colorscheme catppuccino')
 
 -- let g:python3_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
 -- let g:python_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
