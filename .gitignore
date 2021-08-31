@@ -7,6 +7,7 @@ localbin/*
 # Folders that should be ignored because of using stow
 .config/coc
 .config/configstore
+.config/fontforge
 .config/iterm2
 .config/nvim/plugin/packer_compiled.lua
 .bundle

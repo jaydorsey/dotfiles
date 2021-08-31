@@ -1,6 +1,11 @@
-local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
+-- To check the proper scope of a setting, try:
+--   :lua print (<setting))
+-- For example:
+--   :lua print (vim.wo.scrolloff)
+
+-- vim.o global
+-- vim.wo window
+-- vim.bo buffer
 
 vim.opt.termguicolors = true
 
@@ -46,37 +51,37 @@ vim.opt.autoread = true -- Reload files changed outside of vim
 -- end
 
 --o.backspace=indent,eol,start -- Backspace configuration
-o.cmdheight = 2 -- More space for messages
-o.laststatus = 2
+vim.o.cmdheight = 2 -- More space for messages
+vim.o.laststatus = 2
 --o.concealcursor=nv -- From vim-markdown, conceals links, headings, etc in normal & visual mode
-o.conceallevel=0 -- Expand everything, particularly in markdown files
-o.swapfile = true -- use a swap file
-o.directory='/tmp' -- List of directory names for the swap file, separated by commas
+vim.o.conceallevel=0 -- Expand everything, particularly in markdown files
+vim.o.swapfile = true -- use a swap file
+vim.o.directory='/tmp' -- List of directory names for the swap file, separated by commas
 --o.encoding=utf-8 -- Always UTF-8 enoding
-o.eol = true -- include a new line at EOF
-o.expandtab = true -- Expand tabs to spaces
+vim.o.eol = true -- include a new line at EOF
+vim.o.expandtab = true -- Expand tabs to spaces
 
 -- o.fillchars="eob:\ ," -- Fill empty gutter lines with nothing
 
 --o.foldmethod=expr -- for treesitter
 -- o.foldexpr=nvim_treesitter#foldexpr() -- for treesitter
 
-o.foldcolumn = "2"
+vim.o.foldcolumn = "2"
 --o.foldlevel=2
 --o.foldlevelstart=99 -- Edit with all folds open when opening a file
 --o.foldnestmax=12 -- Deepest fold
-o.foldenable = true -- Fold or don't fold files by default
+vim.o.foldenable = true -- Fold or don't fold files by default
 -- o.formatoptions+=j -- Join comments better
 -- o.grepprg=rg\ \-\-vimgrep\ \-\-no-heading -- Use ripgrep instead of ag for :Ag commands
 -- o.grepformat=%f:%l:%c:%m,%f:%l:%m
 --" set guicursor=a:blinkon0-Cursor/Cursor             " Turn off blink for all modes
 --" set guicursor+=i:blinkwait0-blinkon100-blinkoff100 " Turn on blinking in insert mode
 --" set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor50
-o.hidden = true -- Required for operations modifying multiple buffers like rename.
-o.history=500 -- Max history
-o.hlsearch = true -- Highlight matches
-o.ignorecase = true -- Ignore case when searching...
-o.incsearch = true -- Find the next match as we type
+vim.o.hidden = true -- Required for operations modifying multiple buffers like rename.
+vim.o.history=500 -- Max history
+vim.o.hlsearch = true -- Highlight matches
+vim.o.ignorecase = true -- Ignore case when searching...
+vim.o.incsearch = true -- Find the next match as we type
 --o.nolazyredraw = true -- Disable screen redraw when running macros, for performance
 --o.redrawtime=10000 -- Increase redraw time so syntax highlighting works on larger files
 --o.matchtime=10 -- Show matching bracket for 1 second
@@ -88,29 +93,29 @@ o.incsearch = true -- Find the next match as we type
 --o.noruler = true -- No ruler needed, because lightline
 --o.noshowmode = true -- Disable current mode, handled by lightline
 --o.nospell = true -- Turn spell checking off by default
-o.wrap = false-- Don't wrap lines. Call `:set wrap` to change
-o.numberwidth=5 -- Use 5 characters for number well
+vim.o.wrap = false-- Don't wrap lines. Call `:set wrap` to change
+vim.o.numberwidth=5 -- Use 5 characters for number well
 --o.pumheight=10 -- Limit height of completion popup
-o.scrolloff=10 -- Prevent scrolling past bottom line
+vim.o.scrolloff=10 -- Prevent scrolling past bottom line
 --o.sessionoptions-=options -- Disable options because sessions capture runtime path
 --o.sessionoptions-=folds -- FastFold recommended setting to make sure buffer not overwritten in manual
-o.showtabline=2 -- Always show a tab line in vim https://stackoverflow.com/a/47129698/2892779
-o.shiftround = true -- Round indent of shifts
-o.shiftwidth=2 -- Round indent to multiples of 2
-o.showmatch = true -- Briefly show matching brackets
-o.showcmd = true -- Show leader key and partial commands in the bottom right corner
+vim.o.showtabline=2 -- Always show a tab line in vim https://stackoverflow.com/a/47129698/2892779
+vim.o.shiftround = true -- Round indent of shifts
+vim.o.shiftwidth=2 -- Round indent to multiples of 2
+vim.o.showmatch = true -- Briefly show matching brackets
+vim.o.showcmd = true -- Show leader key and partial commands in the bottom right corner
 --o.shortmess+=c
 --o.signcolumn=auto:4
-o.smartcase = true -- Don't ignore case if we type a capital
-o.smarttab = true -- Backspace should delete tabwidth of characters
-o.softtabstop=2
-o.splitbelow = true -- Open new split panes to right and bottom
-o.splitright = true -- Open new split panes to right and bottom
-o.synmaxcol=512 -- Don't highlight on lines longer than X chars
-o.tabstop=2
-o.textwidth=120 -- Text width before wrapping
-o.title = true -- Set the title of the iTerm tab
-o.undofile = true -- Persistent undo
+vim.o.smartcase = true -- Don't ignore case if we type a capital
+vim.o.smarttab = true -- Backspace should delete tabwidth of characters
+vim.o.softtabstop=2
+vim.o.splitbelow = true -- Open new split panes to right and bottom
+vim.o.splitright = true -- Open new split panes to right and bottom
+vim.o.synmaxcol=512 -- Don't highlight on lines longer than X chars
+vim.o.tabstop=2
+vim.o.textwidth=120 -- Text width before wrapping
+vim.o.title = true -- Set the title of the iTerm tab
+vim.o.undofile = true -- Persistent undo
 -- TODO: Figure out where to send this
 -- o.undodir=".vim/undo" -- Persistent undo directory
 --o.viewoptions=cursor,curdir,folds,unix,slash -- Recommended vim-stay option
@@ -119,14 +124,14 @@ o.undofile = true -- Persistent undo
 --" set viminfo^=!                                     " Add recently accessed projects menu (project plugin)
 --" set viminfo='100,f1'                               " https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/
 --o.shada=!,'100,<50,s10,h,f1
-o.visualbell = true -- No visual feedback
-o.errorbells = false
+vim.o.visualbell = true -- No visual feedback
+vim.o.errorbells = false
 -- set errorbells
 -- set belloff=
 -- o.writebackup = true -- write backup file before overwriting
 
 
-wo.number = true -- Line numbers on
+vim.wo.number = true -- Line numbers on
 vim.wo.colorcolumn = "120"
 
 -- g.python3_host_prog = vim.env.HOME .. '/leet/vim-python3/bin/python3'

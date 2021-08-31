@@ -116,6 +116,15 @@ local function buffer_not_empty()
 	return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
 end
 
+local function line_not_empty()
+  local col = vim.fn.col('.') - 1
+  if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+    return true
+  else
+    return false
+  end
+end
+
 local function checkwidth()
 	return (vim.fn.winwidth(0) / 2) > 40
 end
@@ -126,6 +135,12 @@ end
 
 local function get_file_icon_color()
 	return require('galaxyline/provider_fileinfo').get_file_icon_color()
+end
+
+local function get_character_code()
+	local dec = vim.fn.matchstr(vim.fn.getline('.'), '.', vim.fn.col('.') - 1)
+	local hex = string.byte(dec) or ""
+	return dec .. "/0x" .. hex
 end
 
 local function printer(str)
@@ -307,6 +322,15 @@ section.right =
 			separator = ' ',
 			separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
 		},
+		CharacterCode =
+		{
+			provider = function() return get_character_code() end,
+			icon = '∷ ',
+			condition = (buffer_not_empty or line_not_empty),
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+		},
 		ColumnNumber =
 		{
 			provider = function() return vim.fn.col('.') end,
@@ -315,7 +339,7 @@ section.right =
 			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
 			separator = ' ',
 			separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
-		}
+		},
 	},
 
 	{PerCentSeparator = {

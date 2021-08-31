@@ -1,12 +1,13 @@
--- Install packer, if not present
--- https://gitlab.com/Iron_E/dotfiles
+-- Based heavily on https://gitlab.com/Iron_E/dotfiles
 require('settings')
 require('maps')
 
+-- Loads everything that I couldn't convert over to lua easily
 vim.api.nvim_command 'runtime init/config.vim'
 
--- local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-local install_path = '~/.local/share/nvim/site/pack/packer/start/packer.nvim'
+-- Modified this to use start, instead of opt; packer deletes the folder every time I run PackerClean otherwise. Not
+-- really sure why
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 if not vim.loop.fs_stat(vim.fn.glob(install_path)) then
   os.execute('git clone https://github.com/wbthomason/packer.nvim '..install_path)
@@ -32,14 +33,16 @@ return require('packer').startup(function()
   --   config = function() require('todo-comments').setup({highlight = {keyword = 'bg'}}) end
   -- }
 
-  use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+  use {
+    'TimUntersberger/neogit',
+    requires = 'nvim-lua/plenary.nvim'
+  }
 
   use {
     'norcalli/nvim-colorizer.lua',
     event='VimEnter',
     config = function() require('colorizer').setup() end
   }
-  -- map.n.nore.silent['<Leader>c'] = '<Cmd>ColorizerToggle<CR>'
 
   use {'vim-ruby/vim-ruby'}
   use {'ggandor/lightspeed.nvim', wants='vim-sandwich'} -- sneak
@@ -132,12 +135,13 @@ return require('packer').startup(function()
   use {'junegunn/fzf.vim'}
   use {'kyazdani42/nvim-tree.lua', wants='nvim-web-devicons'} -- NERDTree replacement. Use g? to open up help
 
---  use {
---    'glepnir/galaxyline.nvim',
---    branch = 'main',
---    config = function() require('statusline') end,
---    requires = {'kyazdani42/nvim-web-devicons'}
---  }
+  use {'Iron-E/nvim-highlite'}
+  use {
+    'glepnir/galaxyline.nvim',
+    branch = 'main',
+    config = function() require('statusline') end,
+    requires = {'kyazdani42/nvim-web-devicons', 'Iron-E/nvim-highlite'}
+  }
 
   use {
     'lewis6991/gitsigns.nvim',
@@ -197,6 +201,3 @@ return require('packer').startup(function()
   --   config = 'vim.cmd[[ALEEnable]]'
   -- }
 end)
-
---require('galaxyline')
-
