@@ -1,6 +1,6 @@
 -- Based heavily on https://gitlab.com/Iron_E/dotfiles
-require('settings')
-require('maps')
+require('config.settings')
+require('config.maps')
 
 -- Loads everything that I couldn't convert over to lua easily
 vim.api.nvim_command 'runtime init/config.vim'
@@ -18,7 +18,14 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   use {'wbthomason/packer.nvim'} -- Packer can manage itself
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    requires = {
+      'nvim-treesitter/nvim-treesitter-refactor',
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    run = ':TSUpdate',
+  }
 
   -- use {
   --   'folke/trouble.nvim',
@@ -76,7 +83,6 @@ return require('packer').startup(function()
   use {'Pocco81/Catppuccino.nvim'}
   use {'Raimondi/delimitMate'} -- Add automatic delimiters ([<{, quotes, etc.
   use {'alfredodeza/jacinto.vim'} -- Formatting & validating json via :Jacinto
-  use {'andymass/vim-matchup', event='VimEnter'} -- An improved matchit plugin with additional motions & matchers
   use {'bronson/vim-visual-star-search'}
   use {'editorconfig/editorconfig-Vim'}
   use {'gioele/vim-autoswap'} -- Better, automatic swap file management
@@ -86,7 +92,15 @@ return require('packer').startup(function()
   use {'jaydorsey/charblob'}
   use {'jaydorsey/fzf_float', branch=main}
   use {'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut'} -- Use :ToGithub to open the current line in your browser
-  use {'jeetsukumaran/vim-markology'}
+
+  -- Create and navigate across marks
+  use {
+    'kshenoy/vim-signature',
+    config = [[require('config.signature')]],
+    -- disable = true
+  }
+  -- use {'jeetsukumaran/vim-markology'}
+
   use {'jgdavey/tslime.vim', branch=main} -- Send to tmux
   use {'junegunn/limelight.vim'} -- Highlight code blocks with :LimelightToggle
   -- use {'junegunn/vim-easy-align'}
@@ -98,7 +112,15 @@ return require('packer').startup(function()
   use {'kyazdani42/nvim-web-devicons'}
 
   use {'tpope/vim-surround'} -- vim-surround in lua
-  use {'machakann/vim-sandwich'} -- dependency for something else
+  use {
+    'machakann/vim-sandwich',
+    {
+      'andymass/vim-matchup',
+      setup = [[require('config.matchup')]],
+      event = 'User ActuallyEditing'
+    }
+  }
+
   -- use {
   --   'blackCauldron7/surround.nvim',
   --   config = function()
@@ -139,7 +161,7 @@ return require('packer').startup(function()
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main',
-    config = function() require('statusline') end,
+    config = function() require('config.statusline') end,
     requires = {'kyazdani42/nvim-web-devicons', 'Iron-E/nvim-highlite'}
   }
 
@@ -201,3 +223,5 @@ return require('packer').startup(function()
   --   config = 'vim.cmd[[ALEEnable]]'
   -- }
 end)
+-- require('config.post')
+-- vim.api.nvim_del_keymap('n', 'm')

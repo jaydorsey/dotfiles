@@ -1,8 +1,8 @@
 -- To check the proper scope of a setting, try:
 --   :lua print (<setting))
 -- For example:
---   :lua print (vim.wo.scrolloff)
-
+--   :lua print(vim.wo.scrolloff)
+--
 -- vim.o global
 -- vim.wo window
 -- vim.bo buffer
@@ -122,7 +122,7 @@ vim.o.undofile = true -- Persistent undo
 --o.viewoptions-=options -- Recommended vim-stay option
 --o.viewdir="~/.vim/views"
 --" set viminfo^=!                                     " Add recently accessed projects menu (project plugin)
---" set viminfo='100,f1'                               " https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/
+-- set viminfo='100,f1'                               " https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/
 --o.shada=!,'100,<50,s10,h,f1
 vim.o.visualbell = true -- No visual feedback
 vim.o.errorbells = false
