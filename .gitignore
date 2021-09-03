@@ -10,6 +10,7 @@ localbin/*
 .config/fontforge
 .config/iterm2
 .config/nvim/plugin/packer_compiled.lua
+.config/AWSVPNClient
 .bundle
 !.bundle/config
 # Computer-specific things that I should probably compile into localbin instead of here

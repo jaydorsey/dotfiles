@@ -9,10 +9,10 @@
 
 vim.opt.termguicolors = true
 
-vim.cmd [[colorscheme catppuccino]]
-
 vim.cmd [[filetype plugin indent on]]
 vim.cmd [[syntax on]]
+
+vim.cmd [[colorscheme catppuccino]]
 
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 blend=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B blend=nocombine]]
@@ -22,9 +22,9 @@ vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF blend=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD blend=nocombine]]
 
 vim.opt.listchars = {
-  space = '⋅',   
-  trail = '⋅',   
-  nbsp = '⋅',   
+  space = '⋅',
+  trail = '⋅',
+  nbsp = '⋅',
   eol = '↴',
   tab = '»»'
 }
@@ -54,7 +54,7 @@ vim.opt.autoread = true -- Reload files changed outside of vim
 vim.o.cmdheight = 2 -- More space for messages
 vim.o.laststatus = 2
 --o.concealcursor=nv -- From vim-markdown, conceals links, headings, etc in normal & visual mode
-vim.o.conceallevel=0 -- Expand everything, particularly in markdown files
+vim.o.conceallevel = 0 -- Expand everything, particularly in markdown files
 vim.o.swapfile = true -- use a swap file
 vim.o.directory='/tmp' -- List of directory names for the swap file, separated by commas
 --o.encoding=utf-8 -- Always UTF-8 enoding

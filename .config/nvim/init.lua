@@ -94,12 +94,12 @@ return require('packer').startup(function()
   use {'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut'} -- Use :ToGithub to open the current line in your browser
 
   -- Create and navigate across marks
-  use {
-    'kshenoy/vim-signature',
-    config = [[require('config.signature')]],
-    -- disable = true
-  }
-  -- use {'jeetsukumaran/vim-markology'}
+  -- use {
+  --   'kshenoy/vim-signature',
+  --   config = [[require('config.signature')]],
+  --   -- disable = true
+  -- }
+  use {'jeetsukumaran/vim-markology'}
 
   use {'jgdavey/tslime.vim', branch=main} -- Send to tmux
   use {'junegunn/limelight.vim'} -- Highlight code blocks with :LimelightToggle
@@ -129,7 +129,7 @@ return require('packer').startup(function()
   -- }
 
   use {'mbbill/undotree'}
-  -- use {'mhinz/vim-startify'}
+  use {'mhinz/vim-startify'}
   use {'misterbuckley/vim-definitive'}
   use {'neovim/nvim-lspconfig'}
   use {'nvim-lua/completion-nvim'}
