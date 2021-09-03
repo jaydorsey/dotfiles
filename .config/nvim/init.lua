@@ -1,6 +1,6 @@
 -- Based heavily on https://gitlab.com/Iron_E/dotfiles
-require('config.settings')
-require('config.maps')
+require('settings')
+require('maps')
 
 -- Loads everything that I couldn't convert over to lua easily
 vim.api.nvim_command 'runtime init/config.vim'
@@ -96,7 +96,7 @@ return require('packer').startup(function()
   -- Create and navigate across marks
   -- use {
   --   'kshenoy/vim-signature',
-  --   config = [[require('config.signature')]],
+  --   config = [[require('signature')]],
   --   -- disable = true
   -- }
   use {'jeetsukumaran/vim-markology'}
@@ -116,7 +116,7 @@ return require('packer').startup(function()
     'machakann/vim-sandwich',
     {
       'andymass/vim-matchup',
-      setup = [[require('config.matchup')]],
+      setup = [[require('matchup')]],
       event = 'User ActuallyEditing'
     }
   }
@@ -161,7 +161,7 @@ return require('packer').startup(function()
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main',
-    config = function() require('config.statusline') end,
+    config = function() require('statusline') end,
     requires = {'kyazdani42/nvim-web-devicons', 'Iron-E/nvim-highlite'}
   }
 
@@ -223,5 +223,4 @@ return require('packer').startup(function()
   --   config = 'vim.cmd[[ALEEnable]]'
   -- }
 end)
--- require('config.post')
 -- vim.api.nvim_del_keymap('n', 'm')
