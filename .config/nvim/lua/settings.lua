@@ -131,8 +131,6 @@ vim.o.undofile = true -- Persistent undo
 --o.shada=!,'100,<50,s10,h,f1
 vim.o.visualbell = true -- No visual feedback
 vim.o.errorbells = false
--- set errorbells
--- set belloff=
 -- o.writebackup = true -- write backup file before overwriting
 
 
@@ -142,40 +140,44 @@ vim.wo.colorcolumn = "120"
 -- g.python3_host_prog = vim.env.HOME .. '/leet/vim-python3/bin/python3'
 
 -- delimtmate
-vim.cmd('let g:delimitMate_expand_space = 1')
+vim.g.delimitMate_expand_space = 1
 
 -- committia
-vim.cmd('let g:committia_open_only_vim_starting = 1')
-vim.cmd('let g:committia_edit_window_width = 120')
+vim.g.committia_open_only_vim_starting = 1
+vim.g.committia_edit_window_width = 120
 
 -- quick-scope
-vim.cmd("let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']")
+-- vim.g.qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
+-- TODO: Figure out this syntax, with the path
 -- let g:python3_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
 -- let g:python_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
 
--- let g:ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
--- let g:ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
--- let g:ruby_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/neovim-ruby-host'
+-- vim.g.ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
+-- vim.g.ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
+-- vim.g.ruby_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/neovim-ruby-host'
 
--- let g:yaml_formatter_indent_collection=1
--- let g:EasyMotion_smartcase = 1
--- let g:EasyMotion_do_mapping = 0 " Disable default mappings
--- let g:blamer_enabled = 1
--- let g:blamer_delay = 500
--- let g:blamer_show_in_visual_modes = 0
--- let g:blamer_date_format = '%Y-%m-%d'
+vim.g.yaml_formatter_indent_collection=1
+
+-- easy motion
+vim.g.EasyMotion_smartcase = 1
+vim.g.EasyMotion_do_mapping = 0 -- Disable default mappings
+
+-- blamer
+vim.g.blamer_enabled = 1
+vim.g.blamer_delay = 500
+vim.g.blamer_show_in_visual_modes = 0
+vim.g.blamer_date_format = '%Y-%m-%d'
+
 -- let g:polyglot_disabled = ['yard', 'typescript', 'jsx', 'tsx']
 -- " sheerun/vim-yardoc
 -- let g:vim_markdown_conceal = 0
--- " Using vim-ruby via vim-polyglot, indent per work convention
--- let g:ruby_indent_access_modifier_style = 'normal'
--- " Indent for multi-line statements against left. variable or hanging
--- let g:ruby_indent_assignment_style = 'variable'
--- " Indent nested blocks, do or expression
--- let g:ruby_indent_block_style = 'do'
--- " Highlight whitespace errors
--- let g:ruby_space_errors = 1
+
+vim.g.ruby_indent_access_modifier_style = 'normal' -- Using vim-ruby via vim-polyglot, indent per work convention
+vim.g.ruby_indent_assignment_style = 'variable' -- Indent for multi-line statements against left. variable or hanging
+vim.g.ruby_indent_block_style = 'do' -- Indent nested blocks, do or expression
+vim.g.ruby_space_errors = 1 -- Highlight whitespace errors
+
 -- " Set completeopt to have a better completion experience
 -- set completeopt=menuone,noinsert,noselect
 
@@ -186,6 +188,3 @@ vim.cmd("let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']")
 -- set wildmenu
 -- " stuff to ignore when tab completing
 -- set wildignore=*.o,*.obj,*~,*vim/backups*,*sass-cache*,*DS_Store*,vendor/rails/**,vendor/cache/**,*.gem,log/**,tmp/**,*.png,*.jpg,*.gif
-
--- " Display tabs & trailing spaces visually
--- set list listchars=tab:Â»Â·,trail:Â·,nbsp:Â·
