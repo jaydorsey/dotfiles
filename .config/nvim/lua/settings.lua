@@ -146,12 +146,11 @@ vim.g.delimitMate_expand_space = 1
 vim.g.committia_open_only_vim_starting = 1
 vim.g.committia_edit_window_width = 120
 
--- quick-scope
--- vim.g.qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
 -- TODO: Figure out this syntax, with the path
 -- let g:python3_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
 -- let g:python_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
+
+-- vim.g.ruby_path="$HOME/.asdf/shims/ruby"
 
 -- vim.g.ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
 -- vim.g.ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
