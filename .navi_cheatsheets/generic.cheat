@@ -34,10 +34,13 @@ git log -S "<text>" <file_name>
 
 git rev-list -n 1 HEAD -- <full_path_to_file>
 
-
 # Empty commit
 
 git commit --allow-empty -m "Empty commit to trigger build"
+
+#  List files and last modification dates
+
+git ls-files -z | xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" {} 
 
 % tmux
 
