@@ -322,15 +322,15 @@ section.right =
 			separator = ' ',
 			separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
 		},
-		CharacterCode =
-		{
-			provider = function() return get_character_code() end,
-			icon = '∷ ',
-			condition = (buffer_not_empty or line_not_empty),
-			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
-			separator = ' ',
-			separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
-		},
+		-- CharacterCode =
+		-- {
+		-- 	provider = function() return get_character_code() end,
+		-- 	icon = '∷ ',
+		-- 	condition = (buffer_not_empty or line_not_empty),
+		-- 	highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+		-- 	separator = ' ',
+		-- 	separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+		-- },
 		ColumnNumber =
 		{
 			provider = function() return vim.fn.col('.') end,
