@@ -108,7 +108,10 @@ return require('packer').startup(function()
   use {'tversteeg/registers.nvim'}
   -- use {'junegunn/vim-peekaboo'} -- Extends " and @ in normal mode to auto-show registers
 
-  use {'karb94/neoscroll.nvim'}
+  use {
+    'karb94/neoscroll.nvim',
+    config = function() require('neoscroll').setup() end
+  }
   use {'kyazdani42/nvim-web-devicons'}
 
   use {'tpope/vim-surround'} -- vim-surround in lua
@@ -168,8 +171,7 @@ return require('packer').startup(function()
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('gitsigns').setup({
-    }) end
+    config = function() require('gitsigns').setup() end
   }
 
   use {
