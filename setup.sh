@@ -97,9 +97,6 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 ~/.asdf/bin/asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 ~/.asdf/bin/asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
 ~/.asdf/bin/asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-~/.asdf/bin/asdf plugin-add golang https://github.com/asdf-vm/asdf-golang.git
-~/.asdf/bin/asdf plugin-add crystal https://github.com/asdf-vm/asdf-crystal.git
-~/.asdf/bin/asdf plugin-add python https://github.com/asdf-vm/asdf-python.git
 
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
@@ -119,6 +116,12 @@ curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/z
 curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker_compose
 
 # Install navi
+
+# git clone https://github.com/denisidoro/navi ~/.navi
+# cd ~/.navi
+# make install
+
+# Configure navi zsh plugin
 mkdir -p ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/navi
 git clone https://github.com/denisidoro/navi ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/navi
 
@@ -153,9 +156,11 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 cargo install cw
 
+npm install -g neovim yarn
+
 # Run this once
 # https://build.betterup.com/one-weird-trick-that-will-speed-up-your-bundle-install/
-echo 'export MAKE="make -j$(nproc)"' >> $home/.localrc
+# echo 'export MAKE="make -j$(nproc)"' >> $home/.localrc
 
 # Generate tags for bundled gems. The grep ignores lines started with "The", which includes certain
 # tzinfo warnings that's common

@@ -207,7 +207,7 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
 
 # https://github.com/denisidoro/navi#using-oh-my-zsh
 export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
-export NAVI_PATH="$HOME/.navi:$HOME/.navi_cheatsheets:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
+export NAVI_PATH="$HOME/.navi_cheatsheets:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
 export PAGER="less"
 
 export PATH=$PATH:$HOMEBREW_PREFIX/opt/postgresql/bin
@@ -262,11 +262,11 @@ export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --wit
 export DISABLE_SIMPLECOV=1
 
 # testprof
-export TEST_STACK_PROF=1
-export TEST_RUBY_PROF=1
-export FDOC=1
-export FPROF=1
-export RD_PROF=1
+# export TEST_STACK_PROF=1
+# export TEST_RUBY_PROF=1
+# export FDOC=1
+# export FPROF=1
+# export RD_PROF=1
 
 alias be='bundle exec'
 alias sp='spring rails'
@@ -468,3 +468,4 @@ function gitclean() {
 export GIT_PAGER="delta"
 
 bindkey '^q' push-line
+if [ -e /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
