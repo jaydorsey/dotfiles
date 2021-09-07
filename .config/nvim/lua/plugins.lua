@@ -52,7 +52,14 @@ return require('packer').startup(function()
   }
 
   use {'vim-ruby/vim-ruby'}
-  use {'ggandor/lightspeed.nvim', wants='vim-sandwich'} -- sneak
+  -- use {
+  --   'ggandor/lightspeed.nvim',
+  --   wants='vim-sandwich',
+  --   config = function() 
+  --     require('lightspeed').setup({
+  --     }) 
+  --   end
+  -- }
   use {'wellle/targets.vim'}
 
   -- Look at these
