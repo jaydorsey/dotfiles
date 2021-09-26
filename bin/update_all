@@ -6,4 +6,6 @@ find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull ori
 cd ~/.oh-my-zsh/custom/themes/
 find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+# zinit self-update
+# zinit update --parallel
 brew update

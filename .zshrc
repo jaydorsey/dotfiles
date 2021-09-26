@@ -1,40 +1,14 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-source $HOME/.antigen/antigen.zsh
-
-antigen use oh-my-zsh
-
-antigen bundle git
-antigen bundle heroku
-antigen bundle command-not-found
-
-antigen bundle denisidoro/navi
-antigen bundle skywind3000/z.lua
-
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-
-# antigen bundle leophys/zsh-plugin-fzf-finder
-
-# This has to go last. You also have to run:
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-antigen apply
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # Uncomment this, and the last line in this file for profiling information
 # zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOMEBREW_PREFIX/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
 
 # This appears to be set in at least the M1 version of brew
 if [[ -z "${HOMEBREW_PREFIX}" ]]; then
@@ -46,9 +20,6 @@ fi
 # This term setting is used to get italics working, along with this gist: https://gist.github.com/sos4nt/3187620
 export TERM="xterm-256color-italic"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 export ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # https://github.com/ansible/ansible/issues/32499#issuecomment-341578864
@@ -97,24 +68,13 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf gem colored-man-pages tmux)
-
 # Automatically load additional completion scripts. This is really slow so I've disabled for now
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
 # autoload -U compinit && compinit
 
-# Always automatically update oh-my-zsh
-DISABLE_UPDATE_PROMPT="true"
-
 # Disable magic functions (can cause slow pasting)
 # https://github.com/ohmyzsh/ohmyzsh/issues/5569#issuecomment-491504337
 DISABLE_MAGIC_FUNCTIONS=true
-
-source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -205,9 +165,8 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --with-ssl=$HOMEBREW_PREFIX/opt/openssl@1.1 \
   --with-dynamic-trace=dtrace"
 
-# https://github.com/denisidoro/navi#using-oh-my-zsh
 export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
-export NAVI_PATH="$HOME/.navi_cheatsheets:$HOME/.oh-my-zsh/custom/plugins/navi/cheats"
+export NAVI_PATH="$HOME/.navi_cheatsheets"
 export PAGER="less"
 
 export PATH=$PATH:$HOMEBREW_PREFIX/opt/postgresql/bin
@@ -256,7 +215,6 @@ export REDIS_URL="redis://localhost:6379"
 export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
-# export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
 
 # Speed up local testing, for apps that have the ENV set as a flag
 export DISABLE_SIMPLECOV=1
@@ -370,13 +328,10 @@ export PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/readline/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/jemalloc/bin:$PATH"
 
-# Python executable support for asdf
-# export PATH="$PATH:$HOME/.local/bin"
-
 # asdf puts python scripts here
 export PATH="$HOME/.local/bin:$PATH"
 
-source $HOME/.asdf/asdf.sh
+# source $HOME/.asdf/asdf.sh
 # source $HOME/.asdf/completions/asdf.bash
 
 # Shared personal scripts; these are typically commited tot he repo
@@ -469,3 +424,58 @@ export GIT_PAGER="delta"
 
 bindkey '^q' push-line
 if [ -e /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+setopt promptsubst
+
+zinit load denisidoro/navi
+zinit load skywind3000/z.lua
+
+zinit load zsh-users/zsh-autosuggestions
+zinit load zsh-users/zsh-completions
+zinit load zsh-users/zsh-history-substring-search
+
+zinit load zdharma/history-search-multi-word
+zinit light zdharma/fast-syntax-highlighting
+
+# zinit load leophys/zsh-plugin-fzf-finder
+
+# This has to go last. You also have to run:
+zinit load zsh-users/zsh-syntax-highlighting
+
+# Load powerlevel10k theme
+zinit ice depth"1" # git clone depth
+zinit light romkatv/powerlevel10k
+
+zinit snippet OMZP::git
+zinit snippet OMZP::dotenv
+zinit snippet OMZP::rake
+zinit snippet OMZP::ruby
+
+zinit light romkatv/powerlevel10k
+
+zinit ice src="asdf.sh" atinit'zpcompinit; zpcdreplay' nocd
+zinit load asdf-vm/asdf
+zinit cdclear -q
