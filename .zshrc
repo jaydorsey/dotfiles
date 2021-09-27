@@ -479,3 +479,15 @@ zinit light romkatv/powerlevel10k
 zinit ice src="asdf.sh" atinit'zpcompinit; zpcdreplay' nocd
 zinit load asdf-vm/asdf
 zinit cdclear -q
+
+# This isn't defined in OMZP::git but I expected it to be
+function git_current_branch() {
+  local ref
+  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
