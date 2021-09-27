@@ -1,10 +1,9 @@
-local g = vim.g
-
-g.mapleader = " "
+vim.g.mapleader = " "
 
 local map = vim.api.nvim_set_keymap
 
 options = { noremap = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
+silent_options = { noremap = true, silent = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 
 map('n', '<leader>e', ':NvimTreeToggle<cr>', options)
 map('n', '<leader>r', ':NvimTreeRefresh<cr>', options)
@@ -53,13 +52,11 @@ map('n', 'N', 'N<Plug>Pulse', options)
 map('n', '<leader>l', '<Plug>(Limelight)', options)
 map('x', '<leader>l', '<Plug>(Limelight)', options)
 
-map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", options)
--- map('n', '<leader>p', ':Telescope find_files<cr>', options)
+map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
 
-map('n', '<leader>b', ":lua require('telescope.builtin').buffers()<cr>", options)
+map('n', '<leader>b', ":lua require('telescope.builtin').buffers()<cr>", silent_options)
 
--- Keep the cursor in place while joining lines
-map('n', 'J', 'mzJ`z', options)
+map('n', 'J', 'mzJ`z', options) -- Keep the cursor in place while joining lines
 
 map('n', 'K', ':Find<cr>', options)
 
