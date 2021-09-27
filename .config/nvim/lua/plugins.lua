@@ -62,6 +62,8 @@ return require('packer').startup(function()
   -- }
   use {'wellle/targets.vim'}
 
+  use {'axelf4/vim-strip-trailing-whitespace'}
+
   -- Look at these
   -- use {'dstein64/vim-win', config=req 'win'}
   -- use {'liuchengxu/vista.vim', config=req 'vista'}
@@ -166,13 +168,13 @@ return require('packer').startup(function()
   use {'junegunn/fzf.vim'}
   use {'kyazdani42/nvim-tree.lua', wants='nvim-web-devicons'} -- NERDTree replacement. Use g? to open up help
 
-  use {'Iron-E/nvim-highlite'}
-  use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    config = function() require('statusline') end,
-    requires = {'kyazdani42/nvim-web-devicons', 'Iron-E/nvim-highlite'}
-  }
+  -- use {'Iron-E/nvim-highlite'}
+  -- use {
+  --   'glepnir/galaxyline.nvim',
+  --   branch = 'main',
+  --   config = function() require('statusline') end,
+  --   requires = {'kyazdani42/nvim-web-devicons', 'Iron-E/nvim-highlite'}
+  -- }
 
   use {
     'lewis6991/gitsigns.nvim',
