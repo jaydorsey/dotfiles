@@ -450,12 +450,12 @@ zinit light-mode for \
 
 setopt promptsubst
 
-zinit load denisidoro/navi
-zinit load skywind3000/z.lua
+zinit light denisidoro/navi
+zinit light skywind3000/z.lua
 
-zinit load zsh-users/zsh-autosuggestions
-zinit load zsh-users/zsh-completions
-zinit load zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-history-substring-search
 
 zinit load zdharma/history-search-multi-word
 zinit light zdharma/fast-syntax-highlighting
@@ -466,8 +466,7 @@ zinit light zdharma/fast-syntax-highlighting
 zinit load zsh-users/zsh-syntax-highlighting
 
 # Load powerlevel10k theme
-zinit ice depth"1" # git clone depth
-zinit light romkatv/powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zinit snippet OMZP::git
 zinit snippet OMZP::dotenv
