@@ -137,24 +137,12 @@ vim.o.errorbells = false
 vim.wo.number = true -- Line numbers on
 vim.wo.colorcolumn = "120"
 
--- g.python3_host_prog = vim.env.HOME .. '/leet/vim-python3/bin/python3'
-
 -- delimtmate
 vim.g.delimitMate_expand_space = 1
 
 -- committia
 vim.g.committia_open_only_vim_starting = 1
 vim.g.committia_edit_window_width = 120
-
--- TODO: Figure out this syntax, with the path
--- let g:python3_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
--- let g:python_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
-
--- vim.g.ruby_path="$HOME/.asdf/shims/ruby"
-
--- vim.g.ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
--- vim.g.ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
--- vim.g.ruby_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/neovim-ruby-host'
 
 vim.g.yaml_formatter_indent_collection=1
 
@@ -168,14 +156,74 @@ vim.g.blamer_delay = 500
 vim.g.blamer_show_in_visual_modes = 0
 vim.g.blamer_date_format = '%Y-%m-%d'
 
--- let g:polyglot_disabled = ['yard', 'typescript', 'jsx', 'tsx']
+
 -- " sheerun/vim-yardoc
--- let g:vim_markdown_conceal = 0
+vim.cmd [[let g:vim_markdown_conceal = 0]]
+
+-- TODO: Figure out this syntax, with the path
+-- vim.cmd [[let g:indent_blankline_use_treesitter = v:true]]
+-- vim.cmd([[
+--   let g:multiline_list = [
+--             \ '1',
+--             \ 2,
+--             \ '3',
+--             \ ]
+-- ]])
+
+-- " sheerun/vim-yardoc
+-- vim.cmd [[let g:vim_markdown_conceal = 0]]
+vim.g.vim_markdown_conceal = 0
+
+-- TODO: Figure out this syntax, with the path
+-- let g:python3_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
+-- let g:python_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/python'
+
+-- vim.g.ruby_path="$HOME/.asdf/shims/ruby"
+
+-- vim.g.ruby_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
+-- vim.g.ruby_default_path=escape(expand('$HOME'), '\') . '/.asdf/shims/ruby'
+-- vim.g.ruby_host_prog=escape(expand('$HOME'), '\') . '/.asdf/shims/neovim-ruby-host'
+
+
+-- " ripgrep customization
+-- " http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
+-- let g:rg_command = '
+--   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always"
+--   \ -g "!.git/*"
+--   \ -g "!.elixir_ls/*"
+--   \ -g "!spec/vcr/*"
+--   \ '
+vim.cmd [[
+let g:rg_command = '
+   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always"
+  \ -g "!.git/*"
+  \ -g "!.elixir_ls/*"
+  \ -g "!spec/vcr/*"
+  \ '
+]]
 
 vim.g.ruby_indent_access_modifier_style = 'normal' -- Using vim-ruby via vim-polyglot, indent per work convention
 vim.g.ruby_indent_assignment_style = 'variable' -- Indent for multi-line statements against left. variable or hanging
 vim.g.ruby_indent_block_style = 'do' -- Indent nested blocks, do or expression
 vim.g.ruby_space_errors = 1 -- Highlight whitespace errors
+
+vim.g.ale_disable_lsp = 1
+-- Plug 'dense-analysis/ale'
+vim.g.ale_sign_column_always = 1
+-- vim.g.ale_sign_warning = 'î¸'
+-- vim.g.ale_sign_error = 'î±'
+vim.g.ale_fix_on_save = 1
+-- vim.g.ale_ruby_rubocop_executable = escape(expand('$HOME'), '\') . '/.asdf/shims/bundle'
+
+vim.cmd [[
+  let g:ale_linters = {'ruby':['rubocop']}
+]]
+
+-- let g:ale_fixers = {'*':['remove_trailing_lines','trim_whitespace'],'ruby':['rubocop']}
+vim.cmd [[
+  let g:ale_fixers = {'ruby':['rubocop']}
+]]
+
 
 -- " Set completeopt to have a better completion experience
 -- set completeopt=menuone,noinsert,noselect

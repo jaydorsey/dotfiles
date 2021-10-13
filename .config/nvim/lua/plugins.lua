@@ -112,7 +112,7 @@ return require('packer').startup(function()
 
   use {'jgdavey/tslime.vim', branch=main} -- Send to tmux
   use {'junegunn/limelight.vim'} -- Highlight code blocks with :LimelightToggle
-  -- use {'junegunn/vim-easy-align'}
+  use {'junegunn/vim-easy-align'} -- Align code
 
   use {'tversteeg/registers.nvim'}
   -- use {'junegunn/vim-peekaboo'} -- Extends " and @ in normal mode to auto-show registers
@@ -226,12 +226,12 @@ return require('packer').startup(function()
 
   -- Load on a combination of conditions: specific filetypes or commands
   -- Also run code after load (see the "config" key)
-  -- use {
-  --   'w0rp/ale',
-  --   ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-  --   cmd = 'ALEEnable',
-  --   config = 'vim.cmd[[ALEEnable]]'
-  -- }
+  use {
+    'w0rp/ale',
+    ft = {'sh', 'zsh', 'markdown', 'ruby', 'yml'},
+    cmd = 'ALEEnable',
+    config = 'vim.cmd[[ALEEnable]]'
+  }
 end)
 -- vim.api.nvim_del_keymap('n', 'm')
 

@@ -1,4 +1,10 @@
 -- Based heavily on https://gitlab.com/Iron_E/dotfiles
+
+-- This needs to load _really_ early or else it warns; just leave here for now
+vim.cmd([[
+  let g:polyglot_disabled = ['yard', 'typescript', 'jsx', 'tsx']
+]])
+
 require('settings')
 require('maps')
 require('plugins')
