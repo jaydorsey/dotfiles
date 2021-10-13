@@ -241,9 +241,9 @@ alias vi='nvim'
 alias vim='nvim'
 alias wc='cw'
 alias zf='z -I'
-alias -='cd -'
 alias ..='cd ..'
 alias ...='cd ../..'
+# alias -='cd -'
 
 if [ -f ~/.localrc ]; then
   source ~/.localrc
