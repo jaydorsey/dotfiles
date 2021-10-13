@@ -190,6 +190,12 @@ rg -g '<file_glob>' --files . | xargs wc -l | sort
 curl -H "Content-type: application/json" -H "Accept: application/json" "<url>"
 
 
+% logs
+
+# Use angle-grinder to parse Heroku router logs and find unique pages/paths
+cat <log_file> | grep router | grep -Ev 'assets|favicon|png|manifest|robots|packs|wp-login|.env|php|svg|jpg' | agrind '* | logfmt | parse regex "path=\"(?P<url>[^? \"]+)" | fields url' > urls.txt
+
+
 % ffmpeg
 
 # Split mp4 into multiple files
