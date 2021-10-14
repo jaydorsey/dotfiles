@@ -7,6 +7,15 @@ if not vim.loop.fs_stat(vim.fn.glob(install_path)) then
 end
 
 vim.cmd [[packadd packer.nvim]]
+require('packer').init({
+  git = { clone_timeout = 350, },
+  display = {
+    title = "Packer",
+    done_sym = '',
+    error_syn = "×",
+    keybindings = { toggle_info = 'o' }
+  }
+})
 
 vim.cmd([[
   augroup packer_user_config
