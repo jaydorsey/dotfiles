@@ -88,8 +88,3 @@ map('n', '@i', ':DelimitMateOff<cr><esc>^xxxiRails.logger.info(<esc>$a)<esc>:Del
 
 -- Add a frozen string literal comment to the top of a file
 map('n', '@f', 'gg0i<cr><cr><esc>kki# frozen_string_literal: true<esc>``', options)
-
--- vim-signature set next mark
-map('n', 'mm', 'm,', options)
--- vim-signature jump to next mark
-map('n', 'M', ']`', options)
