@@ -194,12 +194,7 @@ vim.g.vim_markdown_conceal = 0
 --   \ -g "!spec/vcr/*"
 --   \ '
 vim.cmd [[
-let g:rg_command = '
-   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always"
-  \ -g "!.git/*"
-  \ -g "!.elixir_ls/*"
-  \ -g "!spec/vcr/*"
-  \ '
+  let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always" -g "!.git/*" -g "!.elixir_ls/*" -g "!spec/vcr/*"'
 ]]
 
 vim.g.ruby_indent_access_modifier_style = 'normal' -- Using vim-ruby via vim-polyglot, indent per work convention
