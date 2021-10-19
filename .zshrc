@@ -287,7 +287,8 @@ unsetopt nomatch
 # pip install --upgrade --user pip setuptools neovim wheel neovim yamllint pynvim
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+export HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup
+# source $HEROKU_AC_ZSH_SETUP_PATH
 
 # Start navi with CTRL-G from a terminal
 # https://github.com/denisidoro/navi#shell-widget
@@ -308,7 +309,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # zprof
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -453,6 +454,10 @@ zinit light-mode for \
 
 setopt promptsubst
 
+# zinit ice atinit'zmodload zsh/zprof' \
+#     atload'zprof | head -n 20; zmodload -u zsh/zprof'
+zinit light zdharma/fast-syntax-highlighting
+
 zinit light denisidoro/navi
 zinit light skywind3000/z.lua
 
@@ -461,7 +466,6 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-history-substring-search
 
 zinit load zdharma/history-search-multi-word
-zinit light zdharma/fast-syntax-highlighting
 
 # zinit load leophys/zsh-plugin-fzf-finder
 
