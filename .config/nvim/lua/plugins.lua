@@ -200,7 +200,14 @@ return require('packer').startup(function()
   use {'tarekbecker/vim-yaml-formatter', ft={'yaml', 'yml'}}
   use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
   use {'junegunn/fzf.vim'}
-  use {'kyazdani42/nvim-tree.lua', wants='nvim-web-devicons'} -- NERDTree replacement. Use g? to open up help
+
+  -- NERDTree replacement. Use g? to open up help
+
+  use {
+      'kyazdani42/nvim-tree.lua',
+      requires = 'kyazdani42/nvim-web-devicons',
+      config = function() require'nvim-tree'.setup {} end
+  }
 
   -- use {'Iron-E/nvim-highlite'}
   -- use {
