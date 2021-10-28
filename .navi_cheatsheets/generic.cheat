@@ -151,6 +151,15 @@ awk 'length($0) > <max_length> {printf "%4d : %s(%4d):%s\n", length($0), FILENAM
 fold -w <width> -s <input_file_name> > <output_file_name>
 
 
+% zinit
+
+# Update ziniit
+zinit self-update
+
+# Update zinit plugins
+zinit update --parallel
+
+
 % ctags
 
 # Generate tags in from multiple directories
@@ -194,7 +203,7 @@ curl -H "Content-type: application/json" -H "Accept: application/json" "<url>"
 
 # Use angle-grinder to parse Heroku router logs and find unique pages/paths
 cat <log_file> | grep router | grep -Ev 'assets|favicon|png|manifest|robots|packs|wp-login|.env|php|svg|jpg' | agrind '* | logfmt | parse regex "path=\"(?P<url>[^? \"]+)" | fields url' > urls.txt
-
+$ url: echo '<url''>'
 
 % ffmpeg
 
