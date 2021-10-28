@@ -151,6 +151,15 @@ awk 'length($0) > <max_length> {printf "%4d : %s(%4d):%s\n", length($0), FILENAM
 fold -w <width> -s <input_file_name> > <output_file_name>
 
 
+% zinit
+
+# Update ziniit
+zinit self-update
+
+# Update zinit plugins
+zinit update --parallel
+
+
 % ctags
 
 # Generate tags in from multiple directories
@@ -190,6 +199,12 @@ rg -g '<file_glob>' --files . | xargs wc -l | sort
 curl -H "Content-type: application/json" -H "Accept: application/json" "<url>"
 
 
+% logs
+
+# Use angle-grinder to parse Heroku router logs and find unique pages/paths
+cat <log_file> | grep router | grep -Ev 'assets|favicon|png|manifest|robots|packs|wp-login|.env|php|svg|jpg' | agrind '* | logfmt | parse regex "path=\"(?P<url>[^? \"]+)" | fields url' > urls.txt
+$ url: echo '<url''>'
+
 % ffmpeg
 
 # Split mp4 into multiple files
@@ -227,6 +242,12 @@ sed -i .bak 's/<string_to_replace>/<new_string>/' <file_name>
 
 # List all files, but with some folders excluded
 tree -a -I '.git|node_modules'
+
+
+% ruby
+
+# List options ruby 2.x+ was compiled/configured with
+ruby -e "puts RbConfig::CONFIG['MAINLIBS']"
 
 
 % ruby bundler

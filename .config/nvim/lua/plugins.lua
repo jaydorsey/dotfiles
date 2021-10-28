@@ -7,6 +7,15 @@ if not vim.loop.fs_stat(vim.fn.glob(install_path)) then
 end
 
 vim.cmd [[packadd packer.nvim]]
+require('packer').init({
+  git = { clone_timeout = 350, },
+  display = {
+    title = "Packer",
+    done_sym = '',
+    error_syn = "×",
+    keybindings = { toggle_info = 'o' }
+  }
+})
 
 vim.cmd([[
   augroup packer_user_config
@@ -19,13 +28,28 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim'} -- Packer can manage itself
 
   use {
+    'lewis6991/impatient.nvim',
+    opt = true,
+    config = function() require('impatient') end
+  }
+
+  use {
     'nvim-treesitter/nvim-treesitter',
     requires = {
       'nvim-treesitter/nvim-treesitter-refactor',
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/playground',
+      'p00f/nvim-ts-rainbow'
     },
     run = ':TSUpdate',
   }
+
+  use { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' }
+  use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }
+  use { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle', after = 'nvim-treesitter' }
+  use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
+
+  use {'neoclide/coc.nvim', branch = 'release'}
 
   -- use {
   --   'folke/trouble.nvim',
@@ -52,15 +76,19 @@ return require('packer').startup(function()
   }
 
   use {'vim-ruby/vim-ruby'}
+
   -- use {
   --   'ggandor/lightspeed.nvim',
   --   wants='vim-sandwich',
-  --   config = function() 
+  --   config = function()
   --     require('lightspeed').setup({
-  --     }) 
+  --     })
   --   end
   -- }
+
   use {'wellle/targets.vim'}
+
+  use {'axelf4/vim-strip-trailing-whitespace'}
 
   -- Look at these
   -- use {'dstein64/vim-win', config=req 'win'}
@@ -72,14 +100,15 @@ return require('packer').startup(function()
       require('indent_blankline').setup({
         space_char_blankline = ' ',
         show_end_of_line = true,
-        char_highlight_list = {
-          'IndentBlanklineIndent1',
-          'IndentBlanklineIndent2',
-          'IndentBlanklineIndent3',
-          'IndentBlanklineIndent4',
-          'IndentBlanklineIndent5',
-          'IndentBlanklineIndent6'
-        }
+        -- disabled character highlighting for now for readability
+        -- char_highlight_list = {
+        --   'IndentBlanklineIndent1',
+        --   'IndentBlanklineIndent2',
+        --   'IndentBlanklineIndent3',
+        --   'IndentBlanklineIndent4',
+        --   'IndentBlanklineIndent5',
+        --   'IndentBlanklineIndent6'
+        -- }
       })
     end
   }
@@ -106,11 +135,19 @@ return require('packer').startup(function()
   --   config = [[require('signature')]],
   --   -- disable = true
   -- }
-  use {'jeetsukumaran/vim-markology'}
+  -- use {'jeetsukumaran/vim-markology'}
+  -- Bookmarking plugin, might replace markology
+  -- mm to create bookmark
+  -- mi to bookmark & annotate
+  -- ma to show all bookmarks
+  use { 'MattesGroeger/vim-bookmarks' }
 
   use {'jgdavey/tslime.vim', branch=main} -- Send to tmux
   use {'junegunn/limelight.vim'} -- Highlight code blocks with :LimelightToggle
-  -- use {'junegunn/vim-easy-align'}
+  use {'junegunn/vim-easy-align'} -- Align code
+
+  -- Cursor beacon across huge jumps
+  use { 'edluffy/specs.nvim' }
 
   use {'tversteeg/registers.nvim'}
   -- use {'junegunn/vim-peekaboo'} -- Extends " and @ in normal mode to auto-show registers
@@ -164,20 +201,103 @@ return require('packer').startup(function()
   use {'tarekbecker/vim-yaml-formatter', ft={'yaml', 'yml'}}
   use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
   use {'junegunn/fzf.vim'}
-  use {'kyazdani42/nvim-tree.lua', wants='nvim-web-devicons'} -- NERDTree replacement. Use g? to open up help
 
-  use {'Iron-E/nvim-highlite'}
+  -- NERDTree replacement. Use g? to open up help
+
   use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    config = function() require('statusline') end,
-    requires = {'kyazdani42/nvim-web-devicons', 'Iron-E/nvim-highlite'}
+      'kyazdani42/nvim-tree.lua',
+      requires = 'kyazdani42/nvim-web-devicons',
+      config = function() require'nvim-tree'.setup {} end
   }
 
-  use {
-    'lewis6991/gitsigns.nvim',
+  -- use {'Iron-E/nvim-highlite'}
+  -- use {
+  --   'glepnir/galaxyline.nvim',
+  --   branch = 'main',
+  --   config = function() require('statusline') end,
+  --   requires = {'kyazdani42/nvim-web-devicons', 'Iron-E/nvim-highlite'}
+  -- }
+
+  -- Statusline plugin written in vim
+  use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
+
+  -- Tabline plugin to show buffers, files, etc.
+  use { 'kdheepak/tabline.nvim',
+    config = function()
+      require'tabline'.setup {
+        enable = true,
+        options = {
+          section_separators = {'', ''},
+          component_separators = {'', ''},
+          max_bufferline_percent = 66,
+          show_tabs_always = true,
+          show_devicons = true,
+          show_bufnr = false,
+          show_filename_only = true,
+        }
+      }
+      vim.cmd [[
+        set guioptions-=e
+        set sessionoptions+=tabpages,globals
+      ]]
+    end,
+    requires = { {'hoob3rt/lualine.nvim'}, {'kyazdani42/nvim-web-devicons', opt = true} }
+  }
+
+  use { 'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('gitsigns').setup() end
+    event = 'BufRead',
+    config = function()
+      require('gitsigns').setup {
+        signs = {
+          add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+          change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+          delete       = {hl = 'GitSignsDelete', text = '│', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+          topdelete    = {hl = 'GitSignsDelete', text = '│', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+          changedelete = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+        },
+        signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+        numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+        linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+        word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+        keymaps = { -- Default keymap options
+          noremap = true,
+          ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+          ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+          ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+          ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+          ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+          ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+          ['v <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+          ['n <leader>hR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+          ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+          ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+          ['n <leader>hS'] = '<cmd>lua require"gitsigns".stage_buffer()<CR>',
+          ['n <leader>hU'] = '<cmd>lua require"gitsigns".reset_buffer_index()<CR>',
+          -- Text objects
+          ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+          ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+        },
+        watch_index = { interval = 1000, follow_files = true },
+        attach_to_untracked = true,
+        current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+        current_line_blame_formatter_opts = { relative_time = false },
+        sign_priority = 6,
+        update_debounce = 100,
+        status_formatter = nil,
+        max_file_length = 40000,
+        preview_config = {
+          -- Options passed to nvim_open_win
+          border = 'single',
+          style = 'minimal',
+          relative = 'cursor',
+          row = 0,
+          col = 1
+        },
+        use_internal_diff = true,  -- If vim.diff or luajit is present
+        yadm = { enable = false },
+      }
+    end
   }
 
   use {
@@ -224,12 +344,12 @@ return require('packer').startup(function()
 
   -- Load on a combination of conditions: specific filetypes or commands
   -- Also run code after load (see the "config" key)
-  -- use {
-  --   'w0rp/ale',
-  --   ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-  --   cmd = 'ALEEnable',
-  --   config = 'vim.cmd[[ALEEnable]]'
-  -- }
+  use {
+    'w0rp/ale',
+    ft = {'sh', 'zsh', 'markdown', 'ruby', 'yml'},
+    cmd = 'ALEEnable',
+    config = 'vim.cmd[[ALEEnable]]'
+  }
 end)
 -- vim.api.nvim_del_keymap('n', 'm')
 

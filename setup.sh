@@ -164,11 +164,11 @@ npm install -g neovim yarn
 
 # Generate tags for bundled gems. The grep ignores lines started with "The", which includes certain
 # tzinfo warnings that's common
-# ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths | grep -v "^The" | sed 's/$/\/lib/'
+# /usr/local/bin/ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths | grep -v "^The" | sed 's/$/\/lib/')
 #
 # Typically, you want to run this command once, in the repo root:
 #
-#     ctags . $(bundle list --paths)
+#     /usr/local/bin/ctags . $(bundle list --paths)
 #
 # For unused tool, you'll want to run this from the root:
 #
