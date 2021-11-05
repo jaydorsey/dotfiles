@@ -1,21 +1,8 @@
--- Modified this to use start, instead of opt; packer deletes the folder every time I run PackerClean otherwise. Not
--- really sure why
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-
-if not vim.loop.fs_stat(vim.fn.glob(install_path)) then
-  os.execute('git clone https://github.com/wbthomason/packer.nvim '..install_path)
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
-
-vim.cmd [[packadd packer.nvim]]
-require('packer').init({
-  git = { clone_timeout = 350, },
-  display = {
-    title = "Packer",
-    done_sym = '',
-    error_syn = "×",
-    keybindings = { toggle_info = 'o' }
-  }
-})
 
 vim.cmd([[
   augroup packer_user_config
@@ -24,8 +11,10 @@ vim.cmd([[
   augroup end
 ]])
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   use {'wbthomason/packer.nvim'} -- Packer can manage itself
+
+  use {'github/copilot.vim', branch = 'release' }
 
   use {
     'lewis6991/impatient.nvim',
@@ -51,19 +40,6 @@ return require('packer').startup(function()
 
   use {'neoclide/coc.nvim', branch = 'release'}
 
-  -- use {
-  --   'folke/trouble.nvim',
-  --   wants='nvim-web-devicons',
-  --   config = function() require('trouble').setup({auto_preview=false}) end
-  -- }
-
-  -- use {
-  --   'folke/todo-comments.nvim',
-  --   requires = 'nvim-lua/plenary.nvim',
-  --   wants = 'trouble.nvim',
-  --   config = function() require('todo-comments').setup({highlight = {keyword = 'bg'}}) end
-  -- }
-
   use {
     'TimUntersberger/neogit',
     requires = 'nvim-lua/plenary.nvim'
@@ -77,38 +53,16 @@ return require('packer').startup(function()
 
   use {'vim-ruby/vim-ruby'}
 
-  -- use {
-  --   'ggandor/lightspeed.nvim',
-  --   wants='vim-sandwich',
-  --   config = function()
-  --     require('lightspeed').setup({
-  --     })
-  --   end
-  -- }
-
   use {'wellle/targets.vim'}
 
   use {'axelf4/vim-strip-trailing-whitespace'}
-
-  -- Look at these
-  -- use {'dstein64/vim-win', config=req 'win'}
-  -- use {'liuchengxu/vista.vim', config=req 'vista'}
 
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('indent_blankline').setup({
         space_char_blankline = ' ',
-        show_end_of_line = true,
-        -- disabled character highlighting for now for readability
-        -- char_highlight_list = {
-        --   'IndentBlanklineIndent1',
-        --   'IndentBlanklineIndent2',
-        --   'IndentBlanklineIndent3',
-        --   'IndentBlanklineIndent4',
-        --   'IndentBlanklineIndent5',
-        --   'IndentBlanklineIndent6'
-        -- }
+        show_end_of_line = true
       })
     end
   }
@@ -129,13 +83,6 @@ return require('packer').startup(function()
   use {'jaydorsey/fzf_float', branch=main}
   use {'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut'} -- Use :ToGithub to open the current line in your browser
 
-  -- Create and navigate across marks
-  -- use {
-  --   'kshenoy/vim-signature',
-  --   config = [[require('signature')]],
-  --   -- disable = true
-  -- }
-  -- use {'jeetsukumaran/vim-markology'}
   -- Bookmarking plugin, might replace markology
   -- mm to create bookmark
   -- mi to bookmark & annotate
@@ -150,7 +97,6 @@ return require('packer').startup(function()
   use { 'edluffy/specs.nvim' }
 
   use {'tversteeg/registers.nvim'}
-  -- use {'junegunn/vim-peekaboo'} -- Extends " and @ in normal mode to auto-show registers
 
   use {
     'karb94/neoscroll.nvim',
@@ -168,17 +114,10 @@ return require('packer').startup(function()
     }
   }
 
-  -- use {
-  --   'blackCauldron7/surround.nvim',
-  --   config = function()
-  --     require('surround').setup {}
-  --   end
-  -- }
-
   use {'mbbill/undotree'}
   use {'mhinz/vim-startify'}
   use {'misterbuckley/vim-definitive'}
-  use {'neovim/nvim-lspconfig'}
+  -- use {'neovim/nvim-lspconfig'}
   use {'nvim-lua/completion-nvim'}
   use {'nvim-lua/plenary.nvim'}
   use {'nvim-lua/popup.nvim'}
@@ -203,20 +142,11 @@ return require('packer').startup(function()
   use {'junegunn/fzf.vim'}
 
   -- NERDTree replacement. Use g? to open up help
-
   use {
       'kyazdani42/nvim-tree.lua',
       requires = 'kyazdani42/nvim-web-devicons',
       config = function() require'nvim-tree'.setup {} end
   }
-
-  -- use {'Iron-E/nvim-highlite'}
-  -- use {
-  --   'glepnir/galaxyline.nvim',
-  --   branch = 'main',
-  --   config = function() require('statusline') end,
-  --   requires = {'kyazdani42/nvim-web-devicons', 'Iron-E/nvim-highlite'}
-  -- }
 
   -- Statusline plugin written in vim
   use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
@@ -350,6 +280,8 @@ return require('packer').startup(function()
     cmd = 'ALEEnable',
     config = 'vim.cmd[[ALEEnable]]'
   }
-end)
--- vim.api.nvim_del_keymap('n', 'm')
 
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)

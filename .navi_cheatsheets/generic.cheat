@@ -160,6 +160,12 @@ zinit self-update
 zinit update --parallel
 
 
+% neovim nvim vim packer
+
+# Update neovim
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+
 % ctags
 
 # Generate tags in from multiple directories
