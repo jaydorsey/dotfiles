@@ -1,4 +1,4 @@
 ruby 3.0.2
-nodejs ref:v15.8.0
-crystal 0.35.1
+nodejs 17.0.1
+crystal 1.2.1
 python 3.8.5
