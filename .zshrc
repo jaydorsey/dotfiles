@@ -5,10 +5,39 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source $HOME/.antigen/antigen.zsh
+
+antigen use oh-my-zsh
+
+antigen bundle asdf
+antigen bundle git
+antigen bundle heroku
+antigen bundle command-not-found
+
+antigen bundle denisidoro/navi
+antigen bundle skywind3000/z.lua
+
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+
+# antigen bundle leophys/zsh-plugin-fzf-finder
+
+# This has to go last. You also have to run:
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen theme romkatv/powerlevel10k
+
+antigen apply
+
 # Uncomment this, and the last line in this file for profiling information
 # zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOMEBREW_PREFIX/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
 # This appears to be set in at least the M1 version of brew
 if [[ -z "${HOMEBREW_PREFIX}" ]]; then
@@ -67,6 +96,12 @@ COMPLETION_WAITING_DOTS="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+
+# oh-my-zsh plugins
+plugins=(git asdf gem colored-man-pages tmux)
+
+# Always automatically update oh-my-zsh
+DISABLE_UPDATE_PROMPT="true"
 
 # Automatically load additional completion scripts. This is really slow so I've disabled for now
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
@@ -249,6 +284,8 @@ if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
 
+setopt AUTO_CD
+
 # Extended format with dates
 setopt EXTENDED_HISTORY
 
@@ -427,73 +464,5 @@ function gitclean() {
 export GIT_PAGER="delta"
 
 bindkey '^q' push-line
-if [ -e /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
-
-setopt promptsubst
-
-# zinit ice atinit'zmodload zsh/zprof' \
-#     atload'zprof | head -n 20; zmodload -u zsh/zprof'
-zinit light zdharma/fast-syntax-highlighting
-
-zinit light denisidoro/navi
-zinit light skywind3000/z.lua
-
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-history-substring-search
-
-zinit load zdharma/history-search-multi-word
-
-# zinit load leophys/zsh-plugin-fzf-finder
-
-# This has to go last. You also have to run:
-zinit load zsh-users/zsh-syntax-highlighting
-
-# Load powerlevel10k theme
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-zinit snippet OMZP::git
-zinit snippet OMZP::dotenv
-zinit snippet OMZP::rake
-zinit snippet OMZP::ruby
-
-zinit light romkatv/powerlevel10k
-
-zinit ice src="asdf.sh" atinit'zpcompinit; zpcdreplay' nocd
-zinit load asdf-vm/asdf
-zinit cdclear -q
-
-# This isn't defined in OMZP::git but I expected it to be
-function git_current_branch() {
-  local ref
-  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
-  local ret=$?
-  if [[ $ret != 0 ]]; then
-    [[ $ret == 128 ]] && return  # no git repo.
-    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
-  fi
-  echo ${ref#refs/heads/}
-}
+# if [ -e /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

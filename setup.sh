@@ -34,16 +34,11 @@ git clone https://github.com/wbthomason/packer.nvim\
 #######################################################
 HOMEBREW_PREFIX=$(brew --prefix)
 
-# Stops the "last logged in at" message when you open a new terminal window
-touch ~/.hushlogin
-
 brew tap homebrew/cask
 brew bundle --verbose
 brew link --force readline
 
-git clone https://github.com/zsh-users/antigen.git ~/.antigen
-
-git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all
+# git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all
 
 #######################################################
 #
@@ -66,6 +61,10 @@ do
   chsh -s $HOMEBREW_PREFIX/bin/zsh
 done
 
+# Use oh-my-zsh as my zsh framework
+
+# Install antigen as a zsh plugin manager
+git clone https://github.com/zsh-users/antigen.git ~/.antigen
 
 #######################################################
 #
@@ -91,40 +90,13 @@ pip3 install --user --upgrade pip setuptools neovim wheel yamllint sqlparse pynv
 # asdf for programming language version management
 #
 #######################################################
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
 
-~/.asdf/bin/asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
-~/.asdf/bin/asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 ~/.asdf/bin/asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
 ~/.asdf/bin/asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 
+# Required to install nodejs
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-
-
-#######################################################
-#
-# oh-my-zsh for zsh configuration management
-#
-#######################################################
-git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-
-curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > ~/.zsh/completion/_docker
-curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker_compose
-
-# Install navi
-
-# git clone https://github.com/denisidoro/navi ~/.navi
-# cd ~/.navi
-# make install
-
-# Configure navi zsh plugin
-mkdir -p ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/navi
-git clone https://github.com/denisidoro/navi ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/navi
-
 
 #######################################################
 #
@@ -139,7 +111,7 @@ mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/views
 mkdir -p ~/.terminfo
 mkdir -p ~/.config/yamllint
-tic -o ~/.terminfo xterm-256color.terminfo
+tic -o ~/.terminfo xterm-256color-italic.terminfo
 
 
 echo "Use stow . to symlink all files/directories"
