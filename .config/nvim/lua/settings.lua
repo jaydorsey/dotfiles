@@ -12,7 +12,7 @@ vim.opt.termguicolors = true
 vim.cmd [[filetype plugin indent on]]
 vim.cmd [[syntax on]]
 
-vim.cmd [[colorscheme catppuccino]]
+vim.cmd [[colorscheme catppuccin]]
 
 vim.g.indent_blankline_filetype_exclude = {
   'startify', 'log', 'fugitive', 'gitcommit', 'TelescopePrompt', 'undotree', 'markdown', 'peekaboo', 'git',
