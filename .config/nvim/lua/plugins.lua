@@ -144,9 +144,15 @@ return require('packer').startup(function(use)
   use {'guns/xterm-color-table.vim'}
   use {'haya14busa/vim-asterisk'} -- Improved * motions
   use {'inside/vim-search-pulse'}
-  use {'jaydorsey/charblob'}
-  use {'jaydorsey/fzf_float', branch=main}
-  use {'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut'} -- Use :ToGithub to open the current line in your browser
+  use {'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut'}
+
+  use {
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('gitlinker').setup()
+    end
+  }
 
   -- Bookmarking plugin, might replace markology
   -- mm to create bookmark
@@ -305,7 +311,24 @@ return require('packer').startup(function(use)
     }) end
   } 
 
-  use {'tomtom/tcomment_vim'} -- comment with gc motions
+  -- use {'tomtom/tcomment_vim'} -- comment with gc motions
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
+
+  use {
+    'folke/which-key.nvim',
+    config = function()
+      require('which-key').setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
   use {
     'nvim-telescope/telescope.nvim',
