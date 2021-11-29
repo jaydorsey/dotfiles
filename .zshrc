@@ -375,8 +375,10 @@ export PATH="$HOME/.local/bin:$PATH"
 # source $HOME/.asdf/asdf.sh
 # source $HOME/.asdf/completions/asdf.bash
 
-# Shared personal scripts; these are typically commited tot he repo
+# Shared personal scripts; these are typically commited to the repo
 export PATH=~/bin:$PATH
+
+export PATH=$HOME/.asdf/shims:$PATH
 
 # broot --print-shell-function zsh
 
