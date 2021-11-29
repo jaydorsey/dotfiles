@@ -266,3 +266,10 @@ bundle audit check --update
 
 # Copy a file from a remote app, locally
 heroku ps:copy <relative_file_path> -a <heroku_app_name>
+
+
+% zip unzip
+
+# Unzip a selected file from a zip file
+unzip -p <archive_zip_path> "<file_name>" output.eml
+
