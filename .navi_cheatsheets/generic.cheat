@@ -14,19 +14,15 @@ git branch -M main
 git log --all --full-history -- "**/<file_name>.*"
 
 # Find file with known path
-
 git log --all --full-history -- <full_path_to_file>
 
 # List branches merged into master
-
 git branch --merged master
 
 # Delete local branches that have been merged
-
 git branch --merged master | grep -v "master" | grep -v "production" | xargs git b -D
 
 # Search git history for text within files
-
 git log -S "<text>" <file_name>
 
 # https://stackoverflow.com/a/56054951/2892779
@@ -35,12 +31,13 @@ git log -S "<text>" <file_name>
 git rev-list -n 1 HEAD -- <full_path_to_file>
 
 # Empty commit
-
 git commit --allow-empty -m "Empty commit to trigger build"
 
 #  List files and last modification dates
+git ls-files -z | xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" {}
 
-git ls-files -z | xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" {} 
+# Pre-compute file paths to speed up git log commands
+git commit-graph write --reachable --changed-paths
 
 % tmux
 
