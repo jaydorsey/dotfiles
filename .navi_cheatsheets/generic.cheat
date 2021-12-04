@@ -179,6 +179,12 @@ $ folder: lsd */ -d | grep -f <(git ls-files | sed "s/\/.*//" | uniq)
 ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
 
 
+% asdf
+
+# Gem update each ruby version
+asdf list ruby | while read -r; do asdf local ruby $REPLY && gem update --system; done
+
+
 % profiling
 
 # Generate flamegraph with rbspy
