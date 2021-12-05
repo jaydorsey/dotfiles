@@ -279,6 +279,7 @@ alias zf='z -I'
 alias ..='cd ..'
 alias ...='cd ../..'
 # alias -='cd -'
+alias python="$HOMEBREW_PREFIX/bin/python3"
 
 if [ -f ~/.localrc ]; then
   source ~/.localrc
@@ -379,6 +380,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH=~/bin:$PATH
 
 export PATH=$HOME/.asdf/shims:$PATH
+export PATH=$HOME/.asdf/bin:$PATH
 
 # broot --print-shell-function zsh
 
@@ -466,5 +468,7 @@ function gitclean() {
 export GIT_PAGER="delta"
 
 bindkey '^q' push-line
+
+export PATH="$PATH:$HOME/go/bin"
 
 # if [ -e /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
