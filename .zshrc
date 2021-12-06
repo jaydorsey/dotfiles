@@ -431,7 +431,7 @@ function git_prune_remote() {
 
 function git_remove_merged_local_branch() {
   echo "Start removing out-dated local merged branches"
-  git branch --merged | egrep -v "(^\*|main|ANY_BRANCH_YOU_WANT_TO_EXCLUDE)" | xargs -I % git branch -d %
+  git branch --merged | egrep -v "(^\*|$git_main_branch|main|master|ANY_BRANCH_YOU_WANT_TO_EXCLUDE)" | xargs -I % git branch -d %
   echo "Finish removing out-dated local merged branches"
 }
 
@@ -445,12 +445,12 @@ function git_remove_merged_local_branch() {
 # the contents in local and remote are different. As a result,
 # This clean up function cannot remove local squash-merged branch.
 function git_remove_squash_merged_local_branch() {
-  echo "Start removing out-dated local squash-merged branches"
-  git checkout -q main &&
+  echo "Start removing out-dated local squash-merged branches from $(git_main_branch)"
+  git checkout -q $git_main_branch &&
     git for-each-ref refs/heads/ "--format=%(refname:short)" |
     while read branch; do
-      ancestor=$(git merge-base main $branch) &&
-        [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $ancestor -m _)) == "-"* ]] &&
+      ancestor=$(git merge-base $(git_main_branch) $branch) &&
+        [[ $(git cherry $(git_main_branch) $(git commit-tree $(git rev-parse $branch^{tree}) -p $ancestor -m _)) == "-"* ]] &&
         git branch -D $branch
     done
   echo "Finish removing out-dated local squash-merged branches"
