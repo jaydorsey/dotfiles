@@ -5,6 +5,7 @@ localbin/*
 .localrc
 .navi/local.cheat
 # Folders that should be ignored because of using stow
+.config/broot
 .config/coc
 .config/configstore
 .config/fontforge
