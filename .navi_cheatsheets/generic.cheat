@@ -39,6 +39,13 @@ git ls-files -z | xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" {}
 # Pre-compute file paths to speed up git log commands
 git commit-graph write --reachable --changed-paths
 
+# Add executable flag onto file
+git update-index --chmod=+x <path_to_file>
+
+# Remove executable flag onto file
+git update-index --chmod=-x <path_to_file>
+
+
 % tmux
 
 # Kill tmux sessions
