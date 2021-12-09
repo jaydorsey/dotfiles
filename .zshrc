@@ -472,3 +472,5 @@ bindkey '^q' push-line
 export PATH="$PATH:$HOME/go/bin"
 
 # if [ -e /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+source $HOME/.config/broot/launcher/bash/br
