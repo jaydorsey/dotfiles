@@ -54,7 +54,8 @@ map('x', '<leader>l', '<Plug>(Limelight)', options)
 
 map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
 
-map('n', '<leader>b', ":lua require('telescope.builtin').buffers()<cr>", silent_options)
+-- map('n', '<leader>b', ":lua require('telescope.builtin').buffers()<cr>", silent_options)
+map('n', '<leader>b', ':BufferPick<cr>', silent_options)
 
 map('n', 'J', 'mzJ`z', options) -- Keep the cursor in place while joining lines
 

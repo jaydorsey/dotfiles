@@ -222,28 +222,34 @@ return require('packer').startup(function(use)
   -- Statusline plugin written in vim
   use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
 
-  -- Tabline plugin to show buffers, files, etc.
-  use { 'kdheepak/tabline.nvim',
-    config = function()
-      require'tabline'.setup {
-        enable = true,
-        options = {
-          section_separators = {'', ''},
-          component_separators = {'', ''},
-          max_bufferline_percent = 66,
-          show_tabs_always = true,
-          show_devicons = true,
-          show_bufnr = false,
-          show_filename_only = true,
-        }
-      }
-      vim.cmd [[
-        set guioptions-=e
-        set sessionoptions+=tabpages,globals
-      ]]
-    end,
-    requires = { {'hoob3rt/lualine.nvim'}, {'kyazdani42/nvim-web-devicons', opt = true} }
+  -- Tabline plugin with different features
+  use {
+    'romgrk/barbar.nvim',
+    requires = {'kyazdani42/nvim-web-devicons'}
   }
+
+  -- Tabline plugin to show buffers, files, etc.
+  -- use { 'kdheepak/tabline.nvim',
+  --   config = function()
+  --     require'tabline'.setup {
+  --       enable = true,
+  --       options = {
+  --         section_separators = {'', ''},
+  --         component_separators = {'', ''},
+  --         max_bufferline_percent = 66,
+  --         show_tabs_always = true,
+  --         show_devicons = true,
+  --         show_bufnr = false,
+  --         show_filename_only = true,
+  --       }
+  --     }
+  --     vim.cmd [[
+  --       set guioptions-=e
+  --       set sessionoptions+=tabpages,globals
+  --     ]]
+  --   end,
+  --   requires = { {'hoob3rt/lualine.nvim'}, {'kyazdani42/nvim-web-devicons', opt = true} }
+  -- }
 
   use { 'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
