@@ -123,6 +123,30 @@ echo "Symlink or create your ~/.localrc file"
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+# Always make file finder open in expanded state
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Disable save new documents to cloud
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# Don't write .DS_Store files on network drives
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# Don't auto-substitute smart dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Don't auto-substitute smart quotes
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# Remove dock auto-hide delay
+defaults write com.apple.Dock autohide-delay -float 0 && killall Dock
+
+# Always show hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles -bool YES && killall Finder
+
 # Turn on full keyboard access (tab thru system menu items)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
