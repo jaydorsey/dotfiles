@@ -16,6 +16,12 @@ git log --all --full-history -- "**/<file_name>.*"
 # Find file with known path
 git log --all --full-history -- <full_path_to_file>
 
+# Find commits not merged
+git log <source_branch> --not <target_branch>
+
+# Find which files have changed between commits
+git log <source_branch> --not <target_branch> --stat
+
 # List branches merged into master
 git branch --merged master
 
