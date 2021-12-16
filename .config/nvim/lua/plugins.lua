@@ -67,7 +67,7 @@ return require('packer').startup(function(use)
             neogit = false,
             vim_sneak = false,
             fern = false,
-            barbar = false,
+            barbar = true,
             bufferline = false,
             markdown = false,
             lightspeed = false,
@@ -225,7 +225,12 @@ return require('packer').startup(function(use)
   -- Tabline plugin with different features
   use {
     'romgrk/barbar.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'}
+    requires = {'kyazdani42/nvim-web-devicons'},
+  }
+
+  vim.g.bufferline = {
+    tabpages = true,
+    insert_at_end = true
   }
 
   -- Tabline plugin to show buffers, files, etc.
