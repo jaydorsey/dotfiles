@@ -135,7 +135,6 @@ return require('packer').startup(function(use)
   use {'svermeulen/vimpeccable'}
   use {'AndrewRadev/splitjoin.vim'} -- Use shortcuts gJ and gS to join and split, respectively
   use {'Konfekt/FastFold'}
-  use {'Pocco81/Catppuccino.nvim'}
   use {'Raimondi/delimitMate'} -- Add automatic delimiters ([<{, quotes, etc.
   use {'alfredodeza/jacinto.vim'} -- Formatting & validating json via :Jacinto
   use {'bronson/vim-visual-star-search'}
