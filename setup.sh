@@ -151,10 +151,10 @@ defaults write com.apple.finder AppleShowAllFiles -bool YES && killall Finder
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Fastest key repeat rate, can't set via the clickable interface. Log out to activate
-defaults write -g KeyRepeat -int 1
+# defaults write -g KeyRepeat -int 1
 
-# Fasted initial repeat; can't set via interface. Log out to activate
-defaults write -g InitialKeyRepeat -int 10
+# Fastesst initial repeat; can't set via interface. Log out to activate
+# defaults write -g InitialKeyRepeat -int 10
 
 cargo install cw
 
