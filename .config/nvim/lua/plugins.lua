@@ -132,6 +132,8 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- Measure startup time with :StartupTime
+  use {'dstein64/vim-startuptime'}
   use {'svermeulen/vimpeccable'}
   use {'AndrewRadev/splitjoin.vim'} -- Use shortcuts gJ and gS to join and split, respectively
   use {'Konfekt/FastFold'}
