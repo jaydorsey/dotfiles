@@ -165,7 +165,27 @@ return require('packer').startup(function(use)
   use {'junegunn/vim-easy-align'} -- Align code
 
   -- Cursor beacon across huge jumps
-  use { 'edluffy/specs.nvim' }
+  use {
+    'edluffy/specs.nvim',
+    config = function()
+      require('specs').setup({
+        show_jumps = true,
+        min_jump = 10,
+        popup = {
+          width = 60,
+          fader = require('specs').linear_fader,
+          resizer = require('specs').shrink_resizer
+        },
+        ignore_filetypes = {
+          qf = true
+        },
+        ignore_buftypes = {
+          nofile = true,
+          quickfix = true
+        }
+      })
+    end
+  }
 
   use {'tversteeg/registers.nvim'}
 
