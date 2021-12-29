@@ -134,11 +134,10 @@ return require('packer').startup(function(use)
 
   -- Measure startup time with :StartupTime
   use {'dstein64/vim-startuptime'}
-  use {'svermeulen/vimpeccable'}
   use {'AndrewRadev/splitjoin.vim'} -- Use shortcuts gJ and gS to join and split, respectively
   use {'Konfekt/FastFold'}
   use {'Raimondi/delimitMate'} -- Add automatic delimiters ([<{, quotes, etc.
-  use {'alfredodeza/jacinto.vim'} -- Formatting & validating json via :Jacinto
+  use {'alfredodeza/jacinto.vim', ft = {'json'}} -- Formatting & validating json via :Jacinto
   use {'bronson/vim-visual-star-search'}
   use {'editorconfig/editorconfig-Vim'}
   use {'gioele/vim-autoswap'} -- Better, automatic swap file management
