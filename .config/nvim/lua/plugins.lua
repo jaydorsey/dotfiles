@@ -89,6 +89,24 @@ return require('packer').startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require'nvim-treesitter.configs'.setup({
+        rainbow = {
+          enable = true,
+          extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+          max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+        },
+        ensure_installed = {"ruby", "yaml", "json"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+        ignore_install = { "javascript" }, -- List of parsers to ignore installing
+        highlight = {
+          enable = true,             -- false will disable the whole extension
+          disable = { "c", "rust" }  -- list of language that will be disabled
+        },
+        indent = {
+          enable = true
+        }
+      })
+    end,
     requires = {
       'nvim-treesitter/nvim-treesitter-refactor',
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -142,8 +160,10 @@ return require('packer').startup(function(use)
   use {'editorconfig/editorconfig-Vim'}
   use {'gioele/vim-autoswap'} -- Better, automatic swap file management
   use {'guns/xterm-color-table.vim'}
-  use {'haya14busa/vim-asterisk'} -- Improved * motions
+  -- Improved * motions
+  use {'haya14busa/vim-asterisk'}
   use {'inside/vim-search-pulse'}
+
   use {'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut'}
 
   use {
@@ -214,7 +234,6 @@ return require('packer').startup(function(use)
   use {'nvim-lua/popup.nvim'}
   use {'rhysd/committia.vim'}
   -- use {'rrethy/vim-hexokinase', run='make hexakinase'}
-  use {'tjdevries/colorbuddy.vim'}
   use {'tpope/vim-characterize'}
   use {'tpope/vim-dispatch'}
   use {'tpope/vim-eunuch'}

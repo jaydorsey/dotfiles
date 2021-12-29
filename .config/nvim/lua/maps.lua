@@ -2,6 +2,9 @@ vim.g.mapleader = " "
 
 local map = vim.api.nvim_set_keymap
 
+-- This is needed for maps that call <Plug>
+-- https://neovim.discourse.group/t/unable-to-make-plug-calls/402/4
+plug_options = { silent = true }
 options = { noremap = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 silent_options = { noremap = true, silent = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 
@@ -44,13 +47,15 @@ map('n', ',cs', ':let @*=expand("%")<cr>', options)
 -- put absolute path in clipboard
 map('n', ',cl', ':let @*=expand("%:p")<cr>', options)
 
-map('n', '*', '<Plug>(asterisk-z*)<Plug>Pulse', options)
-map('n', '#', '<Plug>(asterisk-z#)<Plug>Pulse', options)
-map('n', 'n', 'n<Plug>Pulse', options)
-map('n', 'N', 'N<Plug>Pulse', options)
+vim.g.vim_search_pulse_disable_auto_mappings = 1
 
-map('n', '<leader>l', '<Plug>(Limelight)', options)
-map('x', '<leader>l', '<Plug>(Limelight)', options)
+map('n', '*', '<Plug>(asterisk-z*)<Plug>Pulse', plug_options)
+map('n', '#', '<Plug>(asterisk-z#)<Plug>Pulse', plug_options)
+map('n', 'n', 'n<Plug>Pulse', plug_options)
+map('n', 'N', 'N<Plug>Pulse', plug_options)
+
+map('n', '<leader>l', ':Limelight!!<cr>', options)
+map('x', '<leader>l', ':Limelight!!<cr>', options)
 
 map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
 
