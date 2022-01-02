@@ -79,7 +79,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {'github/copilot.vim', branch = 'release' }
+  use { 'github/copilot.vim', branch = 'release', ft = {'ruby'} }
 
   use {
     'lewis6991/impatient.nvim',
@@ -134,9 +134,9 @@ return require('packer').startup(function(use)
     config = function() require('colorizer').setup() end
   }
 
-  use {'vim-ruby/vim-ruby'}
+  use { 'vim-ruby/vim-ruby', ft = { 'ruby', 'erb' } }
 
-  use {'wellle/targets.vim'}
+  use { 'wellle/targets.vim' }
 
   use {'axelf4/vim-strip-trailing-whitespace'}
 
@@ -241,6 +241,7 @@ return require('packer').startup(function(use)
   use {'tpope/vim-rails'}
   use {'tpope/vim-repeat'}
   use {'wincent/ferret'}
+  -- Regex search & replace
   use {'windwp/nvim-spectre'}
   use {'wsdjeg/vim-fetch'}
   use {'sheerun/vim-polyglot'}
@@ -264,7 +265,7 @@ return require('packer').startup(function(use)
   -- Tabline plugin with different features
   use {
     'romgrk/barbar.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'},
+    requires = {'kyazdani42/nvim-web-devicons'}
   }
 
   vim.g.bufferline = {
@@ -407,6 +408,7 @@ return require('packer').startup(function(use)
           '--smart-case'
         },
       },
+      keys = '<leader>p',
       defaults = {
         file_sorter =  require'telescope.sorters'.get_fzy_sorter,
         generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
