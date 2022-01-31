@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Not sure I want to do this...
+export XDG_CONFIG_HOME="$HOME/.config"
+
 source $HOME/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
