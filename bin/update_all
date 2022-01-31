@@ -1,7 +1,7 @@
 # Update tools that I commonly update
 asdf update
 asdf plugin-update --all
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+# nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 # zinit self-update
 # zinit update --parallel
 brew update
