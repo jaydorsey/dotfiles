@@ -121,7 +121,7 @@ return require('packer').startup(function(use)
   use { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle', after = 'nvim-treesitter' }
   use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
 
-  use {'neoclide/coc.nvim', branch = 'release'}
+  -- use {'neoclide/coc.nvim', branch = 'release'}
 
   use {
     'TimUntersberger/neogit',
