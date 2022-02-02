@@ -11,6 +11,7 @@ localbin/*
 .config/fontforge
 .config/lnav
 .config/iterm2
+.config/nvim/lua/packer_compiled.lua
 .config/nvim/plugin/packer_compiled.lua
 .config/AWSVPNClient
 .config/github-copilot

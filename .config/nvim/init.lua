@@ -5,6 +5,9 @@ vim.cmd([[
   let g:polyglot_disabled = ['yard', 'typescript', 'jsx', 'tsx']
 ]])
 
+-- require('packer_compiled')
+vim.g.did_load_filetypes = 1
+
 require('settings')
 require('maps')
 require('plugins')
