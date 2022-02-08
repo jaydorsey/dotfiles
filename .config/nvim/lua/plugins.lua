@@ -4,12 +4,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
--- vim.cmd([[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
---   augroup end
--- ]])
+--vim.cmd([[
+--  augroup packer_user_config
+--    autocmd!
+--    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+--  augroup end
+--]])
 
 -- don't throw any error on first use by packer
 local ok, packer = pcall(require, "packer")
@@ -114,7 +114,7 @@ return packer.startup {
       config = function()
         require'nvim-treesitter.configs'.setup({
           rainbow = {
-            enable = true,
+            enable = false,
             extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
             max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
           },
@@ -133,7 +133,7 @@ return packer.startup {
         'nvim-treesitter/nvim-treesitter-refactor',
         'nvim-treesitter/nvim-treesitter-textobjects',
         'nvim-treesitter/playground',
-        'p00f/nvim-ts-rainbow'
+        -- 'p00f/nvim-ts-rainbow'
       },
       run = ':TSUpdate',
     }
@@ -141,7 +141,7 @@ return packer.startup {
     use { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' }
     use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }
     use { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle', after = 'nvim-treesitter' }
-    use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
+    -- use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
 
     -- use {'neoclide/coc.nvim', branch = 'release'}
 
@@ -387,9 +387,7 @@ return packer.startup {
     -- use {'tomtom/tcomment_vim'} -- comment with gc motions
     use {
       'numToStr/Comment.nvim',
-      config = function()
-        require('Comment').setup()
-      end
+      config = function() require('Comment').setup() end
     }
 
     use {
