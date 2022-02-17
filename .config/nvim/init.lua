@@ -12,6 +12,7 @@ require 'user.telescope'
 require 'user.treesitter'
 require 'user.autopairs'
 require 'user.comment'
+require 'user.gitsigns'
 
 -- This needs to load _really_ early or else it warns; just leave here for now
 vim.cmd([[
