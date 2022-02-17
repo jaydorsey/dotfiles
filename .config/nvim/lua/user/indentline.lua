@@ -27,7 +27,7 @@ vim.g.indent_blankline_context_patterns = {
   "function",
   "method",
   "^if",
-  "^while,
+  "^while",
   "jsx_element",
   "^for",
   "^object",

@@ -19,6 +19,7 @@ require 'user.lualine'
 require 'user.toggleterm'
 require 'user.impatient'
 require 'user.indentline'
+require 'user.alpha'
 
 -- This needs to load _really_ early or else it warns; just leave here for now
 vim.cmd([[
