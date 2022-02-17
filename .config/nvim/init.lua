@@ -20,6 +20,7 @@ require 'user.toggleterm'
 require 'user.impatient'
 require 'user.indentline'
 require 'user.alpha'
+require 'user.whichkey'
 
 -- This needs to load _really_ early or else it warns; just leave here for now
 vim.cmd([[
