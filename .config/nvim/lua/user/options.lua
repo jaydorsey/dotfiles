@@ -1,0 +1,2 @@
+-- Put your user options in here
+-- Reference: https://github.com/LunarVim/Neovim-from-scratch/blob/01-options/lua/user/options.lua
