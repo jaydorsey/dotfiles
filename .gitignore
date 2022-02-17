@@ -12,6 +12,8 @@ localbin/*
 .config/lnav
 .config/iterm2
 .config/nvim/plugin/packer_compiled.lua
+# Alternate location for the compiled file
+.config/nvim/lua/packer_compiled.lua
 .config/AWSVPNClient
 .config/github-copilot
 .bundle
