@@ -3,6 +3,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- TODO: Deprecate map in favor of more explicit keymap
 local map = vim.api.nvim_set_keymap
 
 -- This is needed for maps that call <Plug>
@@ -97,3 +98,6 @@ map('n', '@i', ':DelimitMateOff<cr><esc>^xxxiRails.logger.info(<esc>$a)<esc>:Del
 
 -- Add a frozen string literal comment to the top of a file
 map('n', '@f', 'gg0i<cr><cr><esc>kki# frozen_string_literal: true<esc>``', options)
+
+-- Nvimtree
+map("n", "<leader>e", ":NvimTreeToggle<cr>", options)
