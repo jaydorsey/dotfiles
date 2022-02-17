@@ -219,7 +219,10 @@ vim.cmd [[
   let g:ale_fixers = {'ruby':['rubocop']}
 ]]
 
-
+vim.cmd [[
+  let g:blamer_delay = 2000
+  let g:blamer_show_in_insert_modes = 0
+]]
 -- " Set completeopt to have a better completion experience
 -- set completeopt=menuone,noinsert,noselect
 
