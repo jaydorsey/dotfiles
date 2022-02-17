@@ -15,6 +15,7 @@ require 'user.comment'
 require 'user.gitsigns'
 require 'user.nvim-tree'
 require 'user.bufferline'
+require 'user.lualine'
 
 -- This needs to load _really_ early or else it warns; just leave here for now
 vim.cmd([[
