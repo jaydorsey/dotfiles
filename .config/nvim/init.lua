@@ -8,6 +8,7 @@ require 'user.plugins'
 require 'user.colorscheme'
 require 'user.cmp'
 require 'user.lsp'
+require 'user.telescope'
 
 -- This needs to load _really_ early or else it warns; just leave here for now
 vim.cmd([[
