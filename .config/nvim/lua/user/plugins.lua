@@ -58,7 +58,8 @@ return packer.startup(function(use)
   use 'ahmedkhalf/project.nvim'
   use 'lewis6991/impatient.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'goolord/alpha-nvim'
+  -- use 'goolord/alpha-nvim'
+  use {'mhinz/vim-startify'}
   use 'antoinemadec/FixCursorHold.nvim' -- This is needed to fix lsp doc highlight
   use 'folke/which-key.nvim'
   use { 'ethanholz/nvim-lastplace', branch=main }
@@ -233,7 +234,6 @@ return packer.startup(function(use)
 
   use 'mbbill/undotree'
 
-  -- use {'mhinz/vim-startify'}
   use 'misterbuckley/vim-definitive'
   -- use {'nvim-lua/completion-nvim'}
   use 'nvim-lua/popup.nvim'
