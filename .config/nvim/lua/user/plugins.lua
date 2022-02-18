@@ -146,7 +146,8 @@ return packer.startup(
     use 'tversteeg/registers.nvim'
     use 'karb94/neoscroll.nvim' -- Smooth scrolling plugin
 
-    use 'tpope/vim-surround' -- vim-surround in lua
+    -- use 'tpope/vim-surround'
+    -- surround; sa/sd/sr for add/delete/replace
     use {
       'machakann/vim-sandwich',
       {
