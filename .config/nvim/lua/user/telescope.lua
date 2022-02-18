@@ -1,12 +1,25 @@
-local status_ok, telescope = pcall(require, "telescope")
+local status_ok, telescope = pcall(require, 'telescope')
 if not status_ok then
   return
 end
 
-local actions = require "telescope.actions"
+local actions = require 'telescope.actions'
 
 telescope.setup {
+  config = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+  },
   defaults = {
+    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
+    generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
 
     prompt_prefix = " ",
     selection_caret = " ",
@@ -42,6 +55,12 @@ telescope.setup {
         ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-l>"] = actions.complete_tag,
         ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+
+        -- Close the picker
+        ['<Esc>'] = require('telescope.actions').close,
+        ['<C-c>'] = function()
+        vim.cmd [[stopinsert]]
+        end,
       },
 
       n = {
@@ -92,5 +111,8 @@ telescope.setup {
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
+  },
+  requires = {
+    {'nvim-lua/plenary.nvim'}
   },
 }

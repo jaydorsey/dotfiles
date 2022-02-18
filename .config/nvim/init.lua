@@ -21,6 +21,9 @@ require 'user.impatient'
 require 'user.indentline'
 require 'user.alpha'
 require 'user.whichkey'
+require 'user.autocommands'
+require 'user.nvim-lastplace'
+require 'user.specs'
 
 -- This needs to load _really_ early or else it warns; just leave here for now
 vim.cmd([[
