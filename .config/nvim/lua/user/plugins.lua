@@ -233,7 +233,10 @@ return packer.startup(
     use 'folke/which-key.nvim'
     use {
       'nvim-telescope/telescope.nvim',
-      requires = 'nvim-lua/plenary.nvim'
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-fzy-native.nvim'
+      }
     }
 
     -- Load on a combination of conditions: specific filetypes or commands

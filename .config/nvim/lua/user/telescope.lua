@@ -7,6 +7,8 @@ end
 
 local actions = require 'telescope.actions'
 
+plugin.load_extension('fzy_native')
+
 plugin.setup {
   config = {
     vimgrep_arguments = {
@@ -108,6 +110,10 @@ plugin.setup {
     -- builtin picker
   },
   extensions = {
+    fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+    }
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
