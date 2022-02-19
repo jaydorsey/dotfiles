@@ -7,7 +7,8 @@ end
 
 local actions = require 'telescope.actions'
 
-plugin.load_extension('fzy_native')
+-- plugin.load_extension('fzy_native')
+plugin.load_extension('fzf')
 
 plugin.setup {
   config = {
@@ -22,8 +23,8 @@ plugin.setup {
     },
   },
   defaults = {
-    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
-    generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
+    file_sorter =  require'telescope.sorters'.get_fzf_sorter,
+    generic_sorter =  require'telescope.sorters'.get_fzf_sorter,
 
     prompt_prefix = ' ',
     selection_caret = ' ',
@@ -110,10 +111,18 @@ plugin.setup {
     -- builtin picker
   },
   extensions = {
-    fzy_native = {
-        override_generic_sorter = false,
-        override_file_sorter = true,
+    -- Defaults
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = 'smrt_case',        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
     }
+    -- fzy_native = {
+    --     override_generic_sorter = false,
+    --     override_file_sorter = true,
+    -- }
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,

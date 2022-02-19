@@ -189,6 +189,7 @@ return packer.startup(
         'yml'
       }
     }
+    -- This is also used by zsh
     use {
       'junegunn/fzf',
       dir = '~/.fzf',
@@ -231,13 +232,15 @@ return packer.startup(
     }
 
     use 'folke/which-key.nvim'
-    use {
-      'nvim-telescope/telescope.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope-fzy-native.nvim'
-      }
-    }
+
+    -- use {
+    --   'nvim-telescope/telescope.nvim',
+    --   requires = {
+    --     'nvim-lua/plenary.nvim',
+    --     'nvim-telescope/telescope-fzy-native.nvim',
+    --     { 'nvim-telescope/telescope-fzf-native.nvim', run='make' },
+    --   }
+    -- }
 
     -- Load on a combination of conditions: specific filetypes or commands
     -- Also run code after load (see the "config" key)
