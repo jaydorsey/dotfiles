@@ -33,7 +33,7 @@ end
 
 packer.init {
   -- Move to lua dir so impatient.nvim can cache it
-  compile_path = vim.fn.stdpath('config') .. '/lua/packer_compiled.lua',
+  compile_path = vim.fn.stdpath('config') .. '/plugin/packer_compiled.lua',
   display = {
     open_fn = function()
       return require('packer.util').float { border = 'rounded' }
@@ -69,6 +69,12 @@ return packer.startup(
         -- 'p00f/nvim-ts-rainbow'
       },
       run = ':TSUpdate',
+    }
+
+    use {
+      'autozimu/LanguageClient-neovim',
+      branch = 'next',
+      run = 'bash install.sh'
     }
 
     use {

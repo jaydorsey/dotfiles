@@ -22,3 +22,11 @@ command! -bang -nargs=* Find
 \         : fzf#vim#with_preview('right:50%:hidden', '?'),
 \ <bang>0)
 
+" autozimu/LanguageClient-neovim
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.asdf/shims/solargraph', 'stdio'],
+    \ }
