@@ -57,10 +57,14 @@ map('n', 'N', 'N<Plug>Pulse', plug_options)
 map('n', '<leader>l', ':Limelight!!<cr>', options)
 map('x', '<leader>l', ':Limelight!!<cr>', options)
 
-map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
+-- fzf.vim
+map('n', '<leader>p', ':Files<cr>', silent_options)
+map('n', '<leader>b', ':Buffers<cr>', silent_options)
 
+-- telescope.nvim
+-- map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
 -- map('n', '<leader>b', ":lua require('telescope.builtin').buffers()<cr>", silent_options)
-map('n', '<leader>b', ':BufferPick<cr>', silent_options)
+-- map('n', '<leader>b', ':BufferPick<cr>', silent_options)
 
 map('n', 'J', 'mzJ`z', options) -- Keep the cursor in place while joining lines
 
@@ -94,3 +98,8 @@ map('n', '@i', ':DelimitMateOff<cr><esc>^xxxiRails.logger.info(<esc>$a)<esc>:Del
 
 -- Add a frozen string literal comment to the top of a file
 map('n', '@f', 'gg0i<cr><cr><esc>kki# frozen_string_literal: true<esc>``', options)
+
+-- renamer.nvim
+map('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+map('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+map('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
