@@ -71,11 +71,11 @@ return packer.startup(
       run = ':TSUpdate',
     }
 
-    use {
-      'autozimu/LanguageClient-neovim',
-      branch = 'next',
-      run = 'bash install.sh'
-    }
+    -- use {
+    --   'autozimu/LanguageClient-neovim',
+    --   branch = 'next',
+    --   run = 'bash install.sh'
+    -- }
 
     use {
       'RRethy/nvim-treesitter-textsubjects',
