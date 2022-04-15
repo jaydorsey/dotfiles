@@ -3,5 +3,6 @@ local wezterm = require 'wezterm';
 return {
     font = wezterm.font("JetBrainsMono Nerd Font Mono"),
     font_size = 14,
-    color_scheme = "Batman",
+    color_scheme = "Blue Matrix",
+    enable_tab_bar = false,
 }
