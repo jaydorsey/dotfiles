@@ -1,5 +1,8 @@
 local fn = vim.fn
 
+-- print path where packer installs plugins. ~/.local/share/nvim
+-- lua vim.api.nvim_echo({{vim.fn.stdpath('data')}}, false, {})
+
 -- Automatically install packer
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
@@ -165,7 +168,6 @@ return packer.startup(
 
     use 'mbbill/undotree'
     use 'mhinz/vim-startify'
-    use 'misterbuckley/vim-definitive'
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-lua/popup.nvim'

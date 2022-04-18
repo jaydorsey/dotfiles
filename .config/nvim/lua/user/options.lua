@@ -61,7 +61,7 @@ vim.opt.autoread = true -- Reload files changed outside of vim
 
 --o.backspace=indent,eol,start -- Backspace configuration
 vim.o.cmdheight = 2 -- More space for messages
-vim.o.laststatus = 2
+vim.o.laststatus = 3
 --o.concealcursor=nv -- From vim-markdown, conceals links, headings, etc in normal & visual mode
 vim.o.conceallevel = 0 -- Expand everything, particularly in markdown files
 vim.o.swapfile = true -- use a swap file

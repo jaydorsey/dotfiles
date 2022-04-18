@@ -19,9 +19,8 @@ map('n', '<c-h>', ':bprev<cr>', options)
 -- yank into the system clipboard
 map('v', '<leader>y', '"+y', options)
 
--- vim-definitive
-map('n', '<c-\\>', ':FindDefinition<cr>', options)
-map('v', '<c-\\>', 'ay:FindDefinition<c-r>a<cr>', options)
+-- Find definition for currently highlighted word
+map('n', '<c-\\>', '<c-2><c-]><c-w>T', options)
 
 -- Change the local window current directory to that of current file
 map('n', '<leader>cd', 'lcd %:p:h', options)
