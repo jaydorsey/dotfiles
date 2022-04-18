@@ -47,7 +47,7 @@ return packer.startup(
   function(use)
     use 'wbthomason/packer.nvim' -- Use packer to manage itself
     use 'lewis6991/impatient.nvim' -- Improve startup time for nvim
-    use 'nathom/filetype.nvim' -- faster filetype.vim
+    -- use 'nathom/filetype.nvim' -- faster filetype.vim
     use 'kyazdani42/nvim-web-devicons'
     use 'windwp/nvim-autopairs'
     use 'catppuccin/nvim' -- colorscheme
