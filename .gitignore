@@ -3,7 +3,7 @@ localbin/*
 !localbin/README.adoc
 .personalrc
 .localrc
-.navi/local.cheat
+.navi_cheatsheets/local.cheat
 # Folders that should be ignored because of using stow
 .config/broot
 .config/coc
