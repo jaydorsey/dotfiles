@@ -57,6 +57,9 @@ git update-index --chmod=+x <path_to_file>
 # Remove executable flag onto file
 git update-index --chmod=-x <path_to_file>
 
+# Deploy a branch to a heroku remote
+git push <reference_name> <branch>:main
+
 
 % tmux
 
@@ -245,9 +248,15 @@ $ file: ls
 
 # https://stackoverflow.com/a/2556282/2892779
 # Generate a random number in a range
-
 shuf -i <start_range>-<end_range> -n 1
 
+# Find files with size 0
+# https://stackoverflow.com/a/15703727
+find . -size 0
+
+# Concatenate all text files adding a newline after each
+# https://stackoverflow.com/a/8183247
+for f in *.txt; do (cat "${f}"; echo) >> finalfile.txt; done
 
 % aws
 
@@ -289,9 +298,18 @@ bundle audit check --update
 # Copy a file from a remote app, locally
 heroku ps:copy <relative_file_path> -a <heroku_app_name>
 
+# Add a new remote
+heroku git:remote -a <heroku_app_name> -r <reference_name>
+
 
 % zip unzip
 
 # Unzip a selected file from a zip file
 unzip -p <archive_zip_path> "<file_name>" output.eml
+
+
+% applescript macos
+
+# Find bundle ID of application
+osascript -e 'id of app "<app_name>"'
 
