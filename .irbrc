@@ -2,14 +2,14 @@
 
 # -*- mode: ruby -*- vim:set ft=ruby:
 #
-# rubocop:disable Rails/Output, Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
-begin
-  require "pry"
-  Pry.start
-  exit
-rescue LoadError => e
-  warn "=> Unable to load pry"
-end
+# rubocop:disable Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
+# begin
+#   require "pry"
+#   Pry.start
+#   exit
+# rescue LoadError => e
+#   warn "=> Unable to load pry"
+# end
 
 if defined?(StructuredWarnings)
   StructuredWarnings::StandardWarning.disable
@@ -34,11 +34,13 @@ end
 begin
   require 'benchmark/ips'
 rescue LoadError => _e
+  puts 'gem install benchmark-ips'
 end
 
 begin
   require 'benchmark/memory'
 rescue LoadError => _e
+  puts 'gem install benchmark-memory'
 end
 
 begin
@@ -47,15 +49,17 @@ begin
   Wirble.init
   Wirble.colorize
 rescue LoadError => _e
+  puts 'gem install wirble'
 end
 
 begin
   require 'ap'
 rescue LoadError => _e
+  puts 'gem install ap'
 end
 
 IRB.conf[:SAVE_HISTORY] = 10_000
-IRB.conf[:HISTORY_FILE] = "./.irb-history"
+IRB.conf[:HISTORY_FILE] = './.irb-history'
 
 # https://ruby-doc.org/stdlib-2.7.0/libdoc/irb/rdoc/IRB.html#module-IRB-label-Auto+indentation
 IRB.conf[:PROMPT][:CUSTOM] = {
@@ -95,4 +99,4 @@ end
 def ls
   %x(ls).split('\n')
 end
-# rubocop:enable Rails/Output, Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
+# rubocop:enable Lint/SuppressedException, Style/MixinUsage, Style/CommandLiteral
