@@ -60,6 +60,9 @@ git update-index --chmod=-x <path_to_file>
 # Deploy a branch to a heroku remote
 git push <reference_name> <branch>:main
 
+# Deploy a specific tagged commit to a heroku remote
+git push <remote> <tag>^{}:main
+
 
 % tmux
 
