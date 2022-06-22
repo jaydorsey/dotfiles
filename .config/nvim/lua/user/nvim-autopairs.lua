@@ -8,6 +8,7 @@ end
 nvim_autopairs.setup {
   enable_check_bracket_line = true,
   disable_filetype = { 'TelescopePrompt', 'vim' },
+  disable_in_macro = true,
   enable_afterquote = false,
   enable_moveright = true,
 }
