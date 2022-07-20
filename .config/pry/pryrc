@@ -74,7 +74,7 @@ BANNER
 def rails_banner
   env = defined?(Rails) ? Rails.env : 'development'
 
-  puts Pry::Helpers::Text.__send__(ENV_COLORS[env], Object.const_get("#{env.upcase}_BANNER")) # rubocop:disable Rails/Output
+  puts Pry::Helpers::Text.__send__(ENV_COLORS[env], Object.const_get("#{env.upcase}_BANNER"))
 
   ''
 end
@@ -86,16 +86,12 @@ def formatted_env
   Pry::Helpers::Text.__send__(ENV_COLORS[Rails.env], Rails.env)
 end
 
-# Load factorybot in a rails console
+# Load factory_bot in a rails console
 def fb
   require 'factory_bot'
   require 'faker'
 
-  FactoryBot.definition_file_paths << File.join('spec', 'support', 'factories') if Dir.exist?(File.join('spec', 'support', 'factories'))
-  FactoryBot.definition_file_paths << File.join('spec', 'factories') if Dir.exist?(File.join('spec', 'factories'))
-
-  FactoryBot.factories.clear
-  FactoryBot.find_definitions
+  FactoryBot.reload
 
   include FactoryBot::Syntax::Methods # rubocop:disable Style/MixinUsage
 end
