@@ -148,24 +148,44 @@ export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Also defines the default command run when :Files is called in vim
-export FZF_DEFAULT_COMMAND="rg --files --hidden \
-  -g \"!{.git,frontend,frontend/node_modules,node_modules,Library,.gnupg,swagger,storage,.config/yarn,tmp,.yardopts,doc}/*\" \
-  -g \"!package-lock.json\" \
-  -g \"!*.map\" \
-  -g \"!*.log\" \
-  -g \"!.elixir_ls\" \
-  -g \"!**/tmp/**/*\" \
-  -g \"!**/node_modules/*\" \
+export FZF_DEFAULT_COMMAND="rg \
+  --files \
+  --line-number \
+  --no-heading \
+  --smart-case \
+  --hidden \
   -g \"!**/bower_modules/*\" \
   -g \"!**/dist/*\" \
-  -g \"!tags\" \
+  -g \"!**/node_modules/*\" \
+  -g \"!**/tmp/**/*\" \
   -g \"!*.dwarf\" \
-  -g \"!yarn.lock\" \
   -g \"!*.jay\" \
-  -g \"!deps/**/*\" \
-  -g \"!_build/**/*\" \
+  -g \"!*.log\" \
+  -g \"!*.map\" \
   -g \"!*.tmp\" \
+  -g \"!.cache\" \
+  -g \"!.elixir_ls\" \
+  -g \"!.git\" \
+  -g \"!.gnupg\" \
+  -g \"!.node-gyp\" \
+  -g \"!.npm\" \
+  -g \"!.tmp\" \
+  -g \"!.yardopts\" \
+  -g \"!Library\" \
+  -g \"!_build/**/*\" \
+  -g \"!config/yarn\" \
+  -g \"!coverage\" \
   -g \"!db/backups\" \
+  -g \"!deps/**/*\" \
+  -g \"!doc\" \
+  -g \"!frontend/node_modules\" \
+  -g \"!frontends\" \
+  -g \"!node_modules\" \
+  -g \"!package-lock.json\" \
+  -g \"!storage\" \
+  -g \"!swagger\" \
+  -g \"!tags\" \
+  -g \"!yarn.lock\" \
   2> /dev/null"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
