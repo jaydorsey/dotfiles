@@ -38,13 +38,6 @@
 -- command! -bang -nargs=? -complete=dir Files
 --   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
--- " This command is used with a shortcut key below to find all occurences of the
--- " word beneath the cursor
--- command! -bang -nargs=* Find
--- \ call fzf#vim#grep(g:rg_command .shellescape(expand('<cword>')), 1,
--- \ <bang>0 ? fzf#vim#with_preview('up:60%')
--- \         : fzf#vim#with_preview('right:50%:hidden', '?'),
--- \ <bang>0)
 
 -- function! RipgrepFzf(query, fullscreen)
 --   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
