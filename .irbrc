@@ -43,14 +43,14 @@ rescue LoadError => _e
   puts 'gem install benchmark-memory'
 end
 
-begin
-  require 'wirble'
-
-  Wirble.init
-  Wirble.colorize
-rescue LoadError => _e
-  puts 'gem install wirble'
-end
+# begin
+#   require 'wirble'
+#
+#   Wirble.init
+#   Wirble.colorize
+# rescue LoadError => _e
+#   puts 'gem install wirble'
+# end
 
 begin
   require 'ap'
