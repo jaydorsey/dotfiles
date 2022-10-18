@@ -1,11 +1,9 @@
 # Dotenv
 .env
 .env.development.local
+.env.development
 .env.test.local
-# These two are most commonly/suggested commited to the repo and would only
-# include non-secrets
-!.env.test
-!.env.development
+.env.test
 
 # Ruby
 .rspec_parallel
