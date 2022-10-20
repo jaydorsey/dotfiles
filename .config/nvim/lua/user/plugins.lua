@@ -2,6 +2,7 @@ local fn = vim.fn
 
 -- print path where packer installs plugins. ~/.local/share/nvim
 -- lua vim.api.nvim_echo({{vim.fn.stdpath('data')}}, false, {})
+-- typically, $HOME/.local/share/nvim/site/pack/packer/
 
 -- Automatically install packer
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
