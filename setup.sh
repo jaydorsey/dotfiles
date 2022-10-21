@@ -144,6 +144,11 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Remove dock auto-hide delay
 defaults write com.apple.Dock autohide-delay -float 0 && killall Dock
 
+# Disable dock recent history
+defaults write com.apple.dock show-recents -bool no
+# Remove recent apps from dock
+defaults write com.apple.dock recent-apps -array
+
 # Always show hidden files in Finder
 defaults write com.apple.finder AppleShowAllFiles -bool YES && killall Finder
 
