@@ -18,7 +18,7 @@ antigen bundle heroku
 antigen bundle command-not-found
 
 antigen bundle denisidoro/navi
-antigen bundle skywind3000/z.lua
+# antigen bundle skywind3000/z.lua
 
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -101,7 +101,7 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # oh-my-zsh plugins
-plugins=(git asdf gem colored-man-pages tmux)
+plugins=(zoxide git asdf gem colored-man-pages tmux)
 
 # Always automatically update oh-my-zsh
 DISABLE_UPDATE_PROMPT="true"
@@ -494,3 +494,5 @@ bindkey '^q' push-line
 export PATH="$PATH:$HOME/go/bin"
 
 # if [ -e /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+eval "$(zoxide init zsh)"
