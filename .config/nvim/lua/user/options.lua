@@ -9,6 +9,8 @@
 
 vim.opt.termguicolors = true
 
+vim.g.ranger_replace_netrw = 1
+
 -- Use filetype.lua https://gpanders.com/blog/whats-new-in-neovim-0-7/#filetypelua
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0

@@ -82,6 +82,13 @@ return packer.startup(
     -- }
 
     use {
+      'francoiscabrol/ranger.vim',
+      requires = {
+        'rbgrouleff/bclose.vim'
+      }
+    }
+
+    use {
       'RRethy/nvim-treesitter-textsubjects',
       after = 'nvim-treesitter'
     }
