@@ -18,7 +18,7 @@ antigen bundle heroku
 antigen bundle command-not-found
 
 antigen bundle denisidoro/navi
-# antigen bundle skywind3000/z.lua
+antigen bundle ellie/atuin@main
 
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -101,7 +101,7 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # oh-my-zsh plugins
-plugins=(zoxide git asdf gem colored-man-pages tmux)
+plugins=(zoxide git asdf gem colored-man-pages zsh-interactive-cd)
 
 # Always automatically update oh-my-zsh
 DISABLE_UPDATE_PROMPT="true"
@@ -256,7 +256,7 @@ bindkey '^E'      end-of-line
 
 # https://github.com/junegunn/fzf/issues/1304#issuecomment-394171410
 bindkey "^I" fzf-completion
-bindkey "^R" fzf-history-widget
+# bindkey "^R" fzf-history-widget
 bindkey "^T" fzf-file-widget
 bindkey "^[c" fzf-cd-widget
 
@@ -495,4 +495,5 @@ export PATH="$PATH:$HOME/go/bin"
 
 # if [ -e /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jaydorsey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
