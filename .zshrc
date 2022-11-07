@@ -101,7 +101,7 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # oh-my-zsh plugins
-plugins=(zoxide git asdf gem colored-man-pages zsh-interactive-cd)
+plugins=(zoxide git asdf gem colored-man-pages zsh-interactive-cd rake-fast)
 
 # Always automatically update oh-my-zsh
 DISABLE_UPDATE_PROMPT="true"
