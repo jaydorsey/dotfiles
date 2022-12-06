@@ -9,6 +9,8 @@
 	pager = delta
 	commitGraph = true
 	attributesfile = /Users/jay/.gitattributes
+[blame]
+	showEmail = true
 [alias]
 	a = add -A
 	authors = log --abbrev-commit --format="%an" --no-merges
