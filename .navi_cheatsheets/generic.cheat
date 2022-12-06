@@ -39,7 +39,6 @@ git log -S "<text>" <file_name>
 
 # https://stackoverflow.com/a/56054951/2892779
 # Find last commit which deleted a file
-
 git rev-list -n 1 HEAD -- <full_path_to_file>
 
 # Empty commit
@@ -62,6 +61,11 @@ git push <reference_name> <branch>:main
 
 # Deploy a specific tagged commit to a heroku remote
 git push <remote> <tag>^{}:main
+
+# List all files by date. Usefel for finding the oldest files in a repo
+git ls-tree -r --name-only HEAD | while read filename; do
+ echo "$(git log -1 --date=iso --format="%ad |" -- "$filename") $filename"
+done > oldest_files.txt
 
 
 % tmux
