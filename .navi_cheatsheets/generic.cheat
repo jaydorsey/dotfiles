@@ -67,6 +67,9 @@ git ls-tree -r --name-only HEAD | while read filename; do
  echo "$(git log -1 --date=iso --format="%ad |" -- "$filename") $filename"
 done > oldest_files.txt
 
+# Compare 2 commits on github
+open https://github.com/<org>/<repo>/compare/<commit_1>..<commit_2>
+
 
 % tmux
 
