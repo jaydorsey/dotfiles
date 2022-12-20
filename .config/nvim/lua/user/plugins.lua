@@ -80,6 +80,9 @@ return packer.startup(
     --   branch = 'next',
     --   run = 'bash install.sh'
     -- }
+    use {
+      'christoomey/vim-sort-motion'
+    }
 
     use {
       'francoiscabrol/ranger.vim',
