@@ -1,5 +1,8 @@
 local fn = vim.fn
 
+-- let g:ale_ruby_rubocop_options --server
+vim.g.ale_ruby_rubocop_options = '--server'
+
 -- print path where packer installs plugins. ~/.local/share/nvim
 -- lua vim.api.nvim_echo({{vim.fn.stdpath('data')}}, false, {})
 -- typically, $HOME/.local/share/nvim/site/pack/packer/
@@ -264,7 +267,7 @@ return packer.startup(
     -- Load on a combination of conditions: specific filetypes or commands
     -- Also run code after load (see the "config" key)
     use {
-      'w0rp/ale',
+      'dense-analysis/ale',
       ft = {
         'sh',
         'zsh',
