@@ -270,6 +270,10 @@ export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings. Disabled this for now; this causes rubocop to fail silently
 # export RUBYOPT="-W0"
 export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
+
+# Enable ruby yjit locally
+export RUBY_YJIT_ENABLE=1
+
 # RSpec, I prefer my specs to fail fast & document
 # export SPEC_OPTS="-f d --fail-fast"
 
@@ -287,7 +291,7 @@ alias be='bundle exec'
 alias sp='spring rails'
 alias sr='spring rspec'
 alias cat='bat'
-alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;'
+alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin main \;'
 # Exercism setup
 alias guardme="guard -c --guardfile ~/exercism/ruby/Guardfile"
 alias gwip="LEFTHOOK=0 g commit -m 'WIP'"
