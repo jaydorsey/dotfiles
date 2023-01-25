@@ -12,7 +12,7 @@ mkdir -p ~/repos
 rm -rf ~/repos/neovim
 
 cd $REPO_DIR
-git clone https://github.com/neovim/neovim
+git clone https://github.com/neovim/neovim --depth 1
 
 mkdir -p "$BUILD_DIR"
 
