@@ -46,7 +46,7 @@ packer.init {
       return require('packer.util').float { border = 'rounded' }
     end,
   },
-  log = { level = 'trace' },
+  log = { level = 'error' }, -- or 'trace'
   max_jobs=50,
 }
 
