@@ -164,6 +164,7 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 cargo install cw
 cargo install atuin
 cargo install zoxide --locked
+cargo install rtx-cli
 
 npm install -g neovim yarn
 

@@ -2,6 +2,8 @@ local fn = vim.fn
 
 -- let g:ale_ruby_rubocop_options --server
 vim.g.ale_ruby_rubocop_options = '--server'
+vim.g.ale_ruby_rubocop_executable = '~/.rtx/shims/rubocop'
+vim.g.ale_ruby_ruby_executable = '~/.rtx/shims/ruby'
 
 -- print path where packer installs plugins. ~/.local/share/nvim
 -- lua vim.api.nvim_echo({{vim.fn.stdpath('data')}}, false, {})

@@ -12,7 +12,7 @@ source $HOME/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
-antigen bundle asdf
+# antigen bundle asdf
 antigen bundle git
 antigen bundle heroku
 antigen bundle command-not-found
@@ -101,7 +101,7 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # oh-my-zsh plugins
-plugins=(zoxide git asdf gem colored-man-pages zsh-interactive-cd rake-fast)
+plugins=(zoxide git gem colored-man-pages zsh-interactive-cd rake-fast)
 
 # Always automatically update oh-my-zsh
 DISABLE_UPDATE_PROMPT="true"
@@ -399,14 +399,11 @@ export PATH="$HOMEBREW_PREFIX/opt/jemalloc/bin:$PATH"
 # asdf puts python scripts here
 export PATH="$HOME/.local/bin:$PATH"
 
-# source $HOME/.asdf/asdf.sh
-# source $HOME/.asdf/completions/asdf.bash
-
 # Shared personal scripts; these are typically commited to the repo
 export PATH=~/bin:$PATH
 
-export PATH=$HOME/.asdf/shims:$PATH
-export PATH=$HOME/.asdf/bin:$PATH
+# export PATH=$HOME/.asdf/shims:$PATH
+# export PATH=$HOME/.asdf/bin:$PATH
 
 #
 #
@@ -475,3 +472,4 @@ eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
 
 source $HOME/.config/broot/launcher/bash/br
+eval "$(~/.cargo/bin/rtx activate zsh)"
