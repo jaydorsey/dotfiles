@@ -213,13 +213,19 @@ return packer.startup(
         'yml'
       }
     }
+
+    use { 'ibhagwan/fzf-lua',
+      requires = { 'nvim-tree/nvim-web-devicons' }
+    }
+
     -- This is also used by zsh
     use {
       'junegunn/fzf',
       dir = '~/.fzf',
       run = './install --all'
     }
-    use 'junegunn/fzf.vim'
+
+
 
     use { -- NERDTree replacement. Use g? to open up help
       'kyazdani42/nvim-tree.lua',

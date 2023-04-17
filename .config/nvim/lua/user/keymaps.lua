@@ -57,8 +57,13 @@ map('n', '<leader>l', ':Limelight!!<cr>', options)
 map('x', '<leader>l', ':Limelight!!<cr>', options)
 
 -- fzf.vim
-map('n', '<leader>p', ':Files<cr>', silent_options)
-map('n', '<leader>b', ':Buffers<cr>', silent_options)
+-- map('n', '<leader>p', ':Files<cr>', silent_options)
+-- map('n', '<leader>b', ':Buffers<cr>', silent_options)
+
+-- fzf-lua.vim
+map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
+map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
+map("n", "<C-g>", [[<Cmd>lua require"fzf-lua".grep_project()<CR>]], {})
 
 -- telescope.nvim
 -- map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
