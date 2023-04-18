@@ -47,14 +47,15 @@ plugin.setup {
       colored_indent_levels = false,
     },
     dashboard = false,
+    hop = true,
     neogit = false,
     vim_sneak = false,
     fern = false,
     barbar = true,
-    bufferline = false,
+    bufferline = true,
+    barbar = true,
     markdown = false,
     lightspeed = false,
-    ts_rainbow = false,
-    hop = false,
+    ts_rainbow = false
   }
 }
