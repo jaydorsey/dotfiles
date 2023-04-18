@@ -61,12 +61,16 @@ return packer.startup(
     use 'windwp/nvim-autopairs'
     use 'catppuccin/nvim' -- colorscheme
 
+    -- use {
+    --   'github/copilot.vim',
+    --   branch = 'release',
+    --   ft = {
+    --     'ruby'
+    --   }
+    -- }
+
     use {
-      'github/copilot.vim',
-      branch = 'release',
-      ft = {
-        'ruby'
-      }
+      'Exafunction/codeium.vim'
     }
 
     use {
@@ -140,7 +144,26 @@ return packer.startup(
     use 'gioele/vim-autoswap' -- Better, automatic swap file management
     use 'guns/xterm-color-table.vim'
     use 'haya14busa/vim-asterisk' -- Improved * motions
-    use 'inside/vim-search-pulse'
+
+    -- use 'inside/vim-search-pulse'
+    use({
+      'kevinhwang91/nvim-hlslens',
+      config = function()
+        local opts = require('config').opts
+        vim.api.nvim_set_keymap(
+          'n',
+          'n',
+          [[:execute('normal! ' . v:count1 . 'n')<CR>:lua require('hlslens').start()<CR>]],
+          opts
+        )
+        vim.api.nvim_set_keymap(
+          'n',
+          'N',
+          [[:execute('normal! ' . v:count1 . 'N')<CR>:lua require('hlslens').start()<CR>]],
+          opts
+        )
+      end,
+    })
 
     use {
       'jaydorsey/vim-to-github',
@@ -169,7 +192,17 @@ return packer.startup(
     use 'junegunn/vim-easy-align' -- Align code
     use 'edluffy/specs.nvim' -- Cursor beacon across huge jumps
     use 'tversteeg/registers.nvim'
-    use 'karb94/neoscroll.nvim' -- Smooth scrolling plugin
+
+    -- use 'karb94/neoscroll.nvim' -- Smooth scrolling plugin
+    use({
+      'petertriho/nvim-scrollbar',
+      require = { 'kevinhwang91/nvim-hlslens', 'lewis6991/gitsigns.nvim' },
+      config = function()
+        require('scrollbar').setup()
+        require('scrollbar.handlers.search').setup()
+        require('scrollbar.handlers.gitsigns').setup()
+      end,
+    })
 
     -- use 'tpope/vim-surround'
     -- surround; sa/sd/sr for add/delete/replace
@@ -197,7 +230,39 @@ return packer.startup(
     use 'wincent/ferret' -- Enhanced multi file search
     use 'windwp/nvim-spectre' -- Regex search & replace
     use 'wsdjeg/vim-fetch'
-    use 'sheerun/vim-polyglot'
+
+    use({
+      'sheerun/vim-polyglot',
+      setup = function()
+        -- disabled filetypes
+        vim.g.polyglot_disabled = {}
+        -- vue behaviors
+        vim.g.vue_pre_processors = 'detect_on_enter'
+        -- markdown behaviors
+        vim.g.vim_markdown_conceal = 0
+        vim.g.vim_markdown_math = 1
+        vim.g.vim_markdown_frontmatter = 1
+        vim.g.vim_markdown_toml_frontmatter = 1
+        vim.g.vim_markdown_json_frontmatter = 1
+        vim.g.vim_markdown_strikethrough = 1
+        -- csv behaviors
+        vim.g.csv_no_conceal = 1
+      end,
+    })
+
+    use({
+      'iamcco/markdown-preview.nvim',
+      run = function()
+        vim.fn['mkdp#util#install']()
+      end,
+      ft = { 'markdown' },
+      setup = function()
+        vim.g.mkdp_filetypes = { 'markdown' }
+      end,
+    })
+
+    use('lambdalisue/readablefold.vim')
+
     use 'APZelos/blamer.nvim'
     use {
       'elzr/vim-json',
@@ -205,7 +270,58 @@ return packer.startup(
         'json'
       }
     }
-    use 'easymotion/vim-easymotion'
+
+    use({
+      'yamatsum/nvim-cursorline',
+      config = function()
+        require('nvim-cursorline').setup({
+          cursorline = {
+            enable = true,
+            timeout = 500,
+            number = false,
+          },
+        })
+      end,
+    })
+
+    -- use 'easymotion/vim-easymotion'
+    use({
+      'phaazon/hop.nvim',
+      branch = 'v2',
+      config = function()
+        local opts = require('config').opts
+        require('hop').setup()
+        vim.api.nvim_set_keymap('n', 's', ':HopChar2<CR>', opts)
+        vim.api.nvim_set_keymap('n', 'S', ':HopChar2MW<CR>', opts)
+        -- use `<Cmd>lua` instead of `:lua`
+        -- https://github.com/phaazon/hop.nvim/issues/89#issuecomment-854701856
+        vim.api.nvim_set_keymap(
+          '',
+          'f',
+          '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true })<CR>',
+          opts
+        )
+        vim.api.nvim_set_keymap(
+          '',
+          'F',
+          '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>',
+          opts
+        )
+        vim.api.nvim_set_keymap(
+          '',
+          't',
+          '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>',
+          opts
+        )
+        vim.api.nvim_set_keymap(
+          '',
+          'T',
+          '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>',
+          opts
+        )
+      end,
+    })
+
     use {
       'tarekbecker/vim-yaml-formatter',
       ft={
@@ -224,8 +340,6 @@ return packer.startup(
       dir = '~/.fzf',
       run = './install --all'
     }
-
-
 
     use { -- NERDTree replacement. Use g? to open up help
       'kyazdani42/nvim-tree.lua',

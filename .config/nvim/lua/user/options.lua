@@ -239,9 +239,3 @@ vim.cmd [[
 -- set wildmenu
 -- " stuff to ignore when tab completing
 -- set wildignore=*.o,*.obj,*~,*vim/backups*,*sass-cache*,*DS_Store*,vendor/rails/**,vendor/cache/**,*.gem,log/**,tmp/**,*.png,*.jpg,*.gif
-
--- This needs to load _really_ early or else it warns; just leave here for now
-vim.cmd([[
-  let g:polyglot_disabled = ['yard', 'typescript', 'jsx', 'tsx']
-]])
-

@@ -46,12 +46,12 @@ map('n', ',cs', ':let @*=expand("%")<cr>', options)
 -- put absolute path in clipboard
 map('n', ',cl', ':let @*=expand("%:p")<cr>', options)
 
-vim.g.vim_search_pulse_disable_auto_mappings = 1
-
-map('n', '*', '<Plug>(asterisk-z*)<Plug>Pulse', plug_options)
-map('n', '#', '<Plug>(asterisk-z#)<Plug>Pulse', plug_options)
-map('n', 'n', 'n<Plug>Pulse', plug_options)
-map('n', 'N', 'N<Plug>Pulse', plug_options)
+-- vim.g.vim_search_pulse_disable_auto_mappings = 1
+--
+-- map('n', '*', '<Plug>(asterisk-z*)<Plug>Pulse', plug_options)
+-- map('n', '#', '<Plug>(asterisk-z#)<Plug>Pulse', plug_options)
+-- map('n', 'n', 'n<Plug>Pulse', plug_options)
+-- map('n', 'N', 'N<Plug>Pulse', plug_options)
 
 map('n', '<leader>l', ':Limelight!!<cr>', options)
 map('x', '<leader>l', ':Limelight!!<cr>', options)
