@@ -323,3 +323,7 @@ unzip -p <archive_zip_path> "<file_name>" output.eml
 # Find bundle ID of application
 osascript -e 'id of app "<app_name>"'
 
+
+% json jq
+# Format all json schemas. Requires brew install moreutils
+for file in app/schemas/*.json; do cat $file | jq -S | sponge $file; done
