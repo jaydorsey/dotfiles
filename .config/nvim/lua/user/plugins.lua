@@ -1,9 +1,8 @@
 local fn = vim.fn
 
--- let g:ale_ruby_rubocop_options --server
 vim.g.ale_ruby_rubocop_options = '--server'
-vim.g.ale_ruby_rubocop_executable = '~/.rtx/shims/rubocop'
-vim.g.ale_ruby_ruby_executable = '~/.rtx/shims/ruby'
+vim.g.ale_ruby_rubocop_executable = '~/.local/share/rtx/shims/rubocop'
+vim.g.ale_ruby_ruby_executable = '~/.local/share/rtx/shims/ruby'
 
 -- print path where packer installs plugins. ~/.local/share/nvim
 -- lua vim.api.nvim_echo({{vim.fn.stdpath('data')}}, false, {})
@@ -271,18 +270,19 @@ return packer.startup(
       }
     }
 
-    use({
-      'yamatsum/nvim-cursorline',
-      config = function()
-        require('nvim-cursorline').setup({
-          cursorline = {
-            enable = true,
-            timeout = 500,
-            number = false,
-          },
-        })
-      end,
-    })
+    -- highlight words and lines on the cursor
+    -- use({
+    --   'yamatsum/nvim-cursorline',
+    --   config = function()
+    --     require('nvim-cursorline').setup({
+    --       cursorline = {
+    --         enable = true,
+    --         timeout = 500,
+    --         number = false,
+    --       },
+    --     })
+    --   end,
+    -- })
 
     -- use 'easymotion/vim-easymotion'
     use({
