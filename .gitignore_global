@@ -83,3 +83,4 @@ Thumbs.db
 *.dev
 
 rails.rb
+.rgignore
