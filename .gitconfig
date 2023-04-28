@@ -125,3 +125,5 @@
 	trustExitCode = true
 [mergetool]
 	prompt = false
+[advice]
+	skippedCherryPicks = false
