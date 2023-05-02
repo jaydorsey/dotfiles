@@ -84,3 +84,4 @@ Thumbs.db
 
 rails.rb
 .rgignore
+.gem_rbs_collection
