@@ -24,12 +24,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+-- Automatically update & reload plugins when this file is saved
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--   augroup end
+-- ]])
 
 -- don't throw any error on first use by packer
 local ok, packer = pcall(require, 'packer')
@@ -285,7 +286,7 @@ return packer.startup(
     -- })
 
     -- use 'easymotion/vim-easymotion'
-    use({
+    use {
       'phaazon/hop.nvim',
       branch = 'v2',
       config = function()
@@ -320,7 +321,7 @@ return packer.startup(
           opts
         )
       end,
-    })
+    }
 
     use {
       'tarekbecker/vim-yaml-formatter',
@@ -331,7 +332,38 @@ return packer.startup(
     }
 
     use { 'ibhagwan/fzf-lua',
-      requires = { 'nvim-tree/nvim-web-devicons' }
+      requires = { 'nvim-tree/nvim-web-devicons' },
+      -- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files({ fzf_opts = { ['--layout'] = 'reverse-list', ['--height'] = '10%' } } })<CR>", { silent = true })
+
+      -- Need this on grep_project
+
+      config = function()
+        local opts = require('config').opts
+
+        require('fzf-lua').setup({
+            -- preview_layout = 'flex',
+            -- flip_columns = 150,
+            -- fzf_opts = {
+            --   ['--border'] = 'none',
+            --   ['--layout'] = 'reverse-list'
+            -- },
+            grep = {
+              -- Use glob with ctrl+g:
+              --     foo -- *_spec.rb
+              glob_flag = "--iglob", -- for case sensitive globs use --glob
+              glob_separator = "%s%-%-", -- query separate pattern (lua): ' --''
+              rg_glob = true, -- enable glob pasring for all grep providers
+              rg_opts = "--sort-files --column --line-number --no-heading " ..
+                        "--color=always --hidden --smart-case --max-columns=4096",
+            },
+            winopts = {
+              preview = {
+                hidden = "hidden"
+              }
+            }
+          }
+        )
+      end,
     }
 
     -- This is also used by zsh

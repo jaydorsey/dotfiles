@@ -4,8 +4,8 @@ local map = vim.api.nvim_set_keymap
 
 -- This is needed for maps that call <Plug>
 -- https://neovim.discourse.group/t/unable-to-make-plug-calls/402/4
-plug_options = { silent = true }
-options = { noremap = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
+options        = { noremap = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
+plug_options   = { silent = true }
 silent_options = { noremap = true, silent = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 
 map('n', '<leader>e', ':NvimTreeToggle<cr>', options)
@@ -61,9 +61,13 @@ map('x', '<leader>l', ':Limelight!!<cr>', options)
 -- map('n', '<leader>b', ':Buffers<cr>', silent_options)
 
 -- fzf-lua.vim
-map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
-map("n", "<C-g>", [[<Cmd>lua require"fzf-lua".grep_project()<CR>]], {})
+-- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files({ fzf_opts = { ['--layout'] = 'reverse-list' } })<CR>", { silent = true })
+-- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
+-- map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
+-- map("n", "<C-g>", [[<Cmd>lua require"fzf-lua".grep_project()<CR>]], {})
+map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", silent_options)
+map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", silent_options)
+map('n', '<c-g>', [[ <Cmd>lua require"fzf-lua".live_grep( { continue_last_search = true, fzf_opts = { ['--nth'] = '2..' } })<CR> ]], silent_options)
 
 -- telescope.nvim
 -- map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
