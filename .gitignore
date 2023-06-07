@@ -9,8 +9,9 @@ localbin/*
 .config/coc
 .config/configstore
 .config/fontforge
-.config/lnav
 .config/iterm2
+.config/lnav
+.config/ngrok/ngrok.yml
 .config/nvim/plugin/packer_compiled.lua
 # Alternate location for the compiled file
 .config/nvim/lua/packer_compiled.lua
