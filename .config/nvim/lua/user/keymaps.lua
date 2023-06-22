@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
-local map = vim.api.nvim_set_keymap
+-- local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 -- This is needed for maps that call <Plug>
 -- https://neovim.discourse.group/t/unable-to-make-plug-calls/402/4
