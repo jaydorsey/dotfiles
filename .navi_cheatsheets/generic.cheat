@@ -327,3 +327,8 @@ osascript -e 'id of app "<app_name>"'
 % json jq
 # Format all json schemas. Requires brew install moreutils
 for file in app/schemas/*.json; do cat $file | jq -S | sponge $file; done
+
+
+% xml xmllint
+# Format all json schemas. Requires brew install moreutils
+for file in spec/fixtures/*.xml; do xmllint --format $file | sponge $file; done
