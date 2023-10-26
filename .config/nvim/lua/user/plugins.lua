@@ -129,7 +129,11 @@ return packer.startup(
 
     use 'wellle/targets.vim'
     use 'axelf4/vim-strip-trailing-whitespace'
-    use 'lukas-reineke/indent-blankline.nvim'
+    use {
+      'lukas-reineke/indent-blankline.nvim',
+      main = 'ibl',
+      opts = {}
+    }
 
     use 'dstein64/vim-startuptime' -- Measure startup time with :StartupTime
     use 'AndrewRadev/splitjoin.vim' -- Use shortcuts gJ and gS to join and split, respectively
