@@ -8,7 +8,10 @@ localbin/*
 .config/broot
 .config/coc
 .config/configstore
+# Podman
+.config/containers/
 .config/fontforge
+.config/gh
 .config/htop
 .config/iterm2
 .config/lnav
@@ -18,6 +21,7 @@ localbin/*
 .config/nvim/lua/packer_compiled.lua
 .config/AWSVPNClient
 .config/github-copilot
+.config/AWS VPN Client/
 .bundle
 !.bundle/config
 # Computer-specific things that I should probably compile into localbin instead of here
