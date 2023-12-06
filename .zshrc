@@ -7,6 +7,9 @@ fi
 
 # Not sure I want to do this...
 export XDG_CONFIG_HOME="$HOME/.config"
+# TODO: This doesn't work
+# export NAVI_CONFIG=$XDG_CONFIG_HOME/navi/config.yaml
+export NAVI_PATH="$HOME/.navi_cheatsheets:$HOME/.local_navi_cheatsheets"
 
 source $HOME/.antigen/antigen.zsh
 
@@ -141,11 +144,10 @@ export AR_TRACE=false
 export SCOUT_DEV_TRACE=false
 
 export ARCHFLAGS="-arch arm64"
-# export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
-# export CFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -O2 -g -fno-stack-check"
-export CFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include "
+
+export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include "
 export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig"
 
 export EDITOR="nvim"
@@ -169,7 +171,7 @@ export FZF_DEFAULT_COMMAND="rg \
   -g \"!*.tmp\" \
   -g \"!.cache\" \
   -g \"!.elixir_ls\" \
-  -g \"!.git\" \
+  -g \"!.git/**/*\" \
   -g \"!.gnupg\" \
   -g \"!.node-gyp\" \
   -g \"!.npm\" \
@@ -227,7 +229,6 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --with-dynamic-trace=dtrace"
 
 export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
-export NAVI_PATH="$HOME/.navi_cheatsheets"
 export PAGER="less"
 
 export PATH=$PATH:$HOMEBREW_PREFIX/opt/postgresql/bin
@@ -392,10 +393,6 @@ export PATH=$HOMEBREW_PREFIX/bin:$PATH
 export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 
-# For crystal
-# https://embeddedartistry.com/blog/2017/02/24/installing-llvm-clang-on-osx/
-export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
-
 export PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/readline/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/jemalloc/bin:$PATH"
@@ -477,3 +474,8 @@ eval "$(zoxide init zsh)"
 
 source $HOME/.config/broot/launcher/bash/br
 eval "$(~/.cargo/bin/rtx activate zsh)"
+
+# For crystal
+# https://embeddedartistry.com/blog/2017/02/24/installing-llvm-clang-on-osx/
+export PATH="$HOMEBREW_PREFIX/opt/gcc/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
