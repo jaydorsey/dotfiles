@@ -85,3 +85,17 @@ Thumbs.db
 rails.rb
 .rgignore
 .gem_rbs_collection
+
+.gemrc
+.tool-versions
+
+# Docker mount
+volume/**/*
+
+##############################################
+# Temporary
+##############################################
+chemical.jpeg
+chemical.png
+public/assets_test
+build
