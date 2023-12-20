@@ -47,6 +47,9 @@ git commit --allow-empty -m "Empty commit to trigger build"
 #  List files and last modification dates
 git ls-files -z | xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" {}
 
+# List files and last modifications dates, while searching a term
+git ls-files | grep <search_term> | xargs -n1 -I{} -- git log -1 --format="%ai {}" {}
+
 # Pre-compute file paths to speed up git log commands
 git commit-graph write --reachable --changed-paths
 
@@ -69,6 +72,18 @@ done > oldest_files.txt
 
 # Compare 2 commits on github
 open https://github.com/<org>/<repo>/compare/<commit_1>..<commit_2>
+
+# Compare current branch with master
+git diff-tree -r --no-commit-id --name-only head origin/master
+
+# Compare current branch with current upstream
+git diff-tree -r --no-commit-id --name-only @\{u\} head
+
+# Run rubocop only on modified files (compared against upstream)
+git diff-tree -r --no-commit-id --name-only @\{u\} head | xargs rubocop
+
+# Run rubocop only on modified files
+git diff-tree -r --no-commit-id --name-only head origin/master | xargs rubocop
 
 
 % tmux
@@ -144,6 +159,9 @@ rails routes -c <controller_name>
 
 # Update rails & dependencies
 bundle update rails actionview actionpack activerecord activesupport railties activemodel --conservative
+
+# Run specs for current changes from master only
+git diff-tree -r --no-commit-id --name-only head origin/master | grep _spec | xargs bin/rspec
 
 
 % postgres
@@ -260,12 +278,12 @@ $ file: ls
 # Generate a random number in a range
 shuf -i <start_range>-<end_range> -n 1
 
-# Find files with size 0
 # https://stackoverflow.com/a/15703727
+# Find files with size 0
 find . -size 0
 
-# Concatenate all text files adding a newline after each
 # https://stackoverflow.com/a/8183247
+# Concatenate all text files adding a newline after each
 for f in *.txt; do (cat "${f}"; echo) >> finalfile.txt; done
 
 % aws
@@ -278,9 +296,11 @@ $ aws_region: echo us-west-2; echo us-west-1; echo us-east-2; echo us-east-1
 
 % docker
 
-# Remove all my locally build images
-docker images -q | xargs docker rmi -f
+# Attach to a container
+docker attach <container_id>
 
+$ image_id: docker images --- --headers 1 --column 3
+$ container_id: docker ps --- --headers 1 --column 1
 
 % general, system
 
@@ -289,6 +309,9 @@ sed -i .bak 's/<string_to_replace>/<new_string>/' <file_name>
 
 # List all files, but with some folders excluded
 tree -a -I '.git|node_modules'
+
+# Delete all test, development, bullet log files from ruby app
+fd --type file --max-depth 2 --min-depth 1 --no-ignore "bullet.log|development.log|test.log" | xargs rm -rf
 
 
 % ruby
@@ -332,3 +355,7 @@ for file in app/schemas/*.json; do cat $file | jq -S | sponge $file; done
 % xml xmllint
 # Format all json schemas. Requires brew install moreutils
 for file in spec/fixtures/*.xml; do xmllint --format $file | sponge $file; done
+
+% network
+# Find out what's listening on a port
+lsof -n -i:<port> | grep LISTEN
