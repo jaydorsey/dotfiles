@@ -25,3 +25,4 @@ rubocop-rspec
 rufo
 ruby-beautify2
 solargraph
+rspec_profiling
