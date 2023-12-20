@@ -9,33 +9,17 @@ fi
 export XDG_CONFIG_HOME="$HOME/.config"
 # TODO: This doesn't work
 # export NAVI_CONFIG=$XDG_CONFIG_HOME/navi/config.yaml
-export NAVI_PATH="$HOME/.navi_cheatsheets:$HOME/.local_navi_cheatsheets"
+# Pull local files first (more relevant, usually) then the generic shared cheats
+#
+# List the cheats in order of usage; they appear in the list at the bottom
+# of the terminal in the order they're presented in the cheat file.
+#
+# tldr; favorites near the top of the file
+export NAVI_PATH="$HOME/.local_navi_cheatsheets:$HOME/.navi_cheatsheets"
 
 source $HOME/.antigen/antigen.zsh
 
-antigen use oh-my-zsh
-
-# antigen bundle asdf
-antigen bundle git
-antigen bundle heroku
-antigen bundle command-not-found
-
-antigen bundle denisidoro/navi
-antigen bundle ellie/atuin@main
-
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-
-# antigen bundle leophys/zsh-plugin-fzf-finder
-
-# This has to go last. You also have to run:
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-antigen theme romkatv/powerlevel10k
-
-antigen apply
+antigen init $HOME/.antigenrc
 
 # Uncomment this, and the last line in this file for profiling information
 # zmodload zsh/zprof
@@ -108,7 +92,17 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # oh-my-zsh plugins
-plugins=(zoxide git colored-man-pages zsh-interactive-cd rake-fast)
+plugins=(
+  bundler
+  colored-man-pages
+  git
+  macos
+  rake-fast
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  zsh-interactive-cd
+  zoxide
+)
 
 # Always automatically update oh-my-zsh
 DISABLE_UPDATE_PROMPT="true"
@@ -159,12 +153,14 @@ export FZF_DEFAULT_COMMAND="rg \
   --line-number \
   --no-heading \
   --smart-case \
+  --no-ignore-vcs \
   --hidden \
   -g \"!**/bower_modules/*\" \
   -g \"!**/dist/*\" \
   -g \"!**/node_modules/*\" \
   -g \"!**/tmp/**/*\" \
   -g \"!*.dwarf\" \
+  -g \"!*.git\" \
   -g \"!*.jay\" \
   -g \"!*.log\" \
   -g \"!*.map\" \
@@ -181,6 +177,7 @@ export FZF_DEFAULT_COMMAND="rg \
   -g \"!_build/**/*\" \
   -g \"!config/yarn\" \
   -g \"!coverage\" \
+  -g \"!data/**/*\" \
   -g \"!db/backups\" \
   -g \"!deps/**/*\" \
   -g \"!doc\" \
@@ -192,7 +189,7 @@ export FZF_DEFAULT_COMMAND="rg \
   -g \"!swagger\" \
   -g \"!tags\" \
   -g \"!yarn.lock\" \
-  2> /dev/null"
+  "
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'

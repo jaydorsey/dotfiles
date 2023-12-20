@@ -56,7 +56,7 @@ return packer.startup(
   function(use)
     use 'wbthomason/packer.nvim' -- Use packer to manage itself
     use 'lewis6991/impatient.nvim' -- Improve startup time for nvim
-    -- use 'nathom/filetype.nvim' -- faster filetype.vim
+    use 'nathom/filetype.nvim' -- faster filetype.vim
     use 'kyazdani42/nvim-web-devicons'
     use 'windwp/nvim-autopairs'
     use 'catppuccin/nvim' -- colorscheme
@@ -153,6 +153,8 @@ return packer.startup(
     use({
       'kevinhwang91/nvim-hlslens',
       config = function()
+        --hlslens need to invoke `require('hlslens').setup()` to boot!
+
         local opts = require('config').opts
         vim.api.nvim_set_keymap(
           'n',
@@ -194,13 +196,15 @@ return packer.startup(
     }
     use 'junegunn/limelight.vim' -- Highlight code blocks with :LimelightToggle
     use 'junegunn/vim-easy-align' -- Align code
-    use 'edluffy/specs.nvim' -- Cursor beacon across huge jumps
     use 'tversteeg/registers.nvim'
 
     -- use 'karb94/neoscroll.nvim' -- Smooth scrolling plugin
     use({
       'petertriho/nvim-scrollbar',
-      require = { 'kevinhwang91/nvim-hlslens', 'lewis6991/gitsigns.nvim' },
+      require = {
+        'kevinhwang91/nvim-hlslens',
+        'lewis6991/gitsigns.nvim'
+      },
       config = function()
         require('scrollbar').setup()
         require('scrollbar.handlers.search').setup()
@@ -290,42 +294,42 @@ return packer.startup(
     -- })
 
     -- use 'easymotion/vim-easymotion'
-    use {
-      'phaazon/hop.nvim',
-      branch = 'v2',
-      config = function()
-        local opts = require('config').opts
-        require('hop').setup()
-        vim.api.nvim_set_keymap('n', 's', ':HopChar2<CR>', opts)
-        vim.api.nvim_set_keymap('n', 'S', ':HopChar2MW<CR>', opts)
-        -- use `<Cmd>lua` instead of `:lua`
-        -- https://github.com/phaazon/hop.nvim/issues/89#issuecomment-854701856
-        vim.api.nvim_set_keymap(
-          '',
-          'f',
-          '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true })<CR>',
-          opts
-        )
-        vim.api.nvim_set_keymap(
-          '',
-          'F',
-          '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>',
-          opts
-        )
-        vim.api.nvim_set_keymap(
-          '',
-          't',
-          '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>',
-          opts
-        )
-        vim.api.nvim_set_keymap(
-          '',
-          'T',
-          '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>',
-          opts
-        )
-      end,
-    }
+    -- use {
+    --   'phaazon/hop.nvim',
+    --   branch = 'v2',
+    --   config = function()
+    --     local opts = require('config').opts
+    --     require('hop').setup()
+    --     vim.api.nvim_set_keymap('n', 's', ':HopChar2<CR>', opts)
+    --     vim.api.nvim_set_keymap('n', 'S', ':HopChar2MW<CR>', opts)
+    --     -- use `<Cmd>lua` instead of `:lua`
+    --     -- https://github.com/phaazon/hop.nvim/issues/89#issuecomment-854701856
+    --     vim.api.nvim_set_keymap(
+    --       '',
+    --       'f',
+    --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true })<CR>',
+    --       opts
+    --     )
+    --     vim.api.nvim_set_keymap(
+    --       '',
+    --       'F',
+    --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>',
+    --       opts
+    --     )
+    --     vim.api.nvim_set_keymap(
+    --       '',
+    --       't',
+    --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>',
+    --       opts
+    --     )
+    --     vim.api.nvim_set_keymap(
+    --       '',
+    --       'T',
+    --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>',
+    --       opts
+    --     )
+    --   end,
+    -- }
 
     use {
       'tarekbecker/vim-yaml-formatter',
@@ -389,14 +393,19 @@ return packer.startup(
         'kyazdani42/nvim-web-devicons', opt = true
       },
     }
-    use 'romgrk/barbar.nvim' -- Tabline plugin with different features
+
+    use 'romgrk/barbar.nvim' -- Tabline/statusline plugin with different features
 
     use {
       'lewis6991/gitsigns.nvim',
-      requires = {
+      require = {
         'nvim-lua/plenary.nvim'
       },
-      event = 'BufRead'
+      config = function()
+        require('gitsigns').setup()
+        require('scrollbar.handlers.gitsigns').setup()
+      end
+      -- event = 'BufRead'
     }
 
     use {

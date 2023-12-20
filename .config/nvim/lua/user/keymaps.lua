@@ -66,9 +66,15 @@ map('x', '<leader>l', ':Limelight!!<cr>', options)
 -- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 -- map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
 -- map("n", "<C-g>", [[<Cmd>lua require"fzf-lua".grep_project()<CR>]], {})
-map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", silent_options)
 map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", silent_options)
-map('n', '<c-g>', [[ <Cmd>lua require"fzf-lua".live_grep( { continue_last_search = true, fzf_opts = { ['--nth'] = '2..' } })<CR> ]], silent_options)
+map('n', '<c-g>', [[ <Cmd>lua require"fzf-lua".live_grep_native( {winopts = { preview = { hidden = "nohidden" } },fzf_opts = { ['--nth'] = '2..' } })<CR> ]], silent_options)
+
+
+-- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", silent_options)
+map('n', '<leader>p', [[<Cmd>lua require"fzf-lua".files( { cmd='rg --files', winopts = { preview = { hidden = "nohidden" } } })<CR>]], options)
+-- map('n', '<leader>p', [[<Cmd>lua require"fzf-lua".files( { winopts = { preview = { hidden = "nohidden" } } })<CR>]], options)
+-- map('n', '<leader>bb', [[<Cmd>BufferOrderByBufferNumber<CR>]], options)
+map('n', '<leader>bb', ':BufferOrderByBufferNumber<CR>', options)
 
 -- telescope.nvim
 -- map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)

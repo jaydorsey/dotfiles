@@ -6,7 +6,8 @@ if not status_ok then
 end
 
 vim.g.barbar = {
-  animation = false,
+  animation = true,
   tabpages = true,
+  clickable = true,
   insert_at_end = true,
 }

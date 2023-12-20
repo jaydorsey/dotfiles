@@ -178,7 +178,7 @@ npm install -g neovim yarn
 #
 # Typically, you want to run this command once, in the repo root:
 #
-#     /usr/local/bin/ctags . $(bundle list --paths)
+#     $HOMEBREW_PATH/bin/ctags . $(bundle list --paths)
 #
 # For unused tool, you'll want to run this from the root:
 #
