@@ -1,9 +1,12 @@
 local wezterm = require 'wezterm';
+local config = {}
 
-return {
-    font = wezterm.font("JetBrainsMono Nerd Font Mono"),
-    font_size = 14,
-    color_scheme = "Blue Matrix",
-    enable_tab_bar = false,
-    native_macos_fullscreen_mode = false,
-}
+config.audible_bell = "Disabled"
+config.color_scheme = "Blue Matrix"
+config.enable_tab_bar = false
+config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
+config.font_size = 14
+config.native_macos_fullscreen_mode = false
+config.visual_bell = { fade_in_duration_ms = 75, fade_out_duration_ms = 75, target = 'CursorColor' }
+
+return config
