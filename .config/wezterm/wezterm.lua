@@ -1,6 +1,9 @@
 local wezterm = require 'wezterm';
 local config = {}
 
+-- If you open up fullscreen by accident, use ALT+Enter. Alt is the top-right
+-- key on your left keyboard
+
 config.audible_bell = "Disabled"
 config.color_scheme = "Blue Matrix"
 config.enable_tab_bar = false
