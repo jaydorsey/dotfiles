@@ -99,3 +99,8 @@ chemical.jpeg
 chemical.png
 public/assets_test
 build
+router.yaml
+supergraph-config.yaml
+supergraph.graphql
+
+config/initializers/jay.rb
