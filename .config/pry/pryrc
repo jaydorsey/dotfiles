@@ -147,5 +147,3 @@ end
 
 # https://github.com/pry/pry/issues/1619
 Pry.config.collision_warning = true
-
-extend Rails::ConsoleMethods if defined?(Rails) && Rails.env # rubocop:disable Style/MixinUsage
