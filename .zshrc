@@ -139,9 +139,9 @@ export SCOUT_DEV_TRACE=false
 
 export ARCHFLAGS="-arch arm64"
 
-export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include "
+export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm@15/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm@15/lib -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm@15/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include "
 export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig"
 
 export EDITOR="nvim"
@@ -268,7 +268,7 @@ export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 export RACK_TIMEOUT_TERM_ON_TIMEOUT=1
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
-export REDIS_URL="redis://localhost:6379"
+# export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings. Disabled this for now; this causes rubocop to fail silently
 # export RUBYOPT="-W0"
 export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
@@ -276,8 +276,7 @@ export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --wit
 # Enable ruby yjit locally
 export RUBY_YJIT_ENABLE=1
 
-# RSpec, I prefer my specs to fail fast & document
-# export SPEC_OPTS="-f d --fail-fast"
+export SPEC_OPTS="--color --require rails_helper --tag ~broken --tag ~deprecated --order random --no-profile"
 
 # Speed up local testing, for apps that have the ENV set as a flag
 export DISABLE_SIMPLECOV=1
@@ -472,7 +471,15 @@ eval "$(zoxide init zsh)"
 source $HOME/.config/broot/launcher/bash/br
 eval "$(~/.cargo/bin/rtx activate zsh)"
 
+# Podman, use apple hypervisor
+export CONTAINERS_MACHINE_PROVIDER=applehv
+
 # For crystal
 # https://embeddedartistry.com/blog/2017/02/24/installing-llvm-clang-on-osx/
 export PATH="$HOMEBREW_PREFIX/opt/gcc/bin:$PATH"
-export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
+# export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm@15/bin:$PATH"
+export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
+
+source /Users/jay.dorsey/.config/broot/launcher/bash/br
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
