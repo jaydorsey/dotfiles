@@ -80,10 +80,19 @@ git diff-tree -r --no-commit-id --name-only head origin/master
 git diff-tree -r --no-commit-id --name-only @\{u\} head
 
 # Run rubocop only on modified files (compared against upstream)
-git diff-tree -r --no-commit-id --name-only @\{u\} head | xargs rubocop
+git diff-tree -r --no-commit-id --name-only --diff-filter=d @\{u\} HEAD | xargs bundle exec rubocop
 
-# Run rubocop only on modified files
-git diff-tree -r --no-commit-id --name-only head origin/master | xargs rubocop
+# Run rubocop only on files modified locally, compared against remote
+git diff-tree --no-commit-id --name-only --diff-filter d -r origin/master HEAD | grep rb | xargs bundle exec rubocop
+
+# Find the latest annotated tag
+git describe --abbrev=0
+
+# Summary of the most recent commit
+git log --stat -1
+
+# List files changed in most recent commit
+git diff-tree --no-commit-id --name-only HEAD -r
 
 
 % tmux
@@ -286,6 +295,10 @@ find . -size 0
 # Concatenate all text files adding a newline after each
 for f in *.txt; do (cat "${f}"; echo) >> finalfile.txt; done
 
+# Calculate checksum of files in a folder, recursively
+find <folder> -type f | sort | xargs sha256sum -b | md5sum
+
+
 % aws
 
 # Put a String parameter in SSM
@@ -359,3 +372,9 @@ for file in spec/fixtures/*.xml; do xmllint --format $file | sponge $file; done
 % network
 # Find out what's listening on a port
 lsof -n -i:<port> | grep LISTEN
+
+
+% cargo rust
+
+# List outdated cargo commands
+cargo install-update --list
