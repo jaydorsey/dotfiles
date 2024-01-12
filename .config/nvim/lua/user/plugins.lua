@@ -1,8 +1,9 @@
 local fn = vim.fn
 
-vim.g.ale_ruby_rubocop_options = '--server'
-vim.g.ale_ruby_rubocop_executable = '~/.local/share/rtx/shims/rubocop'
-vim.g.ale_ruby_ruby_executable = '~/.local/share/rtx/shims/ruby'
+-- vim.g.ale_ruby_rubocop_options = '--server'
+-- -- vim.g.ale_ruby_rubocop_executable = '~/.local/share/rtx/shims/rubocop'
+-- vim.g.ale_ruby_rubocop_executable = 'bundle'
+-- vim.g.ale_ruby_ruby_executable = '~/.local/share/rtx/shims/ruby'
 
 -- print path where packer installs plugins. ~/.local/share/nvim
 -- lua vim.api.nvim_echo({{vim.fn.stdpath('data')}}, false, {})
@@ -91,6 +92,17 @@ return packer.startup(
     -- }
     use {
       'christoomey/vim-sort-motion'
+    }
+
+    use {
+      'sQVe/sort.nvim',
+      -- Optional setup for overriding defaults.
+      config = function()
+        require("sort").setup({
+          -- Input configuration here.
+          -- Refer to the configuration section below for options.
+        })
+      end
     }
 
     use {
@@ -229,7 +241,7 @@ return packer.startup(
     use 'nvim-lua/plenary.nvim'
     use 'nvim-lua/popup.nvim'
     use 'rhysd/committia.vim'
-    use 'tpope/vim-characterize'
+    -- use 'tpope/vim-characterize'
     use 'tpope/vim-dispatch'
     use 'tpope/vim-eunuch'
     use 'tpope/vim-fugitive'

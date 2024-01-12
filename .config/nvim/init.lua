@@ -17,9 +17,3 @@ require 'user.neoscroll'
 require 'user.nvim-tree'
 require 'user.lualine'
 require 'user.nvim-colorizer'
-
--- require 'packer_compiled'
--- vim.g.did_load_filetypes = 1
-
--- Loads everything that I couldn't convert over to lua easily
-vim.api.nvim_command 'runtime init/config.vim'

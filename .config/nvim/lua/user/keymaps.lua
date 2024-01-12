@@ -71,7 +71,7 @@ map('n', '<c-g>', [[ <Cmd>lua require"fzf-lua".live_grep_native( {winopts = { pr
 
 
 -- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", silent_options)
-map('n', '<leader>p', [[<Cmd>lua require"fzf-lua".files( { cmd='rg --files', winopts = { preview = { hidden = "nohidden" } } })<CR>]], options)
+map('n', '<leader>p', [[<Cmd>lua require"fzf-lua".files( { cmd='rg --files --hidden', winopts = { preview = { hidden = "nohidden" } } })<CR>]], options)
 -- map('n', '<leader>p', [[<Cmd>lua require"fzf-lua".files( { winopts = { preview = { hidden = "nohidden" } } })<CR>]], options)
 -- map('n', '<leader>bb', [[<Cmd>BufferOrderByBufferNumber<CR>]], options)
 map('n', '<leader>bb', ':BufferOrderByBufferNumber<CR>', options)
