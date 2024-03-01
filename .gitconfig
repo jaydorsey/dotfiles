@@ -2,6 +2,7 @@
 [user]
 	name = Jay Dorsey
 	email = 191564+jaydorsey@users.noreply.github.com
+	signingkey = FE12FC698D09DAE7
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global

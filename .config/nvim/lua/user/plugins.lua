@@ -369,13 +369,7 @@ return packer.startup(
     --   end,
     -- }
 
-    use {
-      'tarekbecker/vim-yaml-formatter',
-      ft={
-        'yaml',
-        'yml'
-      }
-    }
+    use { 'tarekbecker/vim-yaml-formatter', ft={ 'yaml', 'yml' } }
 
     use { 'ibhagwan/fzf-lua',
       requires = { 'nvim-tree/nvim-web-devicons' },
@@ -412,20 +406,23 @@ return packer.startup(
     use { 'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
 
     -- NERDTree replacement. Use g? to open up help
-    use {
-      'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons',
-      }
-    }
-    use { -- fast status line plugin written in vim
-      'hoob3rt/lualine.nvim',
-      requires = {
-        'kyazdani42/nvim-web-devicons', opt = true
-      },
-    }
+    use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', } }
 
-    use 'romgrk/barbar.nvim' -- Tabline/statusline plugin with different features
+    -- fast status line plugin written in vim
+    use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+
+    -- Tabline/statusline plugin with different features
+    use {
+      'romgrk/barbar.nvim',
+      config = function()
+        require('barbar').setup({
+          animation = true,
+          clickable = true,
+          insert_at_end = true,
+          tabpages = true
+        })
+      end
+    }
 
     use {
       'lewis6991/gitsigns.nvim',
@@ -441,10 +438,7 @@ return packer.startup(
 
     use 'numToStr/Comment.nvim' -- Comment plugin, in lua
 
-    use {
-      'folke/todo-comments.nvim',
-      requires = 'nvim-lua/plenary.nvim'
-    }
+    use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' }
 
     use 'folke/which-key.nvim'
 
