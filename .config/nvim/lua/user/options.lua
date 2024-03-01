@@ -18,8 +18,6 @@ vim.g.did_load_filetypes = 0
 vim.cmd [[filetype plugin indent on]]
 vim.cmd [[syntax on]]
 
-vim.cmd [[colorscheme catppuccin]]
-
 vim.g.indent_blankline_filetype_exclude = {
   'startify', 'log', 'fugitive', 'gitcommit', 'TelescopePrompt', 'undotree', 'markdown', 'peekaboo', 'git',
   'help', 'terminal', 'dashboard', ''
@@ -74,14 +72,15 @@ vim.o.expandtab = true -- Expand tabs to spaces
 
 -- o.fillchars="eob:\ ," -- Fill empty gutter lines with nothing
 
---o.foldmethod=expr -- for treesitter
--- o.foldexpr=nvim_treesitter#foldexpr() -- for treesitter
-
+-- https://www.jmaguire.tech/posts/treesitter_folding/
+vim.o.foldmethod="expr"
+vim.o.foldexpr="nvim_treesitter#foldexpr()"
 vim.o.foldcolumn = "2"
+vim.o.foldlevelstart=99 -- Edit with all folds open when opening a file
 --o.foldlevel=2
---o.foldlevelstart=99 -- Edit with all folds open when opening a file
 --o.foldnestmax=12 -- Deepest fold
 vim.o.foldenable = true -- Fold or don't fold files by default
+
 -- o.formatoptions+=j -- Join comments better
 -- o.grepprg=rg\ \-\-vimgrep\ \-\-no-heading -- Use ripgrep instead of ag for :Ag commands
 -- o.grepformat=%f:%l:%c:%m,%f:%l:%m
@@ -129,8 +128,8 @@ vim.o.title = true -- Set the title of the iTerm tab
 vim.o.undofile = true -- Persistent undo
 -- TODO: Figure out where to send this
 -- o.undodir=".vim/undo" -- Persistent undo directory
---o.viewoptions=cursor,curdir,folds,unix,slash -- Recommended vim-stay option
---o.viewoptions-=options -- Recommended vim-stay option
+-- vim.api.nvim_set_option('viewoptions', 'cursor,curdir,folds,slash,unix') -- Recommended vim-stay option
+vim.api.nvim_set_option('viewoptions', 'cursor,folds,slash,unix') -- Recommended vim-stay option
 --o.viewdir="~/.vim/views"
 --" set viminfo^=!                                     " Add recently accessed projects menu (project plugin)
 -- set viminfo='100,f1'                               " https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/
@@ -139,6 +138,8 @@ vim.o.visualbell = true -- No visual feedback
 vim.o.errorbells = false
 -- o.writebackup = true -- write backup file before overwriting
 
+vim.o.timeoutlen = 1000
+vim.o.ttimeoutlen = 0
 
 vim.wo.number = true -- Line numbers on
 vim.wo.colorcolumn = "120"

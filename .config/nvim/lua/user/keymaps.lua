@@ -40,7 +40,7 @@ map('n', 'Q', '@q', options)
 
 -- clear search highlighting
 map('n', '//', ':noh<cr>', options)
-map('n', '<esc><esc>', ':noh<cr>', options)
+-- map('n', '<esc><esc>', ':noh<cr>', options)
 
 -- put relative path in clipboard
 map('n', ',cs', ':let @*=expand("%")<cr>', options)
@@ -67,7 +67,7 @@ map('x', '<leader>l', ':Limelight!!<cr>', options)
 -- map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
 -- map("n", "<C-g>", [[<Cmd>lua require"fzf-lua".grep_project()<CR>]], {})
 map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", silent_options)
-map('n', '<c-g>', [[ <Cmd>lua require"fzf-lua".live_grep_native( {winopts = { preview = { hidden = "nohidden" } },fzf_opts = { ['--nth'] = '2..' } })<CR> ]], silent_options)
+map('n', '<c-g>', [[ <Cmd>lua require"fzf-lua".live_grep_native( {winopts = { preview = { hidden = "nohidden" } },fzf_opts = { ['--nth'] = '2..' } })<CR> ]], options)
 
 
 -- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", silent_options)

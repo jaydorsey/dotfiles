@@ -6,13 +6,32 @@
 .env.test
 
 # Ruby
+.gem_rbs_collection
+.gemrc
+.irb-history
+.irb_history
+.overcommit.yml
+.pry_history
+.reek.yml
+.rgignore
 .rspec_parallel
-vendor/**/*
+.ruby-version
+.solargraph.yml
+.tool-versions
+.yardoc
+config/rails_best_practices.yml
 db/backups/**/*
 db/data/**/*
-.ruby-version
-.tool-versions
+lefthook.yml
+rails.rb
+vendor/**/*
 !db/structure.sql
+
+# Database
+*.dump
+*dump.gz
+*.sqlite
+*.sqldump
 
 # Sonarcloud
 .scannerwork
@@ -49,45 +68,28 @@ deps/*
 out.txt
 
 # Miscellaneous/General
-.reek.yml
-config/rails_best_practices.yml
 **/storage/**/*
 *.map
 tmux*
-**/.pry_history
-**/.irb-history
-.irb_history
 .scratchpads
 default-env-vars.yml
-.solargraph.yml
 deoplete.log
 .tabnineignore
-.yardoc
 /doc/**/*
-*.dump
 tmp/*
 .metadata_never_index
 *.code-workspace
 .haml-lint.yml
 .idea
 .ignore
-.overcommit.yml
-lefthook.yml
 .DS_Store*
 .ehthumbs.db
 Icon
 Thumbs.db
 *.log
-*.sqlite
-*.sqldump
 *.dev
+*_ignore.rb
 
-rails.rb
-.rgignore
-.gem_rbs_collection
-
-.gemrc
-.tool-versions
 
 # Docker mount
 volume/**/*
@@ -104,3 +106,6 @@ supergraph-config.yaml
 supergraph.graphql
 
 config/initializers/jay.rb
+.config/zellij/layouts/**
+
+.git/**/*

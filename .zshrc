@@ -47,6 +47,8 @@ export ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # https://github.com/ansible/ansible/issues/32499#issuecomment-341578864
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
+# https://github.com/rails/rails/issues/38560
+export PGGSSENCMODE="disable"
 
 # Location of my dotfiles repo, for symlinking. Override this in .localrc if
 # needed. I might be able to remove this completely, now that I'm using stow
@@ -139,10 +141,10 @@ export SCOUT_DEV_TRACE=false
 
 export ARCHFLAGS="-arch arm64"
 
-export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm@15/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm@15/lib -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm@15/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include "
-export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig"
+export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib -L/opt/homebrew/Cellar/zstd/1.5.5/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include "
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/libpq/lib/pkgconfig:o$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig"
 
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -477,8 +479,7 @@ export CONTAINERS_MACHINE_PROVIDER=applehv
 # For crystal
 # https://embeddedartistry.com/blog/2017/02/24/installing-llvm-clang-on-osx/
 export PATH="$HOMEBREW_PREFIX/opt/gcc/bin:$PATH"
-# export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
-export PATH="/opt/homebrew/opt/llvm@15/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
 
 source /Users/jay.dorsey/.config/broot/launcher/bash/br

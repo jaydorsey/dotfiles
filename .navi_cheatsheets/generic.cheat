@@ -2,7 +2,7 @@
 
 % git
 
-# Change branch
+# Change branch gco
 git checkout <branch>
 
 $ branch: git branch | awk '{print $NF}'
@@ -93,6 +93,9 @@ git log --stat -1
 
 # List files changed in most recent commit
 git diff-tree --no-commit-id --name-only HEAD -r
+
+# List files changed by name only
+git diff --name-only
 
 
 % tmux
@@ -260,6 +263,11 @@ rg '.{<character_count>,}' <folder> -g '<file_glob>'
 # Print line count of files in folder
 rg -g '<file_glob>' --files . | xargs wc -l | sort
 
+# Find files that match name
+rg --files --hidden 2> /dev/null | rg '<filename>'
+
+# Find folders that match name
+rg --hidden --files --null | xargs -0 dirname | uniq | grep <folder>
 
 % curl
 
@@ -297,6 +305,9 @@ for f in *.txt; do (cat "${f}"; echo) >> finalfile.txt; done
 
 # Calculate checksum of files in a folder, recursively
 find <folder> -type f | sort | xargs sha256sum -b | md5sum
+
+# List file size in bytes
+stat -f%z <file>
 
 
 % aws
@@ -363,6 +374,9 @@ osascript -e 'id of app "<app_name>"'
 % json jq
 # Format all json schemas. Requires brew install moreutils
 for file in app/schemas/*.json; do cat $file | jq -S | sponge $file; done
+
+# Format file as json
+cat <file> | jq -S | sponge <file>
 
 
 % xml xmllint

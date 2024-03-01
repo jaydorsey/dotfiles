@@ -15,7 +15,7 @@
 	a = add -A
 	authors = log --abbrev-commit --format="%an" --no-merges
 	b = branch
-	cane = commit --amend --no-edit
+	cane = !LEFTHOOK=0 git commit --amend --no-edit
 	co = checkout
 	d = diff -w --word-diff
 	fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && git rebase -i --autosquash $REV^' -
@@ -27,6 +27,7 @@
 	lg = log --oneline --graph
 	lgg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\n--abbrev-commit --date=relative --decorate=full
 	ls = ls-files
+	mylog = log --author=jaydorsey
 	recent = !git log --no-walk --date-order --oneline --decorate $(git rev-list --branches --no-walk)
 	s = status
 	standup = log --since yesterday --oneline --no-merges --author jaydorsey
@@ -61,6 +62,7 @@
 	pager = true
 [commit]
 	verbose = false
+	gpgSign = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
@@ -127,3 +129,5 @@
 	prompt = false
 [advice]
 	skippedCherryPicks = false
+[tag]
+	gpgSign = true

@@ -60,7 +60,20 @@ return packer.startup(
     use 'nathom/filetype.nvim' -- faster filetype.vim
     use 'kyazdani42/nvim-web-devicons'
     use 'windwp/nvim-autopairs'
-    use 'catppuccin/nvim' -- colorscheme
+    -- use 'catppuccin/nvim' -- colorscheme
+    use {
+      'dracula/vim',
+      as = 'dracula',
+      config = function()
+        vim.cmd 'colorscheme dracula'
+      end,
+    }
+    -- use {
+    --  'rebelot/kanagawa.nvim',
+    --  config = function()
+    --    vim.cmd 'colorscheme kanagawa'
+    --  end,
+    -- }
 
     -- use {
     --   'github/copilot.vim',
@@ -80,10 +93,12 @@ return packer.startup(
         'nvim-treesitter/nvim-treesitter-refactor',
         'nvim-treesitter/nvim-treesitter-textobjects',
         'nvim-treesitter/playground',
-        -- 'p00f/nvim-ts-rainbow'
+        'p00f/nvim-ts-rainbow'
       },
       run = ':TSUpdate',
     }
+
+    use 'imsnif/kdl.vim'
 
     -- use {
     --   'autozimu/LanguageClient-neovim',
@@ -93,7 +108,12 @@ return packer.startup(
     use {
       'christoomey/vim-sort-motion'
     }
+    use 'haya14busa/vim-asterisk' -- Improved * motions
+    use 'bronson/vim-visual-star-search'
 
+    use 'mechatroner/rainbow_csv'
+
+    -- Line-wise & delimiter sorting
     use {
       'sQVe/sort.nvim',
       -- Optional setup for overriding defaults.
@@ -149,17 +169,21 @@ return packer.startup(
 
     use 'dstein64/vim-startuptime' -- Measure startup time with :StartupTime
     use 'AndrewRadev/splitjoin.vim' -- Use shortcuts gJ and gS to join and split, respectively
-    use 'Konfekt/FastFold'
+
+    -- TODO: Do I need lastplace + vim-stay?
+    -- use 'Konfekt/FastFold'
+    use { 'zhimsel/vim-stay' } -- view creation, fold
+    use { 'lambdalisue/readablefold.vim' } -- improved foldtext
+    use { 'ethanholz/nvim-lastplace', branch=main } -- reopen files at your last edit (lua)
+
     use 'Raimondi/delimitMate' -- Add automatic delimiters ([<{, quotes, etc.
     use { -- Formatting & validating json via :Jacinto
       'alfredodeza/jacinto.vim',
       ft = {'json'},
     }
-    use 'bronson/vim-visual-star-search'
     use 'editorconfig/editorconfig-Vim'
     use 'gioele/vim-autoswap' -- Better, automatic swap file management
     use 'guns/xterm-color-table.vim'
-    use 'haya14busa/vim-asterisk' -- Improved * motions
 
     -- use 'inside/vim-search-pulse'
     use({
@@ -183,10 +207,7 @@ return packer.startup(
       end,
     })
 
-    use {
-      'jaydorsey/vim-to-github',
-      branch='jay/add_blame_shortcut'
-    }
+    use { 'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut' }
 
     use {
       'ruifm/gitlinker.nvim',
@@ -236,7 +257,19 @@ return packer.startup(
     }
 
     use 'mbbill/undotree'
-    use 'mhinz/vim-startify'
+    use {
+      'echasnovski/mini.nvim',
+      branch = 'stable',
+      config = function()
+        require('mini.animate').setup({
+          cursor = { enable = true }
+        })
+        require('mini.hipatterns').setup()
+        require('mini.files').setup()
+        require('mini.sessions').setup()
+        require('mini.starter').setup()
+      end;
+    }
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-lua/popup.nvim'
@@ -281,15 +314,8 @@ return packer.startup(
       end,
     })
 
-    use('lambdalisue/readablefold.vim')
-
     use 'APZelos/blamer.nvim'
-    use {
-      'elzr/vim-json',
-      ft={
-        'json'
-      }
-    }
+    use { 'elzr/vim-json', ft={ 'json' } } -- better JSON highlight, warnings, etc
 
     -- highlight words and lines on the cursor
     -- use({
@@ -353,16 +379,12 @@ return packer.startup(
 
     use { 'ibhagwan/fzf-lua',
       requires = { 'nvim-tree/nvim-web-devicons' },
-      -- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files({ fzf_opts = { ['--layout'] = 'reverse-list', ['--height'] = '10%' } } })<CR>", { silent = true })
-
-      -- Need this on grep_project
-
       config = function()
         local opts = require('config').opts
 
         require('fzf-lua').setup({
-            -- preview_layout = 'flex',
-            -- flip_columns = 150,
+            preview_layout = 'flex',
+            flip_columns = 150,
             -- fzf_opts = {
             --   ['--border'] = 'none',
             --   ['--layout'] = 'reverse-list'
@@ -387,13 +409,10 @@ return packer.startup(
     }
 
     -- This is also used by zsh
-    use {
-      'junegunn/fzf',
-      dir = '~/.fzf',
-      run = './install --all'
-    }
+    use { 'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
 
-    use { -- NERDTree replacement. Use g? to open up help
+    -- NERDTree replacement. Use g? to open up help
+    use {
       'kyazdani42/nvim-tree.lua',
       requires = {
         'kyazdani42/nvim-web-devicons',
@@ -418,11 +437,6 @@ return packer.startup(
         require('scrollbar.handlers.gitsigns').setup()
       end
       -- event = 'BufRead'
-    }
-
-    use {
-      'ethanholz/nvim-lastplace',
-      branch=main
     }
 
     use 'numToStr/Comment.nvim' -- Comment plugin, in lua
