@@ -63,8 +63,20 @@ done
 
 # Use oh-my-zsh as my zsh framework
 
+mkdir -p ~/.zsh/git
+
 # Install antigen as a zsh plugin manager
-git clone https://github.com/zsh-users/antigen.git ~/.antigen
+# git clone https://github.com/zsh-users/antigen.git ~/.antigen
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions ~/.zsh/zsh-completions
+git clone https://github.com/zsh-users/zsh-history-substring-search ~/.zsh/zsh-history-substring-search
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+git clone https://github.com/denisidoro/navi ~/.zsh/navi
+git clone https://github.com/ellie/atuin ~/.zsh/atuin
+
+wget https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh -o ~/.zsh/git/git.plugin.zsh
+
+
 
 #######################################################
 #
@@ -167,6 +179,7 @@ cargo install zoxide --locked
 cargo install rtx-cli
 
 npm install -g neovim yarn
+npm install -g tree-sitter-cli
 
 # Run this once
 # https://build.betterup.com/one-weird-trick-that-will-speed-up-your-bundle-install/

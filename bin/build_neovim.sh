@@ -13,6 +13,7 @@ rm -rf ~/repos/neovim
 
 cd $REPO_DIR
 git clone https://github.com/neovim/neovim --depth 1
+git checkout v0.9.5
 
 mkdir -p "$BUILD_DIR"
 

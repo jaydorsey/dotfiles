@@ -1,7 +1,7 @@
 return {
   -- faster filetype.vim
-  { 'nathom/filetype.nvim' },
-  { 'kyazdani42/nvim-web-devicons', lazy=false },
+  -- { 'nathom/filetype.nvim', lazy=false },
+  { 'nvim-tree/nvim-web-devicons', lazy=false },
   {
     'windwp/nvim-autopairs', -- automatically adds pair brackets. lua
     opts = {
@@ -9,11 +9,11 @@ return {
       ignored_next_char = '[%w%.]',
       fast_wrap = {},
     },
-    event = 'BufReadPost',
+    -- event = 'BufReadPost',
   },
   { 
     'dracula/vim',
-    as = 'dracula',
+    name = 'dracula',
     config = function() 
       vim.cmd 'colorscheme dracula' 
     end, 
@@ -25,20 +25,9 @@ return {
 
   { 'Exafunction/codeium.vim' },
 
-  {
-    'nvim-treesitter/nvim-treesitter',
-    requires = {
-      'nvim-treesitter/nvim-treesitter-refactor',
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'nvim-treesitter/playground',
-      'p00f/nvim-ts-rainbow'
-    },
-    run = ':TSUpdate',
-  },
-
   { 'imsnif/kdl.vim' },
 
-  -- { 'autozimu/LanguageClient-neovim', branch = 'next', run = 'bash install.sh' } },
+  -- { 'autozimu/LanguageClient-neovim', branch = 'next', build = 'bash install.sh' } },
 
   { 'christoomey/vim-sort-motion' },
   { 'haya14busa/vim-asterisk'  }, -- Improved * motions
@@ -48,12 +37,89 @@ return {
   -- Line-wise & delimiter sorting
   { 'sQVe/sort.nvim', config = function() require("sort").setup({}) end },
 
-  { 'francoiscabrol/ranger.vim', requires = { 'rbgrouleff/bclose.vim' } },
+  { 'francoiscabrol/ranger.vim', dependencies = { 'rbgrouleff/bclose.vim' } },
 
-  { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' },
-  { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
-  { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle', after = 'nvim-treesitter' },
-  { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' },
+
+  --
+  --
+  -- treesitter/lsp stuff
+  --
+  --
+  {
+    'jaydorsey/nvim-treesitter',
+    branch = 'jaydorsey/keybind-error-message',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-refactor',
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/playground',
+      'p00f/nvim-ts-rainbow',
+      'windwp/nvim-ts-autotag',
+
+    },
+    build = ':TSUpdate',
+    -- event = { 'BufReadPost', 'BufNewFile' },
+    config = function()
+      require 'config.treesitter'
+    end,
+  },
+  { 'RRethy/nvim-treesitter-textsubjects', dependencies = { 'nvim-treesitter' } },
+  { 'nvim-treesitter/nvim-treesitter-textobjects', dependencies = { 'nvim-treesitter' } },
+  { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle', dependencies = { 'nvim-treesitter' } },
+  {
+    'danymat/neogen', -- Annotation
+    dependencies = 'nvim-treesitter',
+    config = function()
+      require 'config.neogen'
+    end,
+    keys = { '<localleader>d', '<localleader>df', '<localleader>dc' },
+  },
+  {
+    'stevearc/aerial.nvim', -- code outline
+    opts = {
+      backends = { 'lsp', 'treesitter', 'markdown', 'man' },
+      on_attach = function(bufnr)
+        vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
+        vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
+      end,
+    },
+    cmd = { 'AerialOpen', 'AerialToggle' },
+  },
+  {
+    'lewis6991/hover.nvim',
+    event = 'BufReadPost',
+    config = function()
+      require('hover').setup {
+        init = function()
+          require 'hover.providers.lsp'
+        end,
+      }
+
+      vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim' })
+      vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim (select)' })
+    end,
+  },
+  {
+    'DNLHC/glance.nvim',
+    cmd = 'Glance',
+    config = function()
+      require('glance').setup {
+        detached = true,
+        border = { enable = true, top_char = '─', bottom_char = '─' },
+        theme = { mode = 'brighten' },
+        indent_lines = { icon = '│' },
+        winbar = { enable = true },
+      }
+    end,
+  },
+  { 'neovim/nvim-lspconfig' },
+  {
+    'SmiteshP/nvim-navic', -- code context
+    dependencies = 'neovim/nvim-lspconfig',
+    opts = { lazy_update_context = true },
+  },
+
+
+  { 'TimUntersberger/neogit', dependencies = 'nvim-lua/plenary.nvim' },
   { 'norcalli/nvim-colorizer.lua'  }, -- colorize hex/rgb codes like #ff0000
   { 'vim-ruby/vim-ruby', ft = { 'ruby', 'erb' } }, -- ruby syntax and helpers
 
@@ -62,11 +128,25 @@ return {
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
 
   { 'dstein64/vim-startuptime' }, -- Measure startup time with :StartupTime
-  { 'AndrewRadev/splitjoin.vim'  }, -- Use shortcuts gJ and gS to join and split, respectively
+  { 'AndrewRadev/splitjoin.vim', lazy=false }, -- Use shortcuts gJ and gS to join and split, respectively
 
   -- TODO: Do I need lastplace + vim-stay?
   -- use 'Konfekt/FastFold'
-  { 'ethanholz/nvim-lastplace', branch=main }, -- reopen files at your last edit (lua)
+  { 
+    'ethanholz/nvim-lastplace', -- reopen files at your last edit (lua)
+    branch=main ,
+    opts = {
+      lastplace_ignore_buftype = { 'quickfix', 'nofile', 'help' },
+      lastplace_ignore_filetype = {
+        'gitcommit',
+        'gitrebase',
+        'svn',
+        'hgcommit',
+      },
+    },
+    event = 'BufReadPre',
+    priority = 1001,
+  }, 
   { 'gioele/vim-autoswap'  }, -- Better, automatic swap file management
   { 'lambdalisue/readablefold.vim' }, -- improved foldtext
   { 'zhimsel/vim-stay' }, -- view creation, fold
@@ -100,7 +180,7 @@ return {
 
   {
     'ruifm/gitlinker.nvim',
-    requires = 'nvim-lua/plenary.nvim',
+    dependencies = 'nvim-lua/plenary.nvim',
     config = function()
       require('gitlinker').setup()
     end
@@ -119,7 +199,7 @@ return {
   -- use 'karb94/neoscroll.nvim' -- Smooth scrolling plugin
   {
     'petertriho/nvim-scrollbar',
-    require = {
+    dependencies = {
       'kevinhwang91/nvim-hlslens',
       'lewis6991/gitsigns.nvim'
     },
@@ -133,18 +213,11 @@ return {
   {
     'andymass/vim-matchup',
     init = function()
-      require 'config.matchup'
+      require('config.matchup')
     end,
     lazy = false,
   },
-  {
-    'machakann/vim-sandwich',
-    {
-      'andymass/vim-matchup',
-      setup = [[require('matchup')]],
-      event = 'User ActuallyEditing'
-    }
-  },
+  { 'machakann/vim-sandwich', dependencies = { 'andymass/vim-matchup', } },
 
   { 'mbbill/undotree' },
   {
@@ -170,7 +243,7 @@ return {
     'tpope/vim-eunuch', -- vim sugar for shell commands
     lazy = false
   },
-  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-fugitive', lazy=false },
   { 'tpope/vim-rails' },
   { 'tpope/vim-repeat' },
   { 'wincent/ferret'  }, -- Enhanced multi file search
@@ -179,7 +252,7 @@ return {
 
   {
     'sheerun/vim-polyglot',
-    setup = function()
+    init = function()
       -- disabled filetypes
       vim.g.polyglot_disabled = {}
       -- vue behaviors
@@ -198,11 +271,11 @@ return {
 
   {
     'iamcco/markdown-preview.nvim',
-    run = function()
+    build = function()
       vim.fn['mkdp#util#install']()
     end,
     ft = { 'markdown' },
-    setup = function()
+    init = function()
       vim.g.mkdp_filetypes = { 'markdown' }
     end,
   },
@@ -263,45 +336,41 @@ return {
   -- }
 
   { 'tarekbecker/vim-yaml-formatter', ft={ 'yaml', 'yml' } },
-
-  { 'ibhagwan/fzf-lua',
-    requires = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      local opts = require('config').opts
-
-      require('fzf-lua').setup({
-          preview_layout = 'flex',
-          flip_columns = 150,
-          -- fzf_opts = {
-          --   ['--border'] = 'none',
-          --   ['--layout'] = 'reverse-list'
-          -- },
-          grep = {
-            -- Use glob with ctrl+g:
-            --     foo -- *_spec.rb
-            glob_flag = "--iglob", -- for case sensitive globs use --glob
-            glob_separator = "%s%-%-", -- query separate pattern (lua): ' --''
-            rg_glob = true, -- enable glob pasring for all grep providers
-            rg_opts = "--sort-files --column --line-number --no-heading " ..
-                      "--color=always --hidden --smart-case --max-columns=4096",
-          },
-          winopts = {
-            preview = {
-              hidden = "hidden"
-            }
-          }
-        }
-      )
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      'telescope-fzf-native.nvim',
+      'nvim-telescope/telescope-ui-select.nvim',
+    },
+    tag = '0.1.5',
+    init = function()
+      require 'config.telescope_setup'
     end,
-    lazy = false
+    config = function()
+      require 'config.telescope'
+    end,
+    cmd = 'Telescope',
   },
-
-  { 'junegunn/fzf', dir = '~/.fzf', run = './install --all' }, -- This is also used by zsh
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+  },
+  'crispgm/telescope-heading.nvim',
+  'nvim-telescope/telescope-file-browser.nvim',
+  {
+    'mbbill/undotree',
+    cmd = 'UndotreeToggle',
+    init = function()
+      vim.g.undotree_SetFocusWhenToggle = 1
+    end,
+  },
 
   -- NERDTree replacement. Use g? to open up help
   { 
     'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons', } ,
+    dependencies = { 'nvim-tree/nvim-web-devicons', } ,
     config = function()
       require('nvim-tree').setup({})
     end
@@ -311,7 +380,7 @@ return {
   -- fast status line plugin written in vim
   { 
     'hoob3rt/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true } ,
+    dependencies = { 'nvim-tree/nvim-web-devicons', lazy=true } ,
     config = function()
       require('lualine').setup({
         options = {
@@ -345,15 +414,21 @@ return {
     end
   },
 
-  -- bufferline plugin
   {
-    'akinsho/bufferline.nvim',
-    tag = "*",
-    requires = 'nvim-tree/nvim-web-devicons',
+    'akinsho/bufferline.nvim', -- bufferline plugin
+    version = "*",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('bufferline').setup()
-    end
+    end,
+    lazy=false
   },
+  {
+    'ojroques/nvim-bufdel', -- better buffer deletion
+    cmd = 'BufDel',
+    opts = {},
+  },
+  -- look at nanozuki/tabby.nvim as well
 
   -- Tabline/statusline plugin with different features
   -- use {
@@ -370,7 +445,7 @@ return {
 
   {
     'lewis6991/gitsigns.nvim',
-    require = {
+    dependencies = {
       'nvim-lua/plenary.nvim'
     },
     config = function()
@@ -381,12 +456,17 @@ return {
   },
 
   { 'numToStr/Comment.nvim'  }, -- Comment plugin, in lua
-  { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' },
+  { 
+    'folke/todo-comments.nvim',
+    dependencies = 'nvim-lua/plenary.nvim',
+    -- event = 'BufReadPost',
+    opts = { colors = { info = { 'WhiteHover' } } },
+  },
   { 'folke/which-key.nvim' },
 
   -- use {
   --   'nvim-telescope/telescope.nvim',
-  --   requires = {
+  --   dependencies = {
   --     'nvim-lua/plenary.nvim',
   --     'nvim-telescope/telescope-fzy-native.nvim',
   --     { 'nvim-telescope/telescope-fzf-native.nvim', run='make' },
@@ -397,14 +477,116 @@ return {
   -- Also run code after load (see the "config" key)
   {
     'dense-analysis/ale',
-    ft = {
-      'sh',
-      'zsh',
-      'markdown',
-      'ruby',
-      'yml'
+    init = function()
+      vim.g.ale_linters = {
+        'sh', 'zsh', 'markdown', 'ruby', 'yml'
+      }
+    end,
+    lazy=false
+  },
+  {
+    'utilyre/barbecue.nvim',
+    event = 'User ActuallyEditing',
+    name = 'barbecue',
+    version = '*',
+    dependencies = {
+      'SmiteshP/nvim-navic',
+      'nvim-tree/nvim-web-devicons',
     },
-    cmd = 'ALEEnable',
-    config = 'vim.cmd[[ALEEnable]]'
-  }
+    opts = {
+      create_autocmd = false,
+      attach_navic = false,
+      show_modified = true,
+      exclude_filetypes = { 'netrw', 'toggleterm', 'NeogitCommitMessage' },
+      custom_section = function()
+        -- Copied from @akinsho's config
+        local error_icon = '' -- '✗'
+        local warning_icon = ''
+        local info_icon = '' --  
+        local hint_icon = '⚑' --  ⚑
+        local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+        local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+        local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+        local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+        local components = {}
+        if errors > 0 then
+          components[#components + 1] = { error_icon .. ' ' .. errors, 'DiagnosticError' }
+        end
+
+        if warnings > 0 then
+          components[#components + 1] =
+            { (#components > 0 and ' ' or '') .. warning_icon .. ' ' .. warnings, 'DiagnosticWarning' }
+        end
+
+        if hints > 0 then
+          components[#components + 1] =
+            { (#components > 0 and ' ' or '') .. hint_icon .. ' ' .. hints, 'DiagnosticHint' }
+        end
+
+        if info > 0 then
+          components[#components + 1] =
+            { (#components > 0 and ' ' or '') .. info_icon .. ' ' .. info, 'DiagnosticInfo' }
+        end
+
+        return components
+      end,
+    },
+  },
+  {
+    'beauwilliams/focus.nvim', -- auto split windows
+    opts = { 
+      excluded_filetypes = { 'toggleterm', 'TelescopePrompt' },
+      signcolumn = false 
+    },
+    event = 'VeryLazy',
+  },
+  {
+    'folke/noice.nvim', -- experimental alert replacement
+    opts = {
+      views = { mini = { timeout = 10000, lang = 'markdown' } },
+      routes = {
+        {
+          filter = {
+            event = 'msg_show',
+            kind = '',
+            find = 'written',
+          },
+          opts = { skip = true },
+        },
+        {
+          filter = {
+            event = 'lsp',
+            kind = 'progress',
+            find = 'null-l',
+          },
+          opts = { skip = true, stop = true },
+        },
+        {
+          view = 'notify',
+          filter = { event = 'msg_showmode' },
+        },
+      },
+      lsp = {
+        override = {
+          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+          ['vim.lsp.util.stylize_markdown'] = true,
+          ['cmp.entry.get_documentation'] = true,
+        },
+      },
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        long_message_to_split = true,
+        inc_rename = true,
+        lsp_doc_border = true,
+      },
+    },
+    dependencies = { 'MunifTanjim/nui.nvim' },
+    event = 'VeryLazy',
+  },
+  {
+    'chrisgrieser/nvim-various-textobjs', -- new nvim textobjs
+    lazy = false,
+    opts = { useDefaultKeymaps = true },
+  },
 }

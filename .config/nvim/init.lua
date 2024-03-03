@@ -16,6 +16,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.ruby_default_path = '~/.local/share/rtx/shims/ruby'
+vim.g.ruby_host_prog = '~/.local/share/rtx/shims/neovim-ruby-host'
+vim.g.ruby_path = '~/.local/share/rtx/shims/ruby'
+
+vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
+
 vim.g.mapleader = ' '
 
 require('lazy').setup('user.plugins', {
@@ -28,7 +34,6 @@ require('lazy').setup('user.plugins', {
 
 require 'user.options'
 require 'user.keymaps'
--- require 'user.plugins'
 require 'user.commands'
 require 'user.nvim-lastplace'
 require 'user.nvim-autopairs'
