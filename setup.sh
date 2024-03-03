@@ -167,6 +167,7 @@ cargo install zoxide --locked
 cargo install rtx-cli
 
 npm install -g neovim yarn
+npm install -g tree-sitter-cli
 
 # Run this once
 # https://build.betterup.com/one-weird-trick-that-will-speed-up-your-bundle-install/
