@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # Not sure I want to do this...
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -17,9 +17,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # tldr; favorites near the top of the file
 export NAVI_PATH="$HOME/.local_navi_cheatsheets:$HOME/.navi_cheatsheets"
 
-source $HOME/.antigen/antigen.zsh
-
-antigen init $HOME/.antigenrc
+# source $HOME/.antigen/antigen.zsh
+# antigen init $HOME/.antigenrc
 
 # Uncomment this, and the last line in this file for profiling information
 # zmodload zsh/zprof
@@ -31,7 +30,7 @@ antigen init $HOME/.antigenrc
 export GPG_TTY=$(tty)
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# export ZSH=$HOME/.oh-my-zsh
 
 # This appears to be set in at least the M1 version of brew
 if [[ -z "${HOMEBREW_PREFIX}" ]]; then
@@ -94,24 +93,24 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # oh-my-zsh plugins
-plugins=(
-  bundler
-  colored-man-pages
-  git
-  macos
-  rake-fast
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  zsh-interactive-cd
-  zoxide
-)
+# plugins=(
+#   bundler
+#   colored-man-pages
+#   git
+#   macos
+#   rake-fast
+#   zsh-syntax-highlighting
+#   zsh-autosuggestions
+#   zsh-interactive-cd
+#   zoxide
+# )
 
 # Always automatically update oh-my-zsh
-DISABLE_UPDATE_PROMPT="true"
+# DISABLE_UPDATE_PROMPT="true"
 
-# Automatically load additional completion scripts. This is really slow so I've disabled for now
+# Automatically load additional completion scripts.
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
-# autoload -U compinit && compinit
+autoload -U compinit && compinit
 
 # Disable magic functions (can cause slow pasting)
 # https://github.com/ohmyzsh/ohmyzsh/issues/5569#issuecomment-491504337
@@ -264,7 +263,7 @@ bindkey "^I" fzf-completion
 bindkey "^T" fzf-file-widget
 bindkey "^[c" fzf-cd-widget
 
-export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+# export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 
 # https://github.com/sharpstone/rack-timeout/blob/master/doc/settings.md#term-on-timeout
 export RACK_TIMEOUT_TERM_ON_TIMEOUT=1
@@ -469,8 +468,6 @@ export PATH="$PATH:$HOME/go/bin"
 
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
-
-source $HOME/.config/broot/launcher/bash/br
 eval "$(~/.cargo/bin/rtx activate zsh)"
 
 # Podman, use apple hypervisor
@@ -482,5 +479,22 @@ export PATH="$HOMEBREW_PREFIX/opt/gcc/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
 
-source /Users/jay.dorsey/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# Upgrade wezterm nightly when installed via homebrew
+alias wezup="brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
+
+eval "$(starship init zsh)"
+
+# This one is done differently
+fpath+=~/.zsh/zsh-completions/src
+
+source ~/.zsh/navi/shell/navi.plugin.zsh
+source ~/.zsh/atuin/atuin.plugin.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh/git/git.plugin.zsh
+
+# Goes last-ish
+source ~/.zsh/zsh-syntax-highlighting

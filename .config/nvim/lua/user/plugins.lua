@@ -1,7 +1,7 @@
 return {
   -- faster filetype.vim
-  -- { 'nathom/filetype.nvim', lazy=false },
-  { 'nvim-tree/nvim-web-devicons', lazy=false },
+  { 'nathom/filetype.nvim', lazy = false },
+  { 'nvim-tree/nvim-web-devicons', lazy = false },
   {
     'windwp/nvim-autopairs', -- automatically adds pair brackets. lua
     opts = {
@@ -17,7 +17,7 @@ return {
     config = function() 
       vim.cmd 'colorscheme dracula' 
     end, 
-    lazy=false
+    lazy = false
   },
 
   -- { 'rebelot/kanagawa.nvim', config = function() vim.cmd 'colorscheme kanagawa' end, },
@@ -112,12 +112,8 @@ return {
     end,
   },
   { 'neovim/nvim-lspconfig' },
-  {
-    'SmiteshP/nvim-navic', -- code context
-    dependencies = 'neovim/nvim-lspconfig',
-    opts = { lazy_update_context = true },
-  },
-
+  -- code context
+  { 'SmiteshP/nvim-navic', dependencies = 'neovim/nvim-lspconfig', opts = { lazy_update_context = true }, },
 
   { 'TimUntersberger/neogit', dependencies = 'nvim-lua/plenary.nvim' },
   { 'norcalli/nvim-colorizer.lua'  }, -- colorize hex/rgb codes like #ff0000
@@ -128,7 +124,7 @@ return {
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
 
   { 'dstein64/vim-startuptime' }, -- Measure startup time with :StartupTime
-  { 'AndrewRadev/splitjoin.vim', lazy=false }, -- Use shortcuts gJ and gS to join and split, respectively
+  { 'AndrewRadev/splitjoin.vim', lazy = false }, -- Use shortcuts gJ and gS to join and split, respectively
 
   -- TODO: Do I need lastplace + vim-stay?
   -- use 'Konfekt/FastFold'
@@ -239,11 +235,9 @@ return {
   { 'rhysd/committia.vim' },
   -- use 'tpope/vim-characterize'
   { 'tpope/vim-dispatch' },
-  { 
-    'tpope/vim-eunuch', -- vim sugar for shell commands
-    lazy = false
-  },
-  { 'tpope/vim-fugitive', lazy=false },
+  -- vim sugar for shell commands
+  { 'tpope/vim-eunuch', lazy = false },
+  { 'tpope/vim-fugitive', lazy = false },
   { 'tpope/vim-rails' },
   { 'tpope/vim-repeat' },
   { 'wincent/ferret'  }, -- Enhanced multi file search
@@ -353,12 +347,9 @@ return {
     end,
     cmd = 'Telescope',
   },
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-  },
-  'crispgm/telescope-heading.nvim',
-  'nvim-telescope/telescope-file-browser.nvim',
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', },
+  { 'crispgm/telescope-heading.nvim' },
+  { 'nvim-telescope/telescope-file-browser.nvim' },
   {
     'mbbill/undotree',
     cmd = 'UndotreeToggle',
@@ -421,13 +412,10 @@ return {
     config = function()
       require('bufferline').setup()
     end,
-    lazy=false
+    lazy = false
   },
-  {
-    'ojroques/nvim-bufdel', -- better buffer deletion
-    cmd = 'BufDel',
-    opts = {},
-  },
+  -- better buffer deletion
+  { 'ojroques/nvim-bufdel', cmd = 'BufDel', opts = {}, },
   -- look at nanozuki/tabby.nvim as well
 
   -- Tabline/statusline plugin with different features
@@ -482,7 +470,7 @@ return {
         'sh', 'zsh', 'markdown', 'ruby', 'yml'
       }
     end,
-    lazy=false
+    lazy = false
   },
   {
     'utilyre/barbecue.nvim',
@@ -584,9 +572,6 @@ return {
     dependencies = { 'MunifTanjim/nui.nvim' },
     event = 'VeryLazy',
   },
-  {
-    'chrisgrieser/nvim-various-textobjs', -- new nvim textobjs
-    lazy = false,
-    opts = { useDefaultKeymaps = true },
-  },
+  -- new nvim textobjs
+  { 'chrisgrieser/nvim-various-textobjs', lazy = false, opts = { useDefaultKeymaps = true }, },
 }
