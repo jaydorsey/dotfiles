@@ -107,5 +107,6 @@ supergraph.graphql
 
 config/initializers/jay.rb
 .config/zellij/layouts/**
+.rustup
 
 .git/**/*

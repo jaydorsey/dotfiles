@@ -2,6 +2,10 @@
 [user]
 	name = Jay Dorsey
 	email = 191564+jaydorsey@users.noreply.github.com
+[includeIf "gitdir:**/jay.dorsey/**/.git"]
+	signingkey = FE12FC698D09DAE7
+[includeIf "gitdir:**/jay/**/.git"]
+	signingkey = 7113FAA79A3B577E
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
@@ -107,9 +111,9 @@
 [rerere]
 	enabled = true
 [gc]
-	writeCommitGraph = true
+	writeCommitGraph = false
 [fetch]
-	writeCommitGraph = true
+	writeCommitGraph = false
 [init]
 	templatedir = ~/.git_template
 	defaultBranch = main
