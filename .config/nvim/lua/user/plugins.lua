@@ -39,12 +39,6 @@ return {
 
   { 'francoiscabrol/ranger.vim', dependencies = { 'rbgrouleff/bclose.vim' } },
 
-
-  --
-  --
-  -- treesitter/lsp stuff
-  --
-  --
   {
     'jaydorsey/nvim-treesitter',
     branch = 'jaydorsey/keybind-error-message',
@@ -76,7 +70,7 @@ return {
   {
     'stevearc/aerial.nvim', -- code outline
     opts = {
-      backends = { 'lsp', 'treesitter', 'markdown', 'man' },
+      backends = { 'treesitter', 'markdown', 'man' },
       on_attach = function(bufnr)
         vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
         vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
@@ -84,45 +78,12 @@ return {
     },
     cmd = { 'AerialOpen', 'AerialToggle' },
   },
-  {
-    'lewis6991/hover.nvim',
-    event = 'BufReadPost',
-    config = function()
-      require('hover').setup {
-        init = function()
-          require 'hover.providers.lsp'
-        end,
-      }
-
-      vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim' })
-      vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim (select)' })
-    end,
-  },
-  {
-    'DNLHC/glance.nvim',
-    cmd = 'Glance',
-    config = function()
-      require('glance').setup {
-        detached = true,
-        border = { enable = true, top_char = '─', bottom_char = '─' },
-        theme = { mode = 'brighten' },
-        indent_lines = { icon = '│' },
-        winbar = { enable = true },
-      }
-    end,
-  },
-  { 'neovim/nvim-lspconfig' },
-  -- code context
-  { 'SmiteshP/nvim-navic', dependencies = 'neovim/nvim-lspconfig', opts = { lazy_update_context = true }, },
-
-  { 'TimUntersberger/neogit', dependencies = 'nvim-lua/plenary.nvim' },
   { 'norcalli/nvim-colorizer.lua'  }, -- colorize hex/rgb codes like #ff0000
   { 'vim-ruby/vim-ruby', ft = { 'ruby', 'erb' } }, -- ruby syntax and helpers
 
   { 'wellle/targets.vim' },
   { 'axelf4/vim-strip-trailing-whitespace' },
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
-
   { 'dstein64/vim-startuptime' }, -- Measure startup time with :StartupTime
   { 'AndrewRadev/splitjoin.vim', lazy = false }, -- Use shortcuts gJ and gS to join and split, respectively
 
@@ -149,10 +110,8 @@ return {
 
   { 'Raimondi/delimitMate' }, -- Add automatic delimiters ([<{, quotes, etc.
   { 'alfredodeza/jacinto.vim', ft = {'json'}, }, -- Formatting & validating json via :Jacinto
-  { 'editorconfig/editorconfig-Vim' },
+  { 'editorconfig/editorconfig-Vim', lazy = false },
   { 'guns/xterm-color-table.vim' },
-
-  -- use 'inside/vim-search-pulse'
   {
     'kevinhwang91/nvim-hlslens',
     config = function()
@@ -173,14 +132,6 @@ return {
   },
 
   { 'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut' },
-
-  {
-    'ruifm/gitlinker.nvim',
-    dependencies = 'nvim-lua/plenary.nvim',
-    config = function()
-      require('gitlinker').setup()
-    end
-  },
 
   -- Bookmarking plugin, might replace markology
   -- mm to create bookmark
@@ -205,7 +156,6 @@ return {
       require('scrollbar.handlers.gitsigns').setup()
     end,
   },
-
   {
     'andymass/vim-matchup',
     init = function()
@@ -213,9 +163,7 @@ return {
     end,
     lazy = false,
   },
-  { 'machakann/vim-sandwich', dependencies = { 'andymass/vim-matchup', } },
-
-  { 'mbbill/undotree' },
+  { 'machakann/vim-sandwich', dependencies = { 'andymass/vim-matchup', }, lazy = false },
   {
     'echasnovski/mini.nvim',
     branch = 'stable',
@@ -227,13 +175,15 @@ return {
       require('mini.files').setup()
       require('mini.sessions').setup()
       require('mini.starter').setup()
-    end;
+    end,
+    lazy = false,
   },
   { 'nvim-lua/completion-nvim' },
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-lua/popup.nvim' },
   { 'rhysd/committia.vim' },
   -- use 'tpope/vim-characterize'
+  { 'tpope/vim-commentary', lazy = false },
   { 'tpope/vim-dispatch' },
   -- vim sugar for shell commands
   { 'tpope/vim-eunuch', lazy = false },
@@ -276,58 +226,6 @@ return {
 
   { 'APZelos/blamer.nvim' },
   { 'elzr/vim-json', ft={ 'json' } }, -- better JSON highlight, warnings, etc
-
-  -- highlight words and lines on the cursor
-  -- use({
-  --   'yamatsum/nvim-cursorline',
-  --   config = function()
-  --     require('nvim-cursorline').setup({
-  --       cursorline = {
-  --         enable = true,
-  --         timeout = 500,
-  --         number = false,
-  --       },
-  --     })
-  --   end,
-  -- })
-
-  -- use 'easymotion/vim-easymotion'
-  -- use {
-  --   'phaazon/hop.nvim',
-  --   branch = 'v2',
-  --   config = function()
-  --     local opts = require('config').opts
-  --     require('hop').setup()
-  --     vim.api.nvim_set_keymap('n', 's', ':HopChar2<CR>', opts)
-  --     vim.api.nvim_set_keymap('n', 'S', ':HopChar2MW<CR>', opts)
-  --     -- use `<Cmd>lua` instead of `:lua`
-  --     -- https://github.com/phaazon/hop.nvim/issues/89#issuecomment-854701856
-  --     vim.api.nvim_set_keymap(
-  --       '',
-  --       'f',
-  --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true })<CR>',
-  --       opts
-  --     )
-  --     vim.api.nvim_set_keymap(
-  --       '',
-  --       'F',
-  --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>',
-  --       opts
-  --     )
-  --     vim.api.nvim_set_keymap(
-  --       '',
-  --       't',
-  --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>',
-  --       opts
-  --     )
-  --     vim.api.nvim_set_keymap(
-  --       '',
-  --       'T',
-  --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>',
-  --       opts
-  --     )
-  --   end,
-  -- }
 
   { 'tarekbecker/vim-yaml-formatter', ft={ 'yaml', 'yml' } },
   {
@@ -446,20 +344,9 @@ return {
   { 'numToStr/Comment.nvim'  }, -- Comment plugin, in lua
   { 
     'folke/todo-comments.nvim',
-    dependencies = 'nvim-lua/plenary.nvim',
-    -- event = 'BufReadPost',
-    opts = { colors = { info = { 'WhiteHover' } } },
+    dependencies = 'nvim-lua/plenary.nvim'
   },
   { 'folke/which-key.nvim' },
-
-  -- use {
-  --   'nvim-telescope/telescope.nvim',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     'nvim-telescope/telescope-fzy-native.nvim',
-  --     { 'nvim-telescope/telescope-fzf-native.nvim', run='make' },
-  --   }
-  -- }
 
   -- Load on a combination of conditions: specific filetypes or commands
   -- Also run code after load (see the "config" key)
@@ -526,50 +413,6 @@ return {
       excluded_filetypes = { 'toggleterm', 'TelescopePrompt' },
       signcolumn = false 
     },
-    event = 'VeryLazy',
-  },
-  {
-    'folke/noice.nvim', -- experimental alert replacement
-    opts = {
-      views = { mini = { timeout = 10000, lang = 'markdown' } },
-      routes = {
-        {
-          filter = {
-            event = 'msg_show',
-            kind = '',
-            find = 'written',
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = 'lsp',
-            kind = 'progress',
-            find = 'null-l',
-          },
-          opts = { skip = true, stop = true },
-        },
-        {
-          view = 'notify',
-          filter = { event = 'msg_showmode' },
-        },
-      },
-      lsp = {
-        override = {
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-          ['cmp.entry.get_documentation'] = true,
-        },
-      },
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        long_message_to_split = true,
-        inc_rename = true,
-        lsp_doc_border = true,
-      },
-    },
-    dependencies = { 'MunifTanjim/nui.nvim' },
     event = 'VeryLazy',
   },
   -- new nvim textobjs
