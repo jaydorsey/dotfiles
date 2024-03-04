@@ -1,15 +1,18 @@
 return {
   -- faster filetype.vim
   { 'nathom/filetype.nvim', lazy = false },
-  { 'nvim-tree/nvim-web-devicons', lazy = false },
   {
     'windwp/nvim-autopairs', -- automatically adds pair brackets. lua
     opts = {
-      enable_check_bracket_line = false,
-      ignored_next_char = '[%w%.]',
+      disable_filetype = { 'TelescopePrompt', 'vim' },
+      disable_in_macro = true,
+      enable_afterquote = false,
+      enable_check_bracket_line = true,
+      enable_moveright = true,
       fast_wrap = {},
+      ignored_next_char = '[%w%.]',
     },
-    -- event = 'BufReadPost',
+    event = 'BufReadPost',
   },
   { 
     'dracula/vim',
@@ -24,7 +27,6 @@ return {
   -- { 'github/copilot.vim', branch = 'release', ft = { 'ruby' } },
 
   { 'Exafunction/codeium.vim' },
-
   { 'imsnif/kdl.vim' },
 
   -- { 'autozimu/LanguageClient-neovim', branch = 'next', build = 'bash install.sh' } },
@@ -42,7 +44,7 @@ return {
 
   --
   --
-  -- treesitter/lsp stuff
+  -- treesitter
   --
   --
   {
@@ -57,7 +59,7 @@ return {
 
     },
     build = ':TSUpdate',
-    -- event = { 'BufReadPost', 'BufNewFile' },
+    event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       require 'config.treesitter'
     end,
@@ -73,10 +75,11 @@ return {
     end,
     keys = { '<localleader>d', '<localleader>df', '<localleader>dc' },
   },
+  { 'L3MON4D3/LuaSnip' },
   {
     'stevearc/aerial.nvim', -- code outline
     opts = {
-      backends = { 'lsp', 'treesitter', 'markdown', 'man' },
+      backends = { 'treesitter', 'markdown', 'man' },
       on_attach = function(bufnr)
         vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
         vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
@@ -84,45 +87,12 @@ return {
     },
     cmd = { 'AerialOpen', 'AerialToggle' },
   },
-  {
-    'lewis6991/hover.nvim',
-    event = 'BufReadPost',
-    config = function()
-      require('hover').setup {
-        init = function()
-          require 'hover.providers.lsp'
-        end,
-      }
-
-      vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim' })
-      vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim (select)' })
-    end,
-  },
-  {
-    'DNLHC/glance.nvim',
-    cmd = 'Glance',
-    config = function()
-      require('glance').setup {
-        detached = true,
-        border = { enable = true, top_char = '─', bottom_char = '─' },
-        theme = { mode = 'brighten' },
-        indent_lines = { icon = '│' },
-        winbar = { enable = true },
-      }
-    end,
-  },
-  { 'neovim/nvim-lspconfig' },
-  -- code context
-  { 'SmiteshP/nvim-navic', dependencies = 'neovim/nvim-lspconfig', opts = { lazy_update_context = true }, },
-
-  { 'TimUntersberger/neogit', dependencies = 'nvim-lua/plenary.nvim' },
-  { 'norcalli/nvim-colorizer.lua'  }, -- colorize hex/rgb codes like #ff0000
+  -- { 'TimUntersberger/neogit', dependencies = 'nvim-lua/plenary.nvim' },
+  { 'NvChad/nvim-colorizer.lua', ft = { 'css', 'vim', 'lua' }, opts = {}, }, -- colorize hex codes
   { 'vim-ruby/vim-ruby', ft = { 'ruby', 'erb' } }, -- ruby syntax and helpers
-
   { 'wellle/targets.vim' },
   { 'axelf4/vim-strip-trailing-whitespace' },
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
-
   { 'dstein64/vim-startuptime' }, -- Measure startup time with :StartupTime
   { 'AndrewRadev/splitjoin.vim', lazy = false }, -- Use shortcuts gJ and gS to join and split, respectively
 
@@ -139,6 +109,8 @@ return {
         'svn',
         'hgcommit',
       },
+      lastplace_open_folds = true,
+
     },
     event = 'BufReadPre',
     priority = 1001,
@@ -174,14 +146,6 @@ return {
 
   { 'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut' },
 
-  {
-    'ruifm/gitlinker.nvim',
-    dependencies = 'nvim-lua/plenary.nvim',
-    config = function()
-      require('gitlinker').setup()
-    end
-  },
-
   -- Bookmarking plugin, might replace markology
   -- mm to create bookmark
   -- mi to bookmark & annotate
@@ -190,9 +154,9 @@ return {
   -- { 'jgdavey/tslime.vim', branch=main }, -- Send to tmux
   { 'junegunn/limelight.vim' }, -- Highlight code blocks with :LimelightToggle
   { 'junegunn/vim-easy-align' }, -- Align code
+  { 'junegunn/fzf', dir = '~/.fzf', bundle = './install --all' },
   { 'tversteeg/registers.nvim' },
 
-  -- use 'karb94/neoscroll.nvim' -- Smooth scrolling plugin
   {
     'petertriho/nvim-scrollbar',
     dependencies = {
@@ -205,17 +169,24 @@ return {
       require('scrollbar.handlers.gitsigns').setup()
     end,
   },
-
   {
     'andymass/vim-matchup',
-    init = function()
-      require('config.matchup')
-    end,
+    opts = {
+      matchup_delim_start_plaintext = 0,
+      matchup_matchparen_deferred = 1,
+      matchup_matchparen_deferred_show_delay = 100,
+      matchup_matchparen_hi_surround_always = 1,
+      matchup_override_vimtex = 1,
+      matchup_transmute_enabled = 0,
+    },
     lazy = false,
   },
-  { 'machakann/vim-sandwich', dependencies = { 'andymass/vim-matchup', } },
-
-  { 'mbbill/undotree' },
+  { 
+    'machakann/vim-sandwich',
+    dependencies = { 'andymass/vim-matchup', },
+    event = 'User ActuallyEditing',
+    lazy = false 
+  },
   {
     'echasnovski/mini.nvim',
     branch = 'stable',
@@ -227,16 +198,16 @@ return {
       require('mini.files').setup()
       require('mini.sessions').setup()
       require('mini.starter').setup()
-    end;
+    end,
+    lazy = false
   },
   { 'nvim-lua/completion-nvim' },
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-lua/popup.nvim' },
   { 'rhysd/committia.vim' },
-  -- use 'tpope/vim-characterize'
   { 'tpope/vim-dispatch' },
-  -- vim sugar for shell commands
-  { 'tpope/vim-eunuch', lazy = false },
+  { 'tpope/vim-commentary', lazy = false }, -- gcc to comment
+  { 'tpope/vim-eunuch', lazy = false }, -- vim sugar for shell commands
   { 'tpope/vim-fugitive', lazy = false },
   { 'tpope/vim-rails' },
   { 'tpope/vim-repeat' },
@@ -276,59 +247,6 @@ return {
 
   { 'APZelos/blamer.nvim' },
   { 'elzr/vim-json', ft={ 'json' } }, -- better JSON highlight, warnings, etc
-
-  -- highlight words and lines on the cursor
-  -- use({
-  --   'yamatsum/nvim-cursorline',
-  --   config = function()
-  --     require('nvim-cursorline').setup({
-  --       cursorline = {
-  --         enable = true,
-  --         timeout = 500,
-  --         number = false,
-  --       },
-  --     })
-  --   end,
-  -- })
-
-  -- use 'easymotion/vim-easymotion'
-  -- use {
-  --   'phaazon/hop.nvim',
-  --   branch = 'v2',
-  --   config = function()
-  --     local opts = require('config').opts
-  --     require('hop').setup()
-  --     vim.api.nvim_set_keymap('n', 's', ':HopChar2<CR>', opts)
-  --     vim.api.nvim_set_keymap('n', 'S', ':HopChar2MW<CR>', opts)
-  --     -- use `<Cmd>lua` instead of `:lua`
-  --     -- https://github.com/phaazon/hop.nvim/issues/89#issuecomment-854701856
-  --     vim.api.nvim_set_keymap(
-  --       '',
-  --       'f',
-  --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true })<CR>',
-  --       opts
-  --     )
-  --     vim.api.nvim_set_keymap(
-  --       '',
-  --       'F',
-  --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>',
-  --       opts
-  --     )
-  --     vim.api.nvim_set_keymap(
-  --       '',
-  --       't',
-  --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>',
-  --       opts
-  --     )
-  --     vim.api.nvim_set_keymap(
-  --       '',
-  --       'T',
-  --       '<Cmd>lua require("hop").hint_char1({ direction = require("hop.hint").HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>',
-  --       opts
-  --     )
-  --   end,
-  -- }
-
   { 'tarekbecker/vim-yaml-formatter', ft={ 'yaml', 'yml' } },
   {
     'nvim-telescope/telescope.nvim',
@@ -359,52 +277,44 @@ return {
   },
 
   -- NERDTree replacement. Use g? to open up help
-  { 
-    'kyazdani42/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons', } ,
-    config = function()
-      require('nvim-tree').setup({})
-    end
-  },
-
+  { 'nvim-tree/nvim-tree.lua', dependencies = { 'nvim-tree/nvim-web-devicons', }, lazy = false }, 
 
   -- fast status line plugin written in vim
-  { 
-    'hoob3rt/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', lazy=true } ,
-    config = function()
-      require('lualine').setup({
-        options = {
-          icons_enabled = true,
-          theme = 'auto',
-          component_separators = { left = '', right = ''},
-          section_separators = { left = '', right = ''},
-          disabled_filetypes = {},
-          always_divide_middle = true,
-          globalstatus = true,
-        },
-        sections = {
-          lualine_a = {'mode'},
-          lualine_b = {'branch', 'diff', 'diagnostics'},
-          lualine_c = {'filename'},
-          lualine_x = {'encoding', 'fileformat', 'filetype'},
-          lualine_y = {'progress'},
-          lualine_z = {'location'}
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = {'filename'},
-          lualine_x = {'location'},
-          lualine_y = {},
-          lualine_z = {}
-        },
-        tabline = {},
-        extensions = {},
-      })
-    end
-  },
-
+  -- { 
+  --   'hoob3rt/lualine.nvim',
+  --   dependencies = { 'nvim-tree/nvim-web-devicons', lazy=true } ,
+  --   config = function()
+  --     require('lualine').setup({
+  --       options = {
+  --         icons_enabled = true,
+  --         theme = 'auto',
+  --         component_separators = { left = '', right = ''},
+  --         section_separators = { left = '', right = ''},
+  --         disabled_filetypes = {},
+  --         always_divide_middle = true,
+  --         globalstatus = true,
+  --       },
+  --       sections = {
+  --         lualine_a = {'mode'},
+  --         lualine_b = {'branch', 'diff', 'diagnostics'},
+  --         lualine_c = {'filename'},
+  --         lualine_x = {'encoding', 'fileformat', 'filetype'},
+  --         lualine_y = {'progress'},
+  --         lualine_z = {'location'}
+  --       },
+  --       inactive_sections = {
+  --         lualine_a = {},
+  --         lualine_b = {},
+  --         lualine_c = {'filename'},
+  --         lualine_x = {'location'},
+  --         lualine_y = {},
+  --         lualine_z = {}
+  --       },
+  --       tabline = {},
+  --       extensions = {},
+  --     })
+  --   end
+  -- },
   {
     'akinsho/bufferline.nvim', -- bufferline plugin
     version = "*",
@@ -414,8 +324,7 @@ return {
     end,
     lazy = false
   },
-  -- better buffer deletion
-  { 'ojroques/nvim-bufdel', cmd = 'BufDel', opts = {}, },
+  { 'ojroques/nvim-bufdel', cmd = 'BufDel', opts = {}, }, -- better buffer deletion
   -- look at nanozuki/tabby.nvim as well
 
   -- Tabline/statusline plugin with different features
@@ -444,23 +353,6 @@ return {
   },
 
   { 'numToStr/Comment.nvim'  }, -- Comment plugin, in lua
-  { 
-    'folke/todo-comments.nvim',
-    dependencies = 'nvim-lua/plenary.nvim',
-    -- event = 'BufReadPost',
-    opts = { colors = { info = { 'WhiteHover' } } },
-  },
-  { 'folke/which-key.nvim' },
-
-  -- use {
-  --   'nvim-telescope/telescope.nvim',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     'nvim-telescope/telescope-fzy-native.nvim',
-  --     { 'nvim-telescope/telescope-fzf-native.nvim', run='make' },
-  --   }
-  -- }
-
   -- Load on a combination of conditions: specific filetypes or commands
   -- Also run code after load (see the "config" key)
   {
@@ -519,6 +411,7 @@ return {
         return components
       end,
     },
+    lazy = false
   },
   {
     'beauwilliams/focus.nvim', -- auto split windows
@@ -528,50 +421,13 @@ return {
     },
     event = 'VeryLazy',
   },
-  {
-    'folke/noice.nvim', -- experimental alert replacement
-    opts = {
-      views = { mini = { timeout = 10000, lang = 'markdown' } },
-      routes = {
-        {
-          filter = {
-            event = 'msg_show',
-            kind = '',
-            find = 'written',
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = 'lsp',
-            kind = 'progress',
-            find = 'null-l',
-          },
-          opts = { skip = true, stop = true },
-        },
-        {
-          view = 'notify',
-          filter = { event = 'msg_showmode' },
-        },
-      },
-      lsp = {
-        override = {
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-          ['cmp.entry.get_documentation'] = true,
-        },
-      },
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        long_message_to_split = true,
-        inc_rename = true,
-        lsp_doc_border = true,
-      },
-    },
-    dependencies = { 'MunifTanjim/nui.nvim' },
-    event = 'VeryLazy',
+  { 'chrisgrieser/nvim-various-textobjs', lazy = false, opts = { useDefaultKeymaps = true }, }, -- new nvim textobjs
+  { 
+    'folke/todo-comments.nvim',
+    dependencies = 'nvim-lua/plenary.nvim',
+    cmd = { 'TodoTrouble', 'TodoTelescope' },
+    event = 'VimEnter',
+    name = 'todo-comments',
+    lazy = false
   },
-  -- new nvim textobjs
-  { 'chrisgrieser/nvim-various-textobjs', lazy = false, opts = { useDefaultKeymaps = true }, },
 }

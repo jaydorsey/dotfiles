@@ -26,20 +26,16 @@ vim.g.mapleader = ' '
 
 require('lazy').setup('user.plugins', {
     defaults = { lazy = true },
+    change_detection = { notify = false },
     performance = {
       cache = { enabled = true },
     },
   }
 )
 
+require 'config.autocmds'
+
 require 'user.options'
 require 'user.keymaps'
 require 'user.commands'
-require 'user.nvim-lastplace'
-require 'user.nvim-autopairs'
-require 'user.todo-comments'
-require 'user.comment'
 require 'user.indent-blankline'
-require 'user.neoscroll'
-require 'user.nvim-tree'
-require 'user.nvim-colorizer'

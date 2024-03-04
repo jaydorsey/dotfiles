@@ -9,6 +9,10 @@ options        = { noremap = true } -- map('n', '<leader><esc>', ':nohlsearch<cr
 plug_options   = { silent = true }
 silent_options = { noremap = true, silent = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 
+-- With *, don't jump
+-- https://stackoverflow.com/a/4257175/2892779
+map('n', '*', ':keepjumps normal! mi*`i<CR>', silent_options)
+
 map('n', '<leader>e', ':NvimTreeToggle<cr>', options)
 map('n', '<leader>r', ':NvimTreeRefresh<cr>', options)
 map('n', '<leader>f', ':NvimTreeFindFile<cr>', options)
@@ -47,13 +51,6 @@ map('n', ',cs', ':let @*=expand("%")<cr>', options)
 -- put absolute path in clipboard
 map('n', ',cl', ':let @*=expand("%:p")<cr>', options)
 
--- vim.g.vim_search_pulse_disable_auto_mappings = 1
---
--- map('n', '*', '<Plug>(asterisk-z*)<Plug>Pulse', plug_options)
--- map('n', '#', '<Plug>(asterisk-z#)<Plug>Pulse', plug_options)
--- map('n', 'n', 'n<Plug>Pulse', plug_options)
--- map('n', 'N', 'N<Plug>Pulse', plug_options)
-
 map('n', '<leader>l', ':Limelight!!<cr>', options)
 map('x', '<leader>l', ':Limelight!!<cr>', options)
 
@@ -83,27 +80,9 @@ map('n', '<leader>bb', ':BufferOrderByBufferNumber<CR>', options)
 
 map('n', 'J', 'mzJ`z', options) -- Keep the cursor in place while joining lines
 
-map('n', 'K', ':Find<cr>', options)
+-- map('n', 'K', ':Find<cr>', options)
 
 -- nnoremap K :Find<cr>
-
--- vimp.nnoremap('<leader>vv', function()
---   vim.cmd('e ~/.config/nvim/init.lua')
--- end)
-
--- " Jump to anywhere you want with minimal keystrokes, with just one key binding.
--- " `s{char}{label}`
--- nmap <leader>s <Plug>(easymotion-overwin-f)
--- nmap <leader>w <Plug>(easymotion-w)
--- " Turn on case-insensitive feature
--- let g:EasyMotion_smartcase = 1
--- " JK motions: Line motions
--- map <leader>j <Plug>(easymotion-j)
--- map <leader>k <Plug>(easymotion-k)
-
--- To save a macro and define it here, record the macro as normal, then
--- paste it in normal mode using "qp (assuming you used the q register)
--- https://stackoverflow.com/a/2024537/2892779
 
 -- Convert variable assignment to let syntax
 map('n', '@l', ':DelimitMateOff<cr><esc>^ilet(:<esc>ea)<esc>llxxi{ <esc>$a }<esc>:DelimitMateOn<cr>', options)
