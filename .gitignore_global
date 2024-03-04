@@ -110,3 +110,4 @@ config/initializers/jay.rb
 .rustup
 
 .git/**/*
+.config/nvim/lazy-lock.json
