@@ -97,7 +97,7 @@ def fb
 end
 
 # Show X lines before and after the exception line
-Pry.config.default_window_size = 14
+Pry.config.default_window_size = 8
 
 Pry.config.editor = 'nvim'
 
@@ -142,7 +142,7 @@ if defined?(PryByebug)
 end
 
 Pry::Commands.command(/^$/, 'repeat last command') do
-  _pry_.run_command Pry.history.to_a.last
+  pry_instance.run_command Pry.history.to_a.last
 end
 
 # https://github.com/pry/pry/issues/1619

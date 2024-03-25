@@ -1,0 +1,11 @@
+# vim: textwidth=0:filetype=sh
+
+% aws
+
+# List AWS profiles
+aws configure list-profiles
+
+# Login to aws
+aws sso login --profile <profile>
+
+$ profiles: aws configure list-profiles

@@ -111,3 +111,4 @@ config/initializers/jay.rb
 
 .git/**/*
 .config/nvim/lazy-lock.json
+.config/nvim/spell/**/*

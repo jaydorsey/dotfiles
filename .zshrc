@@ -484,6 +484,9 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # Upgrade wezterm nightly when installed via homebrew
 alias wezup="brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
+alias "bin/rails"="bin/spring rails"
+alias "bin/rspec"="bin/spring rspec"
+alias re="bin/spring rspec"
 
 eval "$(starship init zsh)"
 

@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.localleader = "\\"
 
 -- local map = vim.api.nvim_set_keymap
 local map = vim.keymap.set
@@ -61,7 +62,7 @@ map('x', '<leader>l', ':Limelight!!<cr>', options)
 -- map('n', '<leader>b', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]], silent_options)
 -- map('n', '<leader>p', [[<cmd>Telescope find_files theme=get_dropdown find_command=rg,--no-ignore,--hidden,--files<cr>]], silent_options)
 map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
-map('n', '<c-g>', [[<cmd>Telescope live_grep theme=get_dropdown<cr>]], silent_options)
+map('n', '<c-g>', [[<cmd>Telescope live_grep<cr>]], silent_options)
 -- map('n', '<leader>???', [[<cmd>Telescope commands theme=get_dropdown<cr>]], silent_options)
 -- map('n', '<leader>s', [[<cmd>Telescope aerial theme=get_dropdown<cr>]], silent_options)
 map('n', '<leader>j', [[<cmd>Telescope jumplist theme=get_dropdown<cr>]], silent_options)

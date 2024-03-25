@@ -1,0 +1,9 @@
+# vim: textwidth=0:filetype=sh
+
+% kubernetes
+
+# Unset kubernetes context
+kubectx -u
+
+# Shell into pod
+kubectl exec -it <pod> -- /bin/sh

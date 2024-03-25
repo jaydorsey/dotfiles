@@ -1,7 +1,6 @@
 return {
   -- faster filetype.vim
-  { 'nathom/filetype.nvim', lazy = false },
-  { 'nvim-tree/nvim-web-devicons', lazy = false },
+  { 'nathom/filetype.nvim' },
   {
     'windwp/nvim-autopairs', -- automatically adds pair brackets. lua
     opts = {
@@ -23,8 +22,7 @@ return {
   -- { 'rebelot/kanagawa.nvim', config = function() vim.cmd 'colorscheme kanagawa' end, },
   -- { 'github/copilot.vim', branch = 'release', ft = { 'ruby' } },
 
-  { 'Exafunction/codeium.vim' },
-
+  { 'Exafunction/codeium.vim', lazy = false },
   { 'imsnif/kdl.vim' },
 
   -- { 'autozimu/LanguageClient-neovim', branch = 'next', build = 'bash install.sh' } },
@@ -55,10 +53,11 @@ return {
     config = function()
       require 'config.treesitter'
     end,
+    lazy = false,
   },
-  { 'RRethy/nvim-treesitter-textsubjects', dependencies = { 'nvim-treesitter' } },
-  { 'nvim-treesitter/nvim-treesitter-textobjects', dependencies = { 'nvim-treesitter' } },
-  { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle', dependencies = { 'nvim-treesitter' } },
+  { 'RRethy/nvim-treesitter-textsubjects', dependencies = { 'nvim-treesitter' }, lazy = false, },
+  { 'nvim-treesitter/nvim-treesitter-textobjects', dependencies = { 'nvim-treesitter' }, lazy = false, },
+  { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle', dependencies = { 'nvim-treesitter' }, lazy = false, },
   {
     'danymat/neogen', -- Annotation
     dependencies = 'nvim-treesitter',
@@ -66,6 +65,7 @@ return {
       require 'config.neogen'
     end,
     keys = { '<localleader>d', '<localleader>df', '<localleader>dc' },
+    lazy = false,
   },
   {
     'stevearc/aerial.nvim', -- code outline
@@ -131,7 +131,7 @@ return {
     end,
   },
 
-  { 'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut' },
+  { 'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut', lazy = false },
 
   -- Bookmarking plugin, might replace markology
   -- mm to create bookmark
@@ -140,7 +140,7 @@ return {
   { 'MattesGroeger/vim-bookmarks' },
   -- { 'jgdavey/tslime.vim', branch=main }, -- Send to tmux
   { 'junegunn/limelight.vim' }, -- Highlight code blocks with :LimelightToggle
-  { 'junegunn/vim-easy-align' }, -- Align code
+  { 'junegunn/vim-easy-align', lazy = false }, -- Align code
   { 'tversteeg/registers.nvim' },
 
   -- use 'karb94/neoscroll.nvim' -- Smooth scrolling plugin
@@ -210,6 +210,7 @@ return {
       vim.g.vim_markdown_strikethrough = 1
       -- csv behaviors
       vim.g.csv_no_conceal = 1
+      vim.g.json_no_conceal = 1
     end,
   },
 
@@ -228,15 +229,22 @@ return {
   { 'elzr/vim-json', ft={ 'json' } }, -- better JSON highlight, warnings, etc
 
   { 'tarekbecker/vim-yaml-formatter', ft={ 'yaml', 'yml' } },
+  { 'junegunn/fzf',  build = './install --all', lazy = false },
+
+  -- Telescope
+  { 'crispgm/telescope-heading.nvim' },
+  -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', },
+  { 'nvim-telescope/telescope-fzy-native.nvim', },
+  { 'nvim-telescope/telescope-file-browser.nvim' },
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = {
-      'nvim-lua/popup.nvim',
+    dependencies = { 
       'nvim-lua/plenary.nvim',
-      'telescope-fzf-native.nvim',
+      'nvim-lua/popup.nvim',
       'nvim-telescope/telescope-ui-select.nvim',
+      -- 'telescope-fzf-native.nvim',
+      'telescope-fzy-native.nvim',
     },
-    tag = '0.1.5',
     init = function()
       require 'config.telescope_setup'
     end,
@@ -244,10 +252,9 @@ return {
       require 'config.telescope'
     end,
     cmd = 'Telescope',
+    lazy = false,
   },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', },
-  { 'crispgm/telescope-heading.nvim' },
-  { 'nvim-telescope/telescope-file-browser.nvim' },
+
   {
     'mbbill/undotree',
     cmd = 'UndotreeToggle',
@@ -257,12 +264,14 @@ return {
   },
 
   -- NERDTree replacement. Use g? to open up help
+  { 'nvim-tree/nvim-web-devicons', lazy = false },
   { 
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons', } ,
     config = function()
       require('nvim-tree').setup({})
-    end
+    end,
+    lazy = false,
   },
 
 
@@ -344,7 +353,11 @@ return {
   { 'numToStr/Comment.nvim'  }, -- Comment plugin, in lua
   { 
     'folke/todo-comments.nvim',
-    dependencies = 'nvim-lua/plenary.nvim'
+    dependencies = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('todo-comments').setup()
+    end,
+    lazy = false,
   },
   { 'folke/which-key.nvim' },
 
@@ -353,8 +366,23 @@ return {
   {
     'dense-analysis/ale',
     init = function()
+      vim.g.ale_disable_lsp = 0
+      vim.g.ale_lint_on_save = 1
+      vim.g.ale_fix_on_save = 1
+      vim.g.ale_ruby_rubocop_executable = 'bundle'
+      vim.g.ale_ruby_rubocop_options = '--server'
+      vim.g.ale_ruby_ruby_executable = '~/.local/share/rtx/shims/ruby'
+      vim.g.ale_sign_column_always = 1
+      vim.g.ale_sign_error = 'î±'
+      vim.g.ale_sign_warning = 'î¸'
       vim.g.ale_linters = {
-        'sh', 'zsh', 'markdown', 'ruby', 'yml'
+        ruby = {'rubocop', 'ruby', 'brakeman'},
+        html = {'htmlhint', 'tidy'},
+        -- 'sh', 'zsh', 'markdown', 'ruby', 'yml'
+      }
+      vim.g.ale_fixers = {
+        ruby = {'rubocop', 'remove_trailing_lines', 'trim_whitespace'},
+        sh = {'remove_trailing_lines', 'trim_whitespace'},
       }
     end,
     lazy = false
@@ -416,5 +444,5 @@ return {
     event = 'VeryLazy',
   },
   -- new nvim textobjs
-  { 'chrisgrieser/nvim-various-textobjs', lazy = false, opts = { useDefaultKeymaps = true }, },
+  { 'chrisgrieser/nvim-various-textobjs', lazy = false, opts = { useDefaultKeymaps = false }, },
 }

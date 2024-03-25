@@ -50,3 +50,13 @@ stashed = ""
 modified = ""
 untracked = ""
 staged = ""
+
+[kubernetes]
+disabled = false
+
+[[kubernetes.contexts]]
+# "bold red" style + default symbol when Kubernetes current context name equals "production" *and* the current user
+# equals "admin_user"
+context_pattern = "knowde-dem"
+style = "bold blue"
+context_alias = "🔥DEMO🔥"

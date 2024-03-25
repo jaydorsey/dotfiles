@@ -209,20 +209,20 @@ vim.g.ruby_indent_assignment_style = 'variable' -- Indent for multi-line stateme
 vim.g.ruby_indent_block_style = 'do' -- Indent nested blocks, do or expression
 vim.g.ruby_space_errors = 1 -- Highlight whitespace errors
 
-vim.g.ale_disable_lsp = 1
-vim.g.ale_lint_on_save = 1
-vim.g.ale_fix_on_save = 1
-vim.g.ale_fixers = {
-  ruby = {'rubocop', 'remove_trailing_lines', 'trim_whitespace'},
-  sh = {'remove_trailing_lines', 'trim_whitespace'},
-}
-vim.g.ale_linters = { ruby = { 'rubocop', 'ruby', 'brakeman' } }
-vim.g.ale_ruby_rubocop_executable = 'bundle'
-vim.g.ale_ruby_rubocop_options = '--server'
-vim.g.ale_ruby_ruby_executable = '~/.local/share/rtx/shims/ruby'
-vim.g.ale_sign_column_always = 1
-vim.g.ale_sign_error = 'î±'
-vim.g.ale_sign_warning = 'î¸'
+-- vim.g.ale_disable_lsp = 1
+-- vim.g.ale_lint_on_save = 1
+-- vim.g.ale_fix_on_save = 1
+-- vim.g.ale_fixers = {
+  -- ruby = {'rubocop', 'remove_trailing_lines', 'trim_whitespace'},
+  -- sh = {'remove_trailing_lines', 'trim_whitespace'},
+-- }
+-- vim.g.ale_linters = { ruby = { 'rubocop', 'ruby', 'brakeman' } }
+-- vim.g.ale_ruby_rubocop_executable = 'bundle'
+-- vim.g.ale_ruby_rubocop_options = '--server'
+-- vim.g.ale_ruby_ruby_executable = '~/.local/share/rtx/shims/ruby'
+-- vim.g.ale_sign_column_always = 1
+-- vim.g.ale_sign_error = 'î±'
+-- vim.g.ale_sign_warning = 'î¸'
 
 vim.cmd [[
   let g:blamer_delay = 2000
