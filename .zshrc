@@ -501,3 +501,8 @@ source ~/.zsh/git/git.plugin.zsh
 
 # Goes last-ish
 source ~/.zsh/zsh-syntax-highlighting
+
+function git_current_branch() {
+  git rev-parse --abbrev-ref HEAD
+}
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
