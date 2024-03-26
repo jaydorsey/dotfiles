@@ -1,5 +1,10 @@
 require('nvim-treesitter.configs').setup {
   auto_install = true,
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+  },
   highlight = {
     enable = true,
     max_file_lines = 5000,
@@ -11,7 +16,7 @@ require('nvim-treesitter.configs').setup {
       end
     end,
   },
-  indent = { enable = false },
+  indent = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -45,6 +50,32 @@ require('nvim-treesitter.configs').setup {
       ['i;'] = 'textsubjects-container-inner',
     },
   },
+  textobjects = {
+    lsp_interop = {
+      enable = true,
+      border = 'none',
+      floating_preview_opts = {},
+      peek_definition_code = {
+        ["<leader>df"] = "@function.outer",
+        ["<leader>dF"] = "@class.outer",
+      },
+    },
+    select = {
+      enable = true,
+      lookahead = true,
+      include_surrounding_whitespace = true,
+      keymaps = {
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        -- You can optionally set descriptions to the mappings (used in the desc parameter of
+        -- nvim_buf_set_keymap) which plugins like which-key display
+        ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
+        -- You can also use captures from other query groups like `locals.scm`
+        ['as'] = { query = '@scope', query_group = 'locals', desc = 'Select language scope' },
+      },
+    },
+  },
   endwise = { enable = true, },
   matchup = {
     enable = true,
@@ -54,5 +85,5 @@ require('nvim-treesitter.configs').setup {
       return false
     end,
   },
-  -- autotag = { enable = true },
+  autotag = { enable = true },
 }

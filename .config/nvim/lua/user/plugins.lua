@@ -10,14 +10,14 @@ return {
     },
     -- event = 'BufReadPost',
   },
-  { 
-    'dracula/vim',
-    name = 'dracula',
-    config = function() 
-      vim.cmd 'colorscheme dracula' 
-    end, 
-    lazy = false
-  },
+  -- { 
+  --   'dracula/vim',
+  --   name = 'dracula',
+  --   config = function() 
+  --     vim.cmd 'colorscheme dracula' 
+  --   end, 
+  --   lazy = false
+  -- },
 
   -- { 'rebelot/kanagawa.nvim', config = function() vim.cmd 'colorscheme kanagawa' end, },
   -- { 'github/copilot.vim', branch = 'release', ft = { 'ruby' } },
@@ -28,8 +28,8 @@ return {
   -- { 'autozimu/LanguageClient-neovim', branch = 'next', build = 'bash install.sh' } },
 
   { 'christoomey/vim-sort-motion' },
-  { 'haya14busa/vim-asterisk'  }, -- Improved * motions
-  { 'bronson/vim-visual-star-search' },
+  { 'haya14busa/vim-asterisk', lazy = false,  }, -- Improved * motions
+  { 'bronson/vim-visual-star-search', lazy = false, },
   { 'mechatroner/rainbow_csv' },
 
   -- Line-wise & delimiter sorting
@@ -114,21 +114,13 @@ return {
   { 'guns/xterm-color-table.vim' },
   {
     'kevinhwang91/nvim-hlslens',
+    dependencies = { 'haya14busa/vim-asterisk' },
     config = function()
-      local opts = require('config').opts
-      vim.api.nvim_set_keymap(
-        'n',
-        'n',
-        [[:execute('normal! ' . v:count1 . 'n')<CR>:lua require('hlslens').start()<CR>]],
-        opts
-      )
-      vim.api.nvim_set_keymap(
-        'n',
-        'N',
-        [[:execute('normal! ' . v:count1 . 'N')<CR>:lua require('hlslens').start()<CR>]],
-        opts
-      )
-    end,
+      require('hlslens').setup {
+        calm_down = true,
+        virt_priority = 50,
+      }
+    end
   },
 
   { 'jaydorsey/vim-to-github', branch='jay/add_blame_shortcut', lazy = false },
@@ -445,4 +437,25 @@ return {
   },
   -- new nvim textobjs
   { 'chrisgrieser/nvim-various-textobjs', lazy = false, opts = { useDefaultKeymaps = false }, },
+  { 'echasnovski/mini.nvim', lazy = false, },
+  -- structural search and replace in a file
+  { 'cshuaimin/ssr.nvim',
+    config = function()
+      require('ssr').setup {
+        border = 'rounded',
+        min_width = 50,
+        min_height = 5,
+        max_width = 120,
+        max_height = 25,
+        adjust_window = true,
+        keymaps = {
+          close = 'q',
+          next_match = 'n',
+          prev_match = 'N',
+          replace_confirm = '<cr>',
+          replace_all = '<leader><cr>',
+        },
+      }
+    end
+  }
 }

@@ -23,6 +23,7 @@ vim.g.ruby_path = '~/.local/share/rtx/shims/ruby'
 vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
 
 vim.g.mapleader = ' '
+vim.cmd 'colorscheme sorbet'
 
 require('lazy').setup('user.plugins', {
     defaults = { lazy = true },
