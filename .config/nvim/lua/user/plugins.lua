@@ -180,8 +180,8 @@ return {
   -- vim sugar for shell commands
   { 'tpope/vim-eunuch', lazy = false },
   { 'tpope/vim-fugitive', lazy = false },
-  { 'tpope/vim-rails' },
-  { 'tpope/vim-repeat' },
+  { 'tpope/vim-rails', ft={ 'ruby', 'eruby' } },
+  { 'tpope/vim-repeat', lazy = false },
   { 'wincent/ferret'  }, -- Enhanced multi file search
   { 'windwp/nvim-spectre'  }, -- Regex search & replace
   { 'wsdjeg/vim-fetch' },
@@ -248,8 +248,7 @@ return {
   },
 
   {
-    'mbbill/undotree',
-    cmd = 'UndotreeToggle',
+    'mbbill/undotree', cmd = 'UndotreeToggle',
     init = function()
       vim.g.undotree_SetFocusWhenToggle = 1
     end,
@@ -265,7 +264,6 @@ return {
     end,
     lazy = false,
   },
-
 
   -- fast status line plugin written in vim
   { 
@@ -436,7 +434,7 @@ return {
     event = 'VeryLazy',
   },
   -- new nvim textobjs
-  { 'chrisgrieser/nvim-various-textobjs', lazy = false, opts = { useDefaultKeymaps = false }, },
+  { 'chrisgrieser/nvim-various-textobjs', lazy = false, opts = { useDefaultKeymaps = true }, },
   { 'echasnovski/mini.nvim', lazy = false, },
   -- structural search and replace in a file
   { 'cshuaimin/ssr.nvim',
