@@ -112,3 +112,9 @@ config/initializers/jay.rb
 .git/**/*
 .config/nvim/lazy-lock.json
 .config/nvim/spell/**/*
+
+.envrc
+Gemfile.local
+Gemfile.local.lock
+
+bin/runit
