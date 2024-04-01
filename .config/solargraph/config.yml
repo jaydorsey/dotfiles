@@ -29,6 +29,7 @@ diagnostics: true
 reporters:
 - require_not_found
 plugins:
-- runtime
+- solargraph-rails
+# - runtime
 require_paths: []
 max_files: 10000
