@@ -434,7 +434,14 @@ return {
     event = 'VeryLazy',
   },
   -- new nvim textobjs
-  { 'chrisgrieser/nvim-various-textobjs', lazy = false, opts = { useDefaultKeymaps = true }, },
+  { 
+    'chrisgrieser/nvim-various-textobjs',
+    lazy = false,
+    opts = { 
+      useDefaultKeymaps = false,
+      disabledKeymaps = { 'gc' }
+    }, 
+  },
   { 'echasnovski/mini.nvim', lazy = false, },
   -- structural search and replace in a file
   { 'cshuaimin/ssr.nvim',

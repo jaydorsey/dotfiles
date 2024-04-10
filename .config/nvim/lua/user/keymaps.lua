@@ -10,7 +10,12 @@ options        = { noremap = true } -- map('n', '<leader><esc>', ':nohlsearch<cr
 plug_options   = { silent = true }
 silent_options = { noremap = true, silent = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 
-map('n', '<leader>e', ':NvimTreeToggle<cr>', options)
+if vim.g.vscode then
+    -- VSCode extension
+else
+  map('n', '<leader>e', ':NvimTreeToggle<cr>', options)
+end
+
 map('n', '<leader>r', ':NvimTreeRefresh<cr>', options)
 map('n', '<leader>f', ':NvimTreeFindFile<cr>', options)
 
