@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Useful for running a single test multiple times, locally
+#
+# 1. Save this file somewhere in your $PATH (e.g. `~/bin/ru`)
+# 2. chmod +x ~/bin/ru
+#
+# Usage:
+#
+#    run spec/models/user_spec.rb
+cpus  = (`sysctl -n hw.ncpu`.to_i - 1)
+files = "#{ARGV[0]} " * cpus
+exec("bin/parallel_rspec --allow-duplicates --verbose-command --first-is-1 --prefix-output-with-test-env-number -- #{files}")
