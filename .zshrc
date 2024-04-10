@@ -277,7 +277,7 @@ export RUBY_CONFIGURE_OPTS="--with-openssl --with-readline --with-jemalloc --wit
 # Enable ruby yjit locally
 export RUBY_YJIT_ENABLE=1
 
-export SPEC_OPTS="--color --require rails_helper --tag ~broken --tag ~deprecated --order random --no-profile"
+export SPEC_OPTS="--color --require rails_helper --tag ~broken --tag ~deprecated --no-profile"
 
 # Speed up local testing, for apps that have the ENV set as a flag
 export DISABLE_SIMPLECOV=1

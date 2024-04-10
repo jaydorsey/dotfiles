@@ -6,9 +6,13 @@
 # 1. Save this file somewhere in your $PATH (e.g. `~/bin/ru`)
 # 2. chmod +x ~/bin/ru
 #
+# NOTE: If you don't have a ~/bin/ folder, you can use `mkdir ~/bin`
+# and then add it to your $PATH with `export PATH=$PATH:~/bin` in your
+# .zshrc or .bashrc file (then restart your terminal)
+#
 # Usage:
 #
-#    run spec/models/user_spec.rb
+#    ru spec/models/user_spec.rb
 #
 # Note: Also take a look at the .spring.rb file in my dotfiles; put that
 # in ~/.spring.rb to ensure parallel tests use a different seed

@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# This file can go in ~/.spring.rb, or you can look at the spring docs and add it
+# somewhere else if you don't want to use it globally across your system
+#
+# https://github.com/rails/spring
 Spring.quiet = true
 
 Spring.after_fork do
