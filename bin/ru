@@ -12,7 +12,9 @@
 #
 # Usage:
 #
-#    ru spec/models/user_spec.rb
+#    # Runs this spec 15 times, because I have 16 cpus
+#    > ru spec/models/user_spec.rb
+#    15 processes for 15 specs, ~ 1 spec per process
 #
 # Note: Also take a look at the .spring.rb file in my dotfiles; put that
 # in ~/.spring.rb to ensure parallel tests use a different seed
