@@ -148,10 +148,18 @@ return {
       require('scrollbar.handlers.gitsigns').setup()
     end,
   },
+  -- A matchit replacement
   {
     'andymass/vim-matchup',
     init = function()
-      require('config.matchup')
+      vim.g.matchup_delim_start_plaintext = 0
+      vim.g.matchup_matchparen_deferred = 1
+      vim.g.matchup_matchparen_deferred_show_delay = 100
+      vim.g.matchup_matchparen_hi_surround_always = 1
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      vim.g.matchup_override_vimtex = 1
+      vim.g.matchup_surround_enabled = 1
+      vim.g.matchup_transmute_enabled = 0
     end,
     lazy = false,
   },
@@ -359,6 +367,7 @@ return {
       vim.g.ale_disable_lsp = 0
       vim.g.ale_lint_on_save = 1
       vim.g.ale_fix_on_save = 1
+      -- vim.g.ale_ruby_rubocop_executable = '~/.local/share/rtx/shims/rubocop'
       vim.g.ale_ruby_rubocop_executable = 'bundle'
       vim.g.ale_ruby_rubocop_options = '--server'
       vim.g.ale_ruby_ruby_executable = '~/.local/share/rtx/shims/ruby'
@@ -462,5 +471,19 @@ return {
         },
       }
     end
+  },
+  -- Better iullumination of cursor objects
+  {
+    'RRethy/vim-illuminate',
+    lazy = false,
+    config = function()
+      require('illuminate').configure {
+        providers = {
+            'treesitter',
+            'lsp',
+            'regex',
+        },
+      }
+    end,
   }
 }
