@@ -11,7 +11,7 @@ $ branch: git branch | awk '{print $NF}'
 git checkout <branch> -- <paths>
 
 # List files which have been staged
-git diff --name-only --cached
+git diff --name-only --staged
 
 # Use main as your main branch
 git branch -M main

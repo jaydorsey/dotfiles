@@ -35,6 +35,7 @@
 	mylog = log --author=jaydorsey
 	recent = !git log --no-walk --date-order --oneline --decorate $(git rev-list --branches --no-walk)
 	s = status
+	staged = diff --name-only --staged
 	standup = log --since yesterday --oneline --no-merges --author jaydorsey
 	state = !git fetch origin && git remote show origin && :
 	stats = shortlog -sn --since='30 days'
