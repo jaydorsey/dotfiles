@@ -20,4 +20,4 @@
 # in ~/.spring.rb to ensure parallel tests use a different seed
 cpus  = (`sysctl -n hw.ncpu`.to_i - 1)
 files = "#{ARGV[0..].join(' ')} " * cpus
-exec("bin/parallel_rspec --allow-duplicates --verbose-command --first-is-1 --prefix-output-with-test-env-number -- #{files}")
+exec("bin/parallel_rspec --allow-duplicates --verbose-command --first-is-1 --serialize-stdout --prefix-output-with-test-env-number -- #{files}")
