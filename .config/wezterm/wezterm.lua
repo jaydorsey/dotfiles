@@ -11,6 +11,9 @@ config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_size = 14
 config.native_macos_fullscreen_mode = false
 config.visual_bell = { fade_in_duration_ms = 75, fade_out_duration_ms = 75, target = 'CursorColor' }
-config.front_end = 'Software'
+config.initial_rows = 24
+config.initial_cols = 80
+config.adjust_window_size_when_changing_font_size = false
+-- config.front_end = 'Software'
 
 return config
