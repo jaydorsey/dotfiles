@@ -482,6 +482,7 @@ export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
 
 source $HOME/.config/broot/launcher/bash/br
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$PATH:$HOME/.rd/bin" # rancher desktop
 
 # Upgrade wezterm nightly when installed via homebrew
 alias wezup="brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
