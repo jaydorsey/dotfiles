@@ -23,6 +23,7 @@ config/rails_best_practices.yml
 db/backups/**/*
 db/data/**/*
 lefthook.yml
+.lefthook/**/*
 rails.rb
 vendor/**/*
 !db/structure.sql
