@@ -52,7 +52,9 @@ coverage
 **/dist/**/*
 **/node_modules/**/*
 **/bower_components/**/*
+.config/yarn/**/*
 yarn.lock
+
 package-lock.json
 
 # Elixir
