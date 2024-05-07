@@ -10,18 +10,49 @@ return {
     },
     -- event = 'BufReadPost',
   },
-  -- { 
+  -- {
   --   'dracula/vim',
   --   name = 'dracula',
-  --   config = function() 
-  --     vim.cmd 'colorscheme dracula' 
-  --   end, 
+  --   config = function()
+  --     vim.cmd 'colorscheme dracula'
+  --   end,
   --   lazy = false
   -- },
 
   -- { 'rebelot/kanagawa.nvim', config = function() vim.cmd 'colorscheme kanagawa' end, },
   -- { 'github/copilot.vim', branch = 'release', ft = { 'ruby' } },
-
+  { 'ellisonleao/gruvbox.nvim',
+    lazy = false,
+    priority = 1000,
+    config = true,
+    opts = {},
+    init = function()
+      require("gruvbox").setup({
+        undercurl = true,
+        underline = true,
+        bold = true,
+        italic = {
+          strings = false,
+          comments = true,
+          operators = false,
+          folds = true,
+        },
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        invert_intend_guides = false,
+        inverse = true, -- invert background for search, diffs, statuslines and errors
+        contrast = "", -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {},
+        dim_inactive = false,
+        transparent_mode = true,
+      })
+      -- vim.o.background="dark" -- system default
+      vim.cmd('colorscheme gruvbox')
+    end
+  },
   { 'Exafunction/codeium.vim', lazy = false },
   { 'imsnif/kdl.vim' },
 
@@ -89,7 +120,7 @@ return {
 
   -- TODO: Do I need lastplace + vim-stay?
   -- use 'Konfekt/FastFold'
-  { 
+  {
     'ethanholz/nvim-lastplace', -- reopen files at your last edit (lua)
     branch=main ,
     opts = {
@@ -103,12 +134,12 @@ return {
     },
     event = 'BufReadPre',
     priority = 1001,
-  }, 
+  },
   { 'gioele/vim-autoswap'  }, -- Better, automatic swap file management
   { 'lambdalisue/readablefold.vim' }, -- improved foldtext
   { 'zhimsel/vim-stay' }, -- view creation, fold
 
-  { 'Raimondi/delimitMate' }, -- Add automatic delimiters ([<{, quotes, etc.
+  { 'Raimondi/delimitMate', lazy = false, }, -- Add automatic delimiters ([<{, quotes, etc.
   { 'alfredodeza/jacinto.vim', ft = {'json'}, }, -- Formatting & validating json via :Jacinto
   { 'editorconfig/editorconfig-Vim', lazy = false },
   { 'guns/xterm-color-table.vim' },
@@ -156,7 +187,7 @@ return {
       vim.g.matchup_matchparen_deferred = 1
       vim.g.matchup_matchparen_deferred_show_delay = 100
       vim.g.matchup_matchparen_hi_surround_always = 1
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      -- vim.g.matchup_matchparen_offscreen = { method = "popup" }
       vim.g.matchup_override_vimtex = 1
       vim.g.matchup_surround_enabled = 1
       vim.g.matchup_transmute_enabled = 0
@@ -187,12 +218,30 @@ return {
   { 'tpope/vim-dispatch' },
   -- vim sugar for shell commands
   { 'tpope/vim-eunuch', lazy = false },
-  { 'tpope/vim-fugitive', lazy = false },
+  { 'tpope/vim-fugitive',
+    dependencies = {
+      'tpope/vim-rhubarb',
+    },
+    lazy = false ,
+  },
   { 'tpope/vim-rails', ft={ 'ruby', 'eruby' } },
   { 'tpope/vim-repeat', lazy = false },
   { 'wincent/ferret'  }, -- Enhanced multi file search
   { 'windwp/nvim-spectre'  }, -- Regex search & replace
   { 'wsdjeg/vim-fetch' },
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      'nvim-lua/plenary.nvim',         -- required
+      'sindrets/diffview.nvim',        -- optional - Diff integration
+      -- Only one of these is needed, not both.
+      'nvim-telescope/telescope.nvim', -- optional
+      -- 'ibhagwan/fzf-lua',              -- optional
+    },
+    config = true,
+    lazy = false,
+  },
 
   {
     'sheerun/vim-polyglot',
@@ -238,7 +287,7 @@ return {
   { 'nvim-telescope/telescope-file-browser.nvim' },
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = { 
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-lua/popup.nvim',
       'nvim-telescope/telescope-ui-select.nvim',
@@ -264,7 +313,7 @@ return {
 
   -- NERDTree replacement. Use g? to open up help
   { 'nvim-tree/nvim-web-devicons', lazy = false },
-  { 
+  {
     'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons', } ,
     config = function()
@@ -274,7 +323,7 @@ return {
   },
 
   -- fast status line plugin written in vim
-  { 
+  {
     'hoob3rt/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', lazy=true } ,
     config = function()
@@ -349,7 +398,7 @@ return {
   },
 
   { 'numToStr/Comment.nvim'  }, -- Comment plugin, in lua
-  { 
+  {
     'folke/todo-comments.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
@@ -382,6 +431,7 @@ return {
       vim.g.ale_fixers = {
         ruby = {'rubocop', 'remove_trailing_lines', 'trim_whitespace'},
         sh = {'remove_trailing_lines', 'trim_whitespace'},
+        lua = {'remove_trailing_lines', 'trim_whitespace'},
       }
     end,
     lazy = false
@@ -436,20 +486,20 @@ return {
   },
   {
     'beauwilliams/focus.nvim', -- auto split windows
-    opts = { 
+    opts = {
       excluded_filetypes = { 'toggleterm', 'TelescopePrompt' },
-      signcolumn = false 
+      signcolumn = false
     },
     event = 'VeryLazy',
   },
   -- new nvim textobjs
-  { 
+  {
     'chrisgrieser/nvim-various-textobjs',
     lazy = false,
-    opts = { 
+    opts = {
       useDefaultKeymaps = false,
       disabledKeymaps = { 'gc' }
-    }, 
+    },
   },
   { 'echasnovski/mini.nvim', lazy = false, },
   -- structural search and replace in a file

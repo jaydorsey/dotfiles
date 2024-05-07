@@ -3,7 +3,7 @@
 -- https://github.com/LunarVim/Neovim-from-scratch
 -- https://dotfyle.com/
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -23,7 +23,7 @@ vim.g.ruby_path = '~/.local/share/rtx/shims/ruby'
 vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
 
 vim.g.mapleader = ' '
-vim.cmd 'colorscheme sorbet'
+-- vim.cmd([[colorscheme gruvbox]])
 
 require('lazy').setup('user.plugins', {
     defaults = { lazy = true },

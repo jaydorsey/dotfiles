@@ -30,16 +30,16 @@ telescope.setup {
       },
     },
     -- scroll_strategy = 'cycle',
-    -- theme = require('telescope.themes').get_dropdown { 
+    -- theme = require('telescope.themes').get_dropdown {
     --   layout_config = {
-    --     prompt_position = 'top', 
+    --     prompt_position = 'top',
     --     horizontal = {
     --       height = 0.99,
     --       width = 0.99,
     --       preview_height = 0.99,
     --       preview_width = 0.5,
     --     },
-    --   } 
+    --   }
     -- },
     -- ripgrep_arguments = {
     --   'rg',
@@ -64,7 +64,7 @@ telescope.setup {
     -- },
     -- ['ui-select'] = {
     --   require('telescope.themes').get_dropdown {
-    --     layout_config = { 
+    --     layout_config = {
     --       prompt_position = 'top',
     --       horizontal = {
     --         height = 0.99,
@@ -72,7 +72,7 @@ telescope.setup {
     --         preview_height = 0.99,
     --         preview_width = 0.5,
     --       },
-    --     } 
+    --     }
     --   },
     -- },
     heading = { treesitter = true },
