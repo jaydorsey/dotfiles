@@ -6,18 +6,21 @@ set -eux
 ROOT_DIR="$HOME/repos/neovim"
 REPO_DIR="$HOME/repos/"
 BUILD_DIR="$ROOT_DIR/build"
-SOURCE_DIR="$ROOT_DIR/src"
+# SOURCE_DIR="$ROOT_DIR/src"
 
-mkdir -p ~/repos
-rm -rf ~/repos/neovim
+mkdir -p $REPO_DIR
+rm -rf $ROOT_DIR
 
 cd $REPO_DIR
+
 git clone https://github.com/neovim/neovim --depth 1
+
+cd "$ROOT_DIR"
+
+git fetch --tags
 git checkout v0.9.5
 
 mkdir -p "$BUILD_DIR"
-
-cd "$ROOT_DIR"
 
 $HOMEBREW_PREFIX/bin/gmake CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$BUILD_DIR GNUMAKEFLAGS="--jobs=8"
 # rm -rf $BUILD_DIR
