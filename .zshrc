@@ -378,7 +378,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Computer specific scripts; unique to each computer I use
 export PATH=~/localbin:$PATH
