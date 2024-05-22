@@ -1,0 +1,113 @@
+# vim: textwidth=0:filetype=sh
+
+% git
+
+# Change branch gco
+git checkout <branch>
+
+$ branch: git branch | awk '{print $NF}'
+
+# Checkout file from another branch
+git checkout <branch> -- <paths>
+
+# List files which have been staged
+git diff --name-only --staged
+
+# Use main as your main branch
+git branch -M main
+
+# Find file with unknown path
+git log --all --full-history -- "**/<file_name>.*"
+
+# Find file with known path
+git log --all --full-history -- <full_path_to_file>
+
+# Find commits not merged
+git log <source_branch> --not <target_branch>
+
+# Find which files have changed between commits
+git log <source_branch> --not <target_branch> --stat
+
+# List branches merged into master
+git branch --merged master
+
+# Delete local branches that have been merged
+git branch --merged master | grep -v "master" | grep -v "production" | xargs git b -D
+
+# Search git history for text within files
+git log -S "<text>" <file_name>
+
+# https://stackoverflow.com/a/56054951/2892779
+# Find last commit which deleted a file
+git rev-list -n 1 HEAD -- <full_path_to_file>
+
+# Empty commit
+git commit --allow-empty -m "Empty commit to trigger build"
+
+#  List files and last modification dates
+git ls-files -z | xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" {}
+
+# List files and last modifications dates, while searching a term
+git ls-files | grep <search_term> | xargs -n1 -I{} -- git log -1 --format="%ai {}" {}
+
+# Pre-compute file paths to speed up git log commands
+git commit-graph write --reachable --changed-paths
+
+# Add executable flag onto file
+git update-index --chmod=+x <path_to_file>
+
+# Remove executable flag onto file
+git update-index --chmod=-x <path_to_file>
+
+# Deploy a branch to a heroku remote
+git push <reference_name> <branch>:main
+
+# Deploy a specific tagged commit to a heroku remote
+git push <remote> <tag>^{}:main
+
+# List all files by date. Usefel for finding the oldest files in a repo
+git ls-tree -r --name-only HEAD | while read filename; do
+ echo "$(git log -1 --date=iso --format="%ad |" -- "$filename") $filename"
+done > oldest_files.txt
+
+# Compare 2 commits on github
+open https://github.com/<org>/<repo>/compare/<commit_1>..<commit_2>
+
+# Compare current branch with master
+git diff-tree -r --no-commit-id --name-only head origin/master
+
+# Compare current branch with current upstream
+git diff-tree -r --no-commit-id --name-only @\{u\} head
+
+# Run rubocop only on modified files (compared against upstream)
+git diff-tree -r --no-commit-id --name-only --diff-filter=d @\{u\} HEAD | xargs bundle exec rubocop
+
+# Run rubocop only on files modified locally, compared against remote
+git diff-tree --no-commit-id --name-only --diff-filter d -r origin/master HEAD | grep rb | xargs bundle exec rubocop
+
+# Find the latest annotated tag
+git describe --abbrev=0
+
+# Summary of the most recent commit
+git log --stat -1
+
+# List files changed in most recent commit
+git diff-tree --no-commit-id --name-only HEAD -r
+
+# List files changed by name only
+git diff --name-only
+
+# https://stackoverflow.com/a/41593582/2892779
+#
+# Checkout all deleted files
+git diff --no-renames --name-only --diff-filter=D -z | xargs -0 git checkout --
+
+
+
+# List files that are ignored by git
+git check-ignore -- *
+
+# List files that are ignored by git and the rule
+git check-ignore -v -- *
+
+
