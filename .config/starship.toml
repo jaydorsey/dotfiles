@@ -36,10 +36,12 @@ color_bg3 = '#665c54'
 color_blue = '#458588'
 color_aqua = '#689d6a'
 color_green = '#98971a'
-color_orange = '#d65d0e'
+color_orange = '#FC9F00'
 color_purple = '#b16286'
-color_red = '#cc241d'
-color_yellow = '#d79921'
+color_red = '#943640'
+color_yellow = '#F7FF73'
+color_white = '#ffffff'
+color_black = '#000000'
 
 [os]
 disabled = false
@@ -68,12 +70,12 @@ RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
-style_user = "bg:color_orange fg:color_fg0"
+style_user = "bg:color_orange fg:color_black"
 style_root = "bg:color_orange fg:color_fg0"
 format = '[ $user ]($style)'
 
 [directory]
-style = "fg:color_fg0 bg:color_yellow"
+style = "fg:color_black bg:color_yellow"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -87,12 +89,12 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:color_aqua"
-format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+style = "bg:color_aqua fg:color_black"
+format = '[[ $symbol $branch ](fg:color_black bg:color_aqua)]($style)'
 
 [git_status]
-style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+style = "bg:color_aqua fg:color_black"
+format = '[[($all_status$ahead_behind )](fg:color_black bg:color_aqua)]($style)'
 
 [nodejs]
 symbol = ""
@@ -152,7 +154,7 @@ format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
 disabled = false
 time_format = "%R"
 style = "bg:color_bg1"
-format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
+format = '[[  $time ](fg:color_white bg:color_bg1)]($style)'
 
 [line_break]
 disabled = false
