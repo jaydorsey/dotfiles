@@ -139,3 +139,6 @@
 	gpgSign = true
 [url "https://"]
 	insteadOf = git://
+[color "status"]
+	changed = blue
+	untracked = magenta
