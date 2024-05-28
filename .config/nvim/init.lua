@@ -41,3 +41,5 @@ require 'user.nvim-lastplace'
 require 'user.nvim-autopairs'
 require 'user.indent-blankline'
 require 'user.nvim-colorizer'
+
+vim.api.nvim_set_hl(0, 'Comment', { fg = '#9E9E9E' })
