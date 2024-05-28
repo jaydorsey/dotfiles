@@ -214,7 +214,7 @@ return {
   { 'nvim-lua/popup.nvim' },
   { 'rhysd/committia.vim' },
   -- use 'tpope/vim-characterize'
-  { 'tpope/vim-commentary', lazy = false },
+  -- { 'tpope/vim-commentary', lazy = false },
   { 'tpope/vim-dispatch' },
   -- vim sugar for shell commands
   { 'tpope/vim-eunuch', lazy = false },
@@ -361,7 +361,6 @@ return {
 
   {
     'akinsho/bufferline.nvim', -- bufferline plugin
-    version = "*",
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('bufferline').setup()
