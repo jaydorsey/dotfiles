@@ -221,8 +221,7 @@ return {
   { 'tpope/vim-fugitive',
     dependencies = {
       'tpope/vim-rhubarb',
-    },
-    lazy = false ,
+    }
   },
   { 'tpope/vim-rails', ft={ 'ruby', 'eruby' } },
   { 'tpope/vim-repeat', lazy = false },
