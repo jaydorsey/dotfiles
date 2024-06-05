@@ -221,13 +221,21 @@ return {
   { 'tpope/vim-fugitive',
     dependencies = {
       'tpope/vim-rhubarb',
-    }
+    },
+    ft = { 'ruby' },
   },
   { 'tpope/vim-rails', ft={ 'ruby', 'eruby' } },
   { 'tpope/vim-repeat', lazy = false },
   { 'wincent/ferret'  }, -- Enhanced multi file search
   { 'windwp/nvim-spectre'  }, -- Regex search & replace
   { 'wsdjeg/vim-fetch' },
+  {
+    'filipdutescu/renamer.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',         -- required
+    },
+    lazy = false ,
+  },
 
   {
     "NeogitOrg/neogit",
@@ -533,5 +541,12 @@ return {
         },
       }
     end,
-  }
+  },
+  -- {
+  --   'williamboman/mason.nvim',
+  --   config = function()
+  --     require('mason').setup()
+  --   end,
+  --   lazy = false
+  -- },
 }
