@@ -13,6 +13,16 @@ git checkout <branch> -- <paths>
 # List files which have been staged
 git diff --name-only --staged
 
+# List files changed by name only
+git diff --name-only
+
+# Compare files from two different branches
+git diff <branch_1>..<branch_2> -- <filename>
+
+$ branch_1: git branch | awk '{print $NF}'
+$ branch_2: git branch | awk '{print $NF}'
+$ filename: git ls
+
 # Use main as your main branch
 git branch -M main
 
@@ -94,9 +104,6 @@ git log --stat -1
 # List files changed in most recent commit
 git diff-tree --no-commit-id --name-only HEAD -r
 
-# List files changed by name only
-git diff --name-only
-
 # https://stackoverflow.com/a/41593582/2892779
 #
 # Checkout all deleted files
@@ -109,5 +116,3 @@ git check-ignore -- *
 
 # List files that are ignored by git and the rule
 git check-ignore -v -- *
-
-
