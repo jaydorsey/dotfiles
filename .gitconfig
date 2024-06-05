@@ -142,3 +142,11 @@
 [color "status"]
 	changed = blue
 	untracked = magenta
+	added = green
+	updated = yellow
+	unmerged = yellow
+[color "interactive"]
+	head = gree
+	prompt = blue
+	help = green
+	error = magenta
