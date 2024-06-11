@@ -29,6 +29,8 @@ vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 blend=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 blend=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF blend=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD blend=nocombine]]
+vim.cmd [[highlight CursorLine guibg=#050505]]
+vim.cmd [[highlight MatchParen cterm=NONE,underline,reverse gui=NONE guibg=#000000]]
 
 vim.opt.listchars = {
   space = ' ',
