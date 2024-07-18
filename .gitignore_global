@@ -46,7 +46,6 @@ coverage
 **/tags.temp
 **/*.tags.tmp
 **/*.tags
-**/*.jay
 
 # JavaScript
 **/dist/**/*
@@ -84,7 +83,6 @@ tmp/*
 *.code-workspace
 .haml-lint.yml
 .idea
-.ignore
 .DS_Store*
 .ehthumbs.db
 Icon
@@ -120,4 +118,6 @@ config/initializers/jay.rb
 Gemfile.local
 Gemfile.local.lock
 
-bin/runit
+# Generic catch-alls
+**/*.ignore 
+**/*.jay
