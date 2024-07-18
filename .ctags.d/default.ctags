@@ -1,6 +1,12 @@
 --recurse=yes
 --tag-relative=yes
---append=yes
 --links=no
---exclude=.git/*,node_modules/*,log/*,tmp/*
+--exclude=.git
+--exclude=vendor/*
+--exclude=node_modules/*
+--exclude=db/*
+--exclude=log/*
+--exclude=public/*
+--exclude=tmp/*
 --languages=ruby,rspec,sql,-javascript,rust,json
+--regex-ruby=/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/
