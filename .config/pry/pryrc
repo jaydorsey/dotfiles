@@ -2,6 +2,13 @@
 
 # -*- mode: ruby -*- vim:set ft=ruby:
 
+begin
+  require 'pry-theme'
+  Pry.config.theme = 'tomorrow'
+rescue LoadError => _e
+  puts "skipping pry-theme because it's not loaded"
+end
+
 ENV_COLORS = {
   'production' => :red,
   'staging' => :cyan,
