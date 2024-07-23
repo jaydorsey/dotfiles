@@ -272,7 +272,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings. Disabled this for now; this causes rubocop to fail silently
 # export RUBYOPT="-W0"
-export RUBYOPT="--yjit --enable-yjit"
+export RUBYOPT="--enable-yjit"
 export RUBY_CONFIGURE_OPTS="--enable-yjit --with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
 
 # Enable ruby yjit locally
