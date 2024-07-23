@@ -120,7 +120,6 @@ return {
           {
             { name = "codeium" },
             { name = "nvim_lsp" },
-            { name = "nvim_lua" },
             { name = "luasnip" }, -- For luasnip users.
           },
           {
