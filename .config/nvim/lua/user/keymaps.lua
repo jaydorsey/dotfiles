@@ -10,14 +10,7 @@ options        = { noremap = true } -- map('n', '<leader><esc>', ':nohlsearch<cr
 plug_options   = { silent = true }
 silent_options = { noremap = true, silent = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 
-if vim.g.vscode then
-    -- VSCode extension
-else
-  map('n', '<leader>e', ':NvimTreeToggle<cr>', options)
-end
-
-map('n', '<leader>r', ':NvimTreeRefresh<cr>', options)
-map('n', '<leader>f', ':NvimTreeFindFile<cr>', options)
+map('n', '<leader>e', ':Neotree toggle<cr>', options)
 
 -- navigate with ctrl-n/ctrl-b across buffers
 map('n', '<c-n>', ':bnext<cr>', options)

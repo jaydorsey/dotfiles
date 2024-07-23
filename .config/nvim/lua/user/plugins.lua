@@ -153,8 +153,7 @@ return {
       "hrsh7th/nvim-cmp",
     },
     config = function()
-      require("codeium").setup({
-      })
+      require("codeium").setup({})
     end,
     lazy = false
   },
@@ -422,14 +421,14 @@ return {
     end,
   },
 
-  -- NERDTree replacement. Use g? to open up help
-  { 'nvim-tree/nvim-web-devicons', lazy = false },
   {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons', } ,
-    config = function()
-      require('nvim-tree').setup({})
-    end,
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+      "3rd/image.nvim",
+    },
     lazy = false,
   },
 
@@ -650,7 +649,7 @@ return {
     "williamboman/mason.nvim",
     lazy = false,
     config = function()
-      require("mason").setup()
+      require("mason").setup({ PATH = "prepend" })
       require("mason-lspconfig").setup()
 
       require("lspconfig").lua_ls.setup {
