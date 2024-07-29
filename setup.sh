@@ -161,10 +161,13 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Fastesst initial repeat; can't set via interface. Log out to activate
 # defaults write -g InitialKeyRepeat -int 10
 
+cargo install bat
+cargo install lsd
+cargo install exa
 cargo install cw
 cargo install atuin
 cargo install zoxide --locked
-cargo install rtx-cli
+cargo install mise
 
 npm install -g neovim yarn
 npm install -g tree-sitter-cli
