@@ -84,7 +84,7 @@
 [rebase]
 	autosquash = true
 [remote "origin"]
-	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+	fetch = +refs/pull/*/head:refs/remotes/origin/pull_requests/*
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52

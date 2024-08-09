@@ -15,6 +15,7 @@ localbin/*
 .config/htop
 .config/iterm2
 .config/lnav
+.config/Autodesk
 .config/ngrok/ngrok.yml
 .config/nvim/plugin/packer_compiled.lua
 # Alternate location for the compiled file
