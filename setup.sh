@@ -162,6 +162,7 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # defaults write -g InitialKeyRepeat -int 10
 
 cargo install bat
+cargo install cargo-update
 cargo install lsd
 cargo install exa
 cargo install cw
