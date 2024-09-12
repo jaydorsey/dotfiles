@@ -121,3 +121,6 @@ Gemfile.local.lock
 # Generic catch-alls
 **/*.ignore 
 **/*.jay
+
+# Custom puma config
+config/puma/development.rb

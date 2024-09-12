@@ -77,7 +77,7 @@ vim.o.expandtab = true -- Expand tabs to spaces
 -- https://www.jmaguire.tech/posts/treesitter_folding/
 vim.o.foldmethod="expr"
 vim.o.foldexpr="nvim_treesitter#foldexpr()"
-vim.o.foldcolumn = "2"
+vim.o.foldcolumn = "0"
 vim.o.foldlevelstart=99 -- Edit with all folds open when opening a file
 --o.foldlevel=2
 --o.foldnestmax=12 -- Deepest fold

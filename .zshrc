@@ -308,6 +308,8 @@ alias wc='cw'
 alias ..='cd ..'
 alias ...='cd ../..'
 # alias -='cd -'
+# Run focused specs
+alias focus="re --tag @focus --order defined"
 
 if [ -f ~/.localrc ]; then
   source ~/.localrc

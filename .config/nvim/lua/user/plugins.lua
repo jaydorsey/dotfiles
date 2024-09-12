@@ -133,6 +133,10 @@ return {
             return vim_item
           end
         },
+        opts = {
+          debounce = 0,
+          throttle = 0,
+        },
       })
 
       cmp.setup.cmdline(":", {
@@ -519,32 +523,32 @@ return {
 
   -- Load on a combination of conditions: specific filetypes or commands
   -- Also run code after load (see the "config" key)
-  {
-    'dense-analysis/ale',
-    init = function()
-      vim.g.ale_disable_lsp = 0
-      vim.g.ale_lint_on_save = 1
-      vim.g.ale_fix_on_save = 1
-      -- vim.g.ale_ruby_rubocop_executable = '~/.local/share/mise/shims/rubocop'
-      vim.g.ale_ruby_rubocop_executable = 'bundle'
-      vim.g.ale_ruby_rubocop_options = '--server'
-      vim.g.ale_ruby_ruby_executable = '~/.local/share/mise/shims/ruby'
-      vim.g.ale_sign_column_always = 1
-      vim.g.ale_sign_error = 'î±'
-      vim.g.ale_sign_warning = 'î¸'
-      vim.g.ale_linters = {
-        ruby = {'rubocop', 'ruby', 'brakeman'},
-        html = {'htmlhint', 'tidy'},
-        -- 'sh', 'zsh', 'markdown', 'ruby', 'yml'
-      }
-      vim.g.ale_fixers = {
-        ruby = {'rubocop', 'remove_trailing_lines', 'trim_whitespace'},
-        sh = {'remove_trailing_lines', 'trim_whitespace'},
-        lua = {'remove_trailing_lines', 'trim_whitespace'},
-      }
-    end,
-    lazy = false
-  },
+  -- {
+  --   'dense-analysis/ale',
+  --   init = function()
+  --     vim.g.ale_disable_lsp = 0
+  --     vim.g.ale_lint_on_save = 1
+  --     vim.g.ale_fix_on_save = 1
+  --     -- vim.g.ale_ruby_rubocop_executable = '~/.local/share/mise/shims/rubocop'
+  --     vim.g.ale_ruby_rubocop_executable = 'bundle'
+  --     vim.g.ale_ruby_rubocop_options = '--server'
+  --     vim.g.ale_ruby_ruby_executable = '~/.local/share/mise/shims/ruby'
+  --     vim.g.ale_sign_column_always = 1
+  --     vim.g.ale_sign_error = 'î±'
+  --     vim.g.ale_sign_warning = 'î¸'
+  --     vim.g.ale_linters = {
+  --       ruby = {'rubocop', 'ruby', 'brakeman'},
+  --       html = {'htmlhint', 'tidy'},
+  --       -- 'sh', 'zsh', 'markdown', 'ruby', 'yml'
+  --     }
+  --     vim.g.ale_fixers = {
+  --       ruby = {'rubocop', 'remove_trailing_lines', 'trim_whitespace'},
+  --       sh = {'remove_trailing_lines', 'trim_whitespace'},
+  --       lua = {'remove_trailing_lines', 'trim_whitespace'},
+  --     }
+  --   end,
+  --   lazy = false
+  -- },
   {
     'utilyre/barbecue.nvim',
     event = 'User ActuallyEditing',
@@ -660,8 +664,10 @@ return {
             },
           },
         },
-      }                                                  -- Lua language server
-      require("lspconfig").solargraph.setup {}           -- Ruby language server
+      }
+      require("lspconfig").solargraph.setup {}
+      -- require("lspconfig").sorbet.setup {}
+      require("lspconfig").jsonls.setup {}
       -- require("lspconfig").gopls.setup {}                -- Go language server
       -- require("lspconfig").tsserver.setup {}             -- TypeScript language server
       -- require("lspconfig").htmx.setup {}                 -- HTMX language server
