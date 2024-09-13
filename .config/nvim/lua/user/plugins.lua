@@ -221,15 +221,22 @@ return {
 
   { 'wellle/targets.vim' },
   { 'axelf4/vim-strip-trailing-whitespace' },
-  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
+  {
+    'echasnovski/mini.indentscope',
+    lazy = false,
+  },
+  -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
   { 'dstein64/vim-startuptime' }, -- Measure startup time with :StartupTime
-  { 'AndrewRadev/splitjoin.vim', lazy = false }, -- Use shortcuts gJ and gS to join and split, respectively
+  {
+    'AndrewRadev/splitjoin.vim',
+    lazy = false,
+  }, -- Use shortcuts gJ and gS to join and split, respectively
 
   -- TODO: Do I need lastplace + vim-stay?
   -- use 'Konfekt/FastFold'
   {
     'ethanholz/nvim-lastplace', -- reopen files at your last edit (lua)
-    branch=main ,
+    branch = 'main',
     opts = {
       lastplace_ignore_buftype = { 'quickfix', 'nofile', 'help' },
       lastplace_ignore_filetype = {

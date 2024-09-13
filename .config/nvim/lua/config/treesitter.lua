@@ -1,4 +1,8 @@
 require('nvim-treesitter.configs').setup {
+  ensure_installed = { 
+    'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline', 'rust', 'ruby', 'gitcommit', 'gitignore',
+    'sql', 'toml', 'yaml'
+  },
   auto_install = true,
   rainbow = {
     enable = true,
@@ -15,8 +19,11 @@ require('nvim-treesitter.configs').setup {
         return true
       end
     end,
+    additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true },
+  indent = {
+    enable = false
+  },
   incremental_selection = {
     enable = true,
     keymaps = {
