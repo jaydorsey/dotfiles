@@ -221,10 +221,6 @@ return {
 
   { 'wellle/targets.vim' },
   { 'axelf4/vim-strip-trailing-whitespace' },
-  {
-    'echasnovski/mini.indentscope',
-    lazy = false,
-  },
   -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
   { 'dstein64/vim-startuptime' }, -- Measure startup time with :StartupTime
   {
@@ -316,11 +312,17 @@ return {
       require('mini.animate').setup({
         cursor = { enable = true }
       })
-      require('mini.hipatterns').setup()
       require('mini.files').setup()
+      require('mini.hipatterns').setup()
+      require('mini.indentscope').setup()
       require('mini.sessions').setup()
       require('mini.starter').setup()
     end,
+    lazy = false,
+  },
+  {
+    "kaplanz/retrail.nvim",
+    opts = {}, -- calls `setup` using provided `opts`
     lazy = false,
   },
   { 'nvim-lua/completion-nvim' },
@@ -621,7 +623,6 @@ return {
       disabledKeymaps = { 'gc' }
     },
   },
-  { 'echasnovski/mini.nvim', lazy = false, },
   -- structural search and replace in a file
   { 'cshuaimin/ssr.nvim',
     config = function()
