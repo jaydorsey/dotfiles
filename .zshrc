@@ -272,7 +272,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # export REDIS_URL="redis://localhost:6379"
 # Ignore deprecation warnings. Disabled this for now; this causes rubocop to fail silently
 # export RUBYOPT="-W0"
-export RUBYOPT="--enable-yjit"
+# export RUBYOPT="--enable-yjit"
 export RUBY_CONFIGURE_OPTS="--enable-yjit --with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
 
 # Enable ruby yjit locally
@@ -511,4 +511,4 @@ function git_current_branch() {
 }
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
-[ -s "/Users/jay.dorsey/.scm_breeze/scm_breeze.sh" ] && source "/Users/jay.dorsey/.scm_breeze/scm_breeze.sh"
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
