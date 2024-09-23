@@ -215,12 +215,16 @@ return {
       end,
     },
     cmd = { 'AerialOpen', 'AerialToggle' },
+    ft = { 'ruby', 'erb', },
   },
   { 'norcalli/nvim-colorizer.lua'  }, -- colorize hex/rgb codes like #ff0000
   { 'vim-ruby/vim-ruby', ft = { 'ruby', 'erb' } }, -- ruby syntax and helpers
 
   { 'wellle/targets.vim' },
-  { 'axelf4/vim-strip-trailing-whitespace' },
+  {
+    'axelf4/vim-strip-trailing-whitespace',
+    lazy = false,
+  },
   -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
   { 'dstein64/vim-startuptime' }, -- Measure startup time with :StartupTime
   {

@@ -98,6 +98,7 @@
 	new = green bold
 	whitespace = red reverse
 [diff]
+	algorithm = histogram
 	compactionHeuristic = true
 	tool = Kaleidoscope
 	colorMoved = default
@@ -112,6 +113,7 @@
 	binary = true
 [rerere]
 	enabled = true
+	autoupdate= true
 [gc]
 	writeCommitGraph = false
 [fetch]

@@ -291,8 +291,6 @@ export DISABLE_SIMPLECOV=1
 # export RD_PROF=1
 
 alias be='bundle exec'
-alias sp='spring rails'
-alias sr='spring rspec'
 alias cat='bat'
 alias gua='find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin main \;'
 # Exercism setup
@@ -488,9 +486,17 @@ export PATH="$PATH:$HOME/.rd/bin" # rancher desktop
 
 # Upgrade wezterm nightly when installed via homebrew
 alias wezup="brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
-alias "bin/rails"="bin/spring rails"
-alias "bin/rspec"="bin/spring rspec"
-alias re="bin/spring rspec"
+# alias "bin/rails"="bin/spring rails"
+# alias "bin/rspec"="bin/spring rspec"
+
+# Spring-aware alias for running specs
+re() {
+    if [ -f ./bin/spring ] ; then
+      bin/spring rspec "$@"
+    else
+      bundle exec rspec "$@"
+    fi
+}
 
 eval "$(starship init zsh)"
 
