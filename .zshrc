@@ -306,8 +306,6 @@ alias wc='cw'
 alias ..='cd ..'
 alias ...='cd ../..'
 # alias -='cd -'
-# Run focused specs
-alias focus="re --tag @focus --order defined"
 
 if [ -f ~/.localrc ]; then
   source ~/.localrc
@@ -497,6 +495,17 @@ re() {
       bundle exec rspec "$@"
     fi
 }
+
+# Spring aware focused spec runner
+focus() {
+    if [ -f ./bin/spring ] ; then
+      bin/spring rspec --tag @focus --order defined
+    else
+      bundle exec rspec --tag @focus --order defined
+    fi
+}
+
+# Run focused specs
 
 eval "$(starship init zsh)"
 
