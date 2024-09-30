@@ -484,8 +484,6 @@ export PATH="$PATH:$HOME/.rd/bin" # rancher desktop
 
 # Upgrade wezterm nightly when installed via homebrew
 alias wezup="brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
-# alias "bin/rails"="bin/spring rails"
-# alias "bin/rspec"="bin/spring rspec"
 
 # Spring-aware alias for running specs
 re() {
