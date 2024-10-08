@@ -1,3 +1,5 @@
 # Generate a random token
 bin/rails runner "Rails.logger.level = 5;Sidekiq.logger.level = 5;Sentry.logger.level = 5;require 'securerandom';print SecureRandom.hex(16)" | pbcopy
 
+# Fix nokogiri message
+gem uninstall nokogiri -aIx && gem install nokogiri -- --with-xml2-include=/usr/include/libxml2/libxml --with-xml2-lib=/usr/lib64/ --with-xslt-include=/usr/include/libxslt --with-xslt-lib=/usr/lib64/
