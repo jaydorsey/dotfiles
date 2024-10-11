@@ -169,6 +169,7 @@ cargo install cw
 cargo install atuin
 cargo install zoxide --locked
 cargo install mise
+cargo install tre-command
 
 npm install -g neovim yarn
 npm install -g tree-sitter-cli

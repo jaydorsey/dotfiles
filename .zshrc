@@ -503,6 +503,8 @@ focus() {
     fi
 }
 
+tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
+
 # Run focused specs
 
 eval "$(starship init zsh)"
