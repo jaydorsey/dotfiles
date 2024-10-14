@@ -10,7 +10,7 @@ config.color_scheme = 'Gnometerm (terminal.sexy)'
 -- config.color_scheme = 'Github Dark (Gogh)'
 -- config.color_scheme = 'Google (dark) (terminal.sexy)'
 config.enable_tab_bar = false
-config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
+config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 16
 config.native_macos_fullscreen_mode = false
 config.visual_bell = { fade_in_duration_ms = 75, fade_out_duration_ms = 75, target = 'CursorColor' }
