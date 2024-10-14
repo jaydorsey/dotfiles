@@ -13,14 +13,8 @@
 #######################################################
 
 
-#######################################################
-#
-# Install homebrew if not found
-#
-#######################################################
-if [ ! $(which brew) ]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
+# install homebrew from https://brew.sh/
+# install rustup from https://rustup.rs/
 
 #######################################################
 #
@@ -28,7 +22,8 @@ fi
 # follow the same pattern
 #
 #######################################################
-HOMEBREW_PREFIX=$(brew --prefix)
+# HOMEBREW_PREFIX=$(brew --prefix)
+HOMEBREW_PREFIX="/opt/homebrew"
 
 brew tap homebrew/cask
 brew bundle --verbose

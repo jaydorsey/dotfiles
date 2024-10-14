@@ -34,8 +34,11 @@ export GPG_TTY=$(tty)
 
 # This appears to be set in at least the M1 version of brew
 if [[ -z "${HOMEBREW_PREFIX}" ]]; then
-  export HOMEBREW_PREFIX=$(brew --prefix)
+  # export HOMEBREW_PREFIX=$(brew --prefix)
+  export HOMEBREW_PREFIX="/opt/homebrew"
 fi
+
+export PATH="/opt/homebrew/bin/brew:$PATH"
 
 # This is the term setting I used before
 # export TERM="screen-256color"
@@ -140,10 +143,13 @@ export SCOUT_DEV_TRACE=false
 
 export ARCHFLAGS="-arch arm64"
 
-export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib -L$HOMEBREW_PREFIX/opt/zstd/lib -L$HOMEBREW_PREFIX/opt/zlib/lib"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include -I$HOMEBREW_PREFIX/opt/zlib/include"
-export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/libpq/lib/pkgconfig:$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig:$HOMEBREW_PREFIX/opt/zlib/lib/pkgconfig"
+export CFLAGS="-I/opt/homebrew/opt/libpq/include -I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/openssl@1.1/include -I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/jemalloc/include -I/opt/homebrew/opt/gmp/include -O2 -g"
+
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/openssl@1.1/lib -L/opt/homebrew/opt/readline/lib -L/opt/homebrew/opt/jemalloc/lib -L/opt/homebrew/opt/gmp/lib -L/opt/homebrew/opt/libxml2/lib -L/opt/homebrew/opt/zstd/lib -L/opt/homebrew/opt/zlib/lib"
+
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include -I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/openssl@1.1/include -I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/jemalloc/include -I/opt/homebrew/opt/gmp/include -I/opt/homebrew/opt/libxml2/include -I/opt/homebrew/opt/zlib/include"
+
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig:/opt/homebrew/opt/openssl@1.1/lib/pkgconfig:/opt/homebrew/opt/readline/lib/pkgconfig:/opt/homebrew/opt/jemalloc/lib/pkgconfig:/opt/homebrew/opt/gmp/lib/pkgconfig:/opt/homebrew/opt/libxml2/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig"
 
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -226,6 +232,7 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --with-ssl=$HOMEBREW_PREFIX/opt/openssl@1.1 \
   --with-dynamic-trace=dtrace"
 
+export PATH=$PATH:"/opt/homebrew/bin"
 export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 export PAGER="less"
 
@@ -478,9 +485,10 @@ export PATH="$HOMEBREW_PREFIX/opt/gcc/bin:$PATH"
 # export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/libxml2/bin:$PATH"
 
-source $HOME/.config/broot/launcher/bash/br
+# source $HOME/.config/broot/launcher/bash/br
 export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
 export PATH="$PATH:$HOME/.rd/bin" # rancher desktop
+export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 
 # Upgrade wezterm nightly when installed via homebrew
 alias wezup="brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"

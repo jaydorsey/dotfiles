@@ -179,7 +179,7 @@ return {
     },
     config = function ()
       require('copilot').setup({
-        copilot_node_command = os.getenv("HOME") .."/.local/share/mise/installs/node/20.14.0/bin/node",
+        copilot_node_command = os.getenv("HOME") .."/.local/share/mise/installs/node/22.0.0/bin/node",
       })
       require('copilot_cmp').setup({
         suggestion = { enabled = false },
@@ -418,10 +418,9 @@ return {
 
   {
     'iamcco/markdown-preview.nvim',
-    build = function()
-      vim.fn['mkdp#util#install']()
-    end,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { 'markdown' },
+    build = function() vim.fn['mkdp#util#install']() end,
     init = function()
       vim.g.mkdp_filetypes = { 'markdown' }
     end,

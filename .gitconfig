@@ -2,8 +2,7 @@
 [user]
 	name = Jay Dorsey
 	email = 191564+jaydorsey@users.noreply.github.com
-[includeIf "gitdir:**/jay.dorsey/**/.git"]
-	signingkey = FE12FC698D09DAE7
+	signingkey = /Users/jay.dorsey/.ssh/id_ed25519.pub
 [includeIf "gitdir:**/jay/**/.git"]
 	signingkey = 7113FAA79A3B577E
 [core]
@@ -68,7 +67,7 @@
 	pager = true
 [commit]
 	verbose = false
-	gpgSign = true
+	gpgsign = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
@@ -152,3 +151,5 @@
 	prompt = blue
 	help = green
 	error = magenta
+[gpg]
+	format = ssh
