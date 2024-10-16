@@ -1,0 +1,2 @@
+[includeIf "gitdir/i:~/work/"]
+	signingkey = FE12FC698D09DAE7

@@ -62,8 +62,9 @@ map('x', '<leader>l', ':Limelight!!<cr>', options)
 map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
 map('n', '<c-g>', [[<cmd>Telescope live_grep<cr>]], silent_options)
 map('n', '<c-i>', [[<cmd>Telescope git_status<cr>]], silent_options)
+map('n', '<leader>b', [[<cmd>Telescope buffers<cr>]], silent_options)
 -- map('n', '<leader>???', [[<cmd>Telescope commands theme=get_dropdown<cr>]], silent_options)
--- map('n', '<leader>s', [[<cmd>Telescope aerial theme=get_dropdown<cr>]], silent_options)
+map('n', '<leader>s', [[<cmd>Telescope aerial theme=get_dropdown<cr>]], silent_options)
 map('n', '<leader>j', [[<cmd>Telescope jumplist theme=get_dropdown<cr>]], silent_options)
 
 -- fzf-lua.vim
@@ -72,9 +73,7 @@ map('n', '<leader>j', [[<cmd>Telescope jumplist theme=get_dropdown<cr>]], silent
 -- map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
 -- map("n", "<C-g>", [[<Cmd>lua require"fzf-lua".grep_project()<CR>]], {})
 
--- map('n', '<leader>p', [[<Cmd>lua require"fzf-lua".files( { winopts = { preview = { hidden = "nohidden" } } })<CR>]], options)
--- map('n', '<leader>bb', [[<Cmd>BufferOrderByBufferNumber<CR>]], options)
-map('n', '<leader>bb', ':BufferOrderByBufferNumber<CR>', options)
+map('n', '<leader>ob', ':BufferOrderByBufferNumber<CR>', options) -- Order Buffers
 
 -- telescope.nvim
 -- map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
@@ -118,7 +117,9 @@ map('n', '@f', 'gg0i<cr><cr><esc>kki# frozen_string_literal: true<esc>``', optio
 map('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 map('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 map('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
-map({'n', 'x'}, '<leader>sr', function() require('ssr').open() end)
+
+-- cshuaimin/ssr.nvim
+-- map({'n', 'x'}, '<leader>sr', function() require('ssr').open() end)
 
 -- hlslens & asterisk
 map('n', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], {})

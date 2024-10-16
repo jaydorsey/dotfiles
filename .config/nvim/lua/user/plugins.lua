@@ -358,7 +358,14 @@ return {
   { 'nvim-lua/completion-nvim' },
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-lua/popup.nvim' },
-  { 'rhysd/committia.vim' },
+  {
+    "rhysd/committia.vim",
+    ft = "gitcommit",
+    config = function()
+        vim.g.committia_min_window_width = 140
+        vim.g.committia_edit_window_width = 90
+    end,
+  },
   -- use 'tpope/vim-characterize'
   -- { 'tpope/vim-commentary', lazy = false },
   { 'tpope/vim-dispatch' },
