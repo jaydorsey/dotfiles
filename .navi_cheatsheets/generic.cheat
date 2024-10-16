@@ -65,6 +65,9 @@ touch .metadata_never_index
 # Enable rosetta on m1
 /usr/sbin/softwareupdate --install-rosetta
 
+# Kills DNS Responder. Run after editing /etc/hosts
+sudo killall -HUP mDNSResponder
+
 
 % rails
 
@@ -304,3 +307,5 @@ lsof -n -i:<port> | grep LISTEN
 
 # List outdated cargo commands
 cargo install-update --list
+
+
