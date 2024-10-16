@@ -34,8 +34,11 @@ export GPG_TTY=$(tty)
 
 # This appears to be set in at least the M1 version of brew
 if [[ -z "${HOMEBREW_PREFIX}" ]]; then
-  export HOMEBREW_PREFIX=$(brew --prefix)
+  # export HOMEBREW_PREFIX=$(brew --prefix)
+  export HOMEBREW_PREFIX="/opt/homebrew"
 fi
+
+export PATH="$HOMEBREW_PREFIX/bin/brew:$PATH"
 
 # This is the term setting I used before
 # export TERM="screen-256color"
@@ -140,10 +143,13 @@ export SCOUT_DEV_TRACE=false
 
 export ARCHFLAGS="-arch arm64"
 
-export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib -L$HOMEBREW_PREFIX/opt/zstd/lib -L$HOMEBREW_PREFIX/opt/zlib/lib"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include -I$HOMEBREW_PREFIX/opt/zlib/include"
-export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/libpq/lib/pkgconfig:$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig:$HOMEBREW_PREFIX/opt/zlib/lib/pkgconfig"
+export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
+
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib -L$HOMEBREW_PREFIX/opt/zstd/lib -L$HOMEBREW_PREFIX/opt/zlib/lib"
+
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include -I$HOMEBREW_PREFIX/opt/zlib/include"
+
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/libpq/lib/pkgconfig:$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig:$HOMEBREW_PREFIX/opt/zlib/lib/pkgconfig"
 
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -226,6 +232,7 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --with-ssl=$HOMEBREW_PREFIX/opt/openssl@1.1 \
   --with-dynamic-trace=dtrace"
 
+export PATH=$PATH:"$HOMEBREW_PREFIX/bin"
 export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 export PAGER="less"
 
@@ -278,7 +285,7 @@ export RUBY_CONFIGURE_OPTS="--enable-yjit --with-openssl --with-readline --with-
 # Enable ruby yjit locally
 export RUBY_YJIT_ENABLE=1
 
-export SPEC_OPTS="--color --require rails_helper --tag ~broken --tag ~deprecated --no-profile"
+export SPEC_OPTS="--color --profile"
 
 # Speed up local testing, for apps that have the ENV set as a flag
 export DISABLE_SIMPLECOV=1
@@ -478,9 +485,10 @@ export PATH="$HOMEBREW_PREFIX/opt/gcc/bin:$PATH"
 # export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/libxml2/bin:$PATH"
 
-source $HOME/.config/broot/launcher/bash/br
+# source $HOME/.config/broot/launcher/bash/br
 export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
 export PATH="$PATH:$HOME/.rd/bin" # rancher desktop
+export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 
 # Upgrade wezterm nightly when installed via homebrew
 alias wezup="brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest"
@@ -516,7 +524,6 @@ source ~/.zsh/navi/shell/navi.plugin.zsh
 source ~/.zsh/atuin/atuin.plugin.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.zsh/git/git.plugin.zsh
 
 # Goes last-ish
 source ~/.zsh/zsh-syntax-highlighting
@@ -527,3 +534,6 @@ function git_current_branch() {
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
+# Goes very last to override some scm aliases
+source ~/.zsh/git/git.plugin.zsh
