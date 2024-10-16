@@ -179,7 +179,7 @@ return {
     },
     config = function ()
       require('copilot').setup({
-        copilot_node_command = os.getenv("HOME") .."/.local/share/mise/installs/node/20.14.0/bin/node",
+        copilot_node_command = os.getenv("HOME") .."/.local/share/mise/installs/node/22.0.0/bin/node",
       })
       require('copilot_cmp').setup({
         suggestion = { enabled = false },
@@ -358,7 +358,14 @@ return {
   { 'nvim-lua/completion-nvim' },
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-lua/popup.nvim' },
-  { 'rhysd/committia.vim' },
+  {
+    "rhysd/committia.vim",
+    ft = "gitcommit",
+    config = function()
+        vim.g.committia_min_window_width = 140
+        vim.g.committia_edit_window_width = 90
+    end,
+  },
   -- use 'tpope/vim-characterize'
   -- { 'tpope/vim-commentary', lazy = false },
   { 'tpope/vim-dispatch' },
@@ -418,10 +425,9 @@ return {
 
   {
     'iamcco/markdown-preview.nvim',
-    build = function()
-      vim.fn['mkdp#util#install']()
-    end,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { 'markdown' },
+    build = function() vim.fn['mkdp#util#install']() end,
     init = function()
       vim.g.mkdp_filetypes = { 'markdown' }
     end,
