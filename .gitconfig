@@ -1,11 +1,7 @@
 # vim: textwidth=0:filetype=sh:autoindent:noexpandtab:tabstop=4:shiftwidth=4
 [user]
-	name = Jay Dorsey
 	email = 191564+jaydorsey@users.noreply.github.com
-[includeIf "gitdir:**/jay.dorsey/**/.git"]
-	signingkey = FE12FC698D09DAE7
-[includeIf "gitdir:**/jay/**/.git"]
-	signingkey = 7113FAA79A3B577E
+	name = Jay Dorsey
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
@@ -68,7 +64,7 @@
 	pager = true
 [commit]
 	verbose = false
-	gpgSign = true
+	gpgsign = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
@@ -152,3 +148,10 @@
 	prompt = blue
 	help = green
 	error = magenta
+[gpg]
+	format = ssh
+
+[includeIf "gitdir/i:/Users/jay.dorsey/"]
+	path = ~/work/.gitconfig-work
+[includeIf "gitdir/i:/Users/jay/"]
+	path = ~/dotfiles/.gitconfig-personal
