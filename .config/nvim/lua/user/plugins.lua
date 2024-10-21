@@ -247,6 +247,10 @@ return {
   },
   { 'norcalli/nvim-colorizer.lua'  }, -- colorize hex/rgb codes like #ff0000
   { 'vim-ruby/vim-ruby', ft = { 'ruby', 'erb' } }, -- ruby syntax and helpers
+  {
+    'slim-template/vim-slim',
+    ft = { 'slim' },
+  },
 
   { 'wellle/targets.vim' },
   {
@@ -320,6 +324,7 @@ return {
       require('scrollbar.handlers.search').setup()
       require('scrollbar.handlers.gitsigns').setup()
     end,
+    ft = { 'ruby', 'lua', 'eruby' },
   },
   -- A matchit replacement
   {
