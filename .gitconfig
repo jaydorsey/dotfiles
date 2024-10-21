@@ -15,7 +15,7 @@
 	a = add -A
 	authors = log --abbrev-commit --format="%an" --no-merges
 	b = branch
-	cane = !LEFTHOOK=0 git commit --amend --no-edit
+	cane = !LEFTHOOK=0 git commit --amend --no-edit --no-verify
 	co = checkout
 	d = diff -w --word-diff
 	fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && git rebase -i --autosquash $REV^' -
@@ -154,3 +154,5 @@
 	path = ~/work/.gitconfig-work
 [includeIf "gitdir/i:/Users/jay/"]
 	path = ~/dotfiles/.gitconfig-personal
+[status]
+	relativePaths = true
