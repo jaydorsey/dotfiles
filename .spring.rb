@@ -11,7 +11,7 @@ Spring.after_fork do
     ActiveRecord::Base.establish_connection # Establish connection is not needed for Rails 5.2+ https://github.com/rails/rails/pull/31241
   end
 
-  ::SemanticLogger.reopen if defined?(SemanticLogger)
+  ::SemanticLogger.reopen if defined?(SemanticLogger) && SemanticLogger.respond_to?(:reopen)
 
   if Rails.env.test? && defined?(RSpec)
     RSpec.configure do |config|
