@@ -303,9 +303,12 @@ for file in spec/fixtures/*.xml; do xmllint --format $file | sponge $file; done
 lsof -n -i:<port> | grep LISTEN
 
 
-% cargo rust
+% cargo rust crate
+
+# Install update for crate
+cargo install-update <crates>
+
+$ crates: cargo install-update --list --- --headers 3 --column 1
 
 # List outdated cargo commands
 cargo install-update --list
-
-
