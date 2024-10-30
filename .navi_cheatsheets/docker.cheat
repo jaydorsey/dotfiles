@@ -54,7 +54,6 @@ $ image_id: docker images --- --headers 1 --column 3
 $ container_id: docker ps --- --headers 1 --column 1
 
 
-
 % docker-compose
 
 # Builds, (re)creates, starts, and attaches to containers for all services
@@ -77,3 +76,9 @@ docker-compose logs -f --tail 100 <service_name>
 
 # Stops containers and removes containers, networks created by up
 docker-compose down
+
+# Execute a shell inside of a running container
+docker exec -it $(docker-compose ps -q <container_name>) /bin/bash
+
+# Docker debug a running container
+docker debug $(docker-compose ps -q <container_name>)

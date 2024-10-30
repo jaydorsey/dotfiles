@@ -20,6 +20,8 @@
 # in ~/.spring.rb to ensure parallel tests use a different seed
 Signal.trap('INT') { abort 'Interrupted by user' }
 
-cpus  = (`sysctl -n hw.ncpu`.to_i - 1)
+cpus = ENV.fetch('PARALLEL_CPU_COUNT', (`sysctl -n hw.ncpu`.to_i - 1))
 files = "#{ARGV[0..].join(' ')} " * cpus
-exec("bin/parallel_rspec --allow-duplicates --verbose-command --serialize-stdout --fail-fast --prefix-output-with-test-env-number -- #{files}")
+
+# You can use bin/parallel_rspec here if you've created a binstub. Very useful if you're using spring
+exec("bundle exec parallel_rspec --allow-duplicates --verbose-command --serialize-stdout --fail-fast --prefix-output-with-test-env-number -- #{files}")
