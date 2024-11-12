@@ -1,6 +1,8 @@
 local telescope = require 'telescope'
 local fb_actions = telescope.extensions.file_browser.actions
 local actions = require('telescope.actions')
+local custom_pickers = require('config/telescope_custom_pickers')
+local pretty_pickers = require('config/telescope_pretty_pickers')
 
 telescope.setup {
   defaults = {
@@ -103,6 +105,13 @@ telescope.setup {
       ignore_current_buffer = true,
       sort_mru = true,
       previewer = true,
+      path_display = { 'shorten' },
+      mappings = {
+        i = {
+          -- ['<c-f>'] = custom_pickers.actions.set_extension,
+          ['<c-f>'] = custom_pickers.actions.set_folders,
+        },
+      },
     },
     find_files = {
       ignore_current_buffer = true,

@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+-- local map = vim.api.nvim_set_keymap
 
 local function files_fallback()
   vim.fn.system 'git rev-parse --is-inside-work-tree'

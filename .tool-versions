@@ -2,3 +2,4 @@ ruby 3.3.5
 nodejs 22.0.0
 python 3.12.5
 crystal 1.13.1
+lua 5.1.5
