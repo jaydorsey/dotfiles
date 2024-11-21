@@ -21,7 +21,7 @@
 .yardoc
 config/rails_best_practices.yml
 db/backups/**/*
-db/data/**/*
+# db/data/**/*
 lefthook.yml
 .lefthook/**/*
 rails.rb
@@ -94,6 +94,7 @@ Thumbs.db
 
 # Docker mount
 volume/**/*
+compose
 
 ##############################################
 # Temporary
@@ -119,7 +120,7 @@ Gemfile.local
 Gemfile.local.lock
 
 # Generic catch-alls
-**/*.ignore 
+**/*.ignore
 **/*.jay
 
 # Custom puma config

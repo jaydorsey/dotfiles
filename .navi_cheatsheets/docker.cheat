@@ -56,16 +56,16 @@ $ container_id: docker ps --- --headers 1 --column 1
 
 % docker-compose
 
-# Builds, (re)creates, starts, and attaches to containers for all services
+# Builds, (re)creates, starts containers for all services
 docker-compose up
 
-# Builds, (re)creates, starts, and dettaches to containers for all services
+# Builds, (re)creates, starts, and detaches containers for all services
 docker-compose up -d
 
-# Builds, (re)creates, starts, and attaches to containers for a service
+# Builds, (re)creates, starts container for a service
 docker-compose up -d <service_name>
 
-# Builds, (re)creates, starts, and dettaches to containers for a service
+# Builds, (re)creates, starts, and detaches container for a service
 docker-compose up -d <service_name>
 
 # Print the last lines of a service’s logs

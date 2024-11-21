@@ -185,7 +185,7 @@ npm install -g tree-sitter-cli
 #
 # For unused tool, you'll want to run this from the root:
 #
-#     unused --ignore /Users/jay/.asdf/installs/* > out.txt
+#     unused --ignore /Users/jay.dorsey/.local/* > out.txt
 #
 # Then, you'll run git init to setup your git hooks & symlink the .ctags.d folder to your $HOME. Inside
 # the git hooks is a command that will append the local code tags onto the tags file for you

@@ -1,16 +1,16 @@
 # vim: textwidth=0:filetype=sh
 
-% tmux
-
-# Kill tmux sessions
-tmux kill-session -t <session>
-
-$ session: tmux ls | awk '{print substr($1, 1, length($1)-1)}'
-
-# Attach to existing tmux session
-tmux attach-session -t <session>
-
-$ session: tmux ls | awk '{print substr($1, 1, length($1)-1)}'
+# % tmux
+#
+# # Kill tmux sessions
+# tmux kill-session -t <session>
+#
+# $ session: tmux ls | awk '{print substr($1, 1, length($1)-1)}'
+#
+# # Attach to existing tmux session
+# tmux attach-session -t <session>
+#
+# $ session: tmux ls | awk '{print substr($1, 1, length($1)-1)}'
 
 % redis
 
