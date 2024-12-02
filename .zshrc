@@ -511,6 +511,12 @@ focus() {
     fi
 }
 
+# Run focus inside of a a docker image
+dfocus() {
+  dre --tag @focus --order defined
+}
+
+alias tree=tre
 tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 
 # Run focused specs
