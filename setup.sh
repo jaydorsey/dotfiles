@@ -167,6 +167,8 @@ cargo install mise
 cargo install ripgrep
 cargo install tre-command
 cargo install zoxide --locked
+cargo install --locked yazi-fm yazi-cli
+
 
 npm install -g neovim yarn
 npm install -g tree-sitter-cli

@@ -10,7 +10,7 @@ options        = { noremap = true } -- map('n', '<leader><esc>', ':nohlsearch<cr
 plug_options   = { silent = true }
 silent_options = { noremap = true, silent = true } -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 
-map('n', '<leader>e', ':Neotree toggle<cr>', options)
+-- map('n', '<leader>e', ':Neotree toggle<cr>', options)
 
 -- navigate with ctrl-n/ctrl-b across buffers
 map('n', '<c-n>', ':bnext<cr>', options)
