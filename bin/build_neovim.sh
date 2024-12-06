@@ -18,7 +18,7 @@ git clone https://github.com/neovim/neovim --depth 1
 cd "$ROOT_DIR"
 
 git fetch --tags
-git checkout v0.10.1
+git checkout v0.10.2
 
 mkdir -p "$BUILD_DIR"
 
