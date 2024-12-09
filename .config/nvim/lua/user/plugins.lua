@@ -674,7 +674,7 @@ return {
     'chrisgrieser/nvim-various-textobjs',
     lazy = false,
     opts = {
-      useDefaultKeymaps = false,
+      keymaps = { useDefaults = false },
       disabledKeymaps = { 'gc' }
     },
   },
