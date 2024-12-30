@@ -1,6 +1,5 @@
 return {
   -- faster filetype.vim
-  { 'nathom/filetype.nvim' },
   {
     'windwp/nvim-autopairs', -- automatically adds pair brackets. lua
     opts = {
@@ -10,17 +9,8 @@ return {
     },
     -- event = 'BufReadPost',
   },
-  -- {
-  --   'dracula/vim',
-  --   name = 'dracula',
-  --   config = function()
-  --     vim.cmd 'colorscheme dracula'
-  --   end,
-  --   lazy = false
-  -- },
-
-  -- { 'rebelot/kanagawa.nvim', config = function() vim.cmd 'colorscheme kanagawa' end, },
-  { 'ellisonleao/gruvbox.nvim',
+  {
+    'ellisonleao/gruvbox.nvim',
     lazy = false,
     priority = 1000,
     config = true,
@@ -191,21 +181,14 @@ return {
   },
   { 'imsnif/kdl.vim' },
 
-  -- { 'autozimu/LanguageClient-neovim', branch = 'next', build = 'bash install.sh' } },
-
-  { 'christoomey/vim-sort-motion' },
+  { 'mechatroner/rainbow_csv', ft = { 'csv' }, },
   { 'haya14busa/vim-asterisk', lazy = false,  }, -- Improved * motions
   { 'bronson/vim-visual-star-search', lazy = false, },
-  { 'mechatroner/rainbow_csv' },
-
-  -- Line-wise & delimiter sorting
-  { 'sQVe/sort.nvim', config = function() require("sort").setup({}) end },
-
-  { 'francoiscabrol/ranger.vim', dependencies = { 'rbgrouleff/bclose.vim' } },
+  { 'christoomey/vim-sort-motion' }, -- sort text objects with motions, like gsi( to sort in parens
+  { 'sQVe/sort.nvim', config = function() require("sort").setup({}) end }, -- Line-wise & delimiter sorting
 
   {
-    'jaydorsey/nvim-treesitter',
-    branch = 'jaydorsey/keybind-error-message',
+    'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-refactor',
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -222,9 +205,8 @@ return {
   },
   { 'RRethy/nvim-treesitter-textsubjects', dependencies = { 'nvim-treesitter' }, lazy = false, },
   { 'nvim-treesitter/nvim-treesitter-textobjects', dependencies = { 'nvim-treesitter' }, lazy = false, },
-  { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle', dependencies = { 'nvim-treesitter' }, lazy = false, },
   {
-    'danymat/neogen', -- Annotation
+    'danymat/neogen', -- Annotation. Use the command :Neogen
     dependencies = 'nvim-treesitter',
     config = function()
       require 'config.neogen'
@@ -246,22 +228,14 @@ return {
   },
   { 'norcalli/nvim-colorizer.lua'  }, -- colorize hex/rgb codes like #ff0000
   { 'vim-ruby/vim-ruby', ft = { 'ruby', 'erb' } }, -- ruby syntax and helpers
-  {
-    'slim-template/vim-slim',
-    ft = { 'slim' },
-  },
+  { 'slim-template/vim-slim', ft = { 'slim' } },
+  { 'wellle/targets.vim' }, -- additional text object targets
 
-  { 'wellle/targets.vim' },
-  {
-    'axelf4/vim-strip-trailing-whitespace',
-    lazy = false,
-  },
-  -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
-  { 'dstein64/vim-startuptime' }, -- Measure startup time with :StartupTime
-  {
-    'AndrewRadev/splitjoin.vim',
-    lazy = false,
-  }, -- Use shortcuts gJ and gS to join and split, respectively
+  -- { 'axelf4/vim-strip-trailing-whitespace', lazy = false, },
+  { "kaplanz/retrail.nvim", opts = {}, lazy = false, }, -- strip trailing whitespace automatically
+
+  -- { 'dstein64/vim-startuptime' }, -- Measure startup time with :StartupTime
+  { 'AndrewRadev/splitjoin.vim', lazy = false, }, -- Use shortcuts gJ and gS to join and split, respectively
 
   -- TODO: Do I need lastplace + vim-stay?
   -- use 'Konfekt/FastFold'
@@ -283,9 +257,8 @@ return {
   { 'gioele/vim-autoswap'  }, -- Better, automatic swap file management
   { 'lambdalisue/readablefold.vim' }, -- improved foldtext
   { 'zhimsel/vim-stay' }, -- view creation, fold
-
   { 'Raimondi/delimitMate', lazy = false, }, -- Add automatic delimiters ([<{, quotes, etc.
-  { 'alfredodeza/jacinto.vim', ft = {'json'}, }, -- Formatting & validating json via :Jacinto
+  -- { 'alfredodeza/jacinto.vim', ft = {'json'}, }, -- Formatting & validating json via :Jacinto
   { 'editorconfig/editorconfig-Vim', lazy = false },
   { 'guns/xterm-color-table.vim' },
   {
@@ -306,34 +279,21 @@ return {
   -- mi to bookmark & annotate
   -- ma to show all bookmarks
   { 'MattesGroeger/vim-bookmarks' },
-  -- { 'jgdavey/tslime.vim', branch=main }, -- Send to tmux
   { 'junegunn/limelight.vim' }, -- Highlight code blocks with :LimelightToggle
   { 'junegunn/vim-easy-align', lazy = false }, -- Align code
   { 'tversteeg/registers.nvim' },
 
-  -- use 'karb94/neoscroll.nvim' -- Smooth scrolling plugin
-  {
-    'petertriho/nvim-scrollbar',
-    dependencies = {
-      'kevinhwang91/nvim-hlslens',
-      'lewis6991/gitsigns.nvim'
-    },
-    config = function()
-      require('scrollbar').setup()
-      require('scrollbar.handlers.search').setup()
-      require('scrollbar.handlers.gitsigns').setup()
-    end,
-    ft = { 'ruby', 'lua', 'eruby' },
-  },
   -- A matchit replacement
   {
     'andymass/vim-matchup',
     init = function()
       vim.g.matchup_delim_start_plaintext = 0
       vim.g.matchup_matchparen_deferred = 1
-      vim.g.matchup_matchparen_deferred_show_delay = 100
-      vim.g.matchup_matchparen_hi_surround_always = 1
-      -- vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      vim.g.matchup_matchparen_deferred_show_delay = 500
+      vim.g.matchup_matchparen_deferred_hide_delay = 1000
+      vim.g.matchup_matchparen_timeout = 30
+      vim.g.matchup_matchparen_insert_timeout = 50
+      vim.g.matchup_matchparen_hi_surround_always = 0
       vim.g.matchup_override_vimtex = 1
       vim.g.matchup_surround_enabled = 1
       vim.g.matchup_transmute_enabled = 0
@@ -354,11 +314,6 @@ return {
     end,
     lazy = false,
   },
-  {
-    "kaplanz/retrail.nvim",
-    opts = {}, -- calls `setup` using provided `opts`
-    lazy = false,
-  },
   { 'nvim-lua/completion-nvim' },
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-lua/popup.nvim' },
@@ -370,11 +325,8 @@ return {
         vim.g.committia_edit_window_width = 90
     end,
   },
-  -- use 'tpope/vim-characterize'
-  -- { 'tpope/vim-commentary', lazy = false },
   { 'tpope/vim-dispatch' },
-  -- vim sugar for shell commands
-  { 'tpope/vim-eunuch', lazy = false },
+  { 'tpope/vim-eunuch', lazy = false }, -- vim sugar for shell commands
   { 'tpope/vim-fugitive',
     dependencies = {
       'tpope/vim-rhubarb',
@@ -384,29 +336,7 @@ return {
   { 'tpope/vim-rails', ft={ 'ruby', 'eruby' } },
   { 'tpope/vim-repeat', lazy = false },
   { 'wincent/ferret'  }, -- Enhanced multi file search
-  { 'windwp/nvim-spectre'  }, -- Regex search & replace
   { 'wsdjeg/vim-fetch' },
-  -- {
-  --   'filipdutescu/renamer.nvim',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',         -- required
-  --   },
-  --   lazy = false ,
-  -- },
-
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      'nvim-lua/plenary.nvim',         -- required
-      'sindrets/diffview.nvim',        -- optional - Diff integration
-      -- Only one of these is needed, not both.
-      'nvim-telescope/telescope.nvim', -- optional
-      -- 'ibhagwan/fzf-lua',              -- optional
-    },
-    config = true,
-    lazy = false,
-  },
-
   {
     'sheerun/vim-polyglot',
     init = function()
@@ -437,9 +367,11 @@ return {
     end,
   },
 
-  { 'APZelos/blamer.nvim' },
+  {
+    'APZelos/blamer.nvim',
+    lazy = false,
+  }, -- git blame plugin, similar to vscode lens
   { 'elzr/vim-json', ft={ 'json' } }, -- better JSON highlight, warnings, etc
-
   { 'tarekbecker/vim-yaml-formatter', ft={ 'yaml', 'yml' } },
   { 'junegunn/fzf',  build = './install --all', lazy = false },
 
@@ -489,17 +421,6 @@ return {
     end,
   },
 
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-      "3rd/image.nvim",
-    },
-    lazy = false,
-  },
-
   -- fast status line plugin written in vim
   {
     'hoob3rt/lualine.nvim',
@@ -537,6 +458,7 @@ return {
     end
   },
 
+  -- look at nanozuki/tabby.nvim as well
   {
     'akinsho/bufferline.nvim', -- bufferline plugin
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -545,22 +467,7 @@ return {
     end,
     lazy = false
   },
-  -- better buffer deletion
-  { 'ojroques/nvim-bufdel', cmd = 'BufDel', opts = {}, },
-  -- look at nanozuki/tabby.nvim as well
-
-  -- Tabline/statusline plugin with different features
-  -- use {
-  --   'romgrk/barbar.nvim',
-  --   config = function()
-  --     require('barbar').setup({
-  --       animation = true,
-  --       clickable = true,
-  --       insert_at_end = true,
-  --       tabpages = true
-  --     })
-  --   end
-  -- }
+  { 'ojroques/nvim-bufdel', cmd = 'BufDel', opts = {}, }, -- better buffer deletion
 
   {
     'lewis6991/gitsigns.nvim',
@@ -583,84 +490,7 @@ return {
     end,
     lazy = false,
   },
-  { 'folke/which-key.nvim' },
-
-  -- Load on a combination of conditions: specific filetypes or commands
-  -- Also run code after load (see the "config" key)
-  -- {
-  --   'dense-analysis/ale',
-  --   init = function()
-  --     vim.g.ale_disable_lsp = 0
-  --     vim.g.ale_lint_on_save = 1
-  --     vim.g.ale_fix_on_save = 1
-  --     -- vim.g.ale_ruby_rubocop_executable = '~/.local/share/mise/shims/rubocop'
-  --     vim.g.ale_ruby_rubocop_executable = 'bundle'
-  --     vim.g.ale_ruby_rubocop_options = '--server'
-  --     vim.g.ale_ruby_ruby_executable = '~/.local/share/mise/shims/ruby'
-  --     vim.g.ale_sign_column_always = 1
-  --     vim.g.ale_sign_error = 'î±'
-  --     vim.g.ale_sign_warning = 'î¸'
-  --     vim.g.ale_linters = {
-  --       ruby = {'rubocop', 'ruby', 'brakeman'},
-  --       html = {'htmlhint', 'tidy'},
-  --       -- 'sh', 'zsh', 'markdown', 'ruby', 'yml'
-  --     }
-  --     vim.g.ale_fixers = {
-  --       ruby = {'rubocop', 'remove_trailing_lines', 'trim_whitespace'},
-  --       sh = {'remove_trailing_lines', 'trim_whitespace'},
-  --       lua = {'remove_trailing_lines', 'trim_whitespace'},
-  --     }
-  --   end,
-  --   lazy = false
-  -- },
-  {
-    'utilyre/barbecue.nvim',
-    event = 'User ActuallyEditing',
-    name = 'barbecue',
-    version = '*',
-    dependencies = {
-      'SmiteshP/nvim-navic',
-      'nvim-tree/nvim-web-devicons',
-    },
-    opts = {
-      create_autocmd = false,
-      attach_navic = false,
-      show_modified = true,
-      exclude_filetypes = { 'netrw', 'toggleterm', 'NeogitCommitMessage' },
-      custom_section = function()
-        -- Copied from @akinsho's config
-        local error_icon = '' -- '✗'
-        local warning_icon = ''
-        local info_icon = '' --  
-        local hint_icon = '⚑' --  ⚑
-        local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
-        local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
-        local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
-        local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
-        local components = {}
-        if errors > 0 then
-          components[#components + 1] = { error_icon .. ' ' .. errors, 'DiagnosticError' }
-        end
-
-        if warnings > 0 then
-          components[#components + 1] =
-            { (#components > 0 and ' ' or '') .. warning_icon .. ' ' .. warnings, 'DiagnosticWarning' }
-        end
-
-        if hints > 0 then
-          components[#components + 1] =
-            { (#components > 0 and ' ' or '') .. hint_icon .. ' ' .. hints, 'DiagnosticHint' }
-        end
-
-        if info > 0 then
-          components[#components + 1] =
-            { (#components > 0 and ' ' or '') .. info_icon .. ' ' .. info, 'DiagnosticInfo' }
-        end
-
-        return components
-      end,
-    },
-  },
+  -- { 'folke/which-key.nvim' },
   {
     'beauwilliams/focus.nvim', -- auto split windows
     opts = {
@@ -785,12 +615,8 @@ return {
       })
     end,
   },
-  {
-    "williamboman/mason-lspconfig.nvim", lazy = false
-  },
-  {
-    "neovim/nvim-lspconfig", lazy = false
-  },
+  { "williamboman/mason-lspconfig.nvim", lazy = false },
+  { "neovim/nvim-lspconfig", lazy = false },
   {
     'mistricky/codesnap.nvim',
     build = "make build_generator",
@@ -799,6 +625,9 @@ return {
       -- { "<leader>cs", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Pictures" },
     },
   },
+
+  --- File management
+  -- { 'francoiscabrol/ranger.vim', dependencies = { 'rbgrouleff/bclose.vim' } },
   {
     "mikavilpas/yazi.nvim",
     event = "VeryLazy",

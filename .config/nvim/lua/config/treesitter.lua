@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { 
+  ensure_installed = {
     'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline', 'rust', 'ruby', 'gitcommit', 'gitignore',
     'sql', 'toml', 'yaml'
   },
@@ -11,7 +11,7 @@ require('nvim-treesitter.configs').setup {
   },
   highlight = {
     enable = true,
-    max_file_lines = 5000,
+    max_file_lines = 500,
     disable = function(lang, buf)
       local max_filesize = 100 * 1024 -- 100 KB
       local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
@@ -88,9 +88,7 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     include_match_words = true,
     enable_quotes = true,
-    disable = function(lang, buf)
-      return false
-    end,
+    disable = { 'ruby' },
   },
   autotag = { enable = true },
 }
