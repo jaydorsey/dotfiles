@@ -3,3 +3,4 @@ ruby = "3.3.5"
 
 [settings]
 always_keep_download = true
+python_compile = true
