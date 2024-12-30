@@ -96,8 +96,7 @@
 [diff]
 	algorithm = histogram
 	compactionHeuristic = true
-	tool = Kaleidoscope
-	colorMoved = default
+	external = difft
 [diff "rspec"]
 	xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 [diff "spaceman-diff"]
@@ -119,16 +118,8 @@
 	defaultBranch = main
 [pull]
 	rebase = false
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
 	prompt = false
-[merge]
-	tool = Kaleidoscope
-	conflictstyle = diff3
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
 [mergetool]
 	prompt = false
 [advice]
