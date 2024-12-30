@@ -168,7 +168,7 @@ cargo install ripgrep
 cargo install tre-command
 cargo install zoxide --locked
 cargo install --locked yazi-fm yazi-cli
-
+cargo install --locked difftastic
 
 npm install -g neovim yarn
 npm install -g tree-sitter-cli
@@ -197,3 +197,16 @@ npm install -g tree-sitter-cli
 #
 # Install the pg-extras plugin
 # heroku plugins:install git://github.com/heroku/heroku-pg-extras.git
+#
+# Try run nvim with nvim -u NONE. Is it still slow?
+#
+# Try profiling when inside that file.
+# :profile start profile.log
+# :profile func *
+# :profile file *.
+# Now start doing what is slow
+# :profile pause.
+# Quit vim and open profile.log.
+# At the end you should see sum of functions exec times and count of usage. Should point you.
+#
+# bot summon :help profile
