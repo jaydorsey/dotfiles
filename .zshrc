@@ -143,13 +143,13 @@ export SCOUT_DEV_TRACE=false
 
 export ARCHFLAGS="-arch arm64"
 
-export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
+export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@3.4/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
 
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib -L$HOMEBREW_PREFIX/opt/zstd/lib -L$HOMEBREW_PREFIX/opt/zlib/lib"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/openssl@3.4/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib -L$HOMEBREW_PREFIX/opt/zstd/lib -L$HOMEBREW_PREFIX/opt/zlib/lib"
 
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include -I$HOMEBREW_PREFIX/opt/zlib/include"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@3.4/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include -I$HOMEBREW_PREFIX/opt/zlib/include"
 
-export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/libpq/lib/pkgconfig:$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig:$HOMEBREW_PREFIX/opt/zlib/lib/pkgconfig"
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/libpq/lib/pkgconfig:$HOMEBREW_PREFIX/opt/openssl@3.4/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig:$HOMEBREW_PREFIX/opt/zlib/lib/pkgconfig"
 
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -229,7 +229,7 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug \
   --enable-kernel-poll \
   --enable-wx \
   --enable-darwin-64bit \
-  --with-ssl=$HOMEBREW_PREFIX/opt/openssl@1.1 \
+  --with-ssl=$HOMEBREW_PREFIX/opt/openssl@3.4 \
   --with-dynamic-trace=dtrace"
 
 export PATH=$PATH:"$HOMEBREW_PREFIX/bin"
@@ -239,7 +239,7 @@ export PAGER="less"
 export PATH=$PATH:$HOMEBREW_PREFIX/opt/postgresql/bin
 # This is necessary for, at least, crystal
 # https://github.com/brianmario/mysql2/issues/795#issuecomment-337006164
-export LIBRARY_PATH=$LIBRARY_PATH:$HOMEBREW_PREFIX/opt/openssl@1.1/lib/
+export LIBRARY_PATH=$LIBRARY_PATH:$HOMEBREW_PREFIX/opt/openssl@3.4/lib/
 
 # For Rust
 export CARGO_HOME="$HOME/.cargo"
@@ -395,7 +395,7 @@ export PATH=$HOMEBREW_PREFIX/bin:$PATH
 export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 
-export PATH="$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/openssl@3.4/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/readline/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/jemalloc/bin:$PATH"
 
