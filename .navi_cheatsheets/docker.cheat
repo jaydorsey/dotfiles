@@ -82,3 +82,18 @@ docker exec -it $(docker-compose ps -q <container_name>) /bin/bash
 
 # Docker debug a running container
 docker debug $(docker-compose ps -q <container_name>)
+
+
+% docker prune
+
+# Remove all unused ctonainers, networks, images, and volumes
+docker system prune -a
+
+# Remove unused volumes
+docker volume prune
+
+# Remove unused containers
+docker container prune
+
+# Remove unused images
+docker image prune
