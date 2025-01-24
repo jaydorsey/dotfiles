@@ -17,8 +17,9 @@ git clone https://github.com/neovim/neovim --depth 1
 
 cd "$ROOT_DIR"
 
-git fetch --tags
-git checkout v0.10.2
+# Only use this if you want to grab a specific version
+# git fetch --tags
+# git checkout v0.10.3
 
 mkdir -p "$BUILD_DIR"
 

@@ -124,6 +124,7 @@
 	prompt = false
 [advice]
 	skippedCherryPicks = false
+	ignoredHook = false
 [tag]
 	gpgSign = true
 [url "https://"]

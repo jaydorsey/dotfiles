@@ -25,10 +25,11 @@ map('n', '<c-\\>', '<c-2><c-]><c-w>T', options)
 -- Change the local window current directory to that of current file
 map('n', '<leader>cd', 'lcd %:p:h', options)
 
--- Automatically re-select the visually selected text
+-- Automatically re-select the visually selected text. Disabled, because it works fine without it. You can just use
+-- gv when you need to reselect
 -- https://superuser.com/a/207521/354661
-map('v', '<', '<gv', options)
-map('v', '>', '>gv', options)
+-- map('v', '<', '<gv^', options)
+-- map('v', '>', '>gv^', options)
 
 -- Automatically highlight the pasted text
 -- https://stackoverflow.com/a/4313335/2892779

@@ -544,3 +544,4 @@ alias grd='git rebase develop'
 
 # Goes very last to override some scm aliases
 source ~/.zsh/git/git.plugin.zsh
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
