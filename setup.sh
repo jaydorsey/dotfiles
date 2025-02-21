@@ -169,6 +169,7 @@ cargo install tre-command
 cargo install zoxide --locked
 cargo install --locked yazi-fm yazi-cli
 cargo install --locked difftastic
+cargo install fd-find
 
 npm install -g neovim yarn
 npm install -g tree-sitter-cli
