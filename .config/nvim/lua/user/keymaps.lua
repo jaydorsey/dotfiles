@@ -43,7 +43,7 @@ map('n', '//', ':noh<cr>', options)
 -- map('n', '<esc><esc>', ':noh<cr>', options)
 
 -- put relative path in clipboard
-map('n', ',cs', ':let @*=expand("%")<cr>', options)
+map('n', ',cs', ':let @*=expand("%:.")<cr>', options)
 -- put absolute path in clipboard
 map('n', ',cl', ':let @*=expand("%:p")<cr>', options)
 
@@ -56,30 +56,10 @@ map('n', ',cl', ':let @*=expand("%:p")<cr>', options)
 
 map('n', '<leader>l', ':Limelight!!<cr>', options)
 map('x', '<leader>l', ':Limelight!!<cr>', options)
-
--- telescope
--- map('n', '<leader>b', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]], silent_options)
--- map('n', '<leader>p', [[<cmd>Telescope find_files theme=get_dropdown find_command=rg,--no-ignore,--hidden,--files<cr>]], silent_options)
-map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
-map('n', '<c-g>', [[<cmd>Telescope live_grep<cr>]], silent_options)
-map('n', '<c-i>', [[<cmd>Telescope git_status<cr>]], silent_options)
-map('n', '<leader>b', [[<cmd>Telescope buffers<cr>]], silent_options)
--- map('n', '<leader>???', [[<cmd>Telescope commands theme=get_dropdown<cr>]], silent_options)
-map('n', '<leader>s', [[<cmd>Telescope aerial theme=get_dropdown<cr>]], silent_options)
-map('n', '<leader>j', [[<cmd>Telescope jumplist theme=get_dropdown<cr>]], silent_options)
-
--- fzf-lua.vim
--- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files({ fzf_opts = { ['--layout'] = 'reverse-list' } })<CR>", { silent = true })
--- map("n", "<leader>p", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
--- map("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
--- map("n", "<C-g>", [[<Cmd>lua require"fzf-lua".grep_project()<CR>]], {})
-
 map('n', '<leader>ob', ':BufferOrderByBufferNumber<CR>', options) -- Order Buffers
 
--- telescope.nvim
--- map('n', '<leader>p', ":lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '--follow', '--glob=!.git'} })<cr>", silent_options)
--- map('n', '<leader>b', ":lua require('telescope.builtin').buffers()<cr>", silent_options)
--- map('n', '<leader>b', ':BufferPick<cr>', silent_options)
+map('n', '<leader>p', ":lua Snacks.picker.smart({ hidden = true })<cr>", silent_options)
+map('n', '<c-g>', ":lua Snacks.picker.grep()<cr>", silent_options)
 
 map('n', 'J', 'mzJ`z', options) -- Keep the cursor in place while joining lines
 
@@ -131,3 +111,5 @@ map('x', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], {}
 map('x', '#', [[<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>]], {})
 map('x', 'g*', [[<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>]], {})
 map('x', 'g#', [[<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>]], {})
+
+map('n', '<leader>b', ':BlameToggle window<cr>', silentoptions)

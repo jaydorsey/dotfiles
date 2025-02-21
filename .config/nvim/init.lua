@@ -37,8 +37,5 @@ require('lazy').setup('user.plugins', {
 require 'user.options'
 require 'user.keymaps'
 require 'user.commands'
-require 'user.nvim-lastplace'
-require 'user.nvim-autopairs'
-require 'user.nvim-colorizer'
 
 vim.api.nvim_set_hl(0, 'Comment', { fg = '#9E9E9E' })

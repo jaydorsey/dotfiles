@@ -151,7 +151,7 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" {
         bind "Ctrl l" { SwitchToMode "Locked"; }
-        // bind "Ctrl q" { Quit; }
+        // bind "Ctrl q" { Quit; } // Disabled, so we can  CTRL+P, CTRL+Q and detach from docker
         bind "Alt n" { NewPane; }
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
