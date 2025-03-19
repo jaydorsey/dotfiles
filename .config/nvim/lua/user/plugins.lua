@@ -656,7 +656,27 @@ return {
     lazy = false,
     config = function()
       require("mason").setup({ PATH = "prepend" })
-      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup {
+        -- ensure_installed = {
+        --   'emmet_language_server',
+        --   -- 'jq',
+        --   -- 'jsonls',
+        --   'kcl',
+        --   -- 'lua_ls',
+        --   'rubocop',
+        --   'ruby_lsp',
+        --   'rust_analyzer',
+        --   'solargraph',
+        --   -- 'sqlfmt',
+        --   'tflint',
+        --   -- 'tree-sitter-cli',
+        --   -- 'typos-lsp',
+        --   -- 'yamlfix',
+        --   -- 'yamlfmt',
+        --   'yamlls',
+        -- },
+        -- automatic_installation = true,
+      }
 
       require("lspconfig").lua_ls.setup {
         settings = {
@@ -667,15 +687,17 @@ return {
           },
         },
       }
-      require("lspconfig").solargraph.setup {}
+      -- require("lspconfig").solargraph.setup {}
+      require("lspconfig").rubocop.setup {}
+      require("lspconfig").ruby_lsp.setup {} -- shopify?
       -- require("lspconfig").sorbet.setup {}
-      require("lspconfig").jsonls.setup {}
+      -- require("lspconfig").jsonls.setup {}
       -- require("lspconfig").gopls.setup {}                -- Go language server
       -- require("lspconfig").tsserver.setup {}             -- TypeScript language server
       -- require("lspconfig").htmx.setup {}                 -- HTMX language server
-      require("lspconfig").emmet_language_server.setup { -- Emmet language server
-        filetypes = { "html", "css", "eruby" },
-      }
+      -- require("lspconfig").emmet_language_server.setup { -- Emmet language server
+      --   filetypes = { "html", "css", "eruby" },
+      -- }
 
       -- TODO: Check on this, see what it conflicts with
       -- vim.api.nvim_create_autocmd("BufWritePre", {
