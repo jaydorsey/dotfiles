@@ -2,6 +2,7 @@
 [user]
 	email = 191564+jaydorsey@users.noreply.github.com
 	name = Jay Dorsey
+	signingkey = ~/.ssh/id_rsa.pub
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
@@ -9,6 +10,8 @@
 	pager = delta
 	commitGraph = true
 	attributesfile = /Users/jay/.gitattributes
+	fsmonitor = true
+	untrackedCache = true
 [blame]
 	showEmail = true
 [alias]
@@ -55,6 +58,7 @@
 [branch]
 	autosetuprebase = always
 	autosetupmerge = always
+	sort = committerdate
 [color]
 	branch = auto
 	diff = true
@@ -63,7 +67,7 @@
 	ui = true
 	pager = true
 [commit]
-	verbose = false
+	verbose = true
 	gpgsign = true
 [filter "lfs"]
 	required = true
@@ -72,13 +76,17 @@
 	process = git-lfs filter-process
 [push]
 	default = simple
+	autoSetupRemote = true
+	followTags = true
 [pager]
 	diff = delta
 	log = delta
 	reflog = delta
 	show = delta
 [rebase]
-	autosquash = true
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [remote "origin"]
 	fetch = +refs/pull/*/head:refs/remotes/origin/pull_requests/*
 [color "diff-highlight"]
@@ -97,6 +105,9 @@
 	algorithm = histogram
 	compactionHeuristic = true
 	external = difft
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [diff "rspec"]
 	xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 [diff "spaceman-diff"]
@@ -108,16 +119,19 @@
 	binary = true
 [rerere]
 	enabled = true
-	autoupdate= true
+	autoupdate = true
 [gc]
 	writeCommitGraph = false
 [fetch]
 	writeCommitGraph = false
+	prune = true
+	pruneTags = true
+	all = true
 [init]
 	templatedir = ~/.git_template
 	defaultBranch = main
 [pull]
-	rebase = false
+	rebase = true
 [difftool]
 	prompt = false
 [mergetool]
@@ -127,8 +141,7 @@
 	ignoredHook = false
 [tag]
 	gpgSign = true
-[url "https://"]
-	insteadOf = git://
+	sort = version:refname
 [color "status"]
 	changed = blue
 	untracked = magenta
@@ -148,3 +161,11 @@
 	path = ~/dotfiles/.gitconfig-personal
 [status]
 	relativePaths = true
+[merge]
+	conflictstyle = zdiff3
+[feature]
+	experimental = true
+[column]
+	ui = auto
+[help]
+	autocorrect = prompt
