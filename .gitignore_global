@@ -99,8 +99,6 @@ compose
 ##############################################
 # Temporary
 ##############################################
-chemical.jpeg
-chemical.png
 public/assets_test
 build
 router.yaml
@@ -125,3 +123,10 @@ Gemfile.local.lock
 
 # Custom puma config
 config/puma/development.rb
+
+bin/dock
+lib/tasks/dev.rake
+
+# Put custom rubocop configs here, overrides local settings
+.rubocop
+log/*.*
