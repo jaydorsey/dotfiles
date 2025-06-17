@@ -8,5 +8,5 @@
 --exclude=log/*
 --exclude=public/*
 --exclude=tmp/*
---languages=ruby,rspec,sql,-javascript,rust,json
+--languages=ruby,rspec,sql,rust,json,cargo,terraform,yaml,xml,zsh,rdoc,rake,ctags,diff,lua,make
 --regex-ruby=/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/
