@@ -266,9 +266,9 @@ return {
 
         sources = cmp.config.sources(
           {
-            { name = "copilot", group_index = 2, },
-            { name = "nvim_lsp", group_index = 1 },
-            { name = "luasnip", group_index = 1 }, -- For luasnip users.
+            { name = "copilot", group_index = 1, },
+            { name = "nvim_lsp", group_index = 2 },
+            { name = "luasnip", group_index = 3 }, -- For luasnip users.
           },
           {
             { name = "buffer" },
@@ -683,12 +683,67 @@ return {
           Lua = {
             diagnostics = {
               globals = { "vim" },
+              float = {
+                max_width = 400,
+              },
             },
           },
         },
       }
-      -- require("lspconfig").solargraph.setup {}
-      require("lspconfig").rubocop.setup {}
+
+      require("lspconfig").yamlls.setup {
+        settings = {
+          yaml = {
+            schemas = {
+              ['https://www.rubyschema.org/rubocop.json'] = ".rubocop.yml",
+              ['https://www.rubyschema.org/packwerk/package.json'] = "package.yml",
+              ['https://www.rubyschema.org/cable.json'] = ".cable.yml",
+              ['https://www.rubyschema.org/cache.json'] = ".cache.yml",
+              ['https://www.rubyschema.org/database.json'] = "database.yml",
+              ['https://www.rubyschema.org/queue.json'] = "queue.yml",
+              ['https://www.rubyschema.org/recurring.json'] = "recurring.yml",
+              ['https://www.rubyschema.org/storage.json'] = "storage.yml",
+            },
+          },
+        },
+      }
+      -- require("lspconfig").solargraph.setup {
+      --   settings = {
+      --     solargraph = {
+      --       disagnostics = true,
+      --     }
+      --   }
+      -- }
+      -- # solargraph:
+      -- #   container_name: solargraph-next
+      -- #   <<:
+      -- #     - *backend
+      -- #     - *web-dependencies
+      -- #   command: solargraph stdio
+      -- #   ports:
+      -- #     - 7658:7658
+      -- #   depends_on:
+      -- #     web:
+      -- #       condition: service_started
+      -- #       restart: true
+      -- cmd = { 'docker compose up solargraph' },
+      require("lspconfig").solargraph.setup {
+        cmd = { os.getenv( "HOME" ) .. "/.local/share/mise/shims/solargraph", 'stdio' },
+        settings = {
+          solargraph = {
+            diagnostic = true,
+            diagnostics = true,
+            log = true,
+            -- transport = 'external',
+            -- externalServer = {
+            --   host = 'localhost',
+            --   port = '7658'
+            -- },
+          },
+        },
+        filetypes = { "ruby" },
+      }
+      -- require("lspconfig").rubocop.setup {}
       require("lspconfig").ruby_lsp.setup {} -- shopify?
       -- require("lspconfig").sorbet.setup {}
       -- require("lspconfig").jsonls.setup {}
@@ -709,10 +764,20 @@ return {
 
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+      vim.keymap.set("n", "<leader><leader>d", vim.diagnostic.open_float)
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
       vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
       vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+
+      vim.diagnostic.config({
+        virtual_text = true,
+        float = {
+          source = "always",
+          border = "single",
+          max_width = 600, -- 👈 wider so you see the whole message
+        },
+        severity_sort = true,
+      })
 
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer
@@ -793,3 +858,4 @@ return {
     },
   },
 }
+-- <leader>sk to show keybinds
