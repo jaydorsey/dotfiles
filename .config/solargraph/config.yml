@@ -26,10 +26,9 @@ require:
 - activesupport
 domains: []
 diagnostics: true
+log: true
 reporters:
 - require_not_found
-plugins:
-- solargraph-rails
 # - runtime
 require_paths: []
 max_files: 10000
