@@ -1,5 +1,5 @@
-ruby 3.1.4
+ruby 3.3.8
 nodejs 22.0.0
 python 3.13.1
-crystal 1.14.0
+crystal 1.17.1
 lua 5.1.5
