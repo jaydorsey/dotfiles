@@ -143,13 +143,13 @@ export SCOUT_DEV_TRACE=false
 
 export ARCHFLAGS="-arch arm64"
 
-export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@3.4/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
+export CFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@3.4/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/gmp/include -O2 -g"
 
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/openssl@3.4/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib -L$HOMEBREW_PREFIX/opt/zstd/lib -L$HOMEBREW_PREFIX/opt/zlib/lib"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib -L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/openssl@3.4/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/gmp/lib -L$HOMEBREW_PREFIX/opt/libxml2/lib -L$HOMEBREW_PREFIX/opt/zstd/lib -L$HOMEBREW_PREFIX/opt/zlib/lib"
 
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@3.4/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include -I$HOMEBREW_PREFIX/opt/zlib/include"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include -I$HOMEBREW_PREFIX/opt/llvm/include -I$HOMEBREW_PREFIX/opt/openssl@3.4/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/gmp/include -I$HOMEBREW_PREFIX/opt/libxml2/include -I$HOMEBREW_PREFIX/opt/zlib/include"
 
-export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/libpq/lib/pkgconfig:$HOMEBREW_PREFIX/opt/openssl@3.4/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/jemalloc/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig:$HOMEBREW_PREFIX/opt/zlib/lib/pkgconfig"
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/libpq/lib/pkgconfig:$HOMEBREW_PREFIX/opt/openssl@3.4/lib/pkgconfig:$HOMEBREW_PREFIX/opt/readline/lib/pkgconfig:$HOMEBREW_PREFIX/opt/gmp/lib/pkgconfig:$HOMEBREW_PREFIX/opt/libxml2/lib/pkgconfig:$HOMEBREW_PREFIX/opt/zlib/lib/pkgconfig"
 
 export EDITOR="nvim"
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -280,10 +280,11 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # Ignore deprecation warnings. Disabled this for now; this causes rubocop to fail silently
 # export RUBYOPT="-W0"
 # export RUBYOPT="--enable-yjit"
-export RUBY_CONFIGURE_OPTS="--enable-yjit --with-openssl --with-readline --with-jemalloc --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
+# export RUBYOPT="--parser=prism"
+export RUBY_CONFIGURE_OPTS="--enable-yjit --with-openssl --with-readline --with-gmp-dir=$HOMEBREW_PREFIX/opt/gmp"
 
 # Enable ruby yjit locally
-export RUBY_YJIT_ENABLE=1
+export RUBY_YJIT_ENABLE="1"
 
 export SPEC_OPTS="--color --profile"
 
@@ -397,7 +398,6 @@ export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 
 export PATH="$HOMEBREW_PREFIX/opt/openssl@3.4/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/readline/bin:$PATH"
-export PATH="$HOMEBREW_PREFIX/opt/jemalloc/bin:$PATH"
 
 # asdf puts python scripts here
 export PATH="$HOME/.local/bin:$PATH"
@@ -544,4 +544,5 @@ alias grd='git rebase develop'
 # Goes very last to override some scm aliases
 source ~/.zsh/git/git.plugin.zsh
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="$PATH:$HOME/.docker/bin"
 export MISE_ENV_FILE=".envrc"
