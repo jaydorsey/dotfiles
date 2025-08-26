@@ -211,3 +211,6 @@ npm install -g tree-sitter-cli
 # At the end you should see sum of functions exec times and count of usage. Should point you.
 #
 # bot summon :help profile
+#
+# To debug vim diagnostics
+# :lua print(vim.inspect(vim.diagnostic.get(0)))
