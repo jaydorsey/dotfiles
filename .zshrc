@@ -1,11 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
-# Not sure I want to do this...
 export XDG_CONFIG_HOME="$HOME/.config"
 # TODO: This doesn't work
 # export NAVI_CONFIG=$XDG_CONFIG_HOME/navi/config.yaml
@@ -29,9 +21,6 @@ export NAVI_PATH="$HOME/.local_navi_cheatsheets:$HOME/.navi_cheatsheets"
 # https://github.com/keybase/keybase-issues/issues/2798
 export GPG_TTY=$(tty)
 
-# Path to your oh-my-zsh installation.
-# export ZSH=$HOME/.oh-my-zsh
-
 # This appears to be set in at least the M1 version of brew
 if [[ -z "${HOMEBREW_PREFIX}" ]]; then
   # export HOMEBREW_PREFIX=$(brew --prefix)
@@ -44,8 +33,6 @@ export PATH="$HOMEBREW_PREFIX/bin/brew:$PATH"
 # export TERM="screen-256color"
 # This term setting is used to get italics working, along with this gist: https://gist.github.com/sos4nt/3187620
 export TERM="xterm-256color-italic"
-
-export ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # https://github.com/ansible/ansible/issues/32499#issuecomment-341578864
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
@@ -95,29 +82,9 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# oh-my-zsh plugins
-# plugins=(
-#   bundler
-#   colored-man-pages
-#   git
-#   macos
-#   rake-fast
-#   zsh-syntax-highlighting
-#   zsh-autosuggestions
-#   zsh-interactive-cd
-#   zoxide
-# )
-
-# Always automatically update oh-my-zsh
-# DISABLE_UPDATE_PROMPT="true"
-
 # Automatically load additional completion scripts.
 # https://github.com/zsh-users/zsh-completions/blob/master/README.md
 autoload -U compinit && compinit
-
-# Disable magic functions (can cause slow pasting)
-# https://github.com/ohmyzsh/ohmyzsh/issues/5569#issuecomment-491504337
-DISABLE_MAGIC_FUNCTIONS=true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -269,8 +236,6 @@ bindkey "^I" fzf-completion
 # bindkey "^R" fzf-history-widget
 bindkey "^T" fzf-file-widget
 bindkey "^[c" fzf-cd-widget
-
-# export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 
 # https://github.com/sharpstone/rack-timeout/blob/master/doc/settings.md#term-on-timeout
 export RACK_TIMEOUT_TERM_ON_TIMEOUT=1
