@@ -242,7 +242,7 @@ return {
       local cmp = require("cmp")
       local lspkind = require("lspkind")
 
-      vim.opt.completeopt = { "menu", "menuone", "noselect" }
+      vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "popup" }
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -337,7 +337,15 @@ return {
     ft = { 'ruby', 'lua' },
   },
   { 'imsnif/kdl.vim' },
-
+  -- {
+  --   'CopilotC-Nvim/CopilotChat.nvim',
+  --   dependencies = {
+  --     { 'nvim-lua/plenary.nvim' },
+  --   },
+  --   build = 'make tiktoken',
+  --   lazy = false,
+  --   ft = { 'rb' },
+  -- },
   { 'mechatroner/rainbow_csv', ft = { 'csv' }, },
   { 'haya14busa/vim-asterisk', lazy = false,  }, -- Improved * motions
   { 'bronson/vim-visual-star-search', lazy = false, },
@@ -440,10 +448,10 @@ return {
   -- mm to create bookmark
   -- mi to bookmark & annotate
   -- ma to show all bookmarks
-  { 'MattesGroeger/vim-bookmarks' },
-  { 'junegunn/fzf',  build = './install --all', lazy = false },
+  { 'MattesGroeger/vim-bookmarks', lazy = false, },
+  { 'junegunn/fzf',  build = './install --all', lazy = false, },
   { 'junegunn/limelight.vim' }, -- Highlight code blocks with :LimelightToggle
-  { 'junegunn/vim-easy-align', lazy = false }, -- Align code
+  { 'junegunn/vim-easy-align', lazy = false, }, -- Align code
   { 'tversteeg/registers.nvim' },
 
   -- A matchit replacement
@@ -859,3 +867,4 @@ return {
   },
 }
 -- <leader>sk to show keybinds
+-- Lazy load <plugin> to load one manually
