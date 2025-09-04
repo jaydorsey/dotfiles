@@ -343,8 +343,8 @@ return {
   --     { 'nvim-lua/plenary.nvim' },
   --   },
   --   build = 'make tiktoken',
-  --   lazy = false,
-  --   ft = { 'rb' },
+  --   -- lazy = false,
+  --   -- ft = { 'rb' },
   -- },
   { 'mechatroner/rainbow_csv', ft = { 'csv' }, },
   { 'haya14busa/vim-asterisk', lazy = false,  }, -- Improved * motions
