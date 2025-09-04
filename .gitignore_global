@@ -112,7 +112,6 @@ config/initializers/jay.rb
 .rustup
 
 .git/**/*
-.config/nvim/lazy-lock.json
 .config/nvim/spell/**/*
 
 .envrc
