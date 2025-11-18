@@ -3,3 +3,7 @@ font-family = JetBrainsMono Nerd Font
 font-feature = liga
 font-size = 14
 alpha-blending = native
+keybind = ctrl+b>n=next_tab
+keybind = ctrl+b>h=previous_tab
+keybind = ctrl+b>p=previous_tab
+keybind = ctrl+b>t=new_tab
