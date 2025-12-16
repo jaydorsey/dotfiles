@@ -200,6 +200,10 @@ return {
     end,
   },
   {
+    'L3MON4D3/LuaSnip',
+    branch = 'master',
+  },
+  {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
@@ -326,7 +330,7 @@ return {
     },
     config = function ()
       require('copilot').setup({
-        copilot_node_command = os.getenv("HOME") .."/.local/share/mise/installs/node/22.0.0/bin/node",
+        copilot_node_command = os.getenv("HOME") .."/.local/share/mise/installs/node/23.10.0/bin/node",
       })
       require('copilot_cmp').setup({
         suggestion = { enabled = false },
@@ -686,7 +690,7 @@ return {
         -- automatic_installation = true,
       }
 
-      require("lspconfig").lua_ls.setup {
+      vim.lsp.config('lua_ls', {
         settings = {
           Lua = {
             diagnostics = {
@@ -697,9 +701,9 @@ return {
             },
           },
         },
-      }
+      })
 
-      require("lspconfig").yamlls.setup {
+      vim.lsp.config('yamlls', {
         settings = {
           yaml = {
             schemas = {
@@ -714,7 +718,7 @@ return {
             },
           },
         },
-      }
+      })
       -- require("lspconfig").solargraph.setup {
       --   settings = {
       --     solargraph = {
@@ -735,24 +739,24 @@ return {
       -- #       condition: service_started
       -- #       restart: true
       -- cmd = { 'docker compose up solargraph' },
-      require("lspconfig").solargraph.setup {
-        cmd = { os.getenv( "HOME" ) .. "/.local/share/mise/shims/solargraph", 'stdio' },
-        settings = {
-          solargraph = {
-            diagnostic = true,
-            diagnostics = true,
-            log = true,
-            -- transport = 'external',
-            -- externalServer = {
-            --   host = 'localhost',
-            --   port = '7658'
-            -- },
-          },
-        },
-        filetypes = { "ruby" },
-      }
+      -- require("lspconfig").solargraph.setup {
+      --   cmd = { os.getenv( "HOME" ) .. "/.local/share/mise/shims/solargraph", 'stdio' },
+      --   settings = {
+      --     solargraph = {
+      --       diagnostic = true,
+      --       diagnostics = true,
+      --       log = true,
+      --       -- transport = 'external',
+      --       -- externalServer = {
+      --       --   host = 'localhost',
+      --       --   port = '7658'
+      --       -- },
+      --     },
+      --   },
+      --   filetypes = { "ruby" },
+      -- }
       -- require("lspconfig").rubocop.setup {}
-      require("lspconfig").ruby_lsp.setup {} -- shopify?
+      -- require("lspconfig").ruby_lsp.setup {} -- shopify?
       -- require("lspconfig").sorbet.setup {}
       -- require("lspconfig").jsonls.setup {}
       -- require("lspconfig").gopls.setup {}                -- Go language server
@@ -865,6 +869,12 @@ return {
       },
     },
   },
+  {
+    'rhysd/vim-crystal',
+    branch = 'master',
+    ft = { 'crystal' },
+    lazy = false,
+  }
 }
 -- <leader>sk to show keybinds
 -- Lazy load <plugin> to load one manually
