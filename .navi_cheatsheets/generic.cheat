@@ -296,6 +296,21 @@ for file in app/schemas/*.json; do cat $file | jq -S | sponge $file; done
 # Format file as json
 cat <file> | jq -S | sponge <file>
 
+# Format a file and save it to another file
+jq '
+def deep_sort:
+  if type == "object" then
+    # Sort all values recursively, then sort keys
+    with_entries(.value |= deep_sort) | to_entries | sort_by(.key) | from_entries
+  elif type == "array" then
+    # Recursively sort elements, then sort the array itself by their JSON text
+    map(deep_sort) | sort_by(tostring)
+  else
+    .
+  end;
+deep_sort
+' <input_file> > <output_file>
+
 
 % xml xmllint
 # Format all json schemas. Requires brew install moreutils
