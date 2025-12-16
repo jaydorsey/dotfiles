@@ -152,5 +152,119 @@ Pry::Commands.command(/^$/, 'repeat last command') do
   pry_instance.run_command Pry.history.to_a.last
 end
 
+def logs_on
+  Rails.logger.level = :debug if defined?(Rails)
+  ActiveRecord::Base.logger.level = :debug if defined?(ActiveRecord)
+  # ActiveRecord::Base.logger = Logger.new(STDOUT)
+  SemanticLogger.default_level = :debug if defined?(SemanticLogger)
+  Sidekiq.logger.level = :debug if defined?(Sidekiq)
+  Sentry.logger.level = :debug if defined?(Sentry)
+end
+
+def logs_off
+  Rails.logger.level = :error if defined?(Rails)
+  ActiveRecord::Base.logger.level = :error if defined?(ActiveRecord)
+  SemanticLogger.default_level = :error if defined?(SemanticLogger)
+  Sidekiq.logger.level = :error if defined?(Sidekiq)
+  Sentry.logger.level = :error if defined?(Sentry)
+end
+
+# Count the total number of queries that were executed in a call
+def count_queries
+  query_count = 0
+  start_time = Time.now
+  ActiveSupport::Notifications.subscribed(lambda { |_, _, _, _, _| query_count += 1 }, "sql.active_record") do
+    yield
+  end
+  end_time = Time.now
+
+  puts <<~TXT
+
+    Executed #{query_count} queries in #{end_time - start_time}s.
+
+  TXT
+end
+
+def ttime
+  start_time = Time.now
+  yield
+  end_time = Time.now
+
+  puts <<~TXT
+
+    Ran in #{end_time - start_time}s.
+
+  TXT
+end
+
+# Get the name of the method that called the current method
+#
+# caller_locations(1, 1).first.label.split(" ").last
+
+def find_app_frames
+  caller.select { |line| line.include?(Rails.root.to_s) && !line.include?("/gems/") }
+end
+
+def find_app_frame
+  find_app_frames.first
+end
+
+# When using the apartment gem, it's sometimes nice to see the schemas joined in a view for easier querying/inspection
+# of the data
+#
+# @param consolidated_schema [String] the name of the new consolidated schema
+def create_apartment_schemas(consolidated_schema = 'consolidated')
+  schemas = ActiveRecord::Base.connection.execute(<<~SQL).values.flatten
+    SELECT schema_name
+    FROM information_schema.schemata
+    WHERE schema_name NOT LIKE 'pg_%'
+    AND schema_name != 'shared_extensions'
+    AND schema_name != 'reports'
+    AND schema_name != 'public'
+      AND schema_name != 'information_schema';
+  SQL
+
+  sql = <<~SQL
+    SELECT table_schema, table_name
+    FROM information_schema.tables
+    WHERE table_type = 'BASE TABLE'
+    ORDER BY table_schema, table_name;
+  SQL
+
+  results = ActiveRecord::Base.connection.execute(sql)
+
+  # Build a hash of schema => tables
+  schemas_with_tables = results.group_by do |r|
+    r["table_schema"]
+  end.transform_values { |v| v.map { |r| r["table_name"] } }
+
+  other_tables = schemas_with_tables.find { |schema, tables| schema != 'public' }[1]
+
+  ApplicationRecord.connection.execute("DROP SCHEMA IF EXISTS #{consolidated_schema};")
+  ApplicationRecord.connection.execute("CREATE SCHEMA IF NOT EXISTS #{consolidated_schema};")
+
+  other_tables.each do |table|
+    sql = []
+
+    schemas.each do |schema|
+      sql << "SELECT '#{schema}' AS schema_name, * FROM #{schema}.#{table}"
+    end
+
+    sql = sql.join(' UNION ALL ')
+
+    sql = "CREATE MATERIALIZED VIEW IF NOT EXISTS #{consolidated_schema}.#{table} AS #{sql};"
+
+
+    ApplicationRecord.connection.execute(sql)
+  end;
+
+  nil
+end
+
 # https://github.com/pry/pry/issues/1619
 Pry.config.collision_warning = true
+
+# Allows you to re-enable pry after calling disable-pry inside of a block
+Pry::Commands.block_command('enable-pry', 'Enable `binding.pry` feature') do
+  ENV['DISABLE_PRY'] = nil
+end
