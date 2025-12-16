@@ -1,0 +1,58 @@
+theme = "onedark"
+
+[editor]
+line-number = "absolute"
+mouse = false
+bufferline = "always"
+rulers = [120]
+trim-trailing-whitespace = true
+# cursorline = true # highlight all lines w/ a cursor
+auto-completion = true
+path-completion = true
+auto-info = true
+insert-final-newline = true
+trim-final-newlines = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 120
+
+[keys.normal]
+"$" = ["goto_line_end"] # gl
+"^" = ["goto_first_nonwhitespace"] # gs
+"0" = ["goto_line_start"] # gh
+
+# Copy current relative file name to clipboard
+C-f = ":sh echo %{buffer_name} | pbcopy"
+
+C-n = ":buffer-next"
+C-h = ":buffer-previous"
+
+# https://www.reddit.com/r/HelixEditor/comments/1i3sbrj/comment/n0z7wqd/
+# Select all occurences of selection
+C-8 = "@*%s<ret>"
+# Copy to both internal and external clipboard
+# "y" = ["yank_main_selection_to_clipboard", "yank"]
+
+# C-y = [
+#   ':sh rm -f /tmp/unique-file',
+#   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+#   ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+#   ':open %sh{cat /tmp/unique-file}',
+#   ':redraw',
+# ]
+
+[editor.lsp]
+snippets = true

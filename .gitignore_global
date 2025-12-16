@@ -140,6 +140,7 @@ localbin/**/*
 
 .helix
 .config/helix/runtime/**/*
+bin/helix-gpt
 
 # Custom local dev stuff for rails apps
 lib/dev

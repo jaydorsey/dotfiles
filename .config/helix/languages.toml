@@ -1,0 +1,101 @@
+[language-server.gpt]
+command = "helix-gpt"
+
+[[language]]
+name = "ruby"
+scope = "source.ruby"
+injection-regex = "ruby"
+file-types = [
+  "rb",
+  "rake",
+  "rakefile",
+  "irb",
+  "gemfile",
+  "gemspec",
+  "Rakefile",
+  "Gemfile",
+  "rabl",
+  "jbuilder",
+  "feature",
+  "jb",
+  "Podfile",
+  "podspec",
+  "Vagrantfile",
+  "Brewfile",
+  "rjs",
+  "rbi",
+  "Guardfile",
+  "Capfile",
+  "Cheffile",
+  "Hobofile",
+  "Appraisals",
+  "Rantfile",
+  "Berksfile",
+  "Berksfile.lock",
+  "Thorfile",
+  "Puppetfile",
+  "Fastfile",
+  "Appfile",
+  "Deliverfile",
+  "Matchfile",
+  "Scanfile",
+  "Snapfile",
+  "Gymfile"
+]
+shebangs = ["ruby"]
+comment-token = "#"
+indent = { tab-width = 2, unit = " " }
+language-servers = [
+  "gpt",
+  { name = "solargraph", except-features = ["format", "diagnostics"] },
+  "scls",
+  { name = "rubocop", only-features = ["diagnostics"] }
+]
+formatter = { command = "bundle", args = ["exec", "rubocop", "--stdin", "foo.rb", "-a", "--server", "--stderr", "--fail-level", "fatal"] }
+auto-format = true
+
+[[grammar]]
+name = "ruby"
+source = { git = "https://github.com/tree-sitter/tree-sitter-ruby", rev = "89bd7a8e5450cb6a942418a619d30469f259e5d6" }
+
+[language-server.rubocop]
+command = "bundle"
+args = ["exec", "rubocop", "--lsp"]
+
+[[language]]
+name = "erb"
+file-types = ["erb", "html"]
+language-servers = [ "herb_ls" ]
+
+[language.auto-pairs]
+'<' = '>'
+'%' = '%'
+"'" = "'"
+'"' = '"'
+
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.scls.config]
+feature_words = false                # enable completion by word
+feature_snippets = true              # enable snippets
+snippets_first = true                # completions will return before snippets by default
+snippets_inline_by_word_tail = false # suggest snippets by WORD tail, for example text `xsq|` become `x^2|` when snippet `sq` has body `^2`
+feature_unicode_input = false        # enable "unicode input"
+feature_paths = false                # enable path completion
+feature_citations = false            # enable citation completion (only on `citation` feature enabled)
+
+
+# write logs to /tmp/completion.log
+[language-server.scls.environment]
+RUST_LOG = "info,simple-completion-language-server=info"
+LOG_FILE = "/tmp/completion.log"
+
+# append language server to existed languages
+[[language]]
+name = "rust"
+language-servers = [ "scls", "rust-analyzer" ]
+
+[[language]]
+name = "git-commit"
+language-servers = [ "scls" ]
