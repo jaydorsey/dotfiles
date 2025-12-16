@@ -9,8 +9,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # tldr; favorites near the top of the file
 export NAVI_PATH="$HOME/.local_navi_cheatsheets:$HOME/.navi_cheatsheets"
 
-# source $HOME/.antigen/antigen.zsh
-# antigen init $HOME/.antigenrc
+# Automatically load additional completion scripts.
+# https://github.com/zsh-users/zsh-completions/blob/master/README.md
+autoload -Uz compinit
+compinit
 
 # Uncomment this, and the last line in this file for profiling information
 # zmodload zsh/zprof
@@ -81,10 +83,6 @@ COMPLETION_WAITING_DOTS="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Automatically load additional completion scripts.
-# https://github.com/zsh-users/zsh-completions/blob/master/README.md
-autoload -U compinit && compinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -503,11 +501,21 @@ function git_current_branch() {
 }
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
 alias grd='git rebase develop'
-
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+alias jcd="git checkout develop -- $@"
 
 # Goes very last to override some scm aliases
 source ~/.zsh/git/git.plugin.zsh
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH="$PATH:$HOME/.docker/bin"
 export MISE_ENV_FILE=".envrc"
+
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
+# bun completions
+[ -s "/Users/jay.dorsey/.bun/_bun" ] && source "/Users/jay.dorsey/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
