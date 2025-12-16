@@ -108,6 +108,7 @@
 	colorMoved = plain
 	mnemonicPrefix = true
 	renames = true
+	tool = bc
 [diff "rspec"]
 	xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 [diff "spaceman-diff"]
@@ -163,9 +164,9 @@
 	relativePaths = true
 [merge]
 	conflictstyle = zdiff3
-[feature]
-	experimental = true
 [column]
 	ui = auto
 [help]
 	autocorrect = prompt
+[difftool "bc"]
+	path = /usr/local/bin/bcomp

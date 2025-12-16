@@ -53,6 +53,7 @@ coverage
 **/bower_components/**/*
 .config/yarn/**/*
 yarn.lock
+.yarn/**/*
 
 package-lock.json
 
@@ -132,3 +133,13 @@ lib/tasks/dev/**/*
 # Put custom rubocop configs here, overrides local settings
 .rubocop
 log/*.*
+
+docker-compose.extra.yml
+bin/setup_docker
+localbin/**/*
+
+.helix
+.config/helix/runtime/**/*
+
+# Custom local dev stuff for rails apps
+lib/dev
