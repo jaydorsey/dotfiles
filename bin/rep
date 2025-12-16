@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+#
+# vim: textwidth=0:filetype=ruby
+
+begin
+  require "dry/cli"
+rescue
+  abort("Please install the 'dry-cli' gem to use this script.")
+end
+
+module CLI
+  extend Dry::CLI::Registry
+
+  class RunCommand < Dry::CLI::Command
+    desc "Run a command multiple times with sleep intervals"
+
+    option :n, aliases: ["-n"], type: :integer, default: 3, desc: "Number of times to run"
+    option :s, aliases: ["-s"], type: :integer, default: 0, desc: "Seconds to sleep between runs"
+
+    argument :cmd, required: true, desc: "Command to execute (quoted if multiple words)"
+
+    def call(n:, s:, cmd:, **)
+      n = n.to_i
+      s = s.to_i
+
+      puts "Running '#{cmd}' #{n} times, sleeping #{s}s between runs"
+      n.times do |i|
+        puts "Run ##{i + 1} started at #{Time.now}"
+        system(cmd)
+        if i < n - 1
+          puts "Sleeping for #{s} seconds..."
+          sleep s
+        end
+      end
+      puts "All runs completed at #{Time.now}"
+    end
+  end
+
+  register "run", RunCommand
+end
+
+Dry::CLI.new(CLI).call
