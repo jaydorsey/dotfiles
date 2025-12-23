@@ -874,7 +874,13 @@ return {
     branch = 'master',
     ft = { 'crystal' },
     lazy = false,
-  }
+  },
+  {
+    'esmuellert/vscode-diff.nvim',
+    dependencies = { 'MunifTanjim/nui.nvim' },
+    cmd = 'CodeDiff',
+    branch = 'next',
+  },
 }
 -- <leader>sk to show keybinds
 -- Lazy load <plugin> to load one manually
