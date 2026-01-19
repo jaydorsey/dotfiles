@@ -1,7 +1,7 @@
 [tools]
-ruby = "3.1.4"
+ruby = "4.0.1"
 
 [settings]
 always_keep_download = true
 python_compile = true
-idiomatic_version_file_enable_tools = ["ruby", "terraform"]
+idiomatic_version_file_enable_tools = ["ruby"]

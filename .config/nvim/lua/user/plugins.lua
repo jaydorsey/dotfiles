@@ -330,7 +330,7 @@ return {
     },
     config = function ()
       require('copilot').setup({
-        copilot_node_command = os.getenv("HOME") .."/.local/share/mise/installs/node/23.10.0/bin/node",
+        copilot_node_command = os.getenv("HOME") .."/.local/share/mise/installs/node/24.13.0/bin/node",
       })
       require('copilot_cmp').setup({
         suggestion = { enabled = false },
